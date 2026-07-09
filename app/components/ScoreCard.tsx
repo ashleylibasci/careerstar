@@ -42,7 +42,14 @@ export default function ScoreCard({ result, top = false }: { result: ScoreResult
           <h3 className="text-base font-semibold leading-snug">{result.path}</h3>
         </div>
         <div className="shrink-0 text-right">
-          <div className={`text-3xl font-bold tabular-nums ${tone.text}`}>{result.score}</div>
+          <div className={`text-3xl font-bold tabular-nums ${tone.text}`}>
+            {result.score}
+            {result.confidence != null && (
+              <span className="ml-1 align-top text-xs font-medium text-foreground/40">
+                ±{result.confidence}
+              </span>
+            )}
+          </div>
           <span className={`mt-0.5 inline-block rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide ${tone.pill}`}>
             {band.label}
           </span>

@@ -36,6 +36,8 @@ export interface ScoreResult {
   /** Overall risk-adjusted viability score (0–100). */
   score: number;
   components: ScoreComponents;
+  /** Uncertainty band (±) on the score — higher when the estimate is more speculative. */
+  confidence?: number;
   /** Short human note (e.g. a placeholder caveat, later the explanation). */
   note: string;
   /** For a low-scoring path: a stronger, adjacent path that reuses the user's strengths. */

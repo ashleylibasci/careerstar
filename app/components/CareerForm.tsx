@@ -6,6 +6,7 @@ import type { ScoreResponse } from "@/lib/scorer/types";
 import { FIELDS } from "@/lib/fields";
 import ScoreCard from "./ScoreCard";
 import FrontierChart from "./FrontierChart";
+import CompareRadar from "./CompareRadar";
 
 interface OccOption {
   code: string;
@@ -361,8 +362,9 @@ export default function CareerForm() {
           </div>
 
           {response.results.length >= 2 && (
-            <div className="mb-6">
+            <div className="mb-6 grid gap-4 sm:grid-cols-2">
               <FrontierChart results={response.results} />
+              <CompareRadar results={response.results} />
             </div>
           )}
 

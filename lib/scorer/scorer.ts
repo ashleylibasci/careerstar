@@ -81,10 +81,16 @@ export function computeScore(
 
   const score = 100 * (w.alpha * rav + (1 - w.alpha) * fit);
 
+  // Uncertainty grows with AI exposure (more speculative) and low fit.
+  const confidence = Math.round(
+    Math.max(4, Math.min(12, 4 + 6 * exposure + (fit < 0.3 ? 3 : 0))),
+  );
+
   return {
     code: occ.code,
     path: occ.title,
     score: Math.round(clamp01(score / 100) * 100),
+    confidence,
     components: {
       return: Math.round(ret * 100),
       risk: Math.round(risk * 100),

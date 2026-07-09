@@ -35,6 +35,7 @@ export default function RootLayout({
             <Link href="/" className="font-bold text-blue-600">★ CareerStar</Link>
             <div className="flex gap-x-5 text-foreground/60">
               <Link href="/" className="hover:text-foreground">Home</Link>
+              <Link href="/explore" className="hover:text-foreground">Explore</Link>
               <Link href="/methodology" className="hover:text-foreground">Methodology</Link>
               <Link href="/architecture" className="hover:text-foreground">How it&rsquo;s built</Link>
             </div>
