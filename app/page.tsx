@@ -20,11 +20,6 @@ export default function Home() {
         </header>
 
         <CareerForm />
-
-        <p className="mt-8 text-xs text-foreground/50">
-          A grounded estimate, not a prediction. Exposure to AI is not the same as
-          displacement.
-        </p>
       </div>
     </main>
   );

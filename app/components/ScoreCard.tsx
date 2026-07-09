@@ -1,6 +1,13 @@
 import type { ScoreResult } from "@/lib/scorer/types";
+import { scoreBand, type Tone } from "@/lib/scorer/verdict";
 
-function ComponentBar({ label, value }: { label: string; value: number }) {
+const TONE: Record<Tone, { text: string; pill: string; bar: string }> = {
+  strong: { text: "text-emerald-600", pill: "bg-emerald-500/12 text-emerald-700", bar: "bg-emerald-500" },
+  mixed: { text: "text-amber-600", pill: "bg-amber-500/12 text-amber-700", bar: "bg-amber-500" },
+  risky: { text: "text-red-600", pill: "bg-red-500/12 text-red-600", bar: "bg-red-500" },
+};
+
+function Bar({ label, value, colorClass }: { label: string; value: number; colorClass: string }) {
   return (
     <div>
       <div className="mb-1 flex items-center justify-between text-xs">
@@ -9,7 +16,7 @@ function ComponentBar({ label, value }: { label: string; value: number }) {
       </div>
       <div className="h-1.5 w-full overflow-hidden rounded-full bg-foreground/10">
         <div
-          className="h-full rounded-full bg-blue-500"
+          className={`h-full rounded-full ${colorClass}`}
           style={{ width: `${Math.max(0, Math.min(100, value))}%` }}
         />
       </div>
@@ -17,34 +24,48 @@ function ComponentBar({ label, value }: { label: string; value: number }) {
   );
 }
 
-export default function ScoreCard({ result }: { result: ScoreResult }) {
+export default function ScoreCard({ result, top = false }: { result: ScoreResult; top?: boolean }) {
+  const band = scoreBand(result.score);
+  const tone = TONE[band.tone];
+  // Resilience = the inverse of risk, so every bar means "higher is better."
+  const resilience = 100 - result.components.risk;
+
   return (
     <div className="rounded-2xl border border-foreground/10 bg-foreground/[.02] p-5 shadow-sm">
       <div className="flex items-start justify-between gap-4">
-        <h3 className="text-base font-semibold leading-snug">{result.path}</h3>
+        <div>
+          {top && (
+            <span className="mb-1 inline-block rounded-full bg-blue-600 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">
+              ★ Best bet
+            </span>
+          )}
+          <h3 className="text-base font-semibold leading-snug">{result.path}</h3>
+        </div>
         <div className="shrink-0 text-right">
-          <div className="text-3xl font-bold tabular-nums text-blue-600">
-            {result.score}
-          </div>
-          <div className="text-[10px] uppercase tracking-wide text-foreground/50">
-            / 100
-          </div>
+          <div className={`text-3xl font-bold tabular-nums ${tone.text}`}>{result.score}</div>
+          <span className={`mt-0.5 inline-block rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide ${tone.pill}`}>
+            {band.label}
+          </span>
         </div>
       </div>
 
       <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
-        <ComponentBar label="Return" value={result.components.return} />
-        <ComponentBar label="Risk" value={result.components.risk} />
-        <ComponentBar label="Fit" value={result.components.fit} />
+        <Bar label="Return" value={result.components.return} colorClass="bg-blue-500" />
+        <Bar label="Resilience" value={resilience} colorClass="bg-blue-500" />
+        <Bar label="Fit" value={result.components.fit} colorClass="bg-blue-500" />
       </div>
 
-      <p className="mt-4 text-xs leading-relaxed text-foreground/60">{result.note}</p>
+      <p className="mt-4 text-sm leading-relaxed text-foreground/70">{result.note}</p>
 
       {result.redirect && (
-        <div className="mt-3 rounded-xl border border-blue-500/25 bg-blue-500/5 p-3 text-sm">
-          <span className="font-semibold">Consider instead: {result.redirect.title}</span>{" "}
-          <span className="tabular-nums text-blue-600">({result.redirect.score}/100)</span>
-          <span className="text-foreground/60"> — {result.redirect.reason}</span>
+        <div className="mt-4 flex items-start gap-2 rounded-xl border border-blue-500/25 bg-blue-500/5 p-3">
+          <span className="mt-0.5 text-blue-600">↗</span>
+          <div className="text-sm">
+            <span className="font-semibold text-foreground/60">You might prefer: </span>
+            <span className="font-semibold">{result.redirect.title}</span>{" "}
+            <span className="tabular-nums text-blue-600">{result.redirect.score}/100</span>
+            <div className="text-foreground/60">{result.redirect.reason}</div>
+          </div>
         </div>
       )}
     </div>

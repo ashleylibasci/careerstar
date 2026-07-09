@@ -3,6 +3,7 @@ import type { Occupation, ScoreResponse } from "@/lib/scorer/types";
 import { computeScores } from "@/lib/scorer/scorer";
 import { parseInput } from "@/lib/scorer/parse";
 import { findRedirect, VIABILITY_THRESHOLD } from "@/lib/scorer/redirect";
+import { plainVerdict } from "@/lib/scorer/verdict";
 import { explainResults } from "@/lib/explain/explain";
 import { validateInput } from "@/lib/security/limits";
 import { rateLimit, clientKey } from "@/lib/security/rate-limit";
@@ -61,12 +62,16 @@ export async function POST(request: Request) {
 
   const results = scored.map((r) => {
     const occ = occByCode.get(r.code)!;
-    const factual = `${occ.growthPct >= 0 ? "+" : ""}${occ.growthPct}% projected growth · AI exposure ${Math.round(occ.aiExposure * 100)}/100`;
     const redirect =
       r.score < VIABILITY_THRESHOLD
         ? findRedirect(r, allScored, occByCode)
         : undefined;
-    return { ...r, note: explanations.get(r.code) ?? factual, redirect };
+    // LLM sentence when available, else a plain-English verdict (never a stat dump).
+    return {
+      ...r,
+      note: explanations.get(r.code) ?? plainVerdict(occ, r.components),
+      redirect,
+    };
   });
 
   const response: ScoreResponse = {
