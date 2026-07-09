@@ -42,6 +42,14 @@ export interface ScoreResult {
   components: ScoreComponents;
   /** Uncertainty band (±) on the score — higher when the estimate is more speculative. */
   confidence?: number;
+  /** Morningstar-style rating (1–5, half-steps): the career's position in the whole field. */
+  stars?: number;
+  /** Percentile (0–100) among all careers under the current weights — the basis for `stars`. */
+  percentile?: number;
+  /** Deterministic strongest-case bullets (top 2–3). */
+  bulls?: string[];
+  /** Deterministic weakest-case bullets (top 2–3, always ≥1). */
+  bears?: string[];
   /** Short human note (e.g. a placeholder caveat, later the explanation). */
   note: string;
   /** For a low-scoring path: a stronger, adjacent path that reuses the user's strengths. */

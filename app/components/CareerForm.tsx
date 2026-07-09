@@ -60,6 +60,19 @@ export default function CareerForm() {
   const weightsRef = useRef({ growthPay: 0.5, gammaT: 0.5, fitT: 0.5 });
   const [copied, setCopied] = useState(false);
   const [maximized, setMaximized] = useState<"frontier" | "radar" | null>(null);
+  const [highlight, setHighlight] = useState<string | null>(null);
+  const highlightTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Click a chart point/series → scroll to that career's card and flash it.
+  function focusCard(code: string) {
+    setMaximized(null);
+    setHighlight(code);
+    requestAnimationFrame(() =>
+      document.getElementById(`card-${code}`)?.scrollIntoView({ behavior: "smooth", block: "center" }),
+    );
+    if (highlightTimer.current) clearTimeout(highlightTimer.current);
+    highlightTimer.current = setTimeout(() => setHighlight(null), 1800);
+  }
   const debounce = useRef<ReturnType<typeof setTimeout> | null>(null);
   const hydrated = useRef(false);
 
@@ -397,8 +410,8 @@ export default function CareerForm() {
 
           {response.results.length >= 2 && (
             <div className="mb-6 grid gap-4 sm:grid-cols-2">
-              <FrontierChart results={response.results} onExpand={() => setMaximized("frontier")} />
-              <CompareRadar results={response.results} onExpand={() => setMaximized("radar")} />
+              <FrontierChart results={response.results} onExpand={() => setMaximized("frontier")} onSelect={focusCard} />
+              <CompareRadar results={response.results} onExpand={() => setMaximized("radar")} onSelect={focusCard} />
             </div>
           )}
 
@@ -459,7 +472,7 @@ export default function CareerForm() {
 
           <div className="space-y-4">
             {response.results.map((result, i) => (
-              <ScoreCard key={result.code} result={result} top={i === 0} />
+              <ScoreCard key={result.code} result={result} top={i === 0} highlighted={highlight === result.code} />
             ))}
           </div>
 
@@ -498,9 +511,9 @@ export default function CareerForm() {
               </button>
             </div>
             {maximized === "frontier" ? (
-              <FrontierChart results={response.results} />
+              <FrontierChart results={response.results} onSelect={focusCard} />
             ) : (
-              <CompareRadar results={response.results} />
+              <CompareRadar results={response.results} onSelect={focusCard} />
             )}
           </div>
         </div>

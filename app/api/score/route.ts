@@ -5,6 +5,7 @@ import { analyzeSensitivity } from "@/lib/scorer/sensitivity";
 import { parseInput } from "@/lib/scorer/parse";
 import { findRedirect, VIABILITY_THRESHOLD } from "@/lib/scorer/redirect";
 import { plainVerdict } from "@/lib/scorer/verdict";
+import { starsFromPercentile, percentileOf, bullsAndBears } from "@/lib/scorer/rating";
 import { explainResults } from "@/lib/explain/explain";
 import { validateInput } from "@/lib/security/limits";
 import { rateLimit, clientKey } from "@/lib/security/rate-limit";
@@ -114,8 +115,9 @@ export async function POST(request: Request) {
 
   const occByCode = new Map(dataset.map((o) => [o.code, o]));
 
-  // Score the whole dataset once, to source redirects for low-scoring paths.
+  // Score the whole dataset once, to source redirects AND the relative star curve.
   const allScored = computeScores(dataset, interests, dataset.map((o) => o.code), weights, skillStats);
+  const allScores = allScored.map((r) => r.score);
 
   // LLM plain-English explanation (falls back to a factual note if no key / error).
   const explanations = await explainResults(scored, occByCode, interests);
@@ -127,10 +129,14 @@ export async function POST(request: Request) {
         ? findRedirect(r, allScored, occByCode, skillStats)
         : undefined;
     // LLM sentence when available, else a plain-English verdict (never a stat dump).
+    const pct = percentileOf(r.score, allScores);
     return {
       ...r,
       note: explanations.get(r.code) ?? plainVerdict(occ, r.components),
       redirect,
+      percentile: Math.round(pct),
+      stars: starsFromPercentile(pct),
+      ...bullsAndBears(r),
     };
   });
 
