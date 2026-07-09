@@ -46,6 +46,7 @@ export default function RootLayout({
               <Link href="/explore" className="hover:text-foreground">Explore</Link>
               <Link href="/methodology" className="hover:text-foreground">Methodology</Link>
               <Link href="/architecture" className="hover:text-foreground">How it&rsquo;s built</Link>
+              <Link href="/case-study" className="font-medium text-blue-600 hover:text-blue-700">Case study</Link>
             </div>
           </nav>
         </header>
