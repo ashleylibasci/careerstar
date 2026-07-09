@@ -45,6 +45,17 @@ export interface ScoreResult {
     score: number;
     reason: string;
   };
+  /** The raw inputs + intermediate math behind the score (for the "why" drawer). */
+  breakdown?: {
+    growthPct: number;
+    medianPay: number;
+    aiExposurePct: number;
+    growthRank: number;
+    payRank: number;
+    resilience: number;
+    gamma: number;
+    alpha: number;
+  };
 }
 
 export interface ScoreResponse {

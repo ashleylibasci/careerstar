@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { ScoreResponse } from "@/lib/scorer/types";
 import { FIELDS } from "@/lib/fields";
 import ScoreCard from "./ScoreCard";
+import FrontierChart from "./FrontierChart";
 
 interface OccOption {
   code: string;
@@ -51,7 +52,9 @@ export default function CareerForm() {
   const [error, setError] = useState<string | null>(null);
   const [response, setResponse] = useState<ScoreResponse | null>(null);
   const [riskPriority, setRiskPriority] = useState(0.5);
+  const [copied, setCopied] = useState(false);
   const debounce = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const hydrated = useRef(false);
 
   useEffect(() => {
     fetch("/api/occupations")
@@ -63,21 +66,20 @@ export default function CareerForm() {
   const hasInput =
     careers.length > 0 || fields.length > 0 || interests.length > 0 || text.trim().length > 0;
 
-  async function runScore(rp = riskPriority) {
-    if (!hasInput || loading) return;
+  async function postScore(payload: {
+    careerCodes: string[];
+    fieldGroups: string[];
+    interests: string[];
+    text: string;
+    riskPriority: number;
+  }) {
     setLoading(true);
     setError(null);
     try {
       const res = await fetch("/api/score", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          careerCodes: careers.map((c) => c.code),
-          fieldGroups: fields.map((f) => f.group),
-          interests,
-          text,
-          riskPriority: rp,
-        }),
+        body: JSON.stringify(payload),
       });
       if (!res.ok) {
         const d = (await res.json().catch(() => null)) as { error?: string } | null;
@@ -92,6 +94,63 @@ export default function CareerForm() {
     } finally {
       setLoading(false);
     }
+  }
+
+  function runScore(rp = riskPriority) {
+    if (!hasInput || loading) return;
+    void postScore({
+      careerCodes: careers.map((c) => c.code),
+      fieldGroups: fields.map((f) => f.group),
+      interests,
+      text,
+      riskPriority: rp,
+    });
+  }
+
+  // Hydrate from a shared link once the occupation list is loaded.
+  useEffect(() => {
+    if (hydrated.current || occs.length === 0) return;
+    const p = new URLSearchParams(window.location.search);
+    const cCodes = (p.get("careers") || "").split(",").filter(Boolean);
+    const fGroups = (p.get("fields") || "").split(",").filter(Boolean);
+    const ints = (p.get("interests") || "").split(",").filter(Boolean);
+    if (!cCodes.length && !fGroups.length && !ints.length) return;
+    hydrated.current = true;
+    const cs = cCodes
+      .map((code) => occs.find((o) => o.code === code))
+      .filter((o): o is OccOption => Boolean(o))
+      .map((o) => ({ code: o.code, title: o.title }));
+    const fs = fGroups
+      .map((g) => FIELDS.find((f) => f.group === g))
+      .filter((f): f is FieldChip => Boolean(f));
+    queueMicrotask(() => {
+      setCareers(cs);
+      setFields(fs);
+      setInterests(ints);
+      void postScore({
+        careerCodes: cs.map((c) => c.code),
+        fieldGroups: fs.map((f) => f.group),
+        interests: ints,
+        text: "",
+        riskPriority: 0.5,
+      });
+    });
+  }, [occs]);
+
+  function copyLink() {
+    const p = new URLSearchParams();
+    if (careers.length) p.set("careers", careers.map((c) => c.code).join(","));
+    if (fields.length) p.set("fields", fields.map((f) => f.group).join(","));
+    if (interests.length) p.set("interests", interests.join(","));
+    const qs = p.toString();
+    window.history.replaceState(null, "", `/?${qs}`);
+    navigator.clipboard?.writeText(`${window.location.origin}/?${qs}`).then(
+      () => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      },
+      () => {},
+    );
   }
 
   function onSlider(v: number) {
@@ -288,6 +347,25 @@ export default function CareerForm() {
 
       {response && response.results.length > 0 && (
         <div className="mt-8">
+          <div className="mb-4 flex items-center justify-between gap-3">
+            <span className="text-sm font-semibold text-foreground/70">
+              {response.results.length} {response.results.length === 1 ? "path" : "paths"} scored
+            </span>
+            <button
+              type="button"
+              onClick={copyLink}
+              className="rounded-full border border-foreground/15 px-3 py-1 text-xs font-medium text-foreground/70 transition hover:border-blue-500/50 hover:text-foreground"
+            >
+              {copied ? "✓ Copied!" : "🔗 Copy link"}
+            </button>
+          </div>
+
+          {response.results.length >= 2 && (
+            <div className="mb-6">
+              <FrontierChart results={response.results} />
+            </div>
+          )}
+
           <div className="mb-6 rounded-2xl border border-foreground/10 bg-foreground/[.02] p-4">
             <label htmlFor="risk" className="block text-sm font-medium">
               How much should AI &amp; automation risk count?

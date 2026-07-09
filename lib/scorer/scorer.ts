@@ -91,6 +91,16 @@ export function computeScore(
       fit: Math.round(fit * 100),
     },
     note: "",
+    breakdown: {
+      growthPct: occ.growthPct,
+      medianPay: occ.medianPay,
+      aiExposurePct: Math.round(exposure * 100),
+      growthRank: Math.round(growthScore * 100),
+      payRank: Math.round(payScore * 100),
+      resilience: 100 - Math.round(risk * 100),
+      gamma: w.gamma,
+      alpha: w.alpha,
+    },
   };
 }
 

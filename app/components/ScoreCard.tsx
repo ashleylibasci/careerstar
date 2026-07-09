@@ -68,6 +68,39 @@ export default function ScoreCard({ result, top = false }: { result: ScoreResult
           </div>
         </div>
       )}
+
+      {result.breakdown && (
+        <details className="mt-4 text-sm">
+          <summary className="cursor-pointer text-xs font-medium text-blue-600 hover:underline">
+            Why this score?
+          </summary>
+          <div className="mt-3 space-y-2 border-t border-foreground/10 pt-3 text-xs leading-relaxed text-foreground/70">
+            <div>
+              <span className="font-semibold">Return {result.components.return}</span> —
+              growth ranks {result.breakdown.growthRank}/100, pay ranks{" "}
+              {result.breakdown.payRank}/100 vs. all careers.
+            </div>
+            <div>
+              <span className="font-semibold">Resilience {resilience}</span> — AI exposure is{" "}
+              {result.breakdown.aiExposurePct}/100 (share of tasks, not job loss).
+            </div>
+            <div>
+              <span className="font-semibold">Fit {result.components.fit}</span> — overlap with
+              the interests you gave.
+            </div>
+            <div className="text-foreground/50">
+              Raw: {result.breakdown.growthPct >= 0 ? "+" : ""}
+              {result.breakdown.growthPct}% projected growth ·{" "}
+              ${result.breakdown.medianPay.toLocaleString()} median pay.
+            </div>
+            <div className="rounded-lg bg-foreground/[.04] p-2 font-mono text-[11px] text-foreground/60">
+              score = 100 · [ α·(return × (1 − γ·risk)) + (1 − α)·fit ]
+              <br />
+              α = {result.breakdown.alpha}, γ = {result.breakdown.gamma.toFixed(2)}
+            </div>
+          </div>
+        </details>
+      )}
     </div>
   );
 }
