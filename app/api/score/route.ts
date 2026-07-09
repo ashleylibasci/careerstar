@@ -2,6 +2,7 @@ import data from "@/data/data.json";
 import type { Occupation, ScoreResponse } from "@/lib/scorer/types";
 import { computeScores } from "@/lib/scorer/scorer";
 import { parseInput } from "@/lib/scorer/parse";
+import { findRedirect, VIABILITY_THRESHOLD } from "@/lib/scorer/redirect";
 import { explainResults } from "@/lib/explain/explain";
 
 // POST /api/score  — body: { text: string }
@@ -43,13 +44,20 @@ export async function POST(request: Request) {
 
   const occByCode = new Map(dataset.map((o) => [o.code, o]));
 
+  // Score the whole dataset once, to source redirects for low-scoring paths.
+  const allScored = computeScores(dataset, interests, dataset.map((o) => o.code));
+
   // LLM plain-English explanation (falls back to a factual note if no key / error).
   const explanations = await explainResults(scored, occByCode, interests);
 
   const results = scored.map((r) => {
     const occ = occByCode.get(r.code)!;
     const factual = `${occ.growthPct >= 0 ? "+" : ""}${occ.growthPct}% projected growth · AI exposure ${Math.round(occ.aiExposure * 100)}/100`;
-    return { ...r, note: explanations.get(r.code) ?? factual };
+    const redirect =
+      r.score < VIABILITY_THRESHOLD
+        ? findRedirect(r, allScored, occByCode)
+        : undefined;
+    return { ...r, note: explanations.get(r.code) ?? factual, redirect };
   });
 
   const response: ScoreResponse = {

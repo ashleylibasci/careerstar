@@ -38,7 +38,15 @@ export default function ScoreCard({ result }: { result: ScoreResult }) {
         <ComponentBar label="Fit" value={result.components.fit} />
       </div>
 
-      <p className="mt-4 text-xs leading-relaxed text-foreground/50">{result.note}</p>
+      <p className="mt-4 text-xs leading-relaxed text-foreground/60">{result.note}</p>
+
+      {result.redirect && (
+        <div className="mt-3 rounded-xl border border-blue-500/25 bg-blue-500/5 p-3 text-sm">
+          <span className="font-semibold">Consider instead: {result.redirect.title}</span>{" "}
+          <span className="tabular-nums text-blue-600">({result.redirect.score}/100)</span>
+          <span className="text-foreground/60"> — {result.redirect.reason}</span>
+        </div>
+      )}
     </div>
   );
 }

@@ -36,6 +36,13 @@ export interface ScoreResult {
   components: ScoreComponents;
   /** Short human note (e.g. a placeholder caveat, later the explanation). */
   note: string;
+  /** For a low-scoring path: a stronger, adjacent path that reuses the user's strengths. */
+  redirect?: {
+    code: string;
+    title: string;
+    score: number;
+    reason: string;
+  };
 }
 
 export interface ScoreResponse {

@@ -86,6 +86,15 @@ export default function CareerForm() {
           {response.results.map((result) => (
             <ScoreCard key={result.code} result={result} />
           ))}
+          <p className="pt-2 text-xs leading-relaxed text-foreground/50">
+            A grounded estimate, not a prediction. Scores blend BLS growth &amp; pay
+            (~2023) with AI-exposure research — and <strong>AI exposure is not the
+            same as job loss</strong>. See{" "}
+            <a href="/methodology" className="underline hover:text-foreground/70">
+              how scores are calculated
+            </a>
+            .
+          </p>
         </div>
       )}
     </div>
