@@ -5,9 +5,6 @@ export default function Home() {
     <main className="flex flex-1 flex-col items-center px-6 py-16 sm:py-24">
       <div className="w-full max-w-xl">
         <header className="mb-10">
-          <div className="mb-3 inline-flex items-center gap-2 text-sm font-semibold tracking-wide text-blue-600">
-            <span aria-hidden>★</span> CareerStar
-          </div>
           <h1 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
             Rate the career paths you&rsquo;re weighing — like stocks.
           </h1>
