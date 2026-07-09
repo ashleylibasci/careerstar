@@ -15,7 +15,20 @@ here blocks the current work (O\*NET fit → sensitivity/back-test → narration
 
 ---
 
-## B-1 — University / major → career ROI experience  *(revive the dropped data)*
+## ✅ B-1 — University / major → career ROI experience  *(SHIPPED 2026-07-09)*
+
+**Done differently — and better — than the dropped version.** Instead of a bulky
+standalone `universities.json`, built a lean `data/education.json` keyed by SOC and
+wired it into the **existing career detail page** (`/career/[code]`) so it can never
+orphan. New `scripts/pipeline/build-education.mjs` streams the College Scorecard CSVs
++ the real **NCES CIP2020→SOC2018 crosswalk** (`data/sources/cip_soc.json`) → per
+occupation: median 1-yr earnings, median debt, a pay-to-debt ratio, feeder majors, and
+selective schools that offer them (admit rate, cost, grad pay). 552 occupations covered.
+Original notes kept below for history.
+
+---
+
+### (original plan — now superseded by the shipped version above)
 
 **Why deferred:** `data/universities.json` (top ~200 schools, real earnings/cost/debt
 by major, from College Scorecard) shipped with **no screen consuming it** — orphaned

@@ -2,11 +2,21 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import data from "@/data/data.json";
+import educationData from "@/data/education.json";
 import { fieldName } from "@/lib/fields";
 import { roi } from "@/lib/education";
 import type { Occupation } from "@/lib/scorer/types";
 
 const OCCUPATIONS = (data as { occupations: Occupation[] }).occupations;
+
+interface EduRow {
+  earn1yr: number | null;
+  debt: number | null;
+  programs: number;
+  majors: string[];
+  schools: { name: string; state: string; cost: number | null; earn10: number | null; admRate: number | null }[];
+}
+const EDUCATION = (educationData as { education: Record<string, EduRow> }).education;
 
 function findOccupation(code: string): Occupation | undefined {
   return OCCUPATIONS.find((o) => o.code === code);
@@ -63,6 +73,7 @@ export default async function CareerPage({
   const related = OCCUPATIONS.filter(
     (o) => o.code.slice(0, 2) === group && o.code !== code,
   ).slice(0, 6);
+  const edu = EDUCATION[code.split(".")[0]];
 
   return (
     <main className="flex flex-1 flex-col items-center px-6 py-16 sm:py-24">
@@ -96,8 +107,89 @@ export default async function CareerPage({
           />
         </div>
 
+        {edu ? (
+          <div className="mt-10">
+            <h2 className="text-lg font-semibold tracking-tight">Education &amp; ROI — how to get here</h2>
+            <p className="mt-1 text-sm text-foreground/60">
+              Real outcomes for the college majors that feed this occupation, across{" "}
+              {edu.programs.toLocaleString()} bachelor&rsquo;s programs.
+            </p>
+
+            <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
+              <Stat
+                label="Median earnings"
+                value={edu.earn1yr ? `$${edu.earn1yr.toLocaleString()}` : "—"}
+                caveat="1 year after graduating"
+              />
+              <Stat
+                label="Typical debt"
+                value={edu.debt ? `$${edu.debt.toLocaleString()}` : "—"}
+                caveat="median federal debt"
+              />
+              <Stat
+                label="Pay-to-debt"
+                value={edu.earn1yr && edu.debt ? `${(edu.earn1yr / edu.debt).toFixed(1)}×` : "—"}
+                caveat="first-year pay ÷ debt"
+              />
+            </div>
+
+            {edu.majors.length > 0 ? (
+              <div className="mt-5">
+                <div className="text-xs font-medium uppercase tracking-wide text-foreground/50">
+                  Feeder majors
+                </div>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {edu.majors.map((m) => (
+                    <span
+                      key={m}
+                      className="rounded-full border border-foreground/10 bg-foreground/[.03] px-3 py-1 text-xs text-foreground/70"
+                    >
+                      {m}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ) : null}
+
+            {edu.schools.length > 0 ? (
+              <div className="mt-5">
+                <div className="text-xs font-medium uppercase tracking-wide text-foreground/50">
+                  Selective schools offering these majors
+                </div>
+                <div className="mt-2 divide-y divide-foreground/10 overflow-hidden rounded-2xl border border-foreground/10">
+                  {edu.schools.map((s) => (
+                    <div key={s.name} className="flex items-center justify-between gap-3 p-3">
+                      <div className="min-w-0">
+                        <div className="truncate text-sm font-medium">{s.name}</div>
+                        <div className="text-xs text-foreground/50">
+                          {s.state}
+                          {s.admRate != null ? ` · ${Math.round(s.admRate * 100)}% admit rate` : ""}
+                        </div>
+                      </div>
+                      <div className="shrink-0 text-right text-xs tabular-nums">
+                        {s.cost != null ? (
+                          <div className="text-foreground/60">${s.cost.toLocaleString()}/yr</div>
+                        ) : null}
+                        {s.earn10 != null ? (
+                          <div className="font-medium text-emerald-600">${s.earn10.toLocaleString()} grad pay</div>
+                        ) : null}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) : null}
+
+            <p className="mt-3 text-xs leading-relaxed text-foreground/45">
+              Earnings &amp; debt from the U.S. Dept. of Education <strong>College Scorecard</strong>;
+              majors mapped to this occupation via the NCES CIP→SOC crosswalk. A grounded ROI
+              snapshot, not a guarantee — pay varies widely by school and specialty.
+            </p>
+          </div>
+        ) : null}
+
         {occ.skills.length > 0 ? (
-          <div className="mt-8">
+          <div className="mt-10">
             <h2 className="text-lg font-semibold tracking-tight">Interests &amp; skills</h2>
             <div className="mt-3 flex flex-wrap gap-2">
               {occ.skills.map((skill) => (
