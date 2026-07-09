@@ -102,10 +102,26 @@ development_status:
   5-1-public-architecture-page: done
   epic-5-retrospective: optional
 
-  # --- ALL 5 EPICS DONE. Remaining BMAD hygiene (optional): write retro-stories
-  #     for the shipped-without-a-story features so the board stops lying by omission:
-  #       explore/leaderboard, career-detail-pages, compare-radar, frontier-scatter,
-  #       maximizable-charts, model-tuning-sliders, shareable-links, print-button,
-  #       O*NET-capability-fit, sensitivity/robustness, Morningstar star rating,
-  #       Bulls/Bears, education-ROI pathway (now wired into /career/[code], not orphaned).
+  # Epic 6: Advanced Analytics & Exploration (retro-documented 2026-07-09)
+  #   Shipped before being written as stories; now recorded in epic-6-and-7-stories.md.
+  epic-6: done
+  6-1-explore-leaderboard: done
+  6-2-career-detail-pages: done
+  6-3-comparison-charts-scatter-radar: done
+  6-4-model-tuning-sliders: done
+  6-5-shareable-links-and-report: done
+  epic-6-retrospective: optional
+
+  # Epic 7: The Morningstar Rating Layer (retro-documented 2026-07-09)
+  epic-7: done
+  7-1-real-onet-capability-fit: done
+  7-2-sensitivity-robustness-and-validation: done
+  7-3-morningstar-star-rating: done
+  7-4-bulls-say-bears-say: done
+  7-5-education-roi-pathway: done
+  7-6-accessibility-and-contrast-pass: done
+  epic-7-retrospective: optional
+
+  # --- ALL 7 EPICS DONE. Board is now complete (every shipped feature has a story).
+  #     Retro-stories: _bmad-output/implementation-artifacts/epic-6-and-7-stories.md
   #     (universities.json was dropped 2026-07-09; ROI rebuilt as data/education.json.)
