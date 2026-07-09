@@ -2,6 +2,7 @@ import data from "@/data/data.json";
 import type { Occupation, ScoreResponse } from "@/lib/scorer/types";
 import { computeScores } from "@/lib/scorer/scorer";
 import { parseInput } from "@/lib/scorer/parse";
+import { explainResults } from "@/lib/explain/explain";
 
 // POST /api/score  — body: { text: string }
 // Real scoring (Stories 2.3 + 2.4): parse free text → occupations + interests,
@@ -36,15 +37,20 @@ export async function POST(request: Request) {
       .map((o) => o.code);
   }
 
-  const results = computeScores(dataset, interests, codes)
+  const scored = computeScores(dataset, interests, codes)
     .sort((a, b) => b.score - a.score)
-    .slice(0, 6)
-    .map((r) => {
-      const occ = dataset.find((o) => o.code === r.code)!;
-      const growth = `${occ.growthPct >= 0 ? "+" : ""}${occ.growthPct}% projected growth`;
-      const exposure = `AI exposure ${Math.round(occ.aiExposure * 100)}/100`;
-      return { ...r, note: `${growth} · ${exposure}` };
-    });
+    .slice(0, 6);
+
+  const occByCode = new Map(dataset.map((o) => [o.code, o]));
+
+  // LLM plain-English explanation (falls back to a factual note if no key / error).
+  const explanations = await explainResults(scored, occByCode, interests);
+
+  const results = scored.map((r) => {
+    const occ = occByCode.get(r.code)!;
+    const factual = `${occ.growthPct >= 0 ? "+" : ""}${occ.growthPct}% projected growth · AI exposure ${Math.round(occ.aiExposure * 100)}/100`;
+    return { ...r, note: explanations.get(r.code) ?? factual };
+  });
 
   const response: ScoreResponse = {
     input: text.trim(),
