@@ -31,7 +31,7 @@ export const WEIGHTS = {
   gamma: 0.6,
   /** Market viability vs. personal fit. */
   alpha: 0.7,
-} as const;
+};
 
 const clamp01 = (x: number) => Math.max(0, Math.min(1, x));
 
@@ -51,23 +51,26 @@ interface NormContext {
   payRank: (v: number) => number;
 }
 
+export type Weights = typeof WEIGHTS;
+
 /** Score a single occupation given the user's interests and a normalization context. */
 export function computeScore(
   occ: Occupation,
   interests: string[],
   ctx: NormContext,
+  w: Weights = WEIGHTS,
 ): ScoreResult {
   const growthScore = ctx.growthRank(occ.growthPct); // 0–1
   const payScore = ctx.payRank(occ.medianPay); // 0–1
-  const ret = WEIGHTS.wGrowth * growthScore + WEIGHTS.wPay * payScore;
+  const ret = w.wGrowth * growthScore + w.wPay * payScore;
 
   const exposure = clamp01(occ.aiExposure);
   // Constructed volatility proxy: no public dataset exists, so a field
   // projected to shrink (low growth percentile) is treated as more volatile.
   const volatility = clamp01(1 - growthScore);
-  const risk = WEIGHTS.wExposure * exposure + WEIGHTS.wVolatility * volatility;
+  const risk = w.wExposure * exposure + w.wVolatility * volatility;
 
-  const rav = ret * (1 - WEIGHTS.gamma * risk); // risk-adjusted return, 0–1
+  const rav = ret * (1 - w.gamma * risk); // risk-adjusted return, 0–1
 
   // Fit: fraction of the user's stated interests this occupation matches.
   const interestSet = new Set(interests.map((s) => s.toLowerCase()));
@@ -76,7 +79,7 @@ export function computeScore(
   const fit =
     interests.length === 0 ? 0.5 : clamp01(overlap / interests.length);
 
-  const score = 100 * (WEIGHTS.alpha * rav + (1 - WEIGHTS.alpha) * fit);
+  const score = 100 * (w.alpha * rav + (1 - w.alpha) * fit);
 
   return {
     code: occ.code,
@@ -100,7 +103,9 @@ export function computeScores(
   dataset: Occupation[],
   interests: string[],
   candidateCodes: string[],
+  weights?: Partial<Weights>,
 ): ScoreResult[] {
+  const w: Weights = { ...WEIGHTS, ...weights };
   const ctx: NormContext = {
     growthRank: percentileRanker(dataset.map((o) => o.growthPct)),
     payRank: percentileRanker(dataset.map((o) => o.medianPay)),
@@ -110,7 +115,7 @@ export function computeScores(
   const results: ScoreResult[] = [];
   for (const code of candidateCodes) {
     const occ = byCode.get(code);
-    if (occ) results.push(computeScore(occ, interests, ctx));
+    if (occ) results.push(computeScore(occ, interests, ctx, w));
   }
   return results;
 }

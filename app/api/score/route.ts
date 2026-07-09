@@ -30,11 +30,19 @@ export async function POST(request: Request) {
     return Response.json({ error: "Invalid JSON body." }, { status: 400 });
   }
 
-  const validation = validateInput((body as { text?: unknown } | null)?.text);
+  const bodyObj = body as { text?: unknown; riskPriority?: unknown } | null;
+  const validation = validateInput(bodyObj?.text);
   if (!validation.ok) {
     return Response.json({ error: validation.error }, { status: validation.status });
   }
   const text = validation.text;
+
+  // Optional priority slider (0 = ignore AI risk … 1 = weigh it heavily) → gamma.
+  const rp =
+    typeof bodyObj?.riskPriority === "number"
+      ? Math.max(0, Math.min(1, bodyObj.riskPriority))
+      : undefined;
+  const weights = rp !== undefined ? { gamma: 0.2 + 0.8 * rp } : undefined;
 
   const { candidateCodes, interests } = parseInput(text, dataset);
 
@@ -48,14 +56,14 @@ export async function POST(request: Request) {
       .map((o) => o.code);
   }
 
-  const scored = computeScores(dataset, interests, codes)
+  const scored = computeScores(dataset, interests, codes, weights)
     .sort((a, b) => b.score - a.score)
     .slice(0, 6);
 
   const occByCode = new Map(dataset.map((o) => [o.code, o]));
 
   // Score the whole dataset once, to source redirects for low-scoring paths.
-  const allScored = computeScores(dataset, interests, dataset.map((o) => o.code));
+  const allScored = computeScores(dataset, interests, dataset.map((o) => o.code), weights);
 
   // LLM plain-English explanation (falls back to a factual note if no key / error).
   const explanations = await explainResults(scored, occByCode, interests);
