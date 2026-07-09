@@ -58,6 +58,7 @@ export default function CareerForm() {
   const [fitT, setFitT] = useState(0.5); // 0 = market viability … 1 = personal fit
   const weightsRef = useRef({ growthPay: 0.5, gammaT: 0.5, fitT: 0.5 });
   const [copied, setCopied] = useState(false);
+  const [maximized, setMaximized] = useState<"frontier" | "radar" | null>(null);
   const debounce = useRef<ReturnType<typeof setTimeout> | null>(null);
   const hydrated = useRef(false);
 
@@ -395,8 +396,8 @@ export default function CareerForm() {
 
           {response.results.length >= 2 && (
             <div className="mb-6 grid gap-4 sm:grid-cols-2">
-              <FrontierChart results={response.results} />
-              <CompareRadar results={response.results} />
+              <FrontierChart results={response.results} onExpand={() => setMaximized("frontier")} />
+              <CompareRadar results={response.results} onExpand={() => setMaximized("radar")} />
             </div>
           )}
 
@@ -468,6 +469,37 @@ export default function CareerForm() {
             </Link>
             .
           </p>
+        </div>
+      )}
+
+      {maximized && response && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 print:hidden"
+          onClick={() => setMaximized(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Enlarged chart"
+        >
+          <div
+            className="max-h-[90vh] w-full max-w-4xl overflow-auto rounded-2xl bg-background p-5 shadow-xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="mb-3 flex justify-end">
+              <button
+                type="button"
+                onClick={() => setMaximized(null)}
+                aria-label="Minimize chart"
+                className="rounded-full border border-foreground/15 px-3 py-1 text-xs font-medium text-foreground/70 transition hover:border-blue-500/50 hover:text-foreground"
+              >
+                ✕ Minimize
+              </button>
+            </div>
+            {maximized === "frontier" ? (
+              <FrontierChart results={response.results} />
+            ) : (
+              <CompareRadar results={response.results} />
+            )}
+          </div>
         </div>
       )}
     </div>

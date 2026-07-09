@@ -21,13 +21,31 @@ function point(axis: number, value: number): [number, number] {
   return [CX + r * Math.cos(angle), CY + r * Math.sin(angle)];
 }
 
-export default function CompareRadar({ results }: { results: ScoreResult[] }) {
+export default function CompareRadar({
+  results,
+  onExpand,
+}: {
+  results: ScoreResult[];
+  onExpand?: () => void;
+}) {
   const series = results.slice(0, 6);
   const rings = [25, 50, 75, 100];
 
   return (
     <figure className="rounded-2xl border border-foreground/10 bg-foreground/[.02] p-4">
-      <figcaption className="mb-3 text-sm font-semibold">Compare across every axis</figcaption>
+      <div className="mb-3 flex items-center justify-between gap-2">
+        <figcaption className="text-sm font-semibold">Compare across every axis</figcaption>
+        {onExpand && (
+          <button
+            type="button"
+            onClick={onExpand}
+            aria-label="Expand radar chart"
+            className="shrink-0 rounded-full border border-foreground/15 px-2 py-0.5 text-xs text-foreground/60 transition hover:border-blue-500/50 hover:text-foreground print:hidden"
+          >
+            ⤢ Expand
+          </button>
+        )}
+      </div>
       <svg viewBox="0 0 360 300" className="w-full" role="img" aria-label="Radar chart comparing careers across five axes">
         {rings.map((ring) => (
           <polygon

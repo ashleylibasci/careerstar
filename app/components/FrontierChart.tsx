@@ -16,13 +16,31 @@ const plotH = H - PAD.t - PAD.b;
 const x = (risk: number) => PAD.l + (risk / 100) * plotW;
 const y = (ret: number) => PAD.t + (1 - ret / 100) * plotH;
 
-export default function FrontierChart({ results }: { results: ScoreResult[] }) {
+export default function FrontierChart({
+  results,
+  onExpand,
+}: {
+  results: ScoreResult[];
+  onExpand?: () => void;
+}) {
   const ticks = [0, 25, 50, 75, 100];
 
   return (
     <figure className="rounded-2xl border border-foreground/10 bg-foreground/[.02] p-4">
-      <figcaption className="mb-1 text-sm font-semibold">Your careers as assets</figcaption>
-      <p className="mb-3 text-xs text-foreground/50">
+      <div className="mb-1 flex items-center justify-between gap-2">
+        <figcaption className="text-sm font-semibold">Your careers as assets</figcaption>
+        {onExpand && (
+          <button
+            type="button"
+            onClick={onExpand}
+            aria-label="Expand scatter plot"
+            className="shrink-0 rounded-full border border-foreground/15 px-2 py-0.5 text-xs text-foreground/60 transition hover:border-blue-500/50 hover:text-foreground print:hidden"
+          >
+            ⤢ Expand
+          </button>
+        )}
+      </div>
+      <p className="mb-3 text-xs text-foreground/60">
         Return vs. risk — up and to the left is the sweet spot (high return, low risk).
       </p>
       <svg viewBox={`0 0 ${W} ${H}`} className="w-full" role="img" aria-label="Scatter plot of return versus risk for your careers">
