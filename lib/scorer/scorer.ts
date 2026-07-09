@@ -79,6 +79,7 @@ export function computeScore(
   const score = 100 * (WEIGHTS.alpha * rav + (1 - WEIGHTS.alpha) * fit);
 
   return {
+    code: occ.code,
     path: occ.title,
     score: Math.round(clamp01(score / 100) * 100),
     components: {

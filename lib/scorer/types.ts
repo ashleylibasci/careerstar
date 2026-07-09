@@ -27,6 +27,8 @@ export interface ScoreComponents {
 }
 
 export interface ScoreResult {
+  /** O*NET-SOC code of the scored occupation. */
+  code: string;
   /** The career path this card scores. */
   path: string;
   /** Overall risk-adjusted viability score (0–100). */
@@ -41,4 +43,6 @@ export interface ScoreResponse {
   results: ScoreResult[];
   /** True while scoring is the Story 1.3 placeholder, not the real model. */
   placeholder: boolean;
+  /** Optional helper message, e.g. when no occupation could be matched. */
+  message?: string;
 }

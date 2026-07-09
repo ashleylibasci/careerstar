@@ -77,10 +77,14 @@ export default function CareerForm() {
         </p>
       )}
 
-      {response && (
+      {response?.message && (
+        <p className="mt-6 text-sm text-foreground/60">{response.message}</p>
+      )}
+
+      {response && response.results.length > 0 && (
         <div className="mt-8 space-y-4">
-          {response.results.map((result, i) => (
-            <ScoreCard key={i} result={result} />
+          {response.results.map((result) => (
+            <ScoreCard key={result.code} result={result} />
           ))}
         </div>
       )}
