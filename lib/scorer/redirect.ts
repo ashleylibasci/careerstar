@@ -1,8 +1,9 @@
 import type { Occupation, ScoreResult } from "./types";
+import { profileSimilarity, cosine, type SkillStats } from "./skills.ts";
 
 // Redirect logic (Story 3.2). For a low-scoring path, find a higher-scoring
-// occupation that is "adjacent" — i.e. shares the most skills with it — so the
-// suggestion reuses the user's existing strengths instead of sending them
+// occupation that is "adjacent" — nearest-neighbor in O*NET capability-space so
+// the suggestion reuses the user's existing strengths instead of sending them
 // somewhere unrelated. Deterministic; no LLM.
 
 /** A path scoring below this (0–100) gets a redirect. */
@@ -17,23 +18,39 @@ function jaccard(a: string[], b: string[]): number {
   return union === 0 ? 0 : inter / union;
 }
 
+/** Adjacency between two occupations: real O*NET profile similarity when vectors
+ *  exist (market-distinctiveness-weighted cosine), else keyword Jaccard. */
+function adjacency(a: Occupation, b: Occupation, stats?: SkillStats): number {
+  if (a.skillVector && b.skillVector) {
+    return stats
+      ? profileSimilarity(a.skillVector, b.skillVector, stats)
+      : cosine(a.skillVector, b.skillVector);
+  }
+  return jaccard(a.skills, b.skills);
+}
+
 /**
  * Find a stronger, skill-adjacent alternative to `low`.
  * @param low        the low-scoring result
  * @param allScored  every dataset occupation scored for this same user
- * @param occByCode  code → occupation (for skills)
+ * @param occByCode  code → occupation (for skill vectors)
+ * @param stats      market stats for distinctiveness-weighted adjacency
  */
 export function findRedirect(
   low: ScoreResult,
   allScored: ScoreResult[],
   occByCode: Map<string, Occupation>,
+  stats?: SkillStats,
 ): ScoreResult["redirect"] {
   const lowOcc = occByCode.get(low.code);
   if (!lowOcc) return undefined;
 
   const better = allScored
     .filter((r) => r.code !== low.code && r.score > low.score)
-    .map((r) => ({ r, sim: jaccard(lowOcc.skills, occByCode.get(r.code)?.skills ?? []) }))
+    .map((r) => {
+      const occ = occByCode.get(r.code);
+      return { r, sim: occ ? adjacency(lowOcc, occ, stats) : 0 };
+    })
     // Prefer skill-adjacent first, then higher score.
     .sort((x, y) => y.sim - x.sim || y.r.score - x.r.score);
 

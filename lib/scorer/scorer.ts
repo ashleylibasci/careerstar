@@ -1,4 +1,5 @@
 import type { Occupation, ScoreResult } from "./types";
+import { buildInterestVector, fit as capabilityFit, type SkillStats } from "./skills.ts";
 
 // CareerStar scoring model (Story 2.2).
 //
@@ -49,9 +50,28 @@ function percentileRanker(values: number[]): (v: number) => number {
 interface NormContext {
   growthRank: (v: number) => number;
   payRank: (v: number) => number;
+  /** Market stats for distinctiveness-weighted O*NET fit (from data.json meta). */
+  stats?: SkillStats;
+  /** The user's interests as a 68-d O*NET capability target (built once per run). */
+  interestVec?: number[] | null;
 }
 
 export type Weights = typeof WEIGHTS;
+
+/**
+ * FIT in O*NET capability-space when real skill vectors + market stats are
+ * available; otherwise a graceful keyword-overlap fallback (used by unit fixtures
+ * and any occupation O*NET doesn't cover).
+ */
+function computeFit(occ: Occupation, interests: string[], ctx: NormContext): number {
+  if (ctx.interestVec && ctx.stats && occ.skillVector) {
+    return capabilityFit(ctx.interestVec, occ.skillVector, ctx.stats);
+  }
+  const interestSet = new Set(interests.map((s) => s.toLowerCase()));
+  let overlap = 0;
+  for (const skill of occ.skills) if (interestSet.has(skill.toLowerCase())) overlap++;
+  return interests.length === 0 ? 0.5 : clamp01(overlap / interests.length);
+}
 
 /** Score a single occupation given the user's interests and a normalization context. */
 export function computeScore(
@@ -72,12 +92,7 @@ export function computeScore(
 
   const rav = ret * (1 - w.gamma * risk); // risk-adjusted return, 0–1
 
-  // Fit: fraction of the user's stated interests this occupation matches.
-  const interestSet = new Set(interests.map((s) => s.toLowerCase()));
-  let overlap = 0;
-  for (const skill of occ.skills) if (interestSet.has(skill.toLowerCase())) overlap++;
-  const fit =
-    interests.length === 0 ? 0.5 : clamp01(overlap / interests.length);
+  const fit = computeFit(occ, interests, ctx);
 
   const score = 100 * (w.alpha * rav + (1 - w.alpha) * fit);
 
@@ -120,11 +135,14 @@ export function computeScores(
   interests: string[],
   candidateCodes: string[],
   weights?: Partial<Weights>,
+  stats?: SkillStats,
 ): ScoreResult[] {
   const w: Weights = { ...WEIGHTS, ...weights };
   const ctx: NormContext = {
     growthRank: percentileRanker(dataset.map((o) => o.growthPct)),
     payRank: percentileRanker(dataset.map((o) => o.medianPay)),
+    stats,
+    interestVec: buildInterestVector(interests),
   };
   const byCode = new Map(dataset.map((o) => [o.code, o]));
 

@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { ScoreResponse } from "@/lib/scorer/types";
 import { FIELDS } from "@/lib/fields";
 import ScoreCard from "./ScoreCard";
+import RobustnessPanel from "./RobustnessPanel";
 import FrontierChart from "./FrontierChart";
 import CompareRadar from "./CompareRadar";
 
@@ -453,6 +454,8 @@ export default function CareerForm() {
             />
             <div className="mt-1 flex justify-between text-xs text-foreground/50"><span>Market viability</span><span>Personal fit</span></div>
           </div>
+
+          {response.sensitivity && <RobustnessPanel sensitivity={response.sensitivity} />}
 
           <div className="space-y-4">
             {response.results.map((result, i) => (

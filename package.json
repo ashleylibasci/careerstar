@@ -8,8 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "test": "node --test \"lib/**/*.test.ts\"",
-    "build:data": "node scripts/pipeline/build-data.mjs",
-    "build:universities": "node scripts/pipeline/build-universities.mjs"
+    "build:data": "node scripts/pipeline/build-data.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.110.0",

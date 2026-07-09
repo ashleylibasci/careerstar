@@ -41,8 +41,15 @@
 # - Retrospective appends its action items to action_items; sprint-status surfaces open ones
 
 generated: 2026-07-08
-last_updated: 2026-07-08
+last_updated: 2026-07-09
 # Epic 1 activated; Story 1.1 ready-for-dev (2026-07-08)
+# 2026-07-09: honest reconciliation applied — see
+#   _bmad-output/planning-artifacts/reconciliation-2026-07-09.md
+#   Statuses below reflect what the CODE actually is, not a tidy board.
+#   done            = AC satisfied by shipped code
+#   done (extended) = AC satisfied AND code went materially beyond the story
+#   done (superseded) = deliverable intentionally replaced by later work
+#   verify-live     = cannot close from the repo; needs a live deploy/LLM check
 project: ashleyaiproject
 project_key: NOKEY
 tracking_system: file-system
@@ -50,38 +57,49 @@ story_location: _bmad-output/implementation-artifacts
 
 development_status:
   # Epic 1: Live Walking Skeleton
-  epic-1: in-progress
-  1-1-scaffold-the-next-js-foundation: review
-  1-2-single-screen-input-ui: review
-  1-3-score-endpoint-returning-a-placeholder-card: review
-  1-4-deploy-the-walking-skeleton-to-aws: review
+  epic-1: in-progress   # closes when 1-4 is verified live
+  1-1-scaffold-the-next-js-foundation: done
+  1-2-single-screen-input-ui: done   # extended: two-zone input, tuning sliders, share links, print
+  1-3-score-endpoint-returning-a-placeholder-card: done   # superseded by 2-4
+  1-4-deploy-the-walking-skeleton-to-aws: verify-live   # env-var mechanism present; live deploy unconfirmed
   epic-1-retrospective: optional
 
   # Epic 2: The Rating Engine
-  epic-2: in-progress
-  2-1-build-the-offline-data-pipeline-data-json: review
-  2-2-implement-the-deterministic-scorer-module: review
-  2-3-parse-free-text-into-occupations-interest-signals: review
-  2-4-wire-real-scores-into-the-results-cards: review
+  epic-2: in-progress   # engine done; carries O*NET spec gap (disclose on /methodology)
+  2-1-build-the-offline-data-pipeline-data-json: done   # extended: 730 occupations, full BLS+Eloundou
+  2-2-implement-the-deterministic-scorer-module: done   # extended: bands/verdicts + caller-supplied weights
+  2-3-parse-free-text-into-occupations-interest-signals: done   # extended: synonym search
+  2-4-wire-real-scores-into-the-results-cards: done
   epic-2-retrospective: optional
+  # SPEC GAP RESOLVED 2026-07-09: Fit is now real O*NET 29.0 cosine over a 68-d
+  #   capability vector (35 Skills + 33 Knowledge), market-distinctiveness z-weighted
+  #   (lib/scorer/skills.ts). Redirect = real nearest-neighbor. Claim is now true.
+  # ADDED (Step 2): sensitivity analysis — 729-weighting ±20% rank-stability
+  #   (lib/scorer/sensitivity.ts + RobustnessPanel) and construct-validity check
+  #   (exposure⊥growth, ρ≈0.08) on /methodology. Temporal back-test = future work (hook noted).
 
   # Epic 3: Make It Legible & Kind
-  epic-3: in-progress
-  3-1-llm-explanation-layer: review
-  3-2-redirect-to-a-stronger-adjacent-path: review
-  3-3-limitations-and-honest-framing: review
-  3-4-methodology-and-sources-page: review
+  epic-3: in-progress   # closes when 3-1 verified live + /methodology wording fixed
+  3-1-llm-explanation-layer: verify-live   # fallback renders; live Haiku call needs a key to confirm
+  3-2-redirect-to-a-stronger-adjacent-path: done   # works; "O*NET skill-space" wording overstated
+  3-3-limitations-and-honest-framing: done
+  3-4-methodology-and-sources-page: done   # UPDATE for O*NET gap + Step-2 robustness
   epic-3-retrospective: optional
 
   # Epic 4: Trust & Safety Hardening
-  epic-4: in-progress
-  4-1-treat-free-text-as-data-prompt-injection-defense: review
-  4-2-input-validation-and-length-caps: review
-  4-3-rate-limiting-and-cost-control: review
-  4-4-secrets-management-and-secure-deployment-posture: review
+  epic-4: in-progress   # 3 items need a live verify pass
+  4-1-treat-free-text-as-data-prompt-injection-defense: verify-live
+  4-2-input-validation-and-length-caps: done
+  4-3-rate-limiting-and-cost-control: done   # caveat: in-memory limiter won't hold across serverless instances
+  4-4-secrets-management-and-secure-deployment-posture: verify-live   # confirm no NEXT_PUBLIC leak + headers
   epic-4-retrospective: optional
 
   # Epic 5: "How It's Built" Page
-  epic-5: in-progress
-  5-1-public-architecture-page: review
+  epic-5: done
+  5-1-public-architecture-page: done
   epic-5-retrospective: optional
+
+  # --- SCOPE DRIFT: shipped features with NO story (write retro-stories) ---
+  # explore/leaderboard, career-detail-pages, compare-radar, frontier-scatter,
+  # maximizable-charts, model-tuning-sliders, shareable-links, print-button,
+  # education-roi-layer, university-pipeline (universities.json is ORPHANED — wire or drop)

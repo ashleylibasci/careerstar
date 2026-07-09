@@ -1,6 +1,7 @@
 import data from "@/data/data.json";
 import type { Occupation, ScoreResponse } from "@/lib/scorer/types";
 import { computeScores } from "@/lib/scorer/scorer";
+import { analyzeSensitivity } from "@/lib/scorer/sensitivity";
 import { parseInput } from "@/lib/scorer/parse";
 import { findRedirect, VIABILITY_THRESHOLD } from "@/lib/scorer/redirect";
 import { plainVerdict } from "@/lib/scorer/verdict";
@@ -11,7 +12,13 @@ import { rateLimit, clientKey } from "@/lib/security/rate-limit";
 // POST /api/score  — body: { text: string }
 // Real scoring (Stories 2.3 + 2.4): parse free text → occupations + interests,
 // score them with the deterministic model, return sorted cards.
-const dataset = (data as { occupations: Occupation[] }).occupations;
+const typed = data as {
+  occupations: Occupation[];
+  meta: { skillMean: number[]; skillStd: number[] };
+};
+const dataset = typed.occupations;
+// Market statistics for distinctiveness-weighted O*NET fit (see lib/scorer/skills.ts).
+const skillStats = { skillMean: typed.meta.skillMean, skillStd: typed.meta.skillStd };
 
 export async function POST(request: Request) {
   // Rate limit before any work (abuse / cost control).
@@ -101,14 +108,14 @@ export async function POST(request: Request) {
       .map((o) => o.code);
   }
 
-  const scored = computeScores(dataset, interests, codes, weights)
+  const scored = computeScores(dataset, interests, codes, weights, skillStats)
     .sort((a, b) => b.score - a.score)
     .slice(0, 6);
 
   const occByCode = new Map(dataset.map((o) => [o.code, o]));
 
   // Score the whole dataset once, to source redirects for low-scoring paths.
-  const allScored = computeScores(dataset, interests, dataset.map((o) => o.code), weights);
+  const allScored = computeScores(dataset, interests, dataset.map((o) => o.code), weights, skillStats);
 
   // LLM plain-English explanation (falls back to a factual note if no key / error).
   const explanations = await explainResults(scored, occByCode, interests);
@@ -117,7 +124,7 @@ export async function POST(request: Request) {
     const occ = occByCode.get(r.code)!;
     const redirect =
       r.score < VIABILITY_THRESHOLD
-        ? findRedirect(r, allScored, occByCode)
+        ? findRedirect(r, allScored, occByCode, skillStats)
         : undefined;
     // LLM sentence when available, else a plain-English verdict (never a stat dump).
     return {
@@ -127,10 +134,17 @@ export async function POST(request: Request) {
     };
   });
 
+  // Robustness: does the ranking of the shown careers survive ±20% weight jitter?
+  const sensitivity =
+    scored.length >= 1
+      ? analyzeSensitivity(dataset, interests, scored.map((r) => r.code), skillStats, weights)
+      : undefined;
+
   const response: ScoreResponse = {
     input: text.trim(),
     results,
     placeholder: false,
+    sensitivity,
     message:
       results.length === 0
         ? "Couldn't match your text to a career yet. Try naming one — e.g. “data science”, “software engineering”, or “quant”."

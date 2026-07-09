@@ -1,11 +1,17 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import data from "@/data/data.json";
 
 export const metadata: Metadata = {
   title: "Methodology — CareerStar",
   description:
-    "How CareerStar computes its risk-adjusted career viability scores: the model, the weights, the data sources, and the limitations.",
+    "How CareerStar computes its risk-adjusted career viability scores: the model, the weights, the data sources, robustness, and the limitations.",
 };
+
+const validation = (data as { meta: { validation?: {
+  exposureGrowthSpearman: number;
+  exposureQuartileGrowthPct: number[];
+} } }).meta.validation;
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
@@ -47,7 +53,8 @@ export default function MethodologyPage() {
               proxy (a field projected to shrink is treated as riskier).
             </li>
             <li>
-              <strong>Fit</strong> — the share of your stated interests the occupation matches.
+              <strong>Fit</strong> — how well the occupation&rsquo;s real skill profile matches
+              your interests, measured in O*NET capability-space (see below).
             </li>
           </ul>
           <pre className="overflow-x-auto rounded-xl border border-foreground/10 bg-foreground/[.03] p-4 text-xs leading-relaxed">
@@ -64,6 +71,36 @@ Score  = 100 · [ α·RAV + (1 − α)·Fit ]`}
           </p>
         </Section>
 
+        <Section title="Fit, in O*NET capability-space">
+          <p>
+            Every occupation carries a real <strong>68-dimensional capability vector</strong> —
+            the O*NET importance ratings for 35 <em>skills</em> (Critical Thinking, Programming,
+            Mathematics…) and 33 <em>knowledge</em> areas (Economics &amp; Accounting, Engineering,
+            Medicine, Law…). Your stated interests are mapped into the same space through an
+            explicit, documented lexicon, and fit is the overlap of the two.
+          </p>
+          <p>
+            One subtlety matters: nearly every professional job rates high on the common skills, so
+            a naïve overlap barely distinguishes them. CareerStar instead
+            <strong> weights each capability by how distinctive it is across the whole labor
+            market</strong> (a z-score per dimension), so a match on a rare, defining skill counts
+            far more than a match on one everybody shares. That is what lets fit tell finance from
+            engineering, not just desk-work from the trades. It remains a modeling choice, stated as
+            one — two quantitatively similar fields can still both score high.
+          </p>
+        </Section>
+
+        <Section title="Robustness (does the answer survive?)">
+          <p>
+            The weights are a deliberate choice, so the fair test is whether the ranking holds when
+            you disagree with them. For every comparison, CareerStar re-scores the careers across
+            <strong> 729 weightings</strong> — every weight moved ±20% on a fixed grid — and reports
+            how often each career keeps its rank. A result that holds across all 729 is robust; one
+            that shuffles is flagged as a <em>close call</em> rather than sold as a verdict. You can
+            watch this live by moving the sliders on the results screen.
+          </p>
+        </Section>
+
         <Section title="Data sources">
           <ul className="list-disc space-y-1 pl-5">
             <li>
@@ -75,9 +112,33 @@ Score  = 100 · [ α·RAV + (1 − α)·Fit ]`}
               <strong>AI exposure</strong> — Eloundou et al. 2023, “GPTs are GPTs”
               (occupation-level exposure, β measure; MIT-licensed).
             </li>
+            <li>
+              <strong>Skills &amp; knowledge</strong> — O*NET 29.0 Database (U.S. DOL/ETA,
+              CC BY 4.0), Skills and Knowledge importance ratings.
+            </li>
             <li>Occupations are keyed by O*NET-SOC code.</li>
           </ul>
         </Section>
+
+        {validation && (
+          <Section title="Does “AI exposure” just mean “decline”?">
+            <p>
+              A fair objection: maybe the risk score is redundant — maybe exposed jobs are simply the
+              shrinking ones. The data says no. Across all {(data as { meta: { occupationCount: number } }).meta.occupationCount} occupations,
+              AI exposure and projected growth are <strong>almost uncorrelated</strong>{" "}
+              (Spearman ρ&nbsp;=&nbsp;{validation.exposureGrowthSpearman}). Sorting jobs into exposure quartiles,
+              average projected growth stays flat — {validation.exposureQuartileGrowthPct.map((g, i) =>
+                `Q${i + 1}: ${g}%`).join(", ")} — with no downward trend.
+            </p>
+            <p>
+              So exposure carries information growth doesn&rsquo;t, which is exactly why a
+              risk-<em>adjusted</em>{" "}score beats ranking on growth alone — and why
+              &ldquo;exposure&nbsp;≠&nbsp;displacement&rdquo; is literally true here, not just a
+              slogan. (A true out-of-sample back-test against an archived BLS vintage is planned
+              future work; the code has a hook for a dropped-in historical dataset.)
+            </p>
+          </Section>
+        )}
 
         <Section title="Limitations (read these)">
           <ul className="list-disc space-y-1 pl-5">
@@ -90,9 +151,10 @@ Score  = 100 · [ α·RAV + (1 − α)·Fit ]`}
               future of the labor market; this is a grounded, transparent snapshot.
             </li>
             <li>
-              <strong>Fit is approximate.</strong> Interest tags are derived from each
-              occupation&rsquo;s category and title, not from O*NET&rsquo;s detailed skill
-              vectors — so &ldquo;fit&rdquo; is a rough signal, not a precise one.
+              <strong>Fit is a model, not a verdict.</strong> It uses real O*NET skill and
+              knowledge vectors, but the interest→capability lexicon is hand-authored, so fit is a
+              defensible estimate — and two quantitatively similar fields (say finance and
+              engineering) can score alike.
             </li>
             <li>
               <strong>The volatility term is a proxy.</strong> No public dataset measures

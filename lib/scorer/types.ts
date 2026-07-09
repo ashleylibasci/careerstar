@@ -13,8 +13,10 @@ export interface Occupation {
   medianPay: number;
   /** AI/automation exposure, 0–1 (Eloundou β; higher = more exposed). */
   aiExposure: number;
-  /** Interest/skill tags for fit scoring. */
+  /** Broad keyword tags — used for search/labels and candidate selection. */
   skills: string[];
+  /** 68-d O*NET capability vector (35 Skills + 33 Knowledge importance, 1–5) for cosine FIT. */
+  skillVector?: number[] | null;
   /** Alternate job titles (from BLS) — used for synonym search. */
   aliases?: string[];
   /** Typical entry-level education (BLS). */
@@ -69,4 +71,6 @@ export interface ScoreResponse {
   placeholder: boolean;
   /** Optional helper message, e.g. when no occupation could be matched. */
   message?: string;
+  /** Rank-stability of the compared set under ±20% weight jitter (robustness). */
+  sensitivity?: import("./sensitivity.ts").SensitivityReport;
 }

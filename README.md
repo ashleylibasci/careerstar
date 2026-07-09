@@ -27,6 +27,12 @@ Score  = 100 · [ α·RAV + (1 − α)·Fit ]            (0–100)
 
 Default weights (explicit and tunable on purpose): `wGrowth = wPay = 0.5`, `wExposure = 0.7`, `wVolatility = 0.3`, `γ = 0.6`, `α = 0.7`.
 
+**Fit is real O\*NET similarity.** Each occupation carries a 68-dimensional capability vector — O\*NET 29.0 importance ratings for 35 *skills* + 33 *knowledge* areas. Your interests are mapped into the same space via a documented lexicon, and fit is the overlap, with each capability **weighted by how distinctive it is across the labor market** (a z-score per dimension) so a rare defining skill counts more than one every job shares. The redirect is a true nearest-neighbor in this space. (`lib/scorer/skills.ts`)
+
+**Robustness is measured, not asserted.** Because the weights are a choice, every comparison is re-scored across **729 weightings** (each weight moved ±20% on a fixed grid); the UI reports how often each career keeps its rank and flags a *close call* when the top picks are within noise of each other. (`lib/scorer/sensitivity.ts`)
+
+**Validation — exposure ≠ decline, in the data.** AI exposure and BLS projected growth are almost uncorrelated across all 730 occupations (Spearman ρ ≈ 0.08), so the risk axis carries information growth doesn't — which is *why* a risk-adjusted score beats ranking on growth alone.
+
 **The LLM only explains; the deterministic model decides.** The scorer is the single source of truth for every figure. The LLM (Claude Haiku) is called server-side with the *already-computed* score, components, and cited data, and returns only the plain-English explanation and redirect rationale — no code path lets it produce or alter a number.
 
 ## Key features
@@ -37,7 +43,8 @@ Default weights (explicit and tunable on purpose): `wGrowth = wPay = 0.5`, `wExp
 - **Explore / leaderboard** view to browse and rank the full catalog.
 - **Redirect to a stronger path** whenever a candidate scores low — never a dead end.
 - **Confidence bands** on each score, widening with AI exposure and weak fit.
-- **Live priority slider** — retune the weights and watch the rankings shift in real time (built-in sensitivity analysis).
+- **Live priority slider + robustness panel** — retune the weights and watch rankings shift, with a 729-weighting rank-stability check shown alongside.
+- **Real O\*NET capability fit** — 68-d skill + knowledge vectors, market-distinctiveness-weighted.
 - **Shareable links** that encode a result.
 - **Security hardening** — prompt-injection defense (free-text treated as data, not instructions), input length caps, and rate limiting on the LLM-backed route.
 - **Deployed on AWS Amplify** with CI/CD.
@@ -46,12 +53,13 @@ Default weights (explicit and tunable on purpose): `wGrowth = wPay = 0.5`, `wExp
 
 - **Growth + pay:** U.S. BLS Employment Projections **2024–2034** (public domain).
 - **AI exposure:** Eloundou et al. 2023, *"GPTs are GPTs"*, occupation-level exposure (MIT license).
+- **Skills + knowledge:** O\*NET 29.0 Database (U.S. DOL/ETA, CC BY 4.0) — Skills & Knowledge importance ratings.
 
 Deliberate honesty about what the score is and isn't:
 
 - **Exposure ≠ job loss.** The AI-exposure data measures the *share of tasks* a model could affect, not jobs actually displaced. The score never equates the two.
 - **Estimate ≠ prediction.** Every result is a grounded estimate with stated assumptions, not a forecast of anyone's future.
-- **Fit is a rough signal.** Interest/fit tags are derived from SOC major group and title keywords, not O*NET skill vectors — a directional match, not a precise one.
+- **Fit is a defensible model, not a verdict.** It uses real O\*NET skill + knowledge vectors, but the interest→capability lexicon is hand-authored, so two quantitatively similar fields (e.g. finance and engineering) can score alike. Stated as a modeling choice, not ground truth.
 - **Volatility is a constructed proxy.** No off-the-shelf volatility dataset exists, so a field projected to shrink is treated as more volatile — an explicit modeling assumption, not measured data.
 
 ## Tech stack
@@ -78,7 +86,7 @@ npm run build:data # rebuild data/data.json from the offline source pipeline
 
 ## What I'd build next
 
-- Real O*NET skill-vector fit in place of tag-based matching.
-- A back-testing view showing how flagged fields actually trended after prior projections.
-- Saved comparisons and richer occupation coverage beyond the STEM-focused set.
-- A published methodology page walking through the weights and their trade-offs.
+- A true out-of-sample **back-test** against an archived BLS projections vintage (the scorer already has a hook for a dropped-in historical dataset; BLS blocks automated download, so this needs a manual data pull).
+- A **university / major → career ROI** screen (College Scorecard earnings + cost + debt, via a CIP→SOC crosswalk) — data pipeline prototyped, deferred to keep focus on the engine.
+- A Morningstar-style **"Bulls say / Bears say"** scorecard generated deterministically from the return/risk components.
+- Saved comparisons and continued occupation coverage.
