@@ -207,8 +207,8 @@ export default function CareerForm() {
           </div>
 
           <p className="pt-4 text-xs leading-relaxed text-foreground/50">
-            A grounded estimate, not a prediction. Scores blend BLS growth &amp; pay
-            (~2023) with AI-exposure research — and <strong>AI exposure is not the same as
+            A grounded estimate, not a prediction. Scores blend official BLS 2024&ndash;2034
+            projections with AI-exposure research — and <strong>AI exposure is not the same as
             job loss</strong>. See{" "}
             <Link href="/methodology" className="underline hover:text-foreground/70">
               how scores are calculated

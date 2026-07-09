@@ -68,7 +68,8 @@ Score  = 100 · [ α·RAV + (1 − α)·Fit ]`}
           <ul className="list-disc space-y-1 pl-5">
             <li>
               <strong>Growth &amp; pay</strong> — U.S. Bureau of Labor Statistics,
-              Occupational Outlook Handbook (public domain).
+              Employment Projections 2024&ndash;2034 (public domain) — ~730 occupations
+              across every field.
             </li>
             <li>
               <strong>AI exposure</strong> — Eloundou et al. 2023, “GPTs are GPTs”
@@ -89,9 +90,9 @@ Score  = 100 · [ α·RAV + (1 − α)·Fit ]`}
               future of the labor market; this is a grounded, transparent snapshot.
             </li>
             <li>
-              <strong>MVP data.</strong> This early version covers a curated set of
-              CS/STEM/quant/finance occupations, and the BLS figures are approximate
-              (~2023) pending verification.
+              <strong>Fit is approximate.</strong> Interest tags are derived from each
+              occupation&rsquo;s category and title, not from O*NET&rsquo;s detailed skill
+              vectors — so &ldquo;fit&rdquo; is a rough signal, not a precise one.
             </li>
             <li>
               <strong>The volatility term is a proxy.</strong> No public dataset measures

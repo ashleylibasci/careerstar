@@ -138,6 +138,11 @@ export interface ParsedInput {
   interests: string[];
 }
 
+const TITLE_STOP = new Set([
+  "and", "the", "for", "with", "all", "other", "occupations", "workers", "worker",
+  "general", "including", "not", "specialists", "managers", "assistants", "operators",
+]);
+
 /** Parse free text into candidate occupation codes + interest tokens. */
 export function parseInput(text: string, dataset: Occupation[]): ParsedInput {
   const lower = text.toLowerCase();
@@ -146,6 +151,29 @@ export function parseInput(text: string, dataset: Occupation[]): ParsedInput {
   for (const [phrase, mapped] of Object.entries(ALIASES)) {
     if (lower.includes(phrase)) {
       for (const code of mapped) if (!codes.includes(code)) codes.push(code);
+    }
+  }
+
+  // Match user words against occupation-title words by 5-char prefix, so
+  // "welder" finds "Welders…" and "nurse" finds "…Nurses" across the full set.
+  const userWords = lower
+    .replace(/[^a-z\s-]/g, " ")
+    .split(/\s+/)
+    .filter((w) => w.length >= 5 && !TITLE_STOP.has(w));
+  if (userWords.length) {
+    for (const occ of dataset) {
+      const titleWords = occ.title
+        .toLowerCase()
+        .replace(/[^a-z\s-]/g, " ")
+        .split(/\s+/)
+        .filter((w) => w.length >= 5 && !TITLE_STOP.has(w));
+      const hit = titleWords.some((tw) =>
+        userWords.some((uw) => {
+          const [short, long] = uw.length <= tw.length ? [uw, tw] : [tw, uw];
+          return short.length >= 5 && long.startsWith(short);
+        }),
+      );
+      if (hit && !codes.includes(occ.code)) codes.push(occ.code);
     }
   }
 
