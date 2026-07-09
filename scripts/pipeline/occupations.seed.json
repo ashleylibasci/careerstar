@@ -1,0 +1,33 @@
+{
+  "_note": "MVP curated occupation seed for CareerStar. growthPct and medianPay are real published BLS Occupational Outlook Handbook figures (~2023 edition), APPROXIMATE and pending verification against current BLS before production use. skills are MVP interest/skill tags (categorizations), to be replaced by authoritative O*NET skill vectors. code = O*NET-SOC code (joins to Eloundou AI-exposure).",
+  "_blsSource": "BLS Occupational Outlook Handbook, ~2023 edition (public domain). 10-year projected employment growth and annual median wage.",
+  "occupations": [
+    { "code": "15-1252.00", "title": "Software Developers", "growthPct": 17, "medianPay": 132270, "skills": ["programming", "software", "problem-solving", "systems"] },
+    { "code": "15-1253.00", "title": "Software QA Analysts & Testers", "growthPct": 17, "medianPay": 101800, "skills": ["testing", "software", "quality", "detail"] },
+    { "code": "15-1251.00", "title": "Computer Programmers", "growthPct": -11, "medianPay": 99700, "skills": ["programming", "software", "coding"] },
+    { "code": "15-2051.00", "title": "Data Scientists", "growthPct": 36, "medianPay": 108020, "skills": ["data", "statistics", "math", "programming", "machine-learning"] },
+    { "code": "15-2041.00", "title": "Statisticians", "growthPct": 30, "medianPay": 104110, "skills": ["statistics", "math", "data", "modeling"] },
+    { "code": "15-2021.00", "title": "Mathematicians", "growthPct": 30, "medianPay": 116440, "skills": ["math", "research", "theory", "modeling"] },
+    { "code": "15-2031.00", "title": "Operations Research Analysts", "growthPct": 23, "medianPay": 83640, "skills": ["math", "optimization", "data", "analysis"] },
+    { "code": "15-2011.00", "title": "Actuaries", "growthPct": 22, "medianPay": 120000, "skills": ["math", "statistics", "finance", "risk"] },
+    { "code": "15-1212.00", "title": "Information Security Analysts", "growthPct": 32, "medianPay": 120360, "skills": ["security", "networking", "programming", "risk"] },
+    { "code": "15-1221.00", "title": "Computer & Information Research Scientists", "growthPct": 26, "medianPay": 145080, "skills": ["research", "algorithms", "ai", "math"] },
+    { "code": "15-1211.00", "title": "Computer Systems Analysts", "growthPct": 10, "medianPay": 103800, "skills": ["systems", "analysis", "programming"] },
+    { "code": "15-1244.00", "title": "Network & Computer Systems Administrators", "growthPct": 2, "medianPay": 95360, "skills": ["networking", "systems", "security"] },
+    { "code": "15-1241.00", "title": "Computer Network Architects", "growthPct": 7, "medianPay": 129490, "skills": ["networking", "systems", "security", "design"] },
+    { "code": "15-1232.00", "title": "Computer User Support Specialists", "growthPct": 5, "medianPay": 60810, "skills": ["support", "troubleshooting", "technology"] },
+    { "code": "15-1243.00", "title": "Database Architects", "growthPct": 9, "medianPay": 134870, "skills": ["data", "databases", "systems"] },
+    { "code": "15-1242.00", "title": "Database Administrators", "growthPct": 8, "medianPay": 117450, "skills": ["data", "databases", "systems"] },
+    { "code": "15-1254.00", "title": "Web Developers", "growthPct": 16, "medianPay": 84960, "skills": ["programming", "web", "design"] },
+    { "code": "15-1255.00", "title": "Web & Digital Interface Designers", "growthPct": 16, "medianPay": 98540, "skills": ["design", "web", "ux", "creative"] },
+    { "code": "11-3021.00", "title": "Computer & Information Systems Managers", "growthPct": 17, "medianPay": 169510, "skills": ["management", "technology", "leadership", "strategy"] },
+    { "code": "17-2061.00", "title": "Computer Hardware Engineers", "growthPct": 5, "medianPay": 138080, "skills": ["hardware", "engineering", "electronics"] },
+    { "code": "17-2071.00", "title": "Electrical Engineers", "growthPct": 5, "medianPay": 106950, "skills": ["engineering", "electronics", "math"] },
+    { "code": "13-2051.00", "title": "Financial & Investment Analysts", "growthPct": 8, "medianPay": 99890, "skills": ["finance", "analysis", "math", "markets"] },
+    { "code": "13-2052.00", "title": "Personal Financial Advisors", "growthPct": 17, "medianPay": 99580, "skills": ["finance", "advising", "communication"] },
+    { "code": "13-2011.00", "title": "Accountants & Auditors", "growthPct": 4, "medianPay": 79880, "skills": ["finance", "accounting", "detail"] },
+    { "code": "19-3011.00", "title": "Economists", "growthPct": 6, "medianPay": 115730, "skills": ["economics", "math", "analysis", "research"] },
+    { "code": "11-9041.00", "title": "Architectural & Engineering Managers", "growthPct": 4, "medianPay": 165370, "skills": ["management", "engineering", "leadership"] },
+    { "code": "17-2112.00", "title": "Industrial Engineers", "growthPct": 12, "medianPay": 96350, "skills": ["engineering", "optimization", "systems"] }
+  ]
+}

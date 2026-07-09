@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "build:data": "node scripts/pipeline/build-data.mjs"
   },
   "dependencies": {
     "next": "16.2.10",
