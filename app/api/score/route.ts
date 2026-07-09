@@ -30,12 +30,33 @@ export async function POST(request: Request) {
     return Response.json({ error: "Invalid JSON body." }, { status: 400 });
   }
 
-  const bodyObj = body as { text?: unknown; riskPriority?: unknown } | null;
-  const validation = validateInput(bodyObj?.text);
-  if (!validation.ok) {
-    return Response.json({ error: validation.error }, { status: validation.status });
+  const bodyObj = body as {
+    text?: unknown;
+    careerCodes?: unknown;
+    fieldGroups?: unknown;
+    interests?: unknown;
+    riskPriority?: unknown;
+  } | null;
+
+  const asStrings = (v: unknown): string[] =>
+    Array.isArray(v) ? v.filter((x): x is string => typeof x === "string").slice(0, 30) : [];
+
+  const careerCodes = asStrings(bodyObj?.careerCodes);
+  const fieldGroups = asStrings(bodyObj?.fieldGroups);
+  const chipInterests = asStrings(bodyObj?.interests).map((s) => s.slice(0, 40));
+  const rawText = typeof bodyObj?.text === "string" ? bodyObj.text : "";
+  const hasStructured =
+    careerCodes.length > 0 || fieldGroups.length > 0 || chipInterests.length > 0;
+
+  // Text is validated only when it's the sole input; with chips it's optional.
+  let text = "";
+  if (rawText.trim().length > 0 || !hasStructured) {
+    const validation = validateInput(bodyObj?.text);
+    if (!validation.ok) {
+      return Response.json({ error: validation.error }, { status: validation.status });
+    }
+    text = validation.text;
   }
-  const text = validation.text;
 
   // Optional priority slider (0 = ignore AI risk … 1 = weigh it heavily) → gamma.
   const rp =
@@ -44,11 +65,24 @@ export async function POST(request: Request) {
       : undefined;
   const weights = rp !== undefined ? { gamma: 0.2 + 0.8 * rp } : undefined;
 
-  const { candidateCodes, interests } = parseInput(text, dataset);
+  const validCodes = new Set(dataset.map((o) => o.code));
+  const parsed = text ? parseInput(text, dataset) : { candidateCodes: [], interests: [] };
 
-  // Which occupations to score: the ones the user named, else those that
-  // overlap their stated interests (so they always get a grounded answer).
-  let codes = candidateCodes;
+  // Candidates: explicit career chips + every occupation in a chosen field +
+  // whatever the free text named.
+  const codeSet = new Set<string>();
+  for (const c of careerCodes) if (validCodes.has(c)) codeSet.add(c);
+  if (fieldGroups.length) {
+    const groups = new Set(fieldGroups);
+    for (const o of dataset) if (groups.has(o.code.slice(0, 2))) codeSet.add(o.code);
+  }
+  for (const c of parsed.candidateCodes) codeSet.add(c);
+
+  const interests = Array.from(new Set([...chipInterests, ...parsed.interests]));
+
+  // Which occupations to score: the chosen ones, else those overlapping the
+  // stated interests (so interests-only input still yields a grounded answer).
+  let codes = Array.from(codeSet);
   if (codes.length === 0) {
     const lower = new Set(interests.map((s) => s.toLowerCase()));
     codes = dataset

@@ -15,6 +15,8 @@ export interface Occupation {
   aiExposure: number;
   /** Interest/skill tags for fit scoring. */
   skills: string[];
+  /** Alternate job titles (from BLS) — used for synonym search. */
+  aliases?: string[];
 }
 
 export interface ScoreComponents {

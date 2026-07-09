@@ -88,11 +88,6 @@ for (const row of eloundou) {
   if (code && Number.isFinite(beta)) exposureByCode.set(code, beta);
 }
 
-function cleanTitle(raw) {
-  // BLS titles append alternate titles after wide whitespace / "*"; keep the head.
-  return raw.split(/\s{2,}|\s\*/)[0].replace(/\s+/g, " ").trim();
-}
-
 function titleTags(title) {
   return title
     .toLowerCase()
@@ -119,13 +114,21 @@ for (const row of bls) {
   const pay = Number(String(row["Median Annual Wage 2024"]).replace(/[,\s]/g, ""));
   if (!Number.isFinite(growthPct) || !Number.isFinite(pay) || pay <= 0) { skippedNoData++; continue; }
 
-  const title = cleanTitle(row["Occupation Title"] || soc);
+  // BLS title field packs alternate titles after the main one, "*"-separated.
+  const parts = String(row["Occupation Title"] || soc)
+    .split("*")
+    .map((s) => s.replace(/\s+/g, " ").trim())
+    .filter(Boolean);
+  const title = parts[0] || soc;
+  const aliases = parts.slice(1).filter((a) => a.length > 2).slice(0, 15);
+
   const group = soc.slice(0, 2);
   const tags = Array.from(new Set([...(GROUP_TAGS[group] || []), ...titleTags(title)]));
 
   occupations.push({
     code: onetCode,
     title,
+    aliases,
     growthPct: Math.round(growthPct * 10) / 10,
     medianPay: Math.round(pay),
     aiExposure: Math.round(beta * 1000) / 1000,
