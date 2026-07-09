@@ -321,11 +321,11 @@ export default function CareerForm() {
 
       {/* Zone 2 — interests */}
       <div className="print:hidden">
-        <label className="block text-sm font-semibold">Your interests</label>
-        <p className="mb-2 text-xs text-foreground/50">
+        <div id="interests-label" className="block text-sm font-semibold">Your interests</div>
+        <p className="mb-2 text-xs text-foreground/55">
           Optional — tailors the scores to you.
         </p>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2" role="group" aria-labelledby="interests-label">
           {INTERESTS.map((it) => {
             const on = interests.includes(it.value);
             return (
@@ -387,9 +387,9 @@ export default function CareerForm() {
           </div>
 
           <div className="mb-4 flex items-center justify-between gap-3 print:hidden">
-            <span className="text-sm font-semibold text-foreground/70">
+            <h2 className="text-sm font-semibold text-foreground/70">
               {response.results.length} {response.results.length === 1 ? "path" : "paths"} scored
-            </span>
+            </h2>
             <div className="flex gap-2">
               <button
                 type="button"
