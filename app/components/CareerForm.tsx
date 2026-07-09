@@ -52,10 +52,24 @@ export default function CareerForm() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [response, setResponse] = useState<ScoreResponse | null>(null);
-  const [riskPriority, setRiskPriority] = useState(0.5);
+  // Model-tuning sliders (each 0–1). Defaults reproduce the built-in weights.
+  const [growthPay, setGrowthPay] = useState(0.5); // 0 = growth … 1 = pay
+  const [gammaT, setGammaT] = useState(0.5); // AI-risk sensitivity
+  const [fitT, setFitT] = useState(0.5); // 0 = market viability … 1 = personal fit
+  const weightsRef = useRef({ growthPay: 0.5, gammaT: 0.5, fitT: 0.5 });
   const [copied, setCopied] = useState(false);
   const debounce = useRef<ReturnType<typeof setTimeout> | null>(null);
   const hydrated = useRef(false);
+
+  function tunedWeights() {
+    const w = weightsRef.current;
+    return {
+      wGrowth: 1 - w.growthPay,
+      wPay: w.growthPay,
+      gamma: 0.2 + 0.8 * w.gammaT,
+      alpha: 0.9 - 0.4 * w.fitT,
+    };
+  }
 
   useEffect(() => {
     fetch("/api/occupations")
@@ -72,7 +86,7 @@ export default function CareerForm() {
     fieldGroups: string[];
     interests: string[];
     text: string;
-    riskPriority: number;
+    weights: Record<string, number>;
   }) {
     setLoading(true);
     setError(null);
@@ -97,14 +111,14 @@ export default function CareerForm() {
     }
   }
 
-  function runScore(rp = riskPriority) {
+  function runScore(weights = tunedWeights()) {
     if (!hasInput || loading) return;
     void postScore({
       careerCodes: careers.map((c) => c.code),
       fieldGroups: fields.map((f) => f.group),
       interests,
       text,
-      riskPriority: rp,
+      weights,
     });
   }
 
@@ -133,7 +147,7 @@ export default function CareerForm() {
         fieldGroups: fs.map((f) => f.group),
         interests: ints,
         text: "",
-        riskPriority: 0.5,
+        weights: tunedWeights(),
       });
     });
   }, [occs]);
@@ -154,11 +168,14 @@ export default function CareerForm() {
     );
   }
 
-  function onSlider(v: number) {
-    setRiskPriority(v);
+  function onTune(key: "growthPay" | "gammaT" | "fitT", value: number) {
+    weightsRef.current = { ...weightsRef.current, [key]: value };
+    if (key === "growthPay") setGrowthPay(value);
+    else if (key === "gammaT") setGammaT(value);
+    else setFitT(value);
     if (!response) return;
     if (debounce.current) clearTimeout(debounce.current);
-    debounce.current = setTimeout(() => runScore(v), 350);
+    debounce.current = setTimeout(() => runScore(tunedWeights()), 350);
   }
 
   const q = search.trim().toLowerCase();
@@ -185,12 +202,12 @@ export default function CareerForm() {
 
   return (
     <div className="w-full">
-      <p className="mb-5 text-sm text-foreground/60">
+      <p className="mb-5 text-sm text-foreground/60 print:hidden">
         Add careers or fields, pick your interests, or both — whatever you&rsquo;ve got.
       </p>
 
       {/* Zone 1 — careers or fields */}
-      <div className="relative">
+      <div className="relative print:hidden">
         <label htmlFor="career-search" className="block text-sm font-semibold">
           Careers or fields to compare
         </label>
@@ -279,7 +296,7 @@ export default function CareerForm() {
       </div>
 
       {/* and / or divider */}
-      <div className="my-6 flex items-center gap-3">
+      <div className="my-6 flex items-center gap-3 print:hidden">
         <div className="h-px flex-1 bg-foreground/10" />
         <span className="rounded-full border border-foreground/15 px-2.5 py-0.5 text-xs text-foreground/50">
           and / or
@@ -288,7 +305,7 @@ export default function CareerForm() {
       </div>
 
       {/* Zone 2 — interests */}
-      <div>
+      <div className="print:hidden">
         <label className="block text-sm font-semibold">Your interests</label>
         <p className="mb-2 text-xs text-foreground/50">
           Optional — tailors the scores to you.
@@ -327,7 +344,7 @@ export default function CareerForm() {
         />
       </div>
 
-      <div className="mt-5">
+      <div className="mt-5 print:hidden">
         <button
           type="button"
           onClick={() => runScore()}
@@ -349,17 +366,31 @@ export default function CareerForm() {
 
       {response && response.results.length > 0 && (
         <div className="mt-8">
-          <div className="mb-4 flex items-center justify-between gap-3">
+          <div className="mb-2 hidden print:block">
+            <div className="text-lg font-bold text-blue-600">★ CareerStar</div>
+            <div className="text-xs text-foreground/60">Career analysis · careerstar.ashleylibasci.com</div>
+          </div>
+
+          <div className="mb-4 flex items-center justify-between gap-3 print:hidden">
             <span className="text-sm font-semibold text-foreground/70">
               {response.results.length} {response.results.length === 1 ? "path" : "paths"} scored
             </span>
-            <button
-              type="button"
-              onClick={copyLink}
-              className="rounded-full border border-foreground/15 px-3 py-1 text-xs font-medium text-foreground/70 transition hover:border-blue-500/50 hover:text-foreground"
-            >
-              {copied ? "✓ Copied!" : "🔗 Copy link"}
-            </button>
+            <div className="flex gap-2">
+              <button
+                type="button"
+                onClick={copyLink}
+                className="rounded-full border border-foreground/15 px-3 py-1 text-xs font-medium text-foreground/70 transition hover:border-blue-500/50 hover:text-foreground"
+              >
+                {copied ? "✓ Copied!" : "🔗 Copy link"}
+              </button>
+              <button
+                type="button"
+                onClick={() => window.print()}
+                className="rounded-full border border-foreground/15 px-3 py-1 text-xs font-medium text-foreground/70 transition hover:border-blue-500/50 hover:text-foreground"
+              >
+                📄 Download report
+              </button>
+            </div>
           </div>
 
           {response.results.length >= 2 && (
@@ -369,26 +400,57 @@ export default function CareerForm() {
             </div>
           )}
 
-          <div className="mb-6 rounded-2xl border border-foreground/10 bg-foreground/[.02] p-4">
-            <label htmlFor="risk" className="block text-sm font-medium">
-              How much should AI &amp; automation risk count?
-            </label>
-            <input
-              id="risk"
-              type="range"
-              min={0}
-              max={1}
-              step={0.01}
-              value={riskPriority}
-              aria-label="How much should AI and automation risk count"
-              aria-valuetext={`${Math.round(riskPriority * 100)}% weight on AI risk`}
-              onChange={(e) => onSlider(Number(e.target.value))}
-              className="mt-3 w-full accent-blue-600"
-            />
-            <div className="mt-1 flex justify-between text-xs text-foreground/50">
-              <span>A little (reward upside)</span>
-              <span>A lot (punish AI-risk)</span>
+          <div className="mb-6 rounded-2xl border border-foreground/10 bg-foreground/[.02] p-4 print:hidden">
+            <div className="mb-1 flex items-center justify-between">
+              <div className="text-sm font-semibold">Tune the model</div>
+              <button
+                type="button"
+                onClick={() => {
+                  weightsRef.current = { growthPay: 0.5, gammaT: 0.5, fitT: 0.5 };
+                  setGrowthPay(0.5);
+                  setGammaT(0.5);
+                  setFitT(0.5);
+                  if (response) runScore({ wGrowth: 0.5, wPay: 0.5, gamma: 0.6, alpha: 0.7 });
+                }}
+                className="text-xs text-blue-600 hover:underline"
+              >
+                Reset
+              </button>
             </div>
+            <p className="mb-4 text-xs text-foreground/60">
+              Move a slider and the rankings re-score live — this is the model&rsquo;s sensitivity
+              analysis, exposed.
+            </p>
+
+            <label htmlFor="w-growthpay" className="block text-xs font-medium">Reward: growth vs. pay</label>
+            <input
+              id="w-growthpay" type="range" min={0} max={1} step={0.01} value={growthPay}
+              aria-label="Balance growth versus pay"
+              aria-valuetext={`${Math.round((1 - growthPay) * 100)} percent growth, ${Math.round(growthPay * 100)} percent pay`}
+              onChange={(e) => onTune("growthPay", Number(e.target.value))}
+              className="mt-2 w-full accent-blue-600"
+            />
+            <div className="mb-4 mt-1 flex justify-between text-xs text-foreground/50"><span>Growth</span><span>Pay</span></div>
+
+            <label htmlFor="w-gamma" className="block text-xs font-medium">AI-risk sensitivity</label>
+            <input
+              id="w-gamma" type="range" min={0} max={1} step={0.01} value={gammaT}
+              aria-label="AI risk sensitivity"
+              aria-valuetext={`${Math.round(gammaT * 100)} percent`}
+              onChange={(e) => onTune("gammaT", Number(e.target.value))}
+              className="mt-2 w-full accent-blue-600"
+            />
+            <div className="mb-4 mt-1 flex justify-between text-xs text-foreground/50"><span>Ignore risk</span><span>Punish risk</span></div>
+
+            <label htmlFor="w-fit" className="block text-xs font-medium">Weigh: market vs. personal fit</label>
+            <input
+              id="w-fit" type="range" min={0} max={1} step={0.01} value={fitT}
+              aria-label="Balance market viability versus personal fit"
+              aria-valuetext={`${Math.round((1 - fitT) * 100)} percent market, ${Math.round(fitT * 100)} percent fit`}
+              onChange={(e) => onTune("fitT", Number(e.target.value))}
+              className="mt-2 w-full accent-blue-600"
+            />
+            <div className="mt-1 flex justify-between text-xs text-foreground/50"><span>Market viability</span><span>Personal fit</span></div>
           </div>
 
           <div className="space-y-4">

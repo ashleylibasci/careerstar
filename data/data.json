@@ -45,7 +45,8 @@
         "detail",
         "accountants",
         "auditors"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "15-2011.00",
@@ -67,7 +68,8 @@
         "math",
         "programming",
         "actuaries"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "29-1291.00",
@@ -86,7 +88,8 @@
         "people",
         "science",
         "acupuncturists"
-      ]
+      ],
+      "education": "Master's degree"
     },
     {
       "code": "51-9191.00",
@@ -108,7 +111,8 @@
         "bonding",
         "machine",
         "tenders"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "23-1021.00",
@@ -135,7 +139,8 @@
         "adjudicators",
         "hearing",
         "officers"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "11-3012.00",
@@ -157,7 +162,8 @@
         "strategy",
         "administrative",
         "services"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "25-3011.00",
@@ -188,7 +194,8 @@
         "second",
         "language",
         "instructors"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "11-2011.00",
@@ -213,7 +220,8 @@
         "strategy",
         "advertising",
         "promotions"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "41-3011.00",
@@ -238,7 +246,8 @@
         "people",
         "advertising",
         "agents"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "17-3021.00",
@@ -261,7 +270,8 @@
         "operations",
         "technologists",
         "technicians"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "17-2011.00",
@@ -287,7 +297,8 @@
         "technical",
         "aerospace",
         "engineers"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "13-1011.00",
@@ -318,7 +329,8 @@
         "artists",
         "performers",
         "athletes"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "17-2021.00",
@@ -340,7 +352,8 @@
         "technical",
         "agricultural",
         "engineers"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "45-2091.00",
@@ -371,7 +384,8 @@
         "agriculture",
         "agricultural",
         "equipment"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "45-2011.00",
@@ -393,7 +407,8 @@
         "agriculture",
         "agricultural",
         "inspectors"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "25-1041.00",
@@ -421,7 +436,8 @@
         "sciences",
         "teachers",
         "postsecondary"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "19-4012.00",
@@ -445,7 +461,8 @@
         "analysis",
         "agricultural",
         "technicians"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "53-2021.00",
@@ -467,7 +484,8 @@
         "logistics",
         "traffic",
         "controllers"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "53-1041.00",
@@ -490,7 +508,8 @@
         "cargo",
         "handling",
         "supervisors"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "49-3011.00",
@@ -521,7 +540,8 @@
         "mechanics",
         "service",
         "technicians"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "53-6032.00",
@@ -541,7 +561,8 @@
         "aircraft",
         "service",
         "attendants"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-2011.00",
@@ -571,7 +592,8 @@
         "rigging",
         "systems",
         "assemblers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "53-2022.00",
@@ -589,7 +611,8 @@
         "logistics",
         "airfield",
         "operations"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "53-2011.00",
@@ -617,7 +640,8 @@
         "copilots",
         "flight",
         "engineers"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "53-3011.00",
@@ -640,7 +664,8 @@
         "emergency",
         "medical",
         "technicians"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "39-3091.00",
@@ -669,7 +694,8 @@
         "amusement",
         "recreation",
         "attendants"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "45-2021.00",
@@ -693,7 +719,8 @@
         "agriculture",
         "animal",
         "breeders"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "39-2021.00",
@@ -724,7 +751,8 @@
         "care",
         "animal",
         "caretakers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "33-9011.00",
@@ -747,7 +775,8 @@
         "physical",
         "animal",
         "control"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "19-1011.00",
@@ -769,7 +798,8 @@
         "analysis",
         "animal",
         "scientists"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "39-2011.00",
@@ -796,7 +826,8 @@
         "care",
         "animal",
         "trainers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "19-3091.00",
@@ -821,7 +852,8 @@
         "analysis",
         "anthropologists",
         "archeologists"
-      ]
+      ],
+      "education": "Master's degree"
     },
     {
       "code": "25-1061.00",
@@ -845,7 +877,8 @@
         "archeology",
         "teachers",
         "postsecondary"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "23-1022.00",
@@ -866,7 +899,8 @@
         "arbitrators",
         "mediators",
         "conciliators"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "17-1011.00",
@@ -887,7 +921,8 @@
         "architects",
         "landscape",
         "naval"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "17-3011.00",
@@ -910,7 +945,8 @@
         "architectural",
         "civil",
         "drafters"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "11-9041.00",
@@ -934,7 +970,8 @@
         "strategy",
         "architectural",
         "engineering"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "25-1031.00",
@@ -956,7 +993,8 @@
         "architecture",
         "teachers",
         "postsecondary"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "25-4011.00",
@@ -980,7 +1018,8 @@
         "people",
         "communication",
         "archivists"
-      ]
+      ],
+      "education": "Master's degree"
     },
     {
       "code": "25-1062.00",
@@ -1008,7 +1047,8 @@
         "studies",
         "teachers",
         "postsecondary"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "27-1011.00",
@@ -1026,7 +1066,8 @@
         "media",
         "writing",
         "directors"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "25-1121.00",
@@ -1056,7 +1097,8 @@
         "music",
         "teachers",
         "postsecondary"
-      ]
+      ],
+      "education": "Master's degree"
     },
     {
       "code": "19-2011.00",
@@ -1082,7 +1124,8 @@
         "research",
         "analysis",
         "astronomers"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "27-2021.00",
@@ -1116,7 +1159,8 @@
         "athletes",
         "sports",
         "competitors"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "29-9091.00",
@@ -1137,7 +1181,8 @@
         "science",
         "athletic",
         "trainers"
-      ]
+      ],
+      "education": "Master's degree"
     },
     {
       "code": "19-2021.00",
@@ -1167,7 +1212,8 @@
         "atmospheric",
         "space",
         "scientists"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "25-1051.00",
@@ -1198,7 +1244,8 @@
         "sciences",
         "teachers",
         "postsecondary"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "27-4011.00",
@@ -1222,7 +1269,8 @@
         "audio",
         "video",
         "technicians"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "29-1181.00",
@@ -1245,7 +1293,8 @@
         "people",
         "science",
         "audiologists"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "49-2097.00",
@@ -1274,7 +1323,8 @@
         "equipment",
         "installers",
         "repairers"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "53-6031.00",
@@ -1299,7 +1349,8 @@
         "watercraft",
         "service",
         "attendants"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "49-3021.00",
@@ -1327,7 +1378,8 @@
         "body",
         "related",
         "repairers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "49-3022.00",
@@ -1352,7 +1404,8 @@
         "glass",
         "installers",
         "repairers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "49-3023.00",
@@ -1385,7 +1438,8 @@
         "service",
         "technicians",
         "mechanics"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "49-2091.00",
@@ -1409,7 +1463,8 @@
         "repair",
         "avionics",
         "technicians"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "39-6011.00",
@@ -1434,7 +1489,8 @@
         "baggage",
         "porters",
         "bellhops"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "33-3011.00",
@@ -1455,7 +1511,8 @@
         "service",
         "physical",
         "bailiffs"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-3011.00",
@@ -1477,7 +1534,8 @@
         "manufacturing",
         "hands-on",
         "bakers"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "39-5011.00",
@@ -1494,7 +1552,8 @@
         "service",
         "care",
         "barbers"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "35-3011.00",
@@ -1514,7 +1573,8 @@
         "service",
         "hands-on",
         "bartenders"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "49-3091.00",
@@ -1534,7 +1594,8 @@
         "repair",
         "bicycle",
         "repairers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "43-3011.00",
@@ -1564,7 +1625,8 @@
         "bill",
         "account",
         "collectors"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "43-3021.00",
@@ -1589,7 +1651,8 @@
         "billing",
         "posting",
         "clerks"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "19-1021.00",
@@ -1610,7 +1673,8 @@
         "analysis",
         "biochemists",
         "biophysicists"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "17-2031.00",
@@ -1634,7 +1698,8 @@
         "bioengineers",
         "biomedical",
         "engineers"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "25-1042.00",
@@ -1660,7 +1725,8 @@
         "science",
         "teachers",
         "postsecondary"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "19-4021.00",
@@ -1682,7 +1748,8 @@
         "analysis",
         "biological",
         "technicians"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "47-2011.00",
@@ -1703,7 +1770,8 @@
         "trades",
         "hands-on",
         "boilermakers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "43-3031.00",
@@ -1729,7 +1797,8 @@
         "accounting",
         "auditing",
         "clerks"
-      ]
+      ],
+      "education": "Some college, no degree"
     },
     {
       "code": "47-2021.00",
@@ -1757,7 +1826,8 @@
         "hands-on",
         "brickmasons",
         "blockmasons"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "53-6011.00",
@@ -1779,7 +1849,8 @@
         "bridge",
         "lock",
         "tenders"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "27-3011.00",
@@ -1807,7 +1878,8 @@
         "radio",
         "disc",
         "jockeys"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "27-4012.00",
@@ -1833,7 +1905,8 @@
         "writing",
         "broadcast",
         "technicians"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "43-4011.00",
@@ -1854,7 +1927,8 @@
         "administrative",
         "brokerage",
         "clerks"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "13-2031.00",
@@ -1876,7 +1950,8 @@
         "detail",
         "budget",
         "analysts"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "49-3031.00",
@@ -1902,7 +1977,8 @@
         "mechanics",
         "diesel",
         "engine"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "53-3051.00",
@@ -1921,7 +1997,8 @@
         "logistics",
         "drivers",
         "school"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "53-3052.00",
@@ -1944,7 +2021,8 @@
         "drivers",
         "transit",
         "intercity"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "25-1011.00",
@@ -1969,7 +2047,8 @@
         "business",
         "teachers",
         "postsecondary"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "51-3021.00",
@@ -1993,7 +2072,8 @@
         "butchers",
         "meat",
         "cutters"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "51-7011.00",
@@ -2015,7 +2095,8 @@
         "cabinetmakers",
         "bench",
         "carpenters"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "17-3028.00",
@@ -2036,7 +2117,8 @@
         "calibration",
         "technologists",
         "technicians"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "49-9061.00",
@@ -2060,7 +2142,8 @@
         "photographic",
         "equipment",
         "repairers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "27-4031.00",
@@ -2087,7 +2170,8 @@
         "television",
         "video",
         "film"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "53-5021.00",
@@ -2121,7 +2205,8 @@
         "pilots",
         "water",
         "vessels"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "29-2031.00",
@@ -2151,7 +2236,8 @@
         "cardiovascular",
         "technologists",
         "technicians"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "25-2023.00",
@@ -2172,7 +2258,8 @@
         "teachers",
         "middle",
         "school"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "25-1194.00",
@@ -2205,7 +2292,8 @@
         "careertechnical",
         "teachers",
         "postsecondary"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "25-2032.00",
@@ -2226,7 +2314,8 @@
         "teachers",
         "secondary",
         "school"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "43-5011.00",
@@ -2248,7 +2337,8 @@
         "cargo",
         "freight",
         "agents"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "47-2031.00",
@@ -2272,7 +2362,8 @@
         "trades",
         "hands-on",
         "carpenters"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "47-2041.00",
@@ -2292,7 +2383,8 @@
         "hands-on",
         "carpet",
         "installers"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "17-1021.00",
@@ -2318,7 +2410,8 @@
         "technical",
         "cartographers",
         "photogrammetrists"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "41-2011.00",
@@ -2341,7 +2434,8 @@
         "communication",
         "people",
         "cashiers"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "47-2051.00",
@@ -2366,7 +2460,8 @@
         "masons",
         "concrete",
         "finishers"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "35-1011.00",
@@ -2394,7 +2489,8 @@
         "chefs",
         "head",
         "cooks"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "17-2041.00",
@@ -2418,7 +2514,8 @@
         "technical",
         "chemical",
         "engineers"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "51-9011.00",
@@ -2440,7 +2537,8 @@
         "chemical",
         "equipment",
         "tenders"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-8091.00",
@@ -2462,7 +2560,8 @@
         "chemical",
         "plant",
         "system"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "19-4031.00",
@@ -2481,7 +2580,8 @@
         "analysis",
         "chemical",
         "technicians"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "25-1052.00",
@@ -2504,7 +2604,8 @@
         "chemistry",
         "teachers",
         "postsecondary"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "19-2031.00",
@@ -2531,7 +2632,8 @@
         "research",
         "analysis",
         "chemists"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "11-1011.00",
@@ -2562,7 +2664,8 @@
         "strategy",
         "chief",
         "executives"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "21-1021.00",
@@ -2594,7 +2697,8 @@
         "child",
         "family",
         "school"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "39-9011.00",
@@ -2622,7 +2726,8 @@
         "service",
         "care",
         "childcare"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "29-1011.00",
@@ -2641,7 +2746,8 @@
         "people",
         "science",
         "chiropractors"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "27-2032.00",
@@ -2660,7 +2766,8 @@
         "media",
         "writing",
         "choreographers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "17-3022.00",
@@ -2685,7 +2792,8 @@
         "civil",
         "technologists",
         "technicians"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "17-2051.00",
@@ -2712,7 +2820,8 @@
         "technical",
         "civil",
         "engineers"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "13-1031.00",
@@ -2743,7 +2852,8 @@
         "adjusters",
         "examiners",
         "investigators"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "53-7061.00",
@@ -2774,7 +2884,8 @@
         "cleaners",
         "vehicles",
         "equipment"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "51-9192.00",
@@ -2801,7 +2912,8 @@
         "pickling",
         "equipment",
         "tenders"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "21-2011.00",
@@ -2831,7 +2943,8 @@
         "social",
         "communication",
         "clergy"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "19-3033.00",
@@ -2850,7 +2963,8 @@
         "clinical",
         "counseling",
         "psychologists"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "27-2022.00",
@@ -2880,7 +2994,8 @@
         "writing",
         "coaches",
         "scouts"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "51-9124.00",
@@ -2915,7 +3030,8 @@
         "machine",
         "setters",
         "tenders"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-2021.00",
@@ -2943,7 +3059,8 @@
         "winders",
         "tapers",
         "finishers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "49-9091.00",
@@ -2972,7 +3089,8 @@
         "machine",
         "servicers",
         "repairers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "27-1021.00",
@@ -3004,7 +3122,8 @@
         "commercial",
         "industrial",
         "designers"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "49-9092.00",
@@ -3027,7 +3146,8 @@
         "repair",
         "commercial",
         "divers"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "53-2012.00",
@@ -3058,7 +3178,8 @@
         "logistics",
         "commercial",
         "pilots"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "25-1122.00",
@@ -3082,7 +3203,8 @@
         "communications",
         "teachers",
         "postsecondary"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "21-1094.00",
@@ -3105,7 +3227,8 @@
         "communication",
         "community",
         "health"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "11-3111.00",
@@ -3127,7 +3250,8 @@
         "strategy",
         "compensation",
         "benefits"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "13-1141.00",
@@ -3154,7 +3278,8 @@
         "detail",
         "compensation",
         "benefits"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "13-1041.00",
@@ -3184,7 +3309,8 @@
         "detail",
         "compliance",
         "officers"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "15-1221.00",
@@ -3207,7 +3333,8 @@
         "information",
         "research",
         "scientists"
-      ]
+      ],
+      "education": "Master's degree"
     },
     {
       "code": "11-3021.00",
@@ -3238,7 +3365,8 @@
         "computer",
         "information",
         "systems"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "17-2061.00",
@@ -3258,7 +3386,8 @@
         "computer",
         "hardware",
         "engineers"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "15-1241.00",
@@ -3280,7 +3409,8 @@
         "computer",
         "network",
         "architects"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "15-1231.00",
@@ -3301,7 +3431,8 @@
         "computer",
         "network",
         "support"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "51-9161.00",
@@ -3327,7 +3458,8 @@
         "numerically",
         "controlled",
         "tool"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-9162.00",
@@ -3350,7 +3482,8 @@
         "controlled",
         "tool",
         "programmers"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "15-1251.00",
@@ -3374,7 +3507,8 @@
         "programming",
         "computer",
         "programmers"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "25-1021.00",
@@ -3400,7 +3534,8 @@
         "science",
         "teachers",
         "postsecondary"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "15-1211.00",
@@ -3425,7 +3560,8 @@
         "computer",
         "systems",
         "analysts"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "15-1232.00",
@@ -3451,7 +3587,8 @@
         "computer",
         "user",
         "support"
-      ]
+      ],
+      "education": "Some college, no degree"
     },
     {
       "code": "49-2011.00",
@@ -3482,7 +3619,8 @@
         "office",
         "machine",
         "repairers"
-      ]
+      ],
+      "education": "Some college, no degree"
     },
     {
       "code": "39-6012.00",
@@ -3503,7 +3641,8 @@
         "service",
         "care",
         "concierges"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "19-1031.00",
@@ -3529,7 +3668,8 @@
         "analysis",
         "conservation",
         "scientists"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "47-4011.00",
@@ -3557,7 +3697,8 @@
         "hands-on",
         "building",
         "inspectors"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "47-2061.00",
@@ -3575,7 +3716,8 @@
         "trades",
         "hands-on",
         "laborers"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "11-9021.00",
@@ -3595,7 +3737,8 @@
         "business",
         "strategy",
         "construction"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "47-5041.00",
@@ -3617,7 +3760,8 @@
         "continuous",
         "mining",
         "machine"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "49-9012.00",
@@ -3644,7 +3788,8 @@
         "installers",
         "repairers",
         "door"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "53-7011.00",
@@ -3667,7 +3812,8 @@
         "logistics",
         "conveyor",
         "tenders"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "35-2011.00",
@@ -3688,7 +3834,8 @@
         "cooks",
         "fast",
         "food"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "35-2012.00",
@@ -3712,7 +3859,8 @@
         "cooks",
         "institution",
         "cafeteria"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "35-2013.00",
@@ -3733,7 +3881,8 @@
         "cooks",
         "private",
         "household"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "35-2014.00",
@@ -3756,7 +3905,8 @@
         "hands-on",
         "cooks",
         "restaurant"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "35-2015.00",
@@ -3779,7 +3929,8 @@
         "cooks",
         "short",
         "order"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "51-9193.00",
@@ -3803,7 +3954,8 @@
         "freezing",
         "equipment",
         "tenders"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "33-3012.00",
@@ -3832,7 +3984,8 @@
         "correctional",
         "officers",
         "jailers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "43-4021.00",
@@ -3856,7 +4009,8 @@
         "administrative",
         "correspondence",
         "clerks"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "13-1051.00",
@@ -3879,7 +4033,8 @@
         "detail",
         "cost",
         "estimators"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "39-3092.00",
@@ -3902,7 +4057,8 @@
         "care",
         "costume",
         "attendants"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "41-2021.00",
@@ -3931,7 +4087,8 @@
         "counter",
         "rental",
         "clerks"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "43-5021.00",
@@ -3955,7 +4112,8 @@
         "administrative",
         "couriers",
         "messengers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "27-3092.00",
@@ -3982,7 +4140,8 @@
         "reporters",
         "simultaneous",
         "captioners"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "43-4031.00",
@@ -4015,7 +4174,8 @@
         "municipal",
         "license",
         "clerks"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "27-1012.00",
@@ -4036,7 +4196,8 @@
         "writing",
         "craft",
         "artists"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "53-7021.00",
@@ -4065,7 +4226,8 @@
         "logistics",
         "crane",
         "tower"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "13-2041.00",
@@ -4087,7 +4249,8 @@
         "detail",
         "credit",
         "analysts"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "43-4041.00",
@@ -4116,7 +4279,8 @@
         "authorizers",
         "checkers",
         "clerks"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "13-2071.00",
@@ -4137,7 +4301,8 @@
         "detail",
         "credit",
         "counselors"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "39-4012.00",
@@ -4155,7 +4320,8 @@
         "service",
         "care",
         "crematory"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "25-1111.00",
@@ -4178,7 +4344,8 @@
         "enforcement",
         "teachers",
         "postsecondary"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "33-9091.00",
@@ -4199,7 +4366,8 @@
         "crossing",
         "guards",
         "flaggers"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "51-9021.00",
@@ -4228,7 +4396,8 @@
         "machine",
         "setters",
         "tenders"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "25-4012.00",
@@ -4251,7 +4420,8 @@
         "people",
         "communication",
         "curators"
-      ]
+      ],
+      "education": "Master's degree"
     },
     {
       "code": "43-4051.00",
@@ -4279,7 +4449,8 @@
         "customer",
         "service",
         "representatives"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-9031.00",
@@ -4300,7 +4471,8 @@
         "cutters",
         "trimmers",
         "hand"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "51-9032.00",
@@ -4327,7 +4499,8 @@
         "machine",
         "setters",
         "tenders"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-4031.00",
@@ -4354,7 +4527,8 @@
         "tenders",
         "metal",
         "plastic"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "43-9021.00",
@@ -4381,7 +4555,8 @@
         "data",
         "entry",
         "keyers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "15-2051.00",
@@ -4401,7 +4576,8 @@
         "math",
         "programming",
         "scientists"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "15-1242.00",
@@ -4423,7 +4599,8 @@
         "programming",
         "database",
         "administrators"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "15-1243.00",
@@ -4444,7 +4621,8 @@
         "programming",
         "database",
         "architects"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "41-9011.00",
@@ -4465,7 +4643,8 @@
         "demonstrators",
         "product",
         "promoters"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "31-9091.00",
@@ -4488,7 +4667,8 @@
         "support",
         "people",
         "dental"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "29-1292.00",
@@ -4509,7 +4689,8 @@
         "science",
         "dental",
         "hygienists"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "51-9081.00",
@@ -4534,7 +4715,8 @@
         "dental",
         "laboratory",
         "technicians"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "29-1021.00",
@@ -4552,7 +4734,8 @@
         "people",
         "science",
         "dentists"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "47-5011.00",
@@ -4573,7 +4756,8 @@
         "trades",
         "hands-on",
         "derrick"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "43-9031.00",
@@ -4597,7 +4781,8 @@
         "administrative",
         "desktop",
         "publishers"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "33-3021.00",
@@ -4621,7 +4806,8 @@
         "detectives",
         "criminal",
         "investigators"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "29-2032.00",
@@ -4651,7 +4837,8 @@
         "diagnostic",
         "medical",
         "sonographers"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "29-2051.00",
@@ -4676,7 +4863,8 @@
         "science",
         "dietetic",
         "technicians"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "29-1031.00",
@@ -4703,7 +4891,8 @@
         "science",
         "dietitians",
         "nutritionists"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "35-9011.00",
@@ -4731,7 +4920,8 @@
         "attendants",
         "bartender",
         "helpers"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "21-2021.00",
@@ -4759,7 +4949,8 @@
         "religious",
         "activities",
         "education"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "35-9021.00",
@@ -4778,7 +4969,8 @@
         "service",
         "hands-on",
         "dishwashers"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "43-5032.00",
@@ -4807,7 +4999,8 @@
         "police",
         "fire",
         "ambulance"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "41-9091.00",
@@ -4830,7 +5023,8 @@
         "street",
         "vendors",
         "related"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "53-7031.00",
@@ -4849,7 +5043,8 @@
         "hands-on",
         "logistics",
         "dredge"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-4032.00",
@@ -4878,7 +5073,8 @@
         "tenders",
         "metal",
         "plastic"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "53-3031.00",
@@ -4901,7 +5097,8 @@
         "hands-on",
         "logistics",
         "driversales"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "47-2081.00",
@@ -4931,7 +5128,8 @@
         "ceiling",
         "tile",
         "installers"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "47-5023.00",
@@ -4954,7 +5152,8 @@
         "hands-on",
         "earth",
         "drillers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "25-1063.00",
@@ -4978,7 +5177,8 @@
         "economics",
         "teachers",
         "postsecondary"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "19-3011.00",
@@ -5004,7 +5204,8 @@
         "research",
         "analysis",
         "economists"
-      ]
+      ],
+      "education": "Master's degree"
     },
     {
       "code": "27-3041.00",
@@ -5034,7 +5235,8 @@
         "media",
         "writing",
         "editors"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "11-9032.00",
@@ -5061,7 +5263,8 @@
         "kindergarten",
         "through",
         "secondary"
-      ]
+      ],
+      "education": "Master's degree"
     },
     {
       "code": "11-9033.00",
@@ -5086,7 +5289,8 @@
         "education",
         "administrators",
         "postsecondary"
-      ]
+      ],
+      "education": "Master's degree"
     },
     {
       "code": "11-9031.00",
@@ -5112,7 +5316,8 @@
         "administrators",
         "preschool",
         "daycare"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "25-1081.00",
@@ -5135,7 +5340,8 @@
         "communication",
         "teachers",
         "postsecondary"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "21-1012.00",
@@ -5169,7 +5375,8 @@
         "career",
         "counselors",
         "advisors"
-      ]
+      ],
+      "education": "Master's degree"
     },
     {
       "code": "49-2092.00",
@@ -5197,7 +5404,8 @@
         "tool",
         "related",
         "repairers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "17-3023.00",
@@ -5224,7 +5432,8 @@
         "electronic",
         "technologists",
         "technicians"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "17-3012.00",
@@ -5248,7 +5457,8 @@
         "electrical",
         "electronics",
         "drafters"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "49-2093.00",
@@ -5272,7 +5482,8 @@
         "repairers",
         "transportation",
         "equipment"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "49-2094.00",
@@ -5297,7 +5508,8 @@
         "commercial",
         "industrial",
         "equipment"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "49-2095.00",
@@ -5325,7 +5537,8 @@
         "powerhouse",
         "substation",
         "relay"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "17-2071.00",
@@ -5346,7 +5559,8 @@
         "technical",
         "electrical",
         "engineers"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "49-9051.00",
@@ -5371,7 +5585,8 @@
         "power-line",
         "installers",
         "repairers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "47-2111.00",
@@ -5397,7 +5612,8 @@
         "trades",
         "hands-on",
         "electricians"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "17-3024.00",
@@ -5422,7 +5638,8 @@
         "mechatronics",
         "technologists",
         "technicians"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "49-2096.00",
@@ -5451,7 +5668,8 @@
         "repairers",
         "motor",
         "vehicles"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "17-2072.00",
@@ -5475,7 +5693,8 @@
         "electronics",
         "engineers",
         "computer"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "25-2021.00",
@@ -5499,7 +5718,8 @@
         "school",
         "teachers",
         "special"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "47-4021.00",
@@ -5528,7 +5748,8 @@
         "escalator",
         "installers",
         "repairers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "43-4061.00",
@@ -5552,7 +5773,8 @@
         "interviewers",
         "government",
         "programs"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "39-4011.00",
@@ -5572,7 +5794,8 @@
         "service",
         "care",
         "embalmers"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "11-9161.00",
@@ -5599,7 +5822,8 @@
         "strategy",
         "emergency",
         "directors"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "29-2042.00",
@@ -5622,7 +5846,8 @@
         "emergency",
         "medical",
         "technicians"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "51-2031.00",
@@ -5651,7 +5876,8 @@
         "engine",
         "machine",
         "assemblers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "25-1032.00",
@@ -5680,7 +5906,8 @@
         "engineering",
         "teachers",
         "postsecondary"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "25-1123.00",
@@ -5708,7 +5935,8 @@
         "literature",
         "teachers",
         "postsecondary"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "11-9072.00",
@@ -5735,7 +5963,8 @@
         "entertainment",
         "recreation",
         "gambling"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "17-3025.00",
@@ -5758,7 +5987,8 @@
         "environmental",
         "technologists",
         "technicians"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "17-2081.00",
@@ -5784,7 +6014,8 @@
         "technical",
         "environmental",
         "engineers"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "19-4042.00",
@@ -5809,7 +6040,8 @@
         "protection",
         "technicians",
         "health"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "25-1053.00",
@@ -5831,7 +6063,8 @@
         "science",
         "teachers",
         "postsecondary"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "19-2041.00",
@@ -5855,7 +6088,8 @@
         "environmental",
         "scientists",
         "health"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "19-1041.00",
@@ -5877,7 +6111,8 @@
         "research",
         "analysis",
         "epidemiologists"
-      ]
+      ],
+      "education": "Master's degree"
     },
     {
       "code": "51-9194.00",
@@ -5901,7 +6136,8 @@
         "hands-on",
         "etchers",
         "engravers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "47-5022.00",
@@ -5933,7 +6169,8 @@
         "dragline",
         "surface",
         "mining"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "43-6011.00",
@@ -5951,7 +6188,8 @@
         "administrative",
         "executive",
         "secretaries"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "29-1128.00",
@@ -5972,7 +6210,8 @@
         "science",
         "exercise",
         "physiologists"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "39-9031.00",
@@ -6002,7 +6241,8 @@
         "group",
         "fitness",
         "instructors"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "47-5032.00",
@@ -6030,7 +6270,8 @@
         "handling",
         "experts",
         "blasters"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-4021.00",
@@ -6053,7 +6294,8 @@
         "tenders",
         "metal",
         "plastic"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-6091.00",
@@ -6078,7 +6320,8 @@
         "synthetic",
         "glass",
         "fibers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-9041.00",
@@ -6107,7 +6350,8 @@
         "machine",
         "setters",
         "tenders"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-6092.00",
@@ -6127,7 +6371,8 @@
         "fabric",
         "apparel",
         "patternmakers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "11-3013.00",
@@ -6146,7 +6391,8 @@
         "business",
         "strategy",
         "facilities"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "45-4021.00",
@@ -6166,7 +6412,8 @@
         "outdoors",
         "agriculture",
         "fallers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "25-1192.00",
@@ -6190,7 +6437,8 @@
         "sciences",
         "teachers",
         "postsecondary"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "29-1215.00",
@@ -6215,7 +6463,8 @@
         "science",
         "family",
         "physicians"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "25-9021.00",
@@ -6244,7 +6493,8 @@
         "home",
         "management",
         "educators"
-      ]
+      ],
+      "education": "Master's degree"
     },
     {
       "code": "49-3041.00",
@@ -6272,7 +6522,8 @@
         "mechanics",
         "service",
         "technicians"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "13-1074.00",
@@ -6292,7 +6543,8 @@
         "farm",
         "labor",
         "contractors"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "11-9013.00",
@@ -6320,7 +6572,8 @@
         "farmers",
         "ranchers",
         "agricultural"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "45-2092.00",
@@ -6354,7 +6607,8 @@
         "crop",
         "nursery",
         "greenhouse"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "45-2093.00",
@@ -6388,7 +6642,8 @@
         "ranch",
         "aquacultural",
         "animals"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "27-1022.00",
@@ -6416,7 +6671,8 @@
         "writing",
         "fashion",
         "designers"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "35-3023.00",
@@ -6443,7 +6699,8 @@
         "fast",
         "food",
         "counter"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "47-4031.00",
@@ -6463,7 +6720,8 @@
         "hands-on",
         "fence",
         "erectors"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "51-2051.00",
@@ -6489,7 +6747,8 @@
         "fiberglass",
         "laminators",
         "fabricators"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "43-4071.00",
@@ -6511,7 +6770,8 @@
         "administrative",
         "file",
         "clerks"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "27-4032.00",
@@ -6539,7 +6799,8 @@
         "film",
         "video",
         "editors"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "13-2051.00",
@@ -6562,7 +6823,8 @@
         "financial",
         "investment",
         "analysts"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "13-2061.00",
@@ -6585,7 +6847,8 @@
         "detail",
         "financial",
         "examiners"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "11-3031.00",
@@ -6613,7 +6876,8 @@
         "business",
         "strategy",
         "financial"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "13-2054.00",
@@ -6631,7 +6895,8 @@
         "detail",
         "financial",
         "risk"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "27-1013.00",
@@ -6667,7 +6932,8 @@
         "painters",
         "sculptors",
         "illustrators"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "33-2021.00",
@@ -6693,7 +6959,8 @@
         "fire",
         "inspectors",
         "investigators"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "33-2011.00",
@@ -6716,7 +6983,8 @@
         "service",
         "physical",
         "firefighters"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "47-1011.00",
@@ -6746,7 +7014,8 @@
         "first-line",
         "supervisors",
         "extraction"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "33-1011.00",
@@ -6769,7 +7038,8 @@
         "supervisors",
         "correctional",
         "officers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "39-1014.00",
@@ -6792,7 +7062,8 @@
         "recreation",
         "gambling",
         "services"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "45-1011.00",
@@ -6826,7 +7097,8 @@
         "farming",
         "fishing",
         "forestry"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "33-1021.00",
@@ -6847,7 +7119,8 @@
         "supervisors",
         "firefighting",
         "prevention"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "35-1012.00",
@@ -6875,7 +7148,8 @@
         "food",
         "preparation",
         "serving"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "39-1013.00",
@@ -6908,7 +7182,8 @@
         "supervisors",
         "gambling",
         "services"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "37-1011.00",
@@ -6933,7 +7208,8 @@
         "supervisors",
         "housekeeping",
         "janitorial"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "37-1012.00",
@@ -6960,7 +7236,8 @@
         "landscaping",
         "lawn",
         "groundskeeping"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "49-1011.00",
@@ -6988,7 +7265,8 @@
         "mechanics",
         "installers",
         "repairers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "41-1012.00",
@@ -7013,7 +7291,8 @@
         "first-line",
         "supervisors",
         "non-retail"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "43-1011.00",
@@ -7042,7 +7321,8 @@
         "first-line",
         "supervisors",
         "support"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "39-1022.00",
@@ -7063,7 +7343,8 @@
         "first-line",
         "supervisors",
         "personal"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "33-1012.00",
@@ -7087,7 +7368,8 @@
         "supervisors",
         "police",
         "detectives"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-1011.00",
@@ -7114,7 +7396,8 @@
         "first-line",
         "supervisors",
         "operating"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "41-1011.00",
@@ -7138,7 +7421,8 @@
         "first-line",
         "supervisors",
         "retail"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "33-1091.00",
@@ -7159,7 +7443,8 @@
         "first-line",
         "supervisors",
         "security"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "33-3031.00",
@@ -7183,7 +7468,8 @@
         "fish",
         "game",
         "wardens"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "53-2031.00",
@@ -7202,7 +7488,8 @@
         "logistics",
         "flight",
         "attendants"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "47-2042.00",
@@ -7230,7 +7517,8 @@
         "wood",
         "hard",
         "tiles"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "47-2043.00",
@@ -7253,7 +7541,8 @@
         "floor",
         "sanders",
         "finishers"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "27-1023.00",
@@ -7278,7 +7567,8 @@
         "writing",
         "floral",
         "designers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-3091.00",
@@ -7310,7 +7600,8 @@
         "drying",
         "machine",
         "tenders"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "51-3092.00",
@@ -7340,7 +7631,8 @@
         "hands-on",
         "food",
         "batchmakers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-3093.00",
@@ -7366,7 +7658,8 @@
         "cooking",
         "machine",
         "tenders"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "35-2021.00",
@@ -7389,7 +7682,8 @@
         "hands-on",
         "food",
         "preparation"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "19-4013.00",
@@ -7408,7 +7702,8 @@
         "analysis",
         "food",
         "technicians"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "19-1012.00",
@@ -7432,7 +7727,8 @@
         "food",
         "scientists",
         "technologists"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "35-3041.00",
@@ -7453,7 +7749,8 @@
         "food",
         "servers",
         "nonrestaurant"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "11-9051.00",
@@ -7477,7 +7774,8 @@
         "strategy",
         "food",
         "service"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "25-1124.00",
@@ -7507,7 +7805,8 @@
         "literature",
         "teachers",
         "postsecondary"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "19-4092.00",
@@ -7534,7 +7833,8 @@
         "analysis",
         "forensic",
         "technicians"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "19-4071.00",
@@ -7557,7 +7857,8 @@
         "forest",
         "conservation",
         "technicians"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "45-4011.00",
@@ -7581,7 +7882,8 @@
         "agriculture",
         "forest",
         "conservation"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "33-2022.00",
@@ -7606,7 +7908,8 @@
         "fire",
         "inspectors",
         "prevention"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "19-1032.00",
@@ -7630,7 +7933,8 @@
         "research",
         "analysis",
         "foresters"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "25-1043.00",
@@ -7661,7 +7965,8 @@
         "science",
         "teachers",
         "postsecondary"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "51-4022.00",
@@ -7687,7 +7992,8 @@
         "tenders",
         "metal",
         "plastic"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-4071.00",
@@ -7712,7 +8018,8 @@
         "foundry",
         "mold",
         "coremakers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "13-1131.00",
@@ -7731,7 +8038,8 @@
         "analysis",
         "detail",
         "fundraisers"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "11-2033.00",
@@ -7751,7 +8059,8 @@
         "business",
         "strategy",
         "fundraising"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "39-4021.00",
@@ -7774,7 +8083,8 @@
         "care",
         "funeral",
         "attendants"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "11-9171.00",
@@ -7794,7 +8104,8 @@
         "strategy",
         "funeral",
         "home"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "51-9051.00",
@@ -7822,7 +8133,8 @@
         "drier",
         "kettle",
         "tenders"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-7021.00",
@@ -7843,7 +8155,8 @@
         "hands-on",
         "furniture",
         "finishers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "39-3012.00",
@@ -7872,7 +8185,8 @@
         "book",
         "writers",
         "runners"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "43-3041.00",
@@ -7894,7 +8208,8 @@
         "administrative",
         "gambling",
         "cage"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "41-2012.00",
@@ -7915,7 +8230,8 @@
         "persons",
         "booth",
         "cashiers"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "39-3011.00",
@@ -7940,7 +8256,8 @@
         "care",
         "gambling",
         "dealers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "11-9071.00",
@@ -7964,7 +8281,8 @@
         "business",
         "strategy",
         "gambling"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "33-9031.00",
@@ -7987,7 +8305,8 @@
         "surveillance",
         "officers",
         "investigators"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "53-7071.00",
@@ -8013,7 +8332,8 @@
         "compressor",
         "pumping",
         "station"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-8092.00",
@@ -8032,7 +8352,8 @@
         "manufacturing",
         "hands-on",
         "plant"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "11-1021.00",
@@ -8057,7 +8378,8 @@
         "business",
         "strategy",
         "operations"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "29-1216.00",
@@ -8079,7 +8401,8 @@
         "science",
         "internal",
         "physicians"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "29-9092.00",
@@ -8101,7 +8424,8 @@
         "science",
         "genetic",
         "counselors"
-      ]
+      ],
+      "education": "Master's degree"
     },
     {
       "code": "19-3092.00",
@@ -8123,7 +8447,8 @@
         "research",
         "analysis",
         "geographers"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "25-1064.00",
@@ -8145,7 +8470,8 @@
         "geography",
         "teachers",
         "postsecondary"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "19-4043.00",
@@ -8173,7 +8499,8 @@
         "geological",
         "technicians",
         "hydrologic"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "19-2042.00",
@@ -8205,7 +8532,8 @@
         "geoscientists",
         "hydrologists",
         "geographers"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "47-2121.00",
@@ -8226,7 +8554,8 @@
         "trades",
         "hands-on",
         "glaziers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "45-2041.00",
@@ -8257,7 +8586,8 @@
         "sorters",
         "agricultural",
         "products"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "27-1024.00",
@@ -8277,7 +8607,8 @@
         "writing",
         "graphic",
         "designers"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "51-9022.00",
@@ -8300,7 +8631,8 @@
         "grinding",
         "polishing",
         "hand"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "51-4033.00",
@@ -8329,7 +8661,8 @@
         "tenders",
         "metal",
         "plastic"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "39-5012.00",
@@ -8356,7 +8689,8 @@
         "hairdressers",
         "hairstylists",
         "cosmetologists"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "47-4041.00",
@@ -8381,7 +8715,8 @@
         "hazardous",
         "materials",
         "removal"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "17-2111.00",
@@ -8407,7 +8742,8 @@
         "engineers",
         "mining",
         "inspectors"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "21-1091.00",
@@ -8430,7 +8766,8 @@
         "communication",
         "health",
         "education"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "29-9021.00",
@@ -8456,7 +8793,8 @@
         "technologists",
         "medical",
         "registrars"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "25-1071.00",
@@ -8488,7 +8826,8 @@
         "specialties",
         "teachers",
         "postsecondary"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "21-1022.00",
@@ -8517,7 +8856,8 @@
         "social",
         "communication",
         "healthcare"
-      ]
+      ],
+      "education": "Master's degree"
     },
     {
       "code": "29-2092.00",
@@ -8537,7 +8877,8 @@
         "people",
         "science",
         "hearing"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-4191.00",
@@ -8566,7 +8907,8 @@
         "tenders",
         "metal",
         "plastic"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "49-9021.00",
@@ -8597,7 +8939,8 @@
         "refrigeration",
         "mechanics",
         "installers"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "53-3032.00",
@@ -8630,7 +8973,8 @@
         "tractor-trailer",
         "truck",
         "drivers"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "47-3011.00",
@@ -8662,7 +9006,8 @@
         "tile",
         "marble",
         "setters"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "47-3012.00",
@@ -8684,7 +9029,8 @@
         "trades",
         "hands-on",
         "helpers--carpenters"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "47-3013.00",
@@ -8705,7 +9051,8 @@
         "trades",
         "hands-on",
         "helpers--electricians"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "47-5081.00",
@@ -8731,7 +9078,8 @@
         "trades",
         "hands-on",
         "helpers--extraction"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "49-9098.00",
@@ -8758,7 +9106,8 @@
         "repair",
         "helpers--installation",
         "maintenance"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "47-3014.00",
@@ -8788,7 +9137,8 @@
         "plasterers",
         "stucco",
         "masons"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "47-3015.00",
@@ -8818,7 +9168,8 @@
         "plumbers",
         "pipefitters",
         "steamfitters"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-9198.00",
@@ -8840,7 +9191,8 @@
         "manufacturing",
         "hands-on",
         "helpers--production"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "47-3016.00",
@@ -8864,7 +9216,8 @@
         "trades",
         "hands-on",
         "helpers--roofers"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "47-4051.00",
@@ -8886,7 +9239,8 @@
         "hands-on",
         "highway",
         "maintenance"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "19-3093.00",
@@ -8904,7 +9258,8 @@
         "research",
         "analysis",
         "historians"
-      ]
+      ],
+      "education": "Master's degree"
     },
     {
       "code": "25-1125.00",
@@ -8928,7 +9283,8 @@
         "history",
         "teachers",
         "postsecondary"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "53-7041.00",
@@ -8947,7 +9303,8 @@
         "logistics",
         "hoist",
         "winch"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "49-9031.00",
@@ -8976,7 +9333,8 @@
         "home",
         "appliance",
         "repairers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "35-9031.00",
@@ -9004,7 +9362,8 @@
         "lounge",
         "coffee",
         "shop"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "43-4081.00",
@@ -9031,7 +9390,8 @@
         "resort",
         "desk",
         "clerks"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "43-4161.00",
@@ -9053,7 +9413,8 @@
         "resources",
         "payroll",
         "timekeeping"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "11-3121.00",
@@ -9077,7 +9438,8 @@
         "strategy",
         "human",
         "resources"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "13-1071.00",
@@ -9108,7 +9470,8 @@
         "detail",
         "human",
         "resources"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "19-4044.00",
@@ -9125,7 +9488,8 @@
         "analysis",
         "hydrologic",
         "technicians"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "19-2043.00",
@@ -9143,7 +9507,8 @@
         "research",
         "analysis",
         "hydrologists"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "17-3026.00",
@@ -9167,7 +9532,8 @@
         "industrial",
         "technologists",
         "technicians"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "17-2112.00",
@@ -9188,7 +9554,8 @@
         "technical",
         "industrial",
         "engineers"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "49-9041.00",
@@ -9213,7 +9580,8 @@
         "industrial",
         "machinery",
         "mechanics"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "11-3051.00",
@@ -9236,7 +9604,8 @@
         "strategy",
         "industrial",
         "production"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "53-7051.00",
@@ -9260,7 +9629,8 @@
         "industrial",
         "truck",
         "tractor"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "19-3032.00",
@@ -9284,7 +9654,8 @@
         "analysis",
         "industrial-organizational",
         "psychologists"
-      ]
+      ],
+      "education": "Master's degree"
     },
     {
       "code": "15-1212.00",
@@ -9308,7 +9679,8 @@
         "information",
         "security",
         "analysts"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "51-9061.00",
@@ -9337,7 +9709,8 @@
         "sorters",
         "samplers",
         "weighers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "25-9031.00",
@@ -9362,7 +9735,8 @@
         "communication",
         "instructional",
         "coordinators"
-      ]
+      ],
+      "education": "Master's degree"
     },
     {
       "code": "47-2131.00",
@@ -9387,7 +9761,8 @@
         "floor",
         "ceiling",
         "wall"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "47-2132.00",
@@ -9409,7 +9784,8 @@
         "hands-on",
         "insulation",
         "mechanical"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "13-1032.00",
@@ -9432,7 +9808,8 @@
         "appraisers",
         "auto",
         "damage"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "43-9041.00",
@@ -9458,7 +9835,8 @@
         "policy",
         "processing",
         "clerks"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "41-3021.00",
@@ -9480,7 +9858,8 @@
         "people",
         "insurance",
         "agents"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "13-2053.00",
@@ -9504,7 +9883,8 @@
         "detail",
         "insurance",
         "underwriters"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "27-1025.00",
@@ -9529,7 +9909,8 @@
         "writing",
         "interior",
         "designers"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "27-3091.00",
@@ -9553,7 +9934,8 @@
         "writing",
         "interpreters",
         "translators"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "43-4111.00",
@@ -9579,7 +9961,8 @@
         "interviewers",
         "eligibility",
         "loan"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "37-2011.00",
@@ -9608,7 +9991,8 @@
         "cleaners",
         "maids",
         "housekeeping"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "51-9071.00",
@@ -9638,7 +10022,8 @@
         "precious",
         "stone",
         "metal"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "23-1023.00",
@@ -9666,7 +10051,8 @@
         "judges",
         "magistrate",
         "magistrates"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "23-1012.00",
@@ -9684,7 +10070,8 @@
         "argument",
         "judicial",
         "clerks"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "25-2012.00",
@@ -9704,7 +10091,8 @@
         "kindergarten",
         "teachers",
         "special"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "13-1075.00",
@@ -9727,7 +10115,8 @@
         "detail",
         "labor",
         "relations"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "53-7062.00",
@@ -9757,7 +10146,8 @@
         "material",
         "movers",
         "hand"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "17-1012.00",
@@ -9778,7 +10168,8 @@
         "technical",
         "landscape",
         "architects"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "37-3011.00",
@@ -9806,7 +10197,8 @@
         "hands-on",
         "landscaping",
         "groundskeeping"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "51-4034.00",
@@ -9832,7 +10224,8 @@
         "tenders",
         "metal",
         "plastic"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-6011.00",
@@ -9857,7 +10250,8 @@
         "hands-on",
         "laundry",
         "dry-cleaning"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "25-1112.00",
@@ -9880,7 +10274,8 @@
         "communication",
         "teachers",
         "postsecondary"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "23-1011.00",
@@ -9911,7 +10306,8 @@
         "research",
         "argument",
         "lawyers"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "51-4192.00",
@@ -9930,7 +10326,8 @@
         "layout",
         "metal",
         "plastic"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "43-6012.00",
@@ -9951,7 +10348,8 @@
         "administrative",
         "legal",
         "secretaries"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "11-1031.00",
@@ -9976,7 +10374,8 @@
         "business",
         "strategy",
         "legislators"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "25-4022.00",
@@ -10009,7 +10408,8 @@
         "librarians",
         "media",
         "collections"
-      ]
+      ],
+      "education": "Master's degree"
     },
     {
       "code": "43-4121.00",
@@ -10036,7 +10436,8 @@
         "administrative",
         "library",
         "clerical"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "25-1082.00",
@@ -10058,7 +10459,8 @@
         "science",
         "teachers",
         "postsecondary"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "25-4031.00",
@@ -10081,7 +10483,8 @@
         "communication",
         "library",
         "technicians"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "29-2061.00",
@@ -10108,7 +10511,8 @@
         "practical",
         "vocational",
         "nurses"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "33-9092.00",
@@ -10132,7 +10536,8 @@
         "lifeguards",
         "patrol",
         "recreational"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "53-3033.00",
@@ -10151,7 +10556,8 @@
         "light",
         "truck",
         "drivers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "27-4015.00",
@@ -10173,7 +10579,8 @@
         "writing",
         "lighting",
         "technicians"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "47-5044.00",
@@ -10198,7 +10605,8 @@
         "machine",
         "underground",
         "mining"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "43-4131.00",
@@ -10223,7 +10631,8 @@
         "loan",
         "interviewers",
         "clerks"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "13-2072.00",
@@ -10247,7 +10656,8 @@
         "detail",
         "loan",
         "officers"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "39-3093.00",
@@ -10276,7 +10686,8 @@
         "coatroom",
         "dressing",
         "attendants"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "49-9094.00",
@@ -10303,7 +10714,8 @@
         "locksmiths",
         "safe",
         "repairers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "53-4011.00",
@@ -10323,7 +10735,8 @@
         "logistics",
         "locomotive",
         "engineers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "11-9081.00",
@@ -10346,7 +10759,8 @@
         "business",
         "strategy",
         "lodging"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "45-4023.00",
@@ -10368,7 +10782,8 @@
         "agriculture",
         "graders",
         "scalers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "45-4022.00",
@@ -10399,7 +10814,8 @@
         "agriculture",
         "logging",
         "equipment"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "13-1081.00",
@@ -10420,7 +10836,8 @@
         "analysis",
         "detail",
         "logisticians"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "53-7063.00",
@@ -10450,7 +10867,8 @@
         "machine",
         "feeders",
         "offbearers"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "51-4041.00",
@@ -10472,7 +10890,8 @@
         "manufacturing",
         "hands-on",
         "machinists"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "29-2035.00",
@@ -10494,7 +10913,8 @@
         "resonance",
         "imaging",
         "technologists"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "37-2012.00",
@@ -10519,7 +10939,8 @@
         "maids",
         "housekeeping",
         "cleaners"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "43-9051.00",
@@ -10542,7 +10963,8 @@
         "machine",
         "postal",
         "service"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "49-9071.00",
@@ -10566,7 +10988,8 @@
         "hands-on",
         "repair",
         "maintenance"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "49-9043.00",
@@ -10584,7 +11007,8 @@
         "repair",
         "maintenance",
         "machinery"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "39-5091.00",
@@ -10603,7 +11027,8 @@
         "artists",
         "theatrical",
         "performance"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "13-1111.00",
@@ -10630,7 +11055,8 @@
         "detail",
         "management",
         "analysts"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "39-5092.00",
@@ -10649,7 +11075,8 @@
         "care",
         "manicurists",
         "pedicurists"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "49-9095.00",
@@ -10674,7 +11101,8 @@
         "mobile",
         "home",
         "installers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "17-2121.00",
@@ -10698,7 +11126,8 @@
         "engineers",
         "naval",
         "architects"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "13-1161.00",
@@ -10725,7 +11154,8 @@
         "research",
         "analysts",
         "marketing"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "11-2021.00",
@@ -10745,7 +11175,8 @@
         "business",
         "strategy",
         "marketing"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "21-1013.00",
@@ -10770,7 +11201,8 @@
         "marriage",
         "family",
         "therapists"
-      ]
+      ],
+      "education": "Master's degree"
     },
     {
       "code": "31-9011.00",
@@ -10795,7 +11227,8 @@
         "people",
         "massage",
         "therapists"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "17-2131.00",
@@ -10820,7 +11253,8 @@
         "technical",
         "materials",
         "engineers"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "19-2032.00",
@@ -10838,7 +11272,8 @@
         "analysis",
         "materials",
         "scientists"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "25-1022.00",
@@ -10865,7 +11300,8 @@
         "science",
         "teachers",
         "postsecondary"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "15-2021.00",
@@ -10887,7 +11323,8 @@
         "math",
         "programming",
         "mathematicians"
-      ]
+      ],
+      "education": "Master's degree"
     },
     {
       "code": "51-3022.00",
@@ -10918,7 +11355,8 @@
         "fish",
         "cutters",
         "trimmers"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "49-9011.00",
@@ -10939,7 +11377,8 @@
         "repair",
         "door",
         "repairers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "17-3013.00",
@@ -10963,7 +11402,8 @@
         "technical",
         "mechanical",
         "drafters"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "17-3027.00",
@@ -10987,7 +11427,8 @@
         "mechanical",
         "technologists",
         "technicians"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "17-2141.00",
@@ -11010,7 +11451,8 @@
         "technical",
         "mechanical",
         "engineers"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "11-9111.00",
@@ -11043,7 +11485,8 @@
         "medical",
         "health",
         "services"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "51-9082.00",
@@ -11072,7 +11515,8 @@
         "medical",
         "appliance",
         "technicians"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "31-9092.00",
@@ -11099,7 +11543,8 @@
         "support",
         "people",
         "medical"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "29-2036.00",
@@ -11119,7 +11564,8 @@
         "science",
         "medical",
         "dosimetrists"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "31-9093.00",
@@ -11147,7 +11593,8 @@
         "medical",
         "equipment",
         "preparers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "49-9062.00",
@@ -11175,7 +11622,8 @@
         "medical",
         "equipment",
         "repairers"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "29-2072.00",
@@ -11196,7 +11644,8 @@
         "science",
         "medical",
         "records"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "19-1042.00",
@@ -11226,7 +11675,8 @@
         "medical",
         "scientists",
         "epidemiologists"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "43-6013.00",
@@ -11246,7 +11696,8 @@
         "administrative",
         "medical",
         "secretaries"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "31-9094.00",
@@ -11270,7 +11721,8 @@
         "people",
         "medical",
         "transcriptionists"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "13-1121.00",
@@ -11301,7 +11753,8 @@
         "convention",
         "event",
         "planners"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "21-1023.00",
@@ -11324,7 +11777,8 @@
         "health",
         "substance",
         "abuse"
-      ]
+      ],
+      "education": "Master's degree"
     },
     {
       "code": "27-1026.00",
@@ -11357,7 +11811,8 @@
         "displayers",
         "window",
         "trimmers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-4051.00",
@@ -11377,7 +11832,8 @@
         "metal-refining",
         "furnace",
         "tenders"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "43-5041.00",
@@ -11398,7 +11854,8 @@
         "meter",
         "readers",
         "utilities"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "19-1022.00",
@@ -11420,7 +11877,8 @@
         "research",
         "analysis",
         "microbiologists"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "25-2022.00",
@@ -11444,7 +11902,8 @@
         "teachers",
         "special",
         "careertechnical"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "51-4035.00",
@@ -11468,7 +11927,8 @@
         "tenders",
         "metal",
         "plastic"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "49-9044.00",
@@ -11489,7 +11949,8 @@
         "hands-on",
         "repair",
         "millwrights"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "17-2151.00",
@@ -11512,7 +11973,8 @@
         "geological",
         "engineers",
         "safety"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "51-9023.00",
@@ -11540,7 +12002,8 @@
         "machine",
         "setters",
         "tenders"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "49-3042.00",
@@ -11566,7 +12029,8 @@
         "equipment",
         "mechanics",
         "engines"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-4061.00",
@@ -11586,7 +12050,8 @@
         "makers",
         "metal",
         "plastic"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-7031.00",
@@ -11604,7 +12069,8 @@
         "model",
         "makers",
         "wood"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "41-9012.00",
@@ -11627,7 +12093,8 @@
         "communication",
         "people",
         "models"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "51-9195.00",
@@ -11661,7 +12128,8 @@
         "casters",
         "metal",
         "plastic"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-4072.00",
@@ -11687,7 +12155,8 @@
         "tenders",
         "metal",
         "plastic"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "39-4031.00",
@@ -11708,7 +12177,8 @@
         "undertakers",
         "funeral",
         "arrangers"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "39-3021.00",
@@ -11732,7 +12202,8 @@
         "motion",
         "picture",
         "projectionists"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "49-3051.00",
@@ -11757,7 +12228,8 @@
         "mechanics",
         "service",
         "technicians"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "53-5022.00",
@@ -11778,7 +12250,8 @@
         "hands-on",
         "logistics",
         "motorboat"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "49-3052.00",
@@ -11802,7 +12275,8 @@
         "repair",
         "motorcycle",
         "mechanics"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "51-4081.00",
@@ -11825,7 +12299,8 @@
         "tenders",
         "metal",
         "plastic"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "25-4013.00",
@@ -11852,7 +12327,8 @@
         "museum",
         "technicians",
         "conservators"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "27-2041.00",
@@ -11886,7 +12362,8 @@
         "music",
         "directors",
         "composers"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "49-9063.00",
@@ -11920,7 +12397,8 @@
         "instrument",
         "repairers",
         "tuners"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "11-9121.00",
@@ -11941,7 +12419,8 @@
         "strategy",
         "natural",
         "sciences"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "15-1244.00",
@@ -11971,7 +12450,8 @@
         "computer",
         "systems",
         "administrators"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "43-4141.00",
@@ -11991,7 +12471,8 @@
         "administrative",
         "accounts",
         "clerks"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "27-3023.00",
@@ -12026,7 +12507,8 @@
         "analysts",
         "reporters",
         "journalists"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "17-2161.00",
@@ -12050,7 +12532,8 @@
         "technical",
         "nuclear",
         "engineers"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "29-2033.00",
@@ -12074,7 +12557,8 @@
         "science",
         "nuclear",
         "technologists"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "51-8011.00",
@@ -12095,7 +12579,8 @@
         "nuclear",
         "power",
         "reactor"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "19-4051.00",
@@ -12114,7 +12599,8 @@
         "analysis",
         "nuclear",
         "technicians"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "29-1151.00",
@@ -12136,7 +12622,8 @@
         "science",
         "nurse",
         "anesthetists"
-      ]
+      ],
+      "education": "Master's degree"
     },
     {
       "code": "29-1161.00",
@@ -12156,7 +12643,8 @@
         "science",
         "nurse",
         "midwives"
-      ]
+      ],
+      "education": "Master's degree"
     },
     {
       "code": "29-1171.00",
@@ -12189,7 +12677,8 @@
         "science",
         "nurse",
         "practitioners"
-      ]
+      ],
+      "education": "Master's degree"
     },
     {
       "code": "31-1131.00",
@@ -12213,7 +12702,8 @@
         "support",
         "people",
         "nursing"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "25-1072.00",
@@ -12236,7 +12726,8 @@
         "instructors",
         "teachers",
         "postsecondary"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "19-5011.00",
@@ -12261,7 +12752,8 @@
         "occupational",
         "health",
         "safety"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "19-5012.00",
@@ -12285,7 +12777,8 @@
         "health",
         "safety",
         "technicians"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "29-1122.00",
@@ -12305,7 +12798,8 @@
         "science",
         "occupational",
         "therapists"
-      ]
+      ],
+      "education": "Master's degree"
     },
     {
       "code": "31-2012.00",
@@ -12328,7 +12822,8 @@
         "occupational",
         "therapy",
         "aides"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "31-2011.00",
@@ -12349,7 +12844,8 @@
         "people",
         "occupational",
         "therapy"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "43-9061.00",
@@ -12369,7 +12865,8 @@
         "detail",
         "administrative",
         "clerks"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "43-9071.00",
@@ -12395,7 +12892,8 @@
         "administrative",
         "machine",
         "computer"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "47-2073.00",
@@ -12425,7 +12923,8 @@
         "operating",
         "engineers",
         "equipment"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "15-2031.00",
@@ -12446,7 +12945,8 @@
         "operations",
         "research",
         "analysts"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "51-9083.00",
@@ -12473,7 +12973,8 @@
         "ophthalmic",
         "laboratory",
         "technicians"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "29-2057.00",
@@ -12494,7 +12995,8 @@
         "ophthalmic",
         "medical",
         "technicians"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "29-2081.00",
@@ -12520,7 +13022,8 @@
         "science",
         "opticians",
         "dispensing"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "29-1041.00",
@@ -12538,7 +13041,8 @@
         "people",
         "science",
         "optometrists"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "43-4151.00",
@@ -12562,7 +13066,8 @@
         "administrative",
         "order",
         "clerks"
-      ]
+      ],
+      "education": "Some college, no degree"
     },
     {
       "code": "31-1132.00",
@@ -12582,7 +13087,8 @@
         "support",
         "people",
         "orderlies"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "29-2091.00",
@@ -12609,7 +13115,8 @@
         "science",
         "orthotists",
         "prosthetists"
-      ]
+      ],
+      "education": "Master's degree"
     },
     {
       "code": "49-3053.00",
@@ -12642,7 +13149,8 @@
         "small",
         "engine",
         "mechanics"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-9111.00",
@@ -12668,7 +13176,8 @@
         "filling",
         "machine",
         "tenders"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "53-7064.00",
@@ -12693,7 +13202,8 @@
         "packers",
         "packagers",
         "hand"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "47-2141.00",
@@ -12717,7 +13227,8 @@
         "hands-on",
         "painters",
         "maintenance"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "51-9123.00",
@@ -12739,7 +13250,8 @@
         "painting",
         "coating",
         "decorating"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "51-9196.00",
@@ -12768,7 +13280,8 @@
         "machine",
         "setters",
         "tenders"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "47-2142.00",
@@ -12787,7 +13300,8 @@
         "trades",
         "hands-on",
         "paperhangers"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "23-2011.00",
@@ -12809,7 +13323,8 @@
         "argument",
         "paralegals",
         "legal"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "29-2043.00",
@@ -12828,7 +13343,8 @@
         "people",
         "science",
         "paramedics"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "53-6021.00",
@@ -12849,7 +13365,8 @@
         "logistics",
         "parking",
         "attendants"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "33-3041.00",
@@ -12868,7 +13385,8 @@
         "physical",
         "parking",
         "enforcement"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "41-2022.00",
@@ -12889,7 +13407,8 @@
         "people",
         "parts",
         "salespersons"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "53-6061.00",
@@ -12909,7 +13428,8 @@
         "logistics",
         "passenger",
         "attendants"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-4062.00",
@@ -12927,7 +13447,8 @@
         "patternmakers",
         "metal",
         "plastic"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-7032.00",
@@ -12944,7 +13465,8 @@
         "hands-on",
         "patternmakers",
         "wood"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "47-2071.00",
@@ -12969,7 +13491,8 @@
         "surfacing",
         "tamping",
         "equipment"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "43-3051.00",
@@ -12993,7 +13516,8 @@
         "payroll",
         "timekeeping",
         "clerks"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "29-1221.00",
@@ -13018,7 +13542,8 @@
         "people",
         "science",
         "pediatricians"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "13-2052.00",
@@ -13044,7 +13569,8 @@
         "personal",
         "financial",
         "advisors"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "37-2021.00",
@@ -13068,7 +13594,8 @@
         "hands-on",
         "pest",
         "control"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "37-3012.00",
@@ -13092,7 +13619,8 @@
         "sprayers",
         "applicators",
         "vegetation"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "17-2171.00",
@@ -13114,7 +13642,8 @@
         "technical",
         "petroleum",
         "engineers"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "51-8093.00",
@@ -13142,7 +13671,8 @@
         "system",
         "refinery",
         "gaugers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "29-1051.00",
@@ -13164,7 +13694,8 @@
         "people",
         "science",
         "pharmacists"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "31-9095.00",
@@ -13187,7 +13718,8 @@
         "people",
         "pharmacy",
         "aides"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "29-2052.00",
@@ -13209,7 +13741,8 @@
         "science",
         "pharmacy",
         "technicians"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "25-1126.00",
@@ -13237,7 +13770,8 @@
         "religion",
         "teachers",
         "postsecondary"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "31-9097.00",
@@ -13256,7 +13790,8 @@
         "support",
         "people",
         "phlebotomists"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "27-4021.00",
@@ -13284,7 +13819,8 @@
         "media",
         "writing",
         "photographers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-9151.00",
@@ -13316,7 +13852,8 @@
         "process",
         "processing",
         "machine"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "31-2022.00",
@@ -13337,7 +13874,8 @@
         "physical",
         "therapist",
         "aides"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "31-2021.00",
@@ -13359,7 +13897,8 @@
         "people",
         "physical",
         "therapist"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "29-1123.00",
@@ -13384,7 +13923,8 @@
         "science",
         "physical",
         "therapists"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "29-1071.00",
@@ -13408,7 +13948,8 @@
         "people",
         "science",
         "physician"
-      ]
+      ],
+      "education": "Master's degree"
     },
     {
       "code": "19-2012.00",
@@ -13437,7 +13978,8 @@
         "research",
         "analysis",
         "physicists"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "25-1054.00",
@@ -13463,7 +14005,8 @@
         "physics",
         "teachers",
         "postsecondary"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "47-2072.00",
@@ -13483,7 +14026,8 @@
         "hands-on",
         "pile",
         "driver"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "47-2151.00",
@@ -13503,7 +14047,8 @@
         "trades",
         "hands-on",
         "pipelayers"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "47-2161.00",
@@ -13528,7 +14073,8 @@
         "plasterers",
         "stucco",
         "masons"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "51-4193.00",
@@ -13563,7 +14109,8 @@
         "tenders",
         "metal",
         "plastic"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "47-2152.00",
@@ -13594,7 +14141,8 @@
         "plumbers",
         "pipefitters",
         "steamfitters"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "29-1081.00",
@@ -13618,7 +14166,8 @@
         "people",
         "science",
         "podiatrists"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "33-3051.00",
@@ -13651,7 +14200,8 @@
         "sheriffs",
         "patrol",
         "officers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "25-1065.00",
@@ -13674,7 +14224,8 @@
         "science",
         "teachers",
         "postsecondary"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "19-3094.00",
@@ -13696,7 +14247,8 @@
         "analysis",
         "political",
         "scientists"
-      ]
+      ],
+      "education": "Master's degree"
     },
     {
       "code": "43-5051.00",
@@ -13720,7 +14272,8 @@
         "postal",
         "service",
         "clerks"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "43-5052.00",
@@ -13747,7 +14300,8 @@
         "service",
         "mail",
         "carriers"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "43-5053.00",
@@ -13776,7 +14330,8 @@
         "processors",
         "processing",
         "machine"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "11-9131.00",
@@ -13796,7 +14351,8 @@
         "postmasters",
         "mail",
         "superintendents"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-4052.00",
@@ -13820,7 +14376,8 @@
         "pourers",
         "casters",
         "metal"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-8012.00",
@@ -13841,7 +14398,8 @@
         "power",
         "distributors",
         "dispatchers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-8013.00",
@@ -13861,7 +14419,8 @@
         "hands-on",
         "power",
         "plant"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-5111.00",
@@ -13884,7 +14443,8 @@
         "hands-on",
         "prepress",
         "technicians"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "25-2011.00",
@@ -13911,7 +14471,8 @@
         "preschool",
         "teachers",
         "special"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "51-6021.00",
@@ -13938,7 +14499,8 @@
         "garment",
         "related",
         "materials"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "51-5113.00",
@@ -13968,7 +14530,8 @@
         "print",
         "binding",
         "finishing"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-5112.00",
@@ -13998,7 +14561,8 @@
         "hands-on",
         "printing",
         "press"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "33-9021.00",
@@ -14023,7 +14587,8 @@
         "private",
         "detectives",
         "investigators"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "21-1092.00",
@@ -14047,7 +14612,8 @@
         "officers",
         "correctional",
         "treatment"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "43-3061.00",
@@ -14067,7 +14633,8 @@
         "administrative",
         "procurement",
         "clerks"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "27-2012.00",
@@ -14100,7 +14667,8 @@
         "writing",
         "producers",
         "directors"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "43-5061.00",
@@ -14128,7 +14696,8 @@
         "planning",
         "expediting",
         "clerks"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "13-1082.00",
@@ -14147,7 +14716,8 @@
         "detail",
         "project",
         "management"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "43-9081.00",
@@ -14171,7 +14741,8 @@
         "proofreaders",
         "copy",
         "markers"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "11-9141.00",
@@ -14200,7 +14771,8 @@
         "estate",
         "community",
         "association"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "31-1133.00",
@@ -14221,7 +14793,8 @@
         "people",
         "psychiatric",
         "aides"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "29-2053.00",
@@ -14241,7 +14814,8 @@
         "science",
         "psychiatric",
         "technicians"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "25-1066.00",
@@ -14267,7 +14841,8 @@
         "psychology",
         "teachers",
         "postsecondary"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "11-2032.00",
@@ -14291,7 +14866,8 @@
         "strategy",
         "public",
         "relations"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "27-3031.00",
@@ -14321,7 +14897,8 @@
         "writing",
         "public",
         "relations"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "43-5031.00",
@@ -14351,7 +14928,8 @@
         "public",
         "safety",
         "telecommunicators"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "53-7072.00",
@@ -14372,7 +14950,8 @@
         "pump",
         "wellhead",
         "pumpers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "11-3061.00",
@@ -14394,7 +14973,8 @@
         "business",
         "strategy",
         "purchasing"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "29-1124.00",
@@ -14414,7 +14994,8 @@
         "science",
         "radiation",
         "therapists"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "49-2021.00",
@@ -14439,7 +15020,8 @@
         "equipment",
         "installers",
         "repairers"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "29-2034.00",
@@ -14464,7 +15046,8 @@
         "radiologic",
         "technologists",
         "technicians"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "49-3043.00",
@@ -14490,7 +15073,8 @@
         "repair",
         "rail",
         "repairers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "53-4013.00",
@@ -14516,7 +15100,8 @@
         "engineers",
         "dinkey",
         "hostlers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "47-4061.00",
@@ -14546,7 +15131,8 @@
         "laying",
         "maintenance",
         "equipment"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "53-4022.00",
@@ -14575,7 +15161,8 @@
         "switch",
         "locomotive",
         "firers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "53-4031.00",
@@ -14596,7 +15183,8 @@
         "railroad",
         "conductors",
         "yardmasters"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "41-9021.00",
@@ -14614,7 +15202,8 @@
         "real",
         "estate",
         "brokers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "41-9022.00",
@@ -14636,7 +15225,8 @@
         "real",
         "estate",
         "agents"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "43-4171.00",
@@ -14658,7 +15248,8 @@
         "receptionists",
         "information",
         "clerks"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "25-1193.00",
@@ -14685,7 +15276,8 @@
         "studies",
         "teachers",
         "postsecondary"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "39-9032.00",
@@ -14705,7 +15297,8 @@
         "service",
         "care",
         "recreation"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "29-1125.00",
@@ -14728,7 +15321,8 @@
         "science",
         "recreational",
         "therapists"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "49-3092.00",
@@ -14754,7 +15348,8 @@
         "vehicle",
         "service",
         "technicians"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "49-9045.00",
@@ -14778,7 +15373,8 @@
         "materials",
         "repairers",
         "brickmasons"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "53-7081.00",
@@ -14802,7 +15398,8 @@
         "recyclable",
         "material",
         "collectors"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "29-1141.00",
@@ -14835,7 +15432,8 @@
         "science",
         "registered",
         "nurses"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "21-1015.00",
@@ -14858,7 +15456,8 @@
         "communication",
         "rehabilitation",
         "counselors"
-      ]
+      ],
+      "education": "Master's degree"
     },
     {
       "code": "47-2171.00",
@@ -14881,7 +15480,8 @@
         "reinforcing",
         "iron",
         "rebar"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "43-4181.00",
@@ -14915,7 +15515,8 @@
         "agents",
         "travel",
         "clerks"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "39-9041.00",
@@ -14938,7 +15539,8 @@
         "care",
         "residential",
         "advisors"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "29-1126.00",
@@ -14963,7 +15565,8 @@
         "science",
         "respiratory",
         "therapists"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "41-2031.00",
@@ -14988,7 +15591,8 @@
         "people",
         "retail",
         "salespersons"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "49-9096.00",
@@ -15017,7 +15621,8 @@
         "hands-on",
         "repair",
         "riggers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "47-5051.00",
@@ -15037,7 +15642,8 @@
         "rock",
         "splitters",
         "quarry"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "51-4023.00",
@@ -15063,7 +15669,8 @@
         "tenders",
         "metal",
         "plastic"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "47-5043.00",
@@ -15084,7 +15691,8 @@
         "roof",
         "bolters",
         "mining"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "47-2181.00",
@@ -15108,7 +15716,8 @@
         "trades",
         "hands-on",
         "roofers"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "47-5012.00",
@@ -15133,7 +15742,8 @@
         "hands-on",
         "rotary",
         "drill"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "47-5071.00",
@@ -15155,7 +15765,8 @@
         "trades",
         "hands-on",
         "roustabouts"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "53-5011.00",
@@ -15181,7 +15792,8 @@
         "sailors",
         "marine",
         "oilers"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "41-9031.00",
@@ -15199,7 +15811,8 @@
         "communication",
         "people",
         "engineers"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "11-2022.00",
@@ -15222,7 +15835,8 @@
         "business",
         "strategy",
         "sales"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "41-3091.00",
@@ -15247,7 +15861,8 @@
         "insurance",
         "financial",
         "travel"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "41-4012.00",
@@ -15273,7 +15888,8 @@
         "technical",
         "scientific",
         "products"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "41-4011.00",
@@ -15301,7 +15917,8 @@
         "technical",
         "scientific",
         "products"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "51-7041.00",
@@ -15334,7 +15951,8 @@
         "setters",
         "tenders",
         "wood"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "33-9094.00",
@@ -15352,7 +15970,8 @@
         "physical",
         "school",
         "monitors"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "19-3034.00",
@@ -15369,7 +15988,8 @@
         "analysis",
         "school",
         "psychologists"
-      ]
+      ],
+      "education": "Master's degree"
     },
     {
       "code": "25-2031.00",
@@ -15396,7 +16016,8 @@
         "teachers",
         "special",
         "careertechnical"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "43-6014.00",
@@ -15419,7 +16040,8 @@
         "legal",
         "medical",
         "executive"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "41-3031.00",
@@ -15448,7 +16070,8 @@
         "financial",
         "services",
         "agents"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "49-2098.00",
@@ -15474,7 +16097,8 @@
         "alarm",
         "systems",
         "installers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "33-9032.00",
@@ -15496,7 +16120,8 @@
         "physical",
         "security",
         "guards"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "25-3021.00",
@@ -15517,7 +16142,8 @@
         "communication",
         "self-enrichment",
         "teachers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-9141.00",
@@ -15537,7 +16163,8 @@
         "semiconductor",
         "processing",
         "technicians"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-9012.00",
@@ -15568,7 +16195,8 @@
         "machine",
         "setters",
         "tenders"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "47-4071.00",
@@ -15595,7 +16223,8 @@
         "sewer",
         "pipe",
         "cleaners"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "47-5013.00",
@@ -15616,7 +16245,8 @@
         "hands-on",
         "service",
         "unit"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "27-1027.00",
@@ -15639,7 +16269,8 @@
         "writing",
         "exhibit",
         "designers"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "51-6051.00",
@@ -15659,7 +16290,8 @@
         "hands-on",
         "sewers",
         "hand"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "51-6031.00",
@@ -15682,7 +16314,8 @@
         "hands-on",
         "sewing",
         "machine"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "39-5093.00",
@@ -15700,7 +16333,8 @@
         "service",
         "care",
         "shampooers"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "47-2211.00",
@@ -15725,7 +16359,8 @@
         "hands-on",
         "sheet",
         "metal"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "53-5031.00",
@@ -15746,7 +16381,8 @@
         "logistics",
         "ship",
         "engineers"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "43-5071.00",
@@ -15780,7 +16416,8 @@
         "receiving",
         "inventory",
         "clerks"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-6041.00",
@@ -15806,7 +16443,8 @@
         "shoe",
         "leather",
         "repairers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-6042.00",
@@ -15832,7 +16470,8 @@
         "shoe",
         "machine",
         "tenders"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "53-3053.00",
@@ -15858,7 +16497,8 @@
         "shuttle",
         "drivers",
         "chauffeurs"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "49-9097.00",
@@ -15884,7 +16524,8 @@
         "track",
         "switch",
         "repairers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "39-5094.00",
@@ -15907,7 +16548,8 @@
         "service",
         "care",
         "skincare"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "51-3023.00",
@@ -15933,7 +16575,8 @@
         "slaughterers",
         "meat",
         "packers"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "11-9151.00",
@@ -15959,7 +16602,8 @@
         "social",
         "community",
         "service"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "21-1093.00",
@@ -15982,7 +16626,8 @@
         "communication",
         "human",
         "service"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "19-4061.00",
@@ -16004,7 +16649,8 @@
         "research",
         "analysis",
         "social"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "25-1113.00",
@@ -16027,7 +16673,8 @@
         "work",
         "teachers",
         "postsecondary"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "19-3041.00",
@@ -16047,7 +16694,8 @@
         "research",
         "analysis",
         "sociologists"
-      ]
+      ],
+      "education": "Master's degree"
     },
     {
       "code": "25-1067.00",
@@ -16068,7 +16716,8 @@
         "sociology",
         "teachers",
         "postsecondary"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "15-1252.00",
@@ -16100,7 +16749,8 @@
         "programming",
         "software",
         "developers"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "15-1253.00",
@@ -16125,7 +16775,8 @@
         "assurance",
         "analysts",
         "testers"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "19-1013.00",
@@ -16154,7 +16805,8 @@
         "soil",
         "plant",
         "scientists"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "47-2231.00",
@@ -16175,7 +16827,8 @@
         "solar",
         "photovoltaic",
         "installers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "27-4014.00",
@@ -16205,7 +16858,8 @@
         "sound",
         "engineering",
         "technicians"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "25-2057.00",
@@ -16226,7 +16880,8 @@
         "teachers",
         "middle",
         "school"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "25-2051.00",
@@ -16250,7 +16905,8 @@
         "special",
         "teachers",
         "preschool"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "25-2058.00",
@@ -16270,7 +16926,8 @@
         "teachers",
         "secondary",
         "school"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "27-1014.00",
@@ -16294,7 +16951,8 @@
         "effects",
         "artists",
         "animators"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "29-1127.00",
@@ -16319,7 +16977,8 @@
         "science",
         "speech-language",
         "pathologists"
-      ]
+      ],
+      "education": "Master's degree"
     },
     {
       "code": "51-8021.00",
@@ -16342,7 +17001,8 @@
         "stationary",
         "engineers",
         "boiler"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "43-9111.00",
@@ -16363,7 +17023,8 @@
         "detail",
         "administrative",
         "statistical"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "15-2041.00",
@@ -16391,7 +17052,8 @@
         "math",
         "programming",
         "statisticians"
-      ]
+      ],
+      "education": "Master's degree"
     },
     {
       "code": "53-7065.00",
@@ -16413,7 +17075,8 @@
         "stockers",
         "order",
         "fillers"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "47-2022.00",
@@ -16436,7 +17099,8 @@
         "trades",
         "hands-on",
         "stonemasons"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "47-2221.00",
@@ -16464,7 +17128,8 @@
         "structural",
         "iron",
         "steel"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-2041.00",
@@ -16484,7 +17149,8 @@
         "metal",
         "fabricators",
         "fitters"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "25-3031.00",
@@ -16504,7 +17170,8 @@
         "substitute",
         "teachers",
         "short-term"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "53-4041.00",
@@ -16528,7 +17195,8 @@
         "logistics",
         "subway",
         "streetcar"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "29-9093.00",
@@ -16546,7 +17214,8 @@
         "people",
         "science",
         "surgical"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "29-2055.00",
@@ -16568,7 +17237,8 @@
         "science",
         "surgical",
         "technologists"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "19-3022.00",
@@ -16587,7 +17257,8 @@
         "analysis",
         "survey",
         "researchers"
-      ]
+      ],
+      "education": "Master's degree"
     },
     {
       "code": "17-3031.00",
@@ -16614,7 +17285,8 @@
         "surveying",
         "mapping",
         "technicians"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "17-1022.00",
@@ -16639,7 +17311,8 @@
         "math",
         "technical",
         "surveyors"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "43-2011.00",
@@ -16661,7 +17334,8 @@
         "switchboard",
         "answering",
         "service"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-6052.00",
@@ -16690,7 +17364,8 @@
         "dressmakers",
         "custom",
         "sewers"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "53-7121.00",
@@ -16716,7 +17391,8 @@
         "truck",
         "ship",
         "loaders"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "47-2082.00",
@@ -16734,7 +17410,8 @@
         "trades",
         "hands-on",
         "tapers"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "13-2081.00",
@@ -16765,7 +17442,8 @@
         "collectors",
         "revenue",
         "agents"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "13-2082.00",
@@ -16787,7 +17465,8 @@
         "analysis",
         "detail",
         "preparers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "53-3054.00",
@@ -16805,7 +17484,8 @@
         "logistics",
         "taxi",
         "drivers"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "25-9044.00",
@@ -16824,7 +17504,8 @@
         "people",
         "communication",
         "postsecondary"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "27-3042.00",
@@ -16848,7 +17529,8 @@
         "writing",
         "technical",
         "writers"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "49-2022.00",
@@ -16873,7 +17555,8 @@
         "equipment",
         "installers",
         "repairers"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "49-9052.00",
@@ -16899,7 +17582,8 @@
         "telecommunications",
         "installers",
         "repairers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "41-9041.00",
@@ -16920,7 +17604,8 @@
         "communication",
         "people",
         "telemarketers"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "43-2021.00",
@@ -16942,7 +17627,8 @@
         "detail",
         "administrative",
         "telephone"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "43-3071.00",
@@ -16968,7 +17654,8 @@
         "detail",
         "administrative",
         "tellers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "47-2053.00",
@@ -16994,7 +17681,8 @@
         "hands-on",
         "terrazzo",
         "finishers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-6061.00",
@@ -17018,7 +17706,8 @@
         "dyeing",
         "machine",
         "tenders"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-6062.00",
@@ -17045,7 +17734,8 @@
         "machine",
         "setters",
         "tenders"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-6063.00",
@@ -17072,7 +17762,8 @@
         "machine",
         "setters",
         "tenders"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-6064.00",
@@ -17098,7 +17789,8 @@
         "machine",
         "setters",
         "tenders"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "47-2044.00",
@@ -17122,7 +17814,8 @@
         "tile",
         "stone",
         "setters"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "51-2061.00",
@@ -17144,7 +17837,8 @@
         "device",
         "assemblers",
         "adjusters"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-9197.00",
@@ -17165,7 +17859,8 @@
         "hands-on",
         "tire",
         "builders"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "49-3093.00",
@@ -17190,7 +17885,8 @@
         "tire",
         "repairers",
         "changers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "23-2093.00",
@@ -17223,7 +17919,8 @@
         "examiners",
         "abstractors",
         "searchers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-4111.00",
@@ -17245,7 +17942,8 @@
         "hands-on",
         "tool",
         "makers"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "51-4194.00",
@@ -17267,7 +17965,8 @@
         "grinders",
         "filers",
         "sharpeners"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "53-6041.00",
@@ -17288,7 +17987,8 @@
         "logistics",
         "traffic",
         "technicians"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "11-3131.00",
@@ -17309,7 +18009,8 @@
         "strategy",
         "training",
         "development"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "13-1151.00",
@@ -17334,7 +18035,8 @@
         "detail",
         "training",
         "development"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "33-3052.00",
@@ -17356,7 +18058,8 @@
         "transit",
         "railroad",
         "police"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "53-6051.00",
@@ -17382,7 +18085,8 @@
         "hands-on",
         "logistics",
         "inspectors"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "33-9093.00",
@@ -17404,7 +18108,8 @@
         "transportation",
         "security",
         "screeners"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "11-3071.00",
@@ -17432,7 +18137,8 @@
         "transportation",
         "storage",
         "distribution"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "41-3041.00",
@@ -17455,7 +18161,8 @@
         "people",
         "travel",
         "agents"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "37-3013.00",
@@ -17477,7 +18184,8 @@
         "tree",
         "trimmers",
         "pruners"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "25-3041.00",
@@ -17497,7 +18205,8 @@
         "people",
         "communication",
         "tutors"
-      ]
+      ],
+      "education": "Some college, no degree"
     },
     {
       "code": "27-2023.00",
@@ -17528,7 +18237,8 @@
         "referees",
         "sports",
         "officials"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-6093.00",
@@ -17549,7 +18259,8 @@
         "manufacturing",
         "hands-on",
         "upholsterers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "19-3051.00",
@@ -17570,7 +18281,8 @@
         "urban",
         "regional",
         "planners"
-      ]
+      ],
+      "education": "Master's degree"
     },
     {
       "code": "39-3031.00",
@@ -17595,7 +18307,8 @@
         "attendants",
         "ticket",
         "takers"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "29-1131.00",
@@ -17625,7 +18338,8 @@
         "people",
         "science",
         "veterinarians"
-      ]
+      ],
+      "education": "Doctoral or professional degree"
     },
     {
       "code": "31-9096.00",
@@ -17648,7 +18362,8 @@
         "laboratory",
         "animal",
         "caretakers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "29-2056.00",
@@ -17677,7 +18392,8 @@
         "veterinary",
         "technologists",
         "technicians"
-      ]
+      ],
+      "education": "Associate's degree"
     },
     {
       "code": "35-3031.00",
@@ -17699,7 +18415,8 @@
         "hands-on",
         "waiters",
         "waitresses"
-      ]
+      ],
+      "education": "No formal educational credential"
     },
     {
       "code": "49-9064.00",
@@ -17725,7 +18442,8 @@
         "watch",
         "clock",
         "repairers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-8031.00",
@@ -17752,7 +18470,8 @@
         "treatment",
         "plant",
         "system"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "15-1255.00",
@@ -17773,7 +18492,8 @@
         "digital",
         "interface",
         "designers"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "15-1254.00",
@@ -17794,7 +18514,8 @@
         "math",
         "programming",
         "developers"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "43-5111.00",
@@ -17824,7 +18545,8 @@
         "checkers",
         "samplers",
         "recordkeeping"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-4121.00",
@@ -17852,7 +18574,8 @@
         "cutters",
         "solderers",
         "brazers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "51-4122.00",
@@ -17883,7 +18606,8 @@
         "machine",
         "setters",
         "tenders"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "53-7073.00",
@@ -17902,7 +18626,8 @@
         "logistics",
         "wellhead",
         "pumpers"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "49-9081.00",
@@ -17925,7 +18650,8 @@
         "turbine",
         "service",
         "technicians"
-      ]
+      ],
+      "education": "Postsecondary nondegree award"
     },
     {
       "code": "51-7042.00",
@@ -17952,7 +18678,8 @@
         "setters",
         "tenders",
         "sawing"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "43-9022.00",
@@ -17976,7 +18703,8 @@
         "word",
         "processors",
         "typists"
-      ]
+      ],
+      "education": "High school diploma or equivalent"
     },
     {
       "code": "27-3043.00",
@@ -18009,7 +18737,8 @@
         "writing",
         "writers",
         "authors"
-      ]
+      ],
+      "education": "Bachelor's degree"
     },
     {
       "code": "19-1023.00",
@@ -18038,7 +18767,8 @@
         "zoologists",
         "wildlife",
         "biologists"
-      ]
+      ],
+      "education": "Bachelor's degree"
     }
   ]
 }

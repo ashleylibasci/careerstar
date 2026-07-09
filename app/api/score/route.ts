@@ -36,6 +36,7 @@ export async function POST(request: Request) {
     fieldGroups?: unknown;
     interests?: unknown;
     riskPriority?: unknown;
+    weights?: unknown;
   } | null;
 
   const asStrings = (v: unknown): string[] =>
@@ -58,12 +59,22 @@ export async function POST(request: Request) {
     text = validation.text;
   }
 
-  // Optional priority slider (0 = ignore AI risk … 1 = weigh it heavily) → gamma.
-  const rp =
-    typeof bodyObj?.riskPriority === "number"
-      ? Math.max(0, Math.min(1, bodyObj.riskPriority))
-      : undefined;
-  const weights = rp !== undefined ? { gamma: 0.2 + 0.8 * rp } : undefined;
+  // Model-tuning weights (all clamped 0–1). Falls back to the legacy
+  // riskPriority → gamma mapping for older clients.
+  const ALLOWED_WEIGHTS = ["wGrowth", "wPay", "wExposure", "wVolatility", "gamma", "alpha"];
+  let weights: Record<string, number> | undefined;
+  const rawWeights = bodyObj?.weights;
+  if (rawWeights && typeof rawWeights === "object") {
+    const w: Record<string, number> = {};
+    for (const k of ALLOWED_WEIGHTS) {
+      const v = (rawWeights as Record<string, unknown>)[k];
+      if (typeof v === "number" && Number.isFinite(v)) w[k] = Math.max(0, Math.min(1, v));
+    }
+    if (Object.keys(w).length) weights = w;
+  }
+  if (!weights && typeof bodyObj?.riskPriority === "number") {
+    weights = { gamma: 0.2 + 0.8 * Math.max(0, Math.min(1, bodyObj.riskPriority)) };
+  }
 
   const validCodes = new Set(dataset.map((o) => o.code));
   const parsed = text ? parseInput(text, dataset) : { candidateCodes: [], interests: [] };

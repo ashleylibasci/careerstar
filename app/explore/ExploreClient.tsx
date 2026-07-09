@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { FIELDS } from "@/lib/fields";
+import { EDUCATION_LEVELS } from "@/lib/education";
 import { scoreBand, type Tone } from "@/lib/scorer/verdict";
 
 interface Row {
@@ -15,6 +16,9 @@ interface Row {
   resilience: number;
   group: string;
   field: string;
+  education: string;
+  educationShort: string;
+  roi: number;
 }
 
 const TONE: Record<Tone, string> = {
@@ -28,12 +32,14 @@ const SORTS: { key: keyof Row; label: string }[] = [
   { key: "resilience", label: "AI-resilience" },
   { key: "growthPct", label: "Projected growth" },
   { key: "medianPay", label: "Median pay" },
+  { key: "roi", label: "Best ROI (pay ÷ schooling)" },
 ];
 
 export default function ExploreClient() {
   const [rows, setRows] = useState<Row[]>([]);
   const [sortKey, setSortKey] = useState<keyof Row>("score");
   const [field, setField] = useState("all");
+  const [edu, setEdu] = useState("all");
   const [minPay, setMinPay] = useState(0);
   const [search, setSearch] = useState("");
 
@@ -50,12 +56,13 @@ export default function ExploreClient() {
       .filter(
         (r) =>
           (field === "all" || r.group === field) &&
+          (edu === "all" || r.education === edu) &&
           r.medianPay >= minPay &&
           (q === "" || r.title.toLowerCase().includes(q)),
       )
       .sort((a, b) => (b[sortKey] as number) - (a[sortKey] as number))
       .slice(0, 150);
-  }, [rows, sortKey, field, minPay, search]);
+  }, [rows, sortKey, field, edu, minPay, search]);
 
   const inputCls =
     "rounded-lg border border-foreground/15 bg-background px-3 py-1.5 text-sm outline-none focus-visible:ring-2 focus-visible:ring-blue-500";
@@ -75,6 +82,12 @@ export default function ExploreClient() {
           <option value="all">All fields</option>
           {FIELDS.map((f) => (
             <option key={f.group} value={f.group}>{f.name}</option>
+          ))}
+        </select>
+        <select aria-label="Filter by education" value={edu} onChange={(e) => setEdu(e.target.value)} className={inputCls}>
+          <option value="all">Any education</option>
+          {EDUCATION_LEVELS.map((l) => (
+            <option key={l} value={l}>{l}</option>
           ))}
         </select>
         <select aria-label="Filter by minimum pay" value={minPay} onChange={(e) => setMinPay(Number(e.target.value))} className={inputCls}>
@@ -101,6 +114,7 @@ export default function ExploreClient() {
             <tr className="border-b border-foreground/10 text-left text-xs text-foreground/60">
               <th scope="col" className="py-2 pr-3 font-medium">Career</th>
               <th scope="col" className="py-2 px-3 font-medium">Field</th>
+              <th scope="col" className="py-2 px-3 font-medium">Education</th>
               <th scope="col" className="py-2 px-3 text-right font-medium">Score</th>
               <th scope="col" className="py-2 px-3 text-right font-medium">Growth</th>
               <th scope="col" className="py-2 px-3 text-right font-medium">Pay</th>
@@ -116,6 +130,7 @@ export default function ExploreClient() {
                   </Link>
                 </td>
                 <td className="py-2 px-3 text-foreground/60">{r.field}</td>
+                <td className="py-2 px-3 text-foreground/60">{r.educationShort}</td>
                 <td className={`py-2 px-3 text-right font-semibold tabular-nums ${TONE[scoreBand(r.score).tone]}`}>{r.score}</td>
                 <td className="py-2 px-3 text-right tabular-nums text-foreground/70">
                   {r.growthPct >= 0 ? "+" : ""}{r.growthPct}%

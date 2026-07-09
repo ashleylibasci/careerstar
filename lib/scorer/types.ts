@@ -17,6 +17,8 @@ export interface Occupation {
   skills: string[];
   /** Alternate job titles (from BLS) — used for synonym search. */
   aliases?: string[];
+  /** Typical entry-level education (BLS). */
+  education?: string;
 }
 
 export interface ScoreComponents {

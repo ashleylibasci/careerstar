@@ -2,6 +2,7 @@ import data from "@/data/data.json";
 import type { Occupation } from "@/lib/scorer/types";
 import { computeScores } from "@/lib/scorer/scorer";
 import { fieldName } from "@/lib/fields";
+import { educationShort, roi } from "@/lib/education";
 
 const dataset = (data as { occupations: Occupation[] }).occupations;
 
@@ -28,6 +29,9 @@ const list = scored
       resilience: r.breakdown?.resilience ?? 100 - r.components.risk,
       group,
       field: fieldName(group),
+      education: o.education ?? "",
+      educationShort: educationShort(o.education),
+      roi: roi(o.medianPay, o.education),
     };
   })
   .sort((a, b) => b.score - a.score);

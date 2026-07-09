@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import data from "@/data/data.json";
 import { fieldName } from "@/lib/fields";
+import { roi } from "@/lib/education";
 import type { Occupation } from "@/lib/scorer/types";
 
 const OCCUPATIONS = (data as { occupations: Occupation[] }).occupations;
@@ -74,6 +75,10 @@ export default async function CareerPage({
           {fieldName(group)}
         </p>
         <h1 className="mt-1 text-3xl font-bold tracking-tight">{occ.title}</h1>
+        <p className="mt-2 text-sm text-foreground/60">
+          Typically requires {occ.education || "no formal credential"} · ROI ≈ $
+          {roi(occ.medianPay, occ.education).toLocaleString()}/yr of schooling
+        </p>
 
         <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
           <Stat

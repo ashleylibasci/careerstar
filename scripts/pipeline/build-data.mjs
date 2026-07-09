@@ -125,6 +125,8 @@ for (const row of bls) {
   const group = soc.slice(0, 2);
   const tags = Array.from(new Set([...(GROUP_TAGS[group] || []), ...titleTags(title)]));
 
+  const education = String(row["Typical Entry-Level Education"] || "").trim();
+
   occupations.push({
     code: onetCode,
     title,
@@ -133,6 +135,7 @@ for (const row of bls) {
     medianPay: Math.round(pay),
     aiExposure: Math.round(beta * 1000) / 1000,
     skills: tags,
+    education,
   });
 }
 
