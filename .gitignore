@@ -42,3 +42,7 @@ next-env.d.ts
 
 # Allow the (secret-free) env template
 !.env.local.example
+
+# Large College Scorecard source CSVs (processed offline, not committed)
+data/sources/Most-Recent-Cohorts-Field-of-Study.csv
+data/sources/Most-Recent-Cohorts-Institution.csv
