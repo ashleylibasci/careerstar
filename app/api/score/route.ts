@@ -4,6 +4,8 @@ import { computeScores } from "@/lib/scorer/scorer";
 import { parseInput } from "@/lib/scorer/parse";
 import { findRedirect, VIABILITY_THRESHOLD } from "@/lib/scorer/redirect";
 import { explainResults } from "@/lib/explain/explain";
+import { validateInput } from "@/lib/security/limits";
+import { rateLimit, clientKey } from "@/lib/security/rate-limit";
 
 // POST /api/score  — body: { text: string }
 // Real scoring (Stories 2.3 + 2.4): parse free text → occupations + interests,
@@ -11,6 +13,15 @@ import { explainResults } from "@/lib/explain/explain";
 const dataset = (data as { occupations: Occupation[] }).occupations;
 
 export async function POST(request: Request) {
+  // Rate limit before any work (abuse / cost control).
+  const limit = rateLimit(clientKey(request));
+  if (!limit.allowed) {
+    return Response.json(
+      { error: "Too many requests. Please wait a moment and try again." },
+      { status: 429, headers: { "Retry-After": String(limit.retryAfter) } },
+    );
+  }
+
   let body: unknown;
   try {
     body = await request.json();
@@ -18,13 +29,11 @@ export async function POST(request: Request) {
     return Response.json({ error: "Invalid JSON body." }, { status: 400 });
   }
 
-  const text = (body as { text?: unknown } | null)?.text;
-  if (typeof text !== "string" || text.trim().length === 0) {
-    return Response.json(
-      { error: "Please enter your interests and the paths you're weighing." },
-      { status: 400 },
-    );
+  const validation = validateInput((body as { text?: unknown } | null)?.text);
+  if (!validation.ok) {
+    return Response.json({ error: validation.error }, { status: validation.status });
   }
+  const text = validation.text;
 
   const { candidateCodes, interests } = parseInput(text, dataset);
 

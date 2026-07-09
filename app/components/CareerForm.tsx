@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import Link from "next/link";
 import type { ScoreResponse } from "@/lib/scorer/types";
 import ScoreCard from "./ScoreCard";
 
@@ -90,9 +91,9 @@ export default function CareerForm() {
             A grounded estimate, not a prediction. Scores blend BLS growth &amp; pay
             (~2023) with AI-exposure research — and <strong>AI exposure is not the
             same as job loss</strong>. See{" "}
-            <a href="/methodology" className="underline hover:text-foreground/70">
+            <Link href="/methodology" className="underline hover:text-foreground/70">
               how scores are calculated
-            </a>
+            </Link>
             .
           </p>
         </div>
