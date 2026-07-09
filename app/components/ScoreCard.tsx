@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { ScoreResult } from "@/lib/scorer/types";
 import { scoreBand, type Tone } from "@/lib/scorer/verdict";
 
@@ -108,6 +109,12 @@ export default function ScoreCard({ result, top = false }: { result: ScoreResult
           </div>
         </details>
       )}
+
+      <div className="mt-3">
+        <Link href={`/career/${result.code}`} className="text-xs text-blue-600 hover:underline">
+          View full details →
+        </Link>
+      </div>
     </div>
   );
 }

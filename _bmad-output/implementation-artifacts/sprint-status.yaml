@@ -51,37 +51,37 @@ story_location: _bmad-output/implementation-artifacts
 development_status:
   # Epic 1: Live Walking Skeleton
   epic-1: in-progress
-  1-1-scaffold-the-next-js-foundation: in-progress
-  1-2-single-screen-input-ui: backlog
-  1-3-score-endpoint-returning-a-placeholder-card: backlog
-  1-4-deploy-the-walking-skeleton-to-aws: backlog
+  1-1-scaffold-the-next-js-foundation: review
+  1-2-single-screen-input-ui: review
+  1-3-score-endpoint-returning-a-placeholder-card: review
+  1-4-deploy-the-walking-skeleton-to-aws: review
   epic-1-retrospective: optional
 
   # Epic 2: The Rating Engine
-  epic-2: backlog
-  2-1-build-the-offline-data-pipeline-data-json: backlog
-  2-2-implement-the-deterministic-scorer-module: backlog
-  2-3-parse-free-text-into-occupations-interest-signals: backlog
-  2-4-wire-real-scores-into-the-results-cards: backlog
+  epic-2: in-progress
+  2-1-build-the-offline-data-pipeline-data-json: review
+  2-2-implement-the-deterministic-scorer-module: review
+  2-3-parse-free-text-into-occupations-interest-signals: review
+  2-4-wire-real-scores-into-the-results-cards: review
   epic-2-retrospective: optional
 
   # Epic 3: Make It Legible & Kind
-  epic-3: backlog
-  3-1-llm-explanation-layer: backlog
-  3-2-redirect-to-a-stronger-adjacent-path: backlog
-  3-3-limitations-and-honest-framing: backlog
-  3-4-methodology-and-sources-page: backlog
+  epic-3: in-progress
+  3-1-llm-explanation-layer: review
+  3-2-redirect-to-a-stronger-adjacent-path: review
+  3-3-limitations-and-honest-framing: review
+  3-4-methodology-and-sources-page: review
   epic-3-retrospective: optional
 
   # Epic 4: Trust & Safety Hardening
-  epic-4: backlog
-  4-1-treat-free-text-as-data-prompt-injection-defense: backlog
-  4-2-input-validation-and-length-caps: backlog
-  4-3-rate-limiting-and-cost-control: backlog
-  4-4-secrets-management-and-secure-deployment-posture: backlog
+  epic-4: in-progress
+  4-1-treat-free-text-as-data-prompt-injection-defense: review
+  4-2-input-validation-and-length-caps: review
+  4-3-rate-limiting-and-cost-control: review
+  4-4-secrets-management-and-secure-deployment-posture: review
   epic-4-retrospective: optional
 
   # Epic 5: "How It's Built" Page
-  epic-5: backlog
-  5-1-public-architecture-page: backlog
+  epic-5: in-progress
+  5-1-public-architecture-page: review
   epic-5-retrospective: optional

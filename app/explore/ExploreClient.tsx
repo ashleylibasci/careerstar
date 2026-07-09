@@ -68,22 +68,23 @@ export default function ExploreClient() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="🔍 Search…"
+          aria-label="Search careers"
           className={`${inputCls} flex-1 min-w-[140px]`}
         />
-        <select value={field} onChange={(e) => setField(e.target.value)} className={inputCls}>
+        <select aria-label="Filter by field" value={field} onChange={(e) => setField(e.target.value)} className={inputCls}>
           <option value="all">All fields</option>
           {FIELDS.map((f) => (
             <option key={f.group} value={f.group}>{f.name}</option>
           ))}
         </select>
-        <select value={minPay} onChange={(e) => setMinPay(Number(e.target.value))} className={inputCls}>
+        <select aria-label="Filter by minimum pay" value={minPay} onChange={(e) => setMinPay(Number(e.target.value))} className={inputCls}>
           <option value={0}>Any pay</option>
           <option value={50000}>$50k+</option>
           <option value={75000}>$75k+</option>
           <option value={100000}>$100k+</option>
           <option value={150000}>$150k+</option>
         </select>
-        <select value={sortKey} onChange={(e) => setSortKey(e.target.value as keyof Row)} className={inputCls}>
+        <select aria-label="Sort by" value={sortKey} onChange={(e) => setSortKey(e.target.value as keyof Row)} className={inputCls}>
           {SORTS.map((s) => (
             <option key={s.key} value={s.key}>Sort: {s.label}</option>
           ))}
@@ -91,26 +92,26 @@ export default function ExploreClient() {
       </div>
 
       <p className="mb-2 text-xs text-foreground/50">
-        {filtered.length} shown{filtered.length === 150 ? " (top 150)" : ""} · click a career to score it
+        {filtered.length} shown{filtered.length === 150 ? " (top 150)" : ""} · click a career for details
       </p>
 
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
-            <tr className="border-b border-foreground/10 text-left text-xs text-foreground/50">
-              <th className="py-2 pr-3 font-medium">Career</th>
-              <th className="py-2 px-3 font-medium">Field</th>
-              <th className="py-2 px-3 text-right font-medium">Score</th>
-              <th className="py-2 px-3 text-right font-medium">Growth</th>
-              <th className="py-2 px-3 text-right font-medium">Pay</th>
-              <th className="py-2 pl-3 text-right font-medium">Resilience</th>
+            <tr className="border-b border-foreground/10 text-left text-xs text-foreground/60">
+              <th scope="col" className="py-2 pr-3 font-medium">Career</th>
+              <th scope="col" className="py-2 px-3 font-medium">Field</th>
+              <th scope="col" className="py-2 px-3 text-right font-medium">Score</th>
+              <th scope="col" className="py-2 px-3 text-right font-medium">Growth</th>
+              <th scope="col" className="py-2 px-3 text-right font-medium">Pay</th>
+              <th scope="col" className="py-2 pl-3 text-right font-medium">Resilience</th>
             </tr>
           </thead>
           <tbody>
             {filtered.map((r) => (
               <tr key={r.code} className="border-b border-foreground/5 hover:bg-foreground/[.03]">
                 <td className="py-2 pr-3">
-                  <Link href={`/?careers=${r.code}`} className="font-medium hover:text-blue-600 hover:underline">
+                  <Link href={`/career/${r.code}`} className="font-medium hover:text-blue-600 hover:underline">
                     {r.title}
                   </Link>
                 </td>

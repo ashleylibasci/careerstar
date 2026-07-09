@@ -4,7 +4,7 @@ baseline_commit: NO_VCS
 
 # Story 1.1: Scaffold the Next.js foundation
 
-Status: in-progress
+Status: review
 
 <!-- First story of Epic 1 (Live Walking Skeleton). Greenfield starter per Architecture Spine AD-1. -->
 
@@ -23,21 +23,21 @@ so that all future CareerStar work builds on a consistent, conventional foundati
 
 ## Tasks / Subtasks
 
-- [ ] Task 1: Scaffold the app (AC: 1)
-  - [ ] Run `npx create-next-app@latest .` (in the project root) with non-interactive flags: TypeScript, App Router, ESLint, Tailwind CSS, no `src/` dir, import alias `@/*`.
-  - [ ] Suggested command: `npx create-next-app@latest . --ts --app --eslint --tailwind --no-src-dir --import-alias "@/*"` (Turbopack is the default bundler in Next.js 16; ensure Node 20+).
-  - [ ] Verify `npm run dev` serves the default page at `localhost:3000`.
-- [ ] Task 2: Establish the agreed repo structure (AC: 2)
-  - [ ] Create top-level dirs: `lib/` (with `lib/scorer/` and `lib/security/` subdirs), `data/`, `scripts/` (with `scripts/pipeline/`).
-  - [ ] Add a `.gitkeep` to each otherwise-empty dir so it is tracked.
-  - [ ] Do NOT implement any scorer, security, pipeline, or data logic yet — those are later stories. This story only creates the skeleton dirs.
-- [ ] Task 3: Verify tooling (AC: 3)
-  - [ ] Confirm `npm run lint` passes.
-  - [ ] Confirm `npm run build` passes.
-- [ ] Task 4: Git + docs (AC: 4)
-  - [ ] Ensure `.gitignore` covers `node_modules/`, `.next/`, `.env*`, build output.
-  - [ ] Write a minimal `README.md`: project name (CareerStar), one-line description, "how to run" (`npm install`, `npm run dev`).
-  - [ ] `git init` (if needed) and make an initial commit.
+- [x] Task 1: Scaffold the app (AC: 1)
+  - [x] Run `create-next-app@latest` with non-interactive flags: TypeScript, App Router, ESLint, Tailwind CSS, no `src/` dir, import alias `@/*`. (Scaffolded to a temp dir and merged into the root, because `create-next-app` refuses to run in a dir already containing `_bmad/` / `_bmad-output/`.)
+  - [x] Next.js 16.2.10, React 19.2.4, Turbopack default, Node 26 (≥20).
+  - [x] Verified `npm run dev` serves the default page at `localhost:3000` (HTTP 200).
+- [x] Task 2: Establish the agreed repo structure (AC: 2)
+  - [x] Created `lib/scorer/`, `lib/security/`, `data/`, `scripts/pipeline/`.
+  - [x] Added `.gitkeep` to each empty dir so it is tracked.
+  - [x] No scorer/security/pipeline/data logic implemented — skeleton dirs only.
+- [x] Task 3: Verify tooling (AC: 3)
+  - [x] `npm run lint` passes (no errors).
+  - [x] `npm run build` passes (compiled + static generation, exit 0).
+- [x] Task 4: Git + docs (AC: 4)
+  - [x] `.gitignore` covers `/node_modules`, `/.next/`, `.env*` (from the scaffold default).
+  - [x] Wrote a CareerStar `README.md` (description + how to run) and renamed the package to `careerstar`.
+  - [x] `git init` + initial commit `9dbee30`.
 
 ## Dev Notes
 
@@ -80,12 +80,29 @@ Create the dirs now (with `.gitkeep`); leave them empty otherwise.
 
 ### Agent Model Used
 
-_(to be filled by dev-story)_
+claude-opus-4-8 (BMAD dev-story)
 
 ### Debug Log References
 
+- `npm install` initially failed with `ENOSPC` (disk 100% full, ~156 MB free). Resolved by removing the broken partial `node_modules` and clearing the 2 GB npm cache (`npm cache clean --force`) → ~2.3 GB free, then reinstalled successfully.
+- `npm` blocked post-install scripts for `sharp` and `unrs-resolver` (newer npm default). Not blocking — `next build` and lint both pass; `sharp` only affects production image optimization, revisit if `next/image` optimization is needed.
+
 ### Completion Notes List
 
+- Scaffolded Next.js 16.2.10 (App Router, TypeScript, Tailwind, Turbopack) via `create-next-app`; merged into the project root alongside the existing `_bmad/` folders.
+- Created the repo skeleton (`lib/scorer`, `lib/security`, `data`, `scripts/pipeline`) with `.gitkeep`.
+- Verified all ACs: dev server → HTTP 200; `lint` clean; `build` exit 0; git repo initialized with initial commit and `.gitignore` excluding `node_modules`/`.next`/`.env*`.
 - Ultimate context engine analysis completed — comprehensive developer guide created.
 
 ### File List
+
+- `package.json` (new, name = careerstar), `package-lock.json` (new)
+- `next.config.ts`, `tsconfig.json`, `eslint.config.mjs`, `postcss.config.mjs`, `next-env.d.ts` (new)
+- `app/` — `layout.tsx`, `page.tsx`, `globals.css`, `favicon.ico` (new, scaffold defaults)
+- `public/` (new, scaffold assets)
+- `README.md` (rewritten for CareerStar), `.gitignore`, `AGENTS.md`, `CLAUDE.md` (new)
+- `lib/scorer/.gitkeep`, `lib/security/.gitkeep`, `data/.gitkeep`, `scripts/pipeline/.gitkeep` (new)
+
+### Change Log
+
+- 2026-07-08: Scaffolded CareerStar Next.js 16 foundation; all ACs verified; initial commit `9dbee30`. Status → review.

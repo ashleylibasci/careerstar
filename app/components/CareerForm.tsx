@@ -300,6 +300,7 @@ export default function CareerForm() {
               <button
                 key={it.value}
                 type="button"
+                aria-pressed={on}
                 onClick={() =>
                   setInterests((x) =>
                     on ? x.filter((v) => v !== it.value) : [...x, it.value],
@@ -379,6 +380,8 @@ export default function CareerForm() {
               max={1}
               step={0.01}
               value={riskPriority}
+              aria-label="How much should AI and automation risk count"
+              aria-valuetext={`${Math.round(riskPriority * 100)}% weight on AI risk`}
               onChange={(e) => onSlider(Number(e.target.value))}
               className="mt-3 w-full accent-blue-600"
             />

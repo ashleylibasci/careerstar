@@ -31,9 +31,9 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <header className="sticky top-0 z-20 border-b border-foreground/10 bg-background/80 px-6 py-3 backdrop-blur">
-          <nav className="mx-auto flex max-w-3xl items-center gap-x-5 text-sm">
+          <nav className="mx-auto flex max-w-3xl flex-wrap items-center gap-x-4 gap-y-1 text-sm">
             <Link href="/" className="font-bold text-blue-600">★ CareerStar</Link>
-            <div className="flex gap-x-5 text-foreground/60">
+            <div className="flex flex-wrap gap-x-4 text-foreground/60">
               <Link href="/" className="hover:text-foreground">Home</Link>
               <Link href="/explore" className="hover:text-foreground">Explore</Link>
               <Link href="/methodology" className="hover:text-foreground">Methodology</Link>
