@@ -1,7 +1,7 @@
 {
   "meta": {
     "generated": "2026-07-08",
-    "occupationCount": 27,
+    "occupationCount": 65,
     "note": "MVP curated STEM/CS/quant/finance dataset. BLS growth/pay are approximate ~2023 OOH figures pending verification; skills are MVP interest tags pending O*NET vectors.",
     "sources": {
       "aiExposure": {
@@ -172,55 +172,6 @@
       ]
     },
     {
-      "code": "15-1241.00",
-      "title": "Computer Network Architects",
-      "growthPct": 7,
-      "medianPay": 129490,
-      "aiExposure": 0.664,
-      "skills": [
-        "networking",
-        "systems",
-        "security",
-        "design"
-      ]
-    },
-    {
-      "code": "15-1232.00",
-      "title": "Computer User Support Specialists",
-      "growthPct": 5,
-      "medianPay": 60810,
-      "aiExposure": 0.611,
-      "skills": [
-        "support",
-        "troubleshooting",
-        "technology"
-      ]
-    },
-    {
-      "code": "15-1243.00",
-      "title": "Database Architects",
-      "growthPct": 9,
-      "medianPay": 134870,
-      "aiExposure": 0.878,
-      "skills": [
-        "data",
-        "databases",
-        "systems"
-      ]
-    },
-    {
-      "code": "15-1242.00",
-      "title": "Database Administrators",
-      "growthPct": 8,
-      "medianPay": 117450,
-      "aiExposure": 0.935,
-      "skills": [
-        "data",
-        "databases",
-        "systems"
-      ]
-    },
-    {
       "code": "15-1254.00",
       "title": "Web Developers",
       "growthPct": 16,
@@ -233,16 +184,15 @@
       ]
     },
     {
-      "code": "15-1255.00",
-      "title": "Web & Digital Interface Designers",
-      "growthPct": 16,
-      "medianPay": 98540,
-      "aiExposure": 0.833,
+      "code": "15-1243.00",
+      "title": "Database Architects",
+      "growthPct": 9,
+      "medianPay": 134870,
+      "aiExposure": 0.878,
       "skills": [
-        "design",
-        "web",
-        "ux",
-        "creative"
+        "data",
+        "databases",
+        "systems"
       ]
     },
     {
@@ -283,6 +233,69 @@
       ]
     },
     {
+      "code": "17-2141.00",
+      "title": "Mechanical Engineers",
+      "growthPct": 10,
+      "medianPay": 99510,
+      "aiExposure": 0.453,
+      "skills": [
+        "engineering",
+        "mechanical",
+        "design",
+        "math"
+      ]
+    },
+    {
+      "code": "17-2051.00",
+      "title": "Civil Engineers",
+      "growthPct": 5,
+      "medianPay": 89940,
+      "aiExposure": 0.446,
+      "skills": [
+        "engineering",
+        "construction",
+        "design"
+      ]
+    },
+    {
+      "code": "17-2011.00",
+      "title": "Aerospace Engineers",
+      "growthPct": 6,
+      "medianPay": 130720,
+      "aiExposure": 0.571,
+      "skills": [
+        "engineering",
+        "aerospace",
+        "math"
+      ]
+    },
+    {
+      "code": "17-2031.00",
+      "title": "Bioengineers & Biomedical Engineers",
+      "growthPct": 7,
+      "medianPay": 100730,
+      "aiExposure": 0.59,
+      "skills": [
+        "engineering",
+        "biology",
+        "medicine",
+        "research"
+      ]
+    },
+    {
+      "code": "17-1011.00",
+      "title": "Architects",
+      "growthPct": 5,
+      "medianPay": 93310,
+      "aiExposure": 0.488,
+      "skills": [
+        "design",
+        "architecture",
+        "creative",
+        "construction"
+      ]
+    },
+    {
       "code": "13-2051.00",
       "title": "Financial & Investment Analysts",
       "growthPct": 8,
@@ -320,6 +333,70 @@
       ]
     },
     {
+      "code": "11-3031.00",
+      "title": "Financial Managers",
+      "growthPct": 16,
+      "medianPay": 156100,
+      "aiExposure": 0.481,
+      "skills": [
+        "finance",
+        "management",
+        "leadership",
+        "strategy"
+      ]
+    },
+    {
+      "code": "13-1111.00",
+      "title": "Management Analysts (Consultants)",
+      "growthPct": 10,
+      "medianPay": 99410,
+      "aiExposure": 0.405,
+      "skills": [
+        "analysis",
+        "business",
+        "strategy",
+        "problem-solving"
+      ]
+    },
+    {
+      "code": "13-1161.00",
+      "title": "Market Research Analysts",
+      "growthPct": 13,
+      "medianPay": 68230,
+      "aiExposure": 0.5,
+      "skills": [
+        "marketing",
+        "data",
+        "analysis",
+        "research"
+      ]
+    },
+    {
+      "code": "11-2021.00",
+      "title": "Marketing Managers",
+      "growthPct": 7,
+      "medianPay": 157620,
+      "aiExposure": 0.5,
+      "skills": [
+        "marketing",
+        "management",
+        "communication",
+        "creative"
+      ]
+    },
+    {
+      "code": "13-1071.00",
+      "title": "Human Resources Specialists",
+      "growthPct": 6,
+      "medianPay": 67650,
+      "aiExposure": 0.644,
+      "skills": [
+        "people",
+        "communication",
+        "organization"
+      ]
+    },
+    {
       "code": "19-3011.00",
       "title": "Economists",
       "growthPct": 6,
@@ -333,27 +410,436 @@
       ]
     },
     {
-      "code": "11-9041.00",
-      "title": "Architectural & Engineering Managers",
-      "growthPct": 4,
-      "medianPay": 165370,
-      "aiExposure": 0.471,
+      "code": "23-1011.00",
+      "title": "Lawyers",
+      "growthPct": 8,
+      "medianPay": 145760,
+      "aiExposure": 0.425,
       "skills": [
+        "law",
+        "writing",
+        "argument",
+        "research"
+      ]
+    },
+    {
+      "code": "23-2011.00",
+      "title": "Paralegals & Legal Assistants",
+      "growthPct": 4,
+      "medianPay": 60970,
+      "aiExposure": 0.525,
+      "skills": [
+        "law",
+        "research",
+        "writing",
+        "detail"
+      ]
+    },
+    {
+      "code": "29-1141.00",
+      "title": "Registered Nurses",
+      "growthPct": 6,
+      "medianPay": 86070,
+      "aiExposure": 0.333,
+      "skills": [
+        "healthcare",
+        "care",
+        "people",
+        "medicine"
+      ]
+    },
+    {
+      "code": "29-1171.00",
+      "title": "Nurse Practitioners",
+      "growthPct": 45,
+      "medianPay": 126260,
+      "aiExposure": 0.481,
+      "skills": [
+        "healthcare",
+        "medicine",
+        "care",
+        "people"
+      ]
+    },
+    {
+      "code": "29-1051.00",
+      "title": "Pharmacists",
+      "growthPct": 3,
+      "medianPay": 136030,
+      "aiExposure": 0.429,
+      "skills": [
+        "healthcare",
+        "medicine",
+        "science",
+        "detail"
+      ]
+    },
+    {
+      "code": "29-1123.00",
+      "title": "Physical Therapists",
+      "growthPct": 15,
+      "medianPay": 99710,
+      "aiExposure": 0.191,
+      "skills": [
+        "healthcare",
+        "care",
+        "people",
+        "physical"
+      ]
+    },
+    {
+      "code": "29-1215.00",
+      "title": "Family Medicine Physicians",
+      "growthPct": 3,
+      "medianPay": 224460,
+      "aiExposure": 0.438,
+      "skills": [
+        "healthcare",
+        "medicine",
+        "science",
+        "people"
+      ]
+    },
+    {
+      "code": "29-1071.00",
+      "title": "Physician Assistants",
+      "growthPct": 27,
+      "medianPay": 130020,
+      "aiExposure": 0.375,
+      "skills": [
+        "healthcare",
+        "medicine",
+        "care",
+        "people"
+      ]
+    },
+    {
+      "code": "31-9092.00",
+      "title": "Medical Assistants",
+      "growthPct": 14,
+      "medianPay": 42000,
+      "aiExposure": 0.359,
+      "skills": [
+        "healthcare",
+        "care",
+        "people",
+        "support"
+      ]
+    },
+    {
+      "code": "19-3033.00",
+      "title": "Clinical & Counseling Psychologists",
+      "growthPct": 11,
+      "medianPay": 96100,
+      "aiExposure": 0.37,
+      "skills": [
+        "psychology",
+        "people",
+        "helping",
+        "research"
+      ]
+    },
+    {
+      "code": "29-1131.00",
+      "title": "Veterinarians",
+      "growthPct": 20,
+      "medianPay": 119100,
+      "aiExposure": 0.27,
+      "skills": [
+        "healthcare",
+        "animals",
+        "science",
+        "medicine"
+      ]
+    },
+    {
+      "code": "25-2021.00",
+      "title": "Elementary School Teachers",
+      "growthPct": 1,
+      "medianPay": 63680,
+      "aiExposure": 0.311,
+      "skills": [
+        "teaching",
+        "education",
+        "people",
+        "communication"
+      ]
+    },
+    {
+      "code": "25-2031.00",
+      "title": "Secondary School Teachers",
+      "growthPct": 1,
+      "medianPay": 65220,
+      "aiExposure": 0.333,
+      "skills": [
+        "teaching",
+        "education",
+        "communication",
+        "people"
+      ]
+    },
+    {
+      "code": "21-1021.00",
+      "title": "Child, Family & School Social Workers",
+      "growthPct": 5,
+      "medianPay": 53940,
+      "aiExposure": 0.243,
+      "skills": [
+        "social",
+        "helping",
+        "people",
+        "communication"
+      ]
+    },
+    {
+      "code": "21-1012.00",
+      "title": "Educational & Career Counselors",
+      "growthPct": 5,
+      "medianPay": 61710,
+      "aiExposure": 0.289,
+      "skills": [
+        "counseling",
+        "education",
+        "helping",
+        "people"
+      ]
+    },
+    {
+      "code": "27-1024.00",
+      "title": "Graphic Designers",
+      "growthPct": 3,
+      "medianPay": 58910,
+      "aiExposure": 0.5,
+      "skills": [
+        "design",
+        "creative",
+        "art",
+        "visual"
+      ]
+    },
+    {
+      "code": "27-1025.00",
+      "title": "Interior Designers",
+      "growthPct": 4,
+      "medianPay": 62510,
+      "aiExposure": 0.5,
+      "skills": [
+        "design",
+        "creative",
+        "art"
+      ]
+    },
+    {
+      "code": "27-3043.00",
+      "title": "Writers & Authors",
+      "growthPct": 4,
+      "medianPay": 73690,
+      "aiExposure": 0.865,
+      "skills": [
+        "writing",
+        "creative",
+        "communication"
+      ]
+    },
+    {
+      "code": "27-3041.00",
+      "title": "Editors",
+      "growthPct": -2,
+      "medianPay": 73080,
+      "aiExposure": 0.647,
+      "skills": [
+        "writing",
+        "editing",
+        "communication",
+        "detail"
+      ]
+    },
+    {
+      "code": "27-3031.00",
+      "title": "Public Relations Specialists",
+      "growthPct": 6,
+      "medianPay": 66750,
+      "aiExposure": 0.591,
+      "skills": [
+        "communication",
+        "writing",
+        "marketing",
+        "people"
+      ]
+    },
+    {
+      "code": "27-2012.00",
+      "title": "Producers & Directors",
+      "growthPct": 7,
+      "medianPay": 82510,
+      "aiExposure": 0.468,
+      "skills": [
+        "media",
+        "creative",
         "management",
-        "engineering",
+        "communication"
+      ]
+    },
+    {
+      "code": "19-2031.00",
+      "title": "Chemists",
+      "growthPct": 6,
+      "medianPay": 84680,
+      "aiExposure": 0.38,
+      "skills": [
+        "science",
+        "chemistry",
+        "research",
+        "lab"
+      ]
+    },
+    {
+      "code": "19-1042.00",
+      "title": "Medical Scientists",
+      "growthPct": 10,
+      "medianPay": 99930,
+      "aiExposure": 0.523,
+      "skills": [
+        "science",
+        "research",
+        "biology",
+        "medicine"
+      ]
+    },
+    {
+      "code": "19-2041.00",
+      "title": "Environmental Scientists",
+      "growthPct": 6,
+      "medianPay": 78980,
+      "aiExposure": 0.5,
+      "skills": [
+        "science",
+        "environment",
+        "research"
+      ]
+    },
+    {
+      "code": "47-2111.00",
+      "title": "Electricians",
+      "growthPct": 6,
+      "medianPay": 61590,
+      "aiExposure": 0.146,
+      "skills": [
+        "trades",
+        "hands-on",
+        "electrical"
+      ]
+    },
+    {
+      "code": "47-2152.00",
+      "title": "Plumbers & Pipefitters",
+      "growthPct": 2,
+      "medianPay": 61550,
+      "aiExposure": 0.102,
+      "skills": [
+        "trades",
+        "hands-on",
+        "mechanical"
+      ]
+    },
+    {
+      "code": "49-9021.00",
+      "title": "HVAC Mechanics & Installers",
+      "growthPct": 6,
+      "medianPay": 57300,
+      "aiExposure": 0.105,
+      "skills": [
+        "trades",
+        "hands-on",
+        "mechanical"
+      ]
+    },
+    {
+      "code": "11-9021.00",
+      "title": "Construction Managers",
+      "growthPct": 5,
+      "medianPay": 104900,
+      "aiExposure": 0.444,
+      "skills": [
+        "construction",
+        "management",
         "leadership"
       ]
     },
     {
-      "code": "17-2112.00",
-      "title": "Industrial Engineers",
-      "growthPct": 12,
-      "medianPay": 96350,
-      "aiExposure": 0.526,
+      "code": "33-3051.00",
+      "title": "Police & Sheriff's Patrol Officers",
+      "growthPct": 3,
+      "medianPay": 72280,
+      "aiExposure": 0.25,
       "skills": [
-        "engineering",
-        "optimization",
-        "systems"
+        "protective",
+        "people",
+        "physical",
+        "service"
+      ]
+    },
+    {
+      "code": "33-2011.00",
+      "title": "Firefighters",
+      "growthPct": 4,
+      "medianPay": 51680,
+      "aiExposure": 0.14,
+      "skills": [
+        "protective",
+        "physical",
+        "service",
+        "hands-on"
+      ]
+    },
+    {
+      "code": "41-3021.00",
+      "title": "Insurance Sales Agents",
+      "growthPct": 8,
+      "medianPay": 59080,
+      "aiExposure": 0.576,
+      "skills": [
+        "sales",
+        "communication",
+        "people",
+        "finance"
+      ]
+    },
+    {
+      "code": "41-9022.00",
+      "title": "Real Estate Sales Agents",
+      "growthPct": 3,
+      "medianPay": 54300,
+      "aiExposure": 0.438,
+      "skills": [
+        "sales",
+        "people",
+        "communication"
+      ]
+    },
+    {
+      "code": "53-2011.00",
+      "title": "Airline Pilots & Flight Engineers",
+      "growthPct": 4,
+      "medianPay": 219140,
+      "aiExposure": 0.352,
+      "skills": [
+        "aviation",
+        "technical",
+        "focus"
+      ]
+    },
+    {
+      "code": "35-1011.00",
+      "title": "Chefs & Head Cooks",
+      "growthPct": 8,
+      "medianPay": 58920,
+      "aiExposure": 0.262,
+      "skills": [
+        "culinary",
+        "creative",
+        "hands-on",
+        "hospitality"
       ]
     }
   ]

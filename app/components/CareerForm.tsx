@@ -7,11 +7,13 @@ import ScoreCard from "./ScoreCard";
 
 const EXAMPLES = [
   "Software engineer",
+  "Nurse",
+  "Teacher",
   "Data scientist",
-  "Cybersecurity",
-  "Quant",
-  "Financial analyst",
-  "Actuary",
+  "Lawyer",
+  "Marketing",
+  "Mechanical engineer",
+  "Graphic designer",
 ];
 
 export default function CareerForm() {

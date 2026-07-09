@@ -24,9 +24,33 @@ const csv = readFileSync(
   "utf8",
 );
 
+// Quote-aware CSV line parser (some titles contain commas inside quotes).
+function parseCsvLine(line) {
+  const out = [];
+  let cur = "";
+  let inQuotes = false;
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i];
+    if (inQuotes) {
+      if (ch === '"') {
+        if (line[i + 1] === '"') { cur += '"'; i++; } else inQuotes = false;
+      } else cur += ch;
+    } else if (ch === '"') {
+      inQuotes = true;
+    } else if (ch === ",") {
+      out.push(cur);
+      cur = "";
+    } else {
+      cur += ch;
+    }
+  }
+  out.push(cur);
+  return out;
+}
+
 // --- Parse the Eloundou CSV into a map: O*NET-SOC code -> beta exposure ---
 const lines = csv.trim().split(/\r?\n/);
-const header = lines[0].split(",");
+const header = parseCsvLine(lines[0]);
 const codeIdx = header.indexOf("O*NET-SOC Code");
 const betaIdx = header.indexOf("dv_rating_beta");
 if (codeIdx === -1 || betaIdx === -1) {
@@ -35,7 +59,7 @@ if (codeIdx === -1 || betaIdx === -1) {
 
 const exposureByCode = new Map();
 for (let i = 1; i < lines.length; i++) {
-  const cols = lines[i].split(",");
+  const cols = parseCsvLine(lines[i]);
   const code = cols[codeIdx];
   const beta = Number(cols[betaIdx]);
   if (code && Number.isFinite(beta)) exposureByCode.set(code, beta);
