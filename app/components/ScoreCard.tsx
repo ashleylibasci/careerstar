@@ -87,7 +87,7 @@ export default function ScoreCard({
               <Stars value={result.stars} colorClass={tone.star} id={result.code} />
               <span className={`text-xs font-semibold ${tone.text}`}>{band.label}</span>
               {result.percentile != null && result.percentile >= 50 && (
-                <span className="text-xs text-foreground/45">· top {Math.max(1, 100 - result.percentile)}% of careers</span>
+                <span className="text-xs text-foreground/60">· top {Math.max(1, 100 - result.percentile)}% of careers</span>
               )}
             </div>
           )}
@@ -96,12 +96,12 @@ export default function ScoreCard({
           <div className={`text-3xl font-bold tabular-nums ${tone.text}`}>
             {result.score}
             {result.confidence != null && (
-              <span className="ml-1 align-top text-xs font-medium text-foreground/40">
+              <span className="ml-1 align-top text-xs font-medium text-foreground/55">
                 ±{result.confidence}
               </span>
             )}
           </div>
-          <div className="text-[10px] font-medium uppercase tracking-wide text-foreground/40">/ 100</div>
+          <div className="text-[10px] font-medium uppercase tracking-wide text-foreground/55">/ 100</div>
         </div>
       </div>
 
@@ -173,7 +173,7 @@ export default function ScoreCard({
               <span className="font-semibold">Fit {result.components.fit}</span> — overlap with
               the interests you gave.
             </div>
-            <div className="text-foreground/50">
+            <div className="text-foreground/60">
               Raw: {result.breakdown.growthPct >= 0 ? "+" : ""}
               {result.breakdown.growthPct}% projected growth ·{" "}
               ${result.breakdown.medianPay.toLocaleString()} median pay.

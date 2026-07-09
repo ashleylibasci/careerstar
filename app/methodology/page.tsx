@@ -163,7 +163,7 @@ Score  = 100 · [ α·RAV + (1 − α)·Fit ]`}
           </ul>
         </Section>
 
-        <p className="mt-12 text-xs text-foreground/50">
+        <p className="mt-12 text-xs text-foreground/60">
           Built with an AI-native workflow. The language model only writes the plain-English
           explanations — it never computes a score.
         </p>

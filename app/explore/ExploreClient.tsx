@@ -104,7 +104,7 @@ export default function ExploreClient() {
         </select>
       </div>
 
-      <p className="mb-2 text-xs text-foreground/50">
+      <p className="mb-2 text-xs text-foreground/60">
         {filtered.length} shown{filtered.length === 150 ? " (top 150)" : ""} · click a career for details
       </p>
 

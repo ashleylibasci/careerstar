@@ -226,7 +226,7 @@ export default function CareerForm() {
         <label htmlFor="career-search" className="block text-sm font-semibold">
           Careers or fields to compare
         </label>
-        <p className="mb-2 text-xs text-foreground/50">
+        <p className="mb-2 text-xs text-foreground/60">
           Pick specific jobs, or add a whole field.
         </p>
         <input
@@ -235,12 +235,12 @@ export default function CareerForm() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="🔍 Search e.g. nurse, software, lawyer, welder…"
-          className="w-full rounded-xl border border-foreground/15 bg-background px-4 py-2.5 text-sm shadow-sm outline-none transition placeholder:text-foreground/40 focus-visible:border-transparent focus-visible:ring-2 focus-visible:ring-blue-500"
+          className="w-full rounded-xl border border-foreground/15 bg-background px-4 py-2.5 text-sm shadow-sm outline-none transition placeholder:text-foreground/55 focus-visible:border-transparent focus-visible:ring-2 focus-visible:ring-blue-500"
         />
         {(careerMatches.length > 0 || fieldMatches.length > 0) && (
           <div className="absolute z-10 mt-1 max-h-72 w-full overflow-y-auto rounded-xl border border-foreground/15 bg-background shadow-lg">
             {careerMatches.length > 0 && (
-              <div className="px-3 py-1 text-[10px] font-semibold uppercase tracking-wide text-foreground/40">
+              <div className="px-3 py-1 text-[10px] font-semibold uppercase tracking-wide text-foreground/55">
                 Careers
               </div>
             )}
@@ -258,7 +258,7 @@ export default function CareerForm() {
               </button>
             ))}
             {fieldMatches.length > 0 && (
-              <div className="px-3 py-1 text-[10px] font-semibold uppercase tracking-wide text-foreground/40">
+              <div className="px-3 py-1 text-[10px] font-semibold uppercase tracking-wide text-foreground/55">
                 Fields
               </div>
             )}
@@ -272,7 +272,7 @@ export default function CareerForm() {
                 }}
                 className="block w-full px-3 py-2 text-left text-sm text-purple-700 hover:bg-purple-500/10"
               >
-                {f.name} <span className="text-foreground/40">— whole field</span>
+                {f.name} <span className="text-foreground/55">— whole field</span>
               </button>
             ))}
           </div>
@@ -313,7 +313,7 @@ export default function CareerForm() {
       {/* and / or divider */}
       <div className="my-6 flex items-center gap-3 print:hidden">
         <div className="h-px flex-1 bg-foreground/10" />
-        <span className="rounded-full border border-foreground/15 px-2.5 py-0.5 text-xs text-foreground/50">
+        <span className="rounded-full border border-foreground/15 px-2.5 py-0.5 text-xs text-foreground/60">
           and / or
         </span>
         <div className="h-px flex-1 bg-foreground/10" />
@@ -355,7 +355,7 @@ export default function CareerForm() {
           onChange={(e) => setText(e.target.value)}
           rows={2}
           placeholder="Anything else about you? e.g. I want to help people but also want stability."
-          className="mt-3 w-full resize-y rounded-xl border border-foreground/15 bg-background px-4 py-3 text-sm leading-relaxed shadow-sm outline-none transition placeholder:text-foreground/40 focus-visible:border-transparent focus-visible:ring-2 focus-visible:ring-blue-500"
+          className="mt-3 w-full resize-y rounded-xl border border-foreground/15 bg-background px-4 py-3 text-sm leading-relaxed shadow-sm outline-none transition placeholder:text-foreground/55 focus-visible:border-transparent focus-visible:ring-2 focus-visible:ring-blue-500"
         />
       </div>
 
@@ -445,7 +445,7 @@ export default function CareerForm() {
               onChange={(e) => onTune("growthPay", Number(e.target.value))}
               className="mt-2 w-full accent-blue-600"
             />
-            <div className="mb-4 mt-1 flex justify-between text-xs text-foreground/50"><span>Growth</span><span>Pay</span></div>
+            <div className="mb-4 mt-1 flex justify-between text-xs text-foreground/60"><span>Growth</span><span>Pay</span></div>
 
             <label htmlFor="w-gamma" className="block text-xs font-medium">AI-risk sensitivity</label>
             <input
@@ -455,7 +455,7 @@ export default function CareerForm() {
               onChange={(e) => onTune("gammaT", Number(e.target.value))}
               className="mt-2 w-full accent-blue-600"
             />
-            <div className="mb-4 mt-1 flex justify-between text-xs text-foreground/50"><span>Ignore risk</span><span>Punish risk</span></div>
+            <div className="mb-4 mt-1 flex justify-between text-xs text-foreground/60"><span>Ignore risk</span><span>Punish risk</span></div>
 
             <label htmlFor="w-fit" className="block text-xs font-medium">Weigh: market vs. personal fit</label>
             <input
@@ -465,7 +465,7 @@ export default function CareerForm() {
               onChange={(e) => onTune("fitT", Number(e.target.value))}
               className="mt-2 w-full accent-blue-600"
             />
-            <div className="mt-1 flex justify-between text-xs text-foreground/50"><span>Market viability</span><span>Personal fit</span></div>
+            <div className="mt-1 flex justify-between text-xs text-foreground/60"><span>Market viability</span><span>Personal fit</span></div>
           </div>
 
           {response.sensitivity && <RobustnessPanel sensitivity={response.sensitivity} />}
@@ -476,7 +476,7 @@ export default function CareerForm() {
             ))}
           </div>
 
-          <p className="pt-4 text-xs leading-relaxed text-foreground/50">
+          <p className="pt-4 text-xs leading-relaxed text-foreground/60">
             A grounded estimate, not a prediction. Scores blend official BLS 2024&ndash;2034
             projections with AI-exposure research — and <strong>AI exposure is not the same as
             job loss</strong>. See{" "}

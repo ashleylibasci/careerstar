@@ -47,14 +47,14 @@ function Stat({
 }) {
   return (
     <div className="rounded-2xl border border-foreground/10 p-4">
-      <div className="text-xs font-medium uppercase tracking-wide text-foreground/50">
+      <div className="text-xs font-medium uppercase tracking-wide text-foreground/60">
         {label}
       </div>
       <div className="mt-1 text-2xl font-semibold tracking-tight tabular-nums">
         {value}
       </div>
       {caveat ? (
-        <div className="mt-1 text-xs text-foreground/50">{caveat}</div>
+        <div className="mt-1 text-xs text-foreground/60">{caveat}</div>
       ) : null}
     </div>
   );
@@ -82,7 +82,7 @@ export default async function CareerPage({
           ← Back to explore
         </Link>
 
-        <p className="mt-4 text-sm font-medium text-foreground/50">
+        <p className="mt-4 text-sm font-medium text-foreground/60">
           {fieldName(group)}
         </p>
         <h1 className="mt-1 text-3xl font-bold tracking-tight">{occ.title}</h1>
@@ -135,7 +135,7 @@ export default async function CareerPage({
 
             {edu.majors.length > 0 ? (
               <div className="mt-5">
-                <div className="text-xs font-medium uppercase tracking-wide text-foreground/50">
+                <div className="text-xs font-medium uppercase tracking-wide text-foreground/60">
                   Feeder majors
                 </div>
                 <div className="mt-2 flex flex-wrap gap-2">
@@ -153,7 +153,7 @@ export default async function CareerPage({
 
             {edu.schools.length > 0 ? (
               <div className="mt-5">
-                <div className="text-xs font-medium uppercase tracking-wide text-foreground/50">
+                <div className="text-xs font-medium uppercase tracking-wide text-foreground/60">
                   Selective schools offering these majors
                 </div>
                 <div className="mt-2 divide-y divide-foreground/10 overflow-hidden rounded-2xl border border-foreground/10">
@@ -161,7 +161,7 @@ export default async function CareerPage({
                     <div key={s.name} className="flex items-center justify-between gap-3 p-3">
                       <div className="min-w-0">
                         <div className="truncate text-sm font-medium">{s.name}</div>
-                        <div className="text-xs text-foreground/50">
+                        <div className="text-xs text-foreground/60">
                           {s.state}
                           {s.admRate != null ? ` · ${Math.round(s.admRate * 100)}% admit rate` : ""}
                         </div>
@@ -180,7 +180,7 @@ export default async function CareerPage({
               </div>
             ) : null}
 
-            <p className="mt-3 text-xs leading-relaxed text-foreground/45">
+            <p className="mt-3 text-xs leading-relaxed text-foreground/60">
               Earnings &amp; debt from the U.S. Dept. of Education <strong>College Scorecard</strong>;
               majors mapped to this occupation via the NCES CIP→SOC crosswalk. A grounded ROI
               snapshot, not a guarantee — pay varies widely by school and specialty.
@@ -224,7 +224,7 @@ export default async function CareerPage({
                   className="rounded-2xl border border-foreground/10 p-4 hover:bg-foreground/[.03]"
                 >
                   <div className="font-medium">{o.title}</div>
-                  <div className="mt-1 text-xs text-foreground/50 tabular-nums">
+                  <div className="mt-1 text-xs text-foreground/60 tabular-nums">
                     {o.growthPct >= 0 ? "+" : ""}
                     {o.growthPct}% growth · ${o.medianPay.toLocaleString()}
                   </div>

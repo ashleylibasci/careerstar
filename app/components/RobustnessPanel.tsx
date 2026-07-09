@@ -50,7 +50,7 @@ export default function RobustnessPanel({ sensitivity }: { sensitivity: Sensitiv
           <div key={c.code} className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-1">
             <div className="col-span-2 flex items-baseline justify-between gap-2 sm:col-span-1 sm:justify-start">
               <span className="truncate text-sm font-medium">{c.path}</span>
-              <span className="text-xs text-foreground/50">
+              <span className="text-xs text-foreground/60">
                 {c.rankBest === c.rankWorst
                   ? `held #${c.rankBest} · 100%`
                   : `#${c.rankBest}–${c.rankWorst} · #${c.baselineRank} in ${Math.round(c.heldRankPct * 100)}%`}
@@ -58,7 +58,7 @@ export default function RobustnessPanel({ sensitivity }: { sensitivity: Sensitiv
             </div>
             <div className="col-span-2 flex items-center gap-2 sm:col-span-1">
               <Band min={c.scoreMin} max={c.scoreMax} baseline={c.baselineScore} />
-              <span className="w-14 shrink-0 text-right text-xs tabular-nums text-foreground/50">
+              <span className="w-14 shrink-0 text-right text-xs tabular-nums text-foreground/60">
                 {c.scoreMin}–{c.scoreMax}
               </span>
             </div>

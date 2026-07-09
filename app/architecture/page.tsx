@@ -37,7 +37,7 @@ function Node({
 
 function Arrow({ label }: { label?: string }) {
   return (
-    <div className="flex shrink-0 flex-col items-center justify-center px-1 text-foreground/40">
+    <div className="flex shrink-0 flex-col items-center justify-center px-1 text-foreground/55">
       <span className="text-lg font-bold leading-none">→</span>
       {label && (
         <span className="mt-0.5 text-center text-[9px] font-medium leading-none">
@@ -59,7 +59,7 @@ function Zone({
 }) {
   return (
     <div className="rounded-2xl border border-foreground/10 bg-foreground/[.015] p-4 shadow-sm">
-      <div className="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-foreground/50">
+      <div className="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-foreground/60">
         <span className={`h-2 w-2 rounded-full ${dotClass}`} />
         {label}
       </div>
@@ -138,7 +138,7 @@ export default function ArchitecturePage() {
           </Zone>
         </div>
 
-        <h2 className="mt-12 text-sm font-bold uppercase tracking-wider text-foreground/50">
+        <h2 className="mt-12 text-sm font-bold uppercase tracking-wider text-foreground/60">
           Architecture decisions
           <span className="ml-2 rounded-full bg-blue-600 px-2 py-0.5 text-[11px] font-bold text-white">
             7 invariants
@@ -156,7 +156,7 @@ export default function ArchitecturePage() {
           ))}
         </div>
 
-        <div className="mt-8 flex flex-wrap gap-x-4 gap-y-1 border-t border-foreground/10 pt-4 text-[12px] text-foreground/50">
+        <div className="mt-8 flex flex-wrap gap-x-4 gap-y-1 border-t border-foreground/10 pt-4 text-[12px] text-foreground/60">
           <span>Next.js 16 · TypeScript</span>
           <span>Claude · claude-haiku-4-5</span>
           <span>Data: BLS · O*NET · Eloundou 2023</span>
