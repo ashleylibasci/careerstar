@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CareerStar — System Architecture</title>
+<style>
+  :root{
+    --bg:#f7f8fa; --panel:#ffffff; --ink:#12151c; --muted:#5b6472;
+    --line:#d5dae2; --accent:#3b6ef5; --accent2:#0ea472; --warn:#d9822b;
+    --chip:#eef2f9; --shadow:0 1px 3px rgba(20,25,40,.08),0 8px 24px rgba(20,25,40,.06);
+    --radius:14px;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{ --bg:#0e1117; --panel:#161b24; --ink:#e8ecf3; --muted:#9aa4b2;
+      --line:#28303c; --accent:#6b93ff; --accent2:#2fd39a; --warn:#e0a24a;
+      --chip:#1d2531; --shadow:0 1px 3px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35);}
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    padding:32px 20px 56px;}
+  .wrap{max-width:1040px;margin:0 auto}
+  header{margin-bottom:28px}
+  .kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700}
+  h1{font-size:30px;margin:.15em 0 .1em;letter-spacing:-.02em}
+  .sub{color:var(--muted);max-width:70ch;margin:0}
+  .flow{display:grid;gap:18px;margin:26px 0}
+  .zone{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:18px 18px 20px;position:relative;overflow-x:auto}
+  .zone-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+    font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .zone-label .dot{width:8px;height:8px;border-radius:50%}
+  .row{display:flex;align-items:stretch;gap:10px;flex-wrap:nowrap;min-width:min-content}
+  .node{background:var(--chip);border:1px solid var(--line);border-radius:11px;padding:11px 13px;
+    min-width:132px;flex:0 0 auto;max-width:210px}
+  .node .t{font-weight:650;font-size:14px}
+  .node .d{color:var(--muted);font-size:12.5px;margin-top:3px}
+  .node.core{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
+  .node.llm{border-color:var(--accent2);box-shadow:0 0 0 1px var(--accent2) inset}
+  .node.sec{border-color:var(--warn);box-shadow:0 0 0 1px var(--warn) inset}
+  .arrow{display:flex;align-items:center;color:var(--muted);flex:0 0 auto;font-size:18px;font-weight:700}
+  .arrow small{display:block;font-size:10.5px;font-weight:600;line-height:1;text-align:center;color:var(--muted)}
+  .stack-plus{display:flex;flex-direction:column;justify-content:center;gap:6px;flex:0 0 auto}
+  .badge{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;
+    background:var(--accent);color:#fff;margin-left:8px;vertical-align:middle}
+  .note{font-size:12.5px;color:var(--muted);margin-top:12px;padding-left:12px;border-left:3px solid var(--line)}
+  h2{font-size:15px;letter-spacing:.02em;margin:30px 0 12px;text-transform:uppercase;color:var(--muted)}
+  .ads{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+  .ad{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:13px 14px;box-shadow:var(--shadow)}
+  .ad .id{font-weight:800;color:var(--accent);font-size:12.5px;letter-spacing:.03em}
+  .ad .r{font-weight:600;margin:3px 0 5px;font-size:14px}
+  .ad .p{font-size:12.5px;color:var(--muted)}
+  .ad .p b{color:var(--warn);font-weight:700}
+  footer{margin-top:30px;padding-top:16px;border-top:1px solid var(--line);
+    color:var(--muted);font-size:12.5px;display:flex;flex-wrap:wrap;gap:6px 16px}
+  footer code{background:var(--chip);padding:1px 6px;border-radius:6px;color:var(--ink);font-size:12px}
+  .zoneA .dot{background:var(--muted)} .zoneB .dot{background:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="kicker">CareerStar · System Architecture</div>
+    <h1>Rate careers like stocks — one app, defensible by design</h1>
+    <p class="sub">A single full-stack Next.js app with a deterministic scoring engine at its core. An LLM explains the score; it never computes it. Free-text input is treated as data, not instructions. Stateless, no database, deployed on AWS.</p>
+  </header>
+
+  <div class="flow">
+    <!-- Offline pipeline -->
+    <div class="zone zoneA">
+      <div class="zone-label"><span class="dot"></span>Offline data pipeline · runs once on the author's machine</div>
+      <div class="row">
+        <div class="stack-plus">
+          <div class="node"><div class="t">BLS</div><div class="d">growth + pay · public domain</div></div>
+          <div class="node"><div class="t">O*NET</div><div class="d">skills/tasks · CC BY 4.0</div></div>
+          <div class="node"><div class="t">Eloundou</div><div class="d">AI exposure · MIT</div></div>
+        </div>
+        <div class="arrow">→<small>join on<br>SOC-2018</small></div>
+        <div class="node"><div class="t">Crosswalk + join</div><div class="d">O*NET-SOC ↔ SOC 2018</div></div>
+        <div class="arrow">→</div>
+        <div class="node core"><div class="t">data.json</div><div class="d">committed static artifact</div></div>
+      </div>
+      <div class="note">Datasets are joined <b>offline</b> and committed. The runtime never fetches or joins data — reproducible, fast, and license-clean.</div>
+    </div>
+
+    <!-- Runtime app -->
+    <div class="zone zoneB">
+      <div class="zone-label"><span class="dot"></span>Runtime · Next.js 16 app on AWS Amplify Hosting</div>
+      <div class="row">
+        <div class="node"><div class="t">Browser UI</div><div class="d">single screen · free-text in</div></div>
+        <div class="arrow">→<small>POST</small></div>
+        <div class="node sec"><div class="t">Security gate</div><div class="d">delimit · length cap · rate limit</div></div>
+        <div class="arrow">→</div>
+        <div class="node core"><div class="t">Scorer</div><div class="d">pure · deterministic · 0–100</div></div>
+        <div class="arrow">→<small>score +<br>components</small></div>
+        <div class="node llm"><div class="t">Claude Haiku 4.5</div><div class="d">explanation only</div></div>
+        <div class="arrow">→</div>
+        <div class="node"><div class="t">Score cards</div><div class="d">+ why + redirect</div></div>
+      </div>
+      <div class="note">The route handler reads <code>data.json</code> at build. The <b>scorer</b> is the single source of truth for every number; the <b>LLM</b> is handed the finished score and only writes the plain-English "why" + the redirect. Secrets stay server-side.</div>
+    </div>
+
+    <!-- Deploy -->
+    <div class="zone zoneB">
+      <div class="zone-label"><span class="dot"></span>Deployment</div>
+      <div class="row">
+        <div class="node"><div class="t">AWS Amplify</div><div class="d">SSR · Lambda + CloudFront</div></div>
+        <div class="arrow">+</div>
+        <div class="node"><div class="t">Route 53</div><div class="d">careerstar.ashleylibasci.com</div></div>
+        <div class="arrow">+</div>
+        <div class="node"><div class="t">Auto HTTPS</div><div class="d">managed TLS cert</div></div>
+        <div class="arrow">+</div>
+        <div class="node sec"><div class="t">Env secrets</div><div class="d">ANTHROPIC_API_KEY · server-only</div></div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Architecture decisions <span class="badge">7 invariants</span></h2>
+  <div class="ads">
+    <div class="ad"><div class="id">AD-1</div><div class="r">One app, one language</div><div class="p">Next.js 16 + TypeScript, Route Handlers. <b>Prevents</b> a needless second service.</div></div>
+    <div class="ad"><div class="id">AD-2</div><div class="r">Scorer is pure; UI only renders</div><div class="p">All math in one server module. <b>Prevents</b> two sources of truth drifting.</div></div>
+    <div class="ad"><div class="id">AD-3</div><div class="r">Join offline, read at runtime</div><div class="p">Pipeline emits committed data.json. <b>Prevents</b> in-request data joins.</div></div>
+    <div class="ad"><div class="id">AD-4</div><div class="r">LLM explains, never decides</div><div class="p">Fed the computed score. <b>Prevents</b> the thin-wrapper failure.</div></div>
+    <div class="ad"><div class="id">AD-5</div><div class="r">Free-text is data, not instructions</div><div class="p">Delimited block, length cap, rate limit, server-only secrets. <b>Prevents</b> prompt injection + cost abuse.</div></div>
+    <div class="ad"><div class="id">AD-6</div><div class="r">Stateless</div><div class="p">No accounts, no DB, no persistence. <b>Prevents</b> unneeded data-governance surface.</div></div>
+    <div class="ad"><div class="id">AD-7</div><div class="r">AWS Amplify + Route 53</div><div class="p">Managed SSR, auto HTTPS. <b>Prevents</b> ops sprawl + insecure config.</div></div>
+  </div>
+
+  <footer>
+    <span><code>Next.js 16</code> App Router · TypeScript</span>
+    <span><code>@anthropic-ai/sdk</code> · claude-haiku-4-5</span>
+    <span>Data: BLS · O*NET · Eloundou 2023</span>
+    <span>Deploy: AWS Amplify + Route 53</span>
+    <span>CareerStar architecture spine · 2026-07-08</span>
+  </footer>
+</div>
+</body>
+</html>
