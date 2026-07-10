@@ -1,0 +1,731 @@
+onet_soc_code,title,field,score_default,stars,percentile,moat,moat_score,model_standard,model_momentum,model_defensive,model_sharpe,model_equal,consensus_mean,consensus_spread,growth_pct_2024_34,median_pay_usd,ai_exposure,typical_education,skill_vector_estimated
+29-1151.00,Nurse anesthetists,Healthcare,75,5,100,wide,0.9,75,95,91,86,81,86,20,8.6,223210,0.167,Master's degree,false
+49-9051.00,Electrical power-line installers and repairers,Installation & repair,72,5,100,wide,0.81,72,83,85,94,78,82,22,6.6,92560,0,High school diploma or equivalent,false
+29-1123.00,Physical therapists,Healthcare,72,5,100,wide,0.819,72,90,84,86,79,82,18,10.9,101020,0.191,Doctoral or professional degree,false
+29-1071.00,Physician assistants,Healthcare,72,5,100,wide,0.775,72,98,80,78,80,82,26,20.4,133260,0.375,Master's degree,false
+29-1131.00,Veterinarians,Healthcare,72,5,100,wide,0.752,72,93,80,82,79,81,21,9.6,125510,0.27,Doctoral or professional degree,false
+11-9111.00,Medical and health services managers,Management,70,5,99,wide,0.738,70,96,77,76,78,79,26,23.2,117960,0.429,Bachelor's degree,false
+29-1122.00,Occupational therapists,Healthcare,70,5,99,wide,0.773,70,91,79,80,77,79,21,13.8,98340,0.303,Master's degree,false
+29-1041.00,Optometrists,Healthcare,70,5,99,wide,0.744,70,92,79,79,77,79,22,8,134830,0.3,Doctoral or professional degree,false
+29-2032.00,Diagnostic medical sonographers,Healthcare,69,5,99,narrow,0.575,69,89,68,80,76,76,21,13,89340,0.303,Associate's degree,false
+11-3031.00,Financial managers,Management,69,5,99,narrow,0.598,69,98,69,74,78,78,29,14.8,161700,0.481,Bachelor's degree,false
+29-1161.00,Nurse midwives,Healthcare,69,5,99,wide,0.721,69,95,76,77,78,79,26,11.1,128790,0.39,Master's degree,false
+29-1171.00,Nurse practitioners,Healthcare,69,5,99,narrow,0.671,69,98,72,74,78,78,29,40.1,129210,0.481,Master's degree,false
+29-1126.00,Respiratory therapists,Healthcare,69,5,99,narrow,0.648,69,86,73,84,76,78,17,12.1,80450,0.202,Associate's degree,false
+49-9081.00,Wind turbine service technicians,Installation & repair,69,5,99,wide,0.843,69,79,83,96,76,81,27,49.9,62580,0.043,Postsecondary nondegree award,false
+15-2011.00,Actuaries,Computer & math,68,5,98,narrow,0.643,68,97,70,73,77,77,29,21.8,125770,0.5,Bachelor's degree,false
+11-3021.00,Computer and information systems managers,Management,68,5,98,none,0.55,68,98,66,72,77,76,32,15.2,171200,0.53,Bachelor's degree,false
+29-1292.00,Dental hygienists,Healthcare,68,5,98,none,0.528,68,84,68,82,75,75,16,7,94260,0.188,Associate's degree,false
+31-2021.00,Physical therapist assistants,Healthcare support,68,5,98,wide,0.709,68,81,75,88,75,77,20,22,65510,0.154,Associate's degree,false
+19-3033.00,Clinical and counseling psychologists,Science,67,5,98,wide,0.777,67,89,77,76,75,77,22,11.2,95830,0.37,Doctoral or professional degree,false
+25-1071.00,"Health specialties teachers, postsecondary",Education,67,5,98,narrow,0.62,67,94,69,73,76,76,27,17.3,105620,0.475,Doctoral or professional degree,false
+19-5011.00,Occupational health and safety specialists,Science,67,5,98,narrow,0.623,67,87,69,78,75,75,20,12.5,83910,0.333,Bachelor's degree,false
+29-2091.00,Orthotists and prosthetists,Healthcare,67,5,98,wide,0.756,67,85,76,80,75,77,18,13.3,78310,0.276,Master's degree,false
+49-2091.00,Avionics technicians,Installation & repair,66,5,97,wide,0.756,66,83,77,80,74,76,17,8.2,81390,0.24,Postsecondary nondegree award,false
+53-2012.00,Commercial pilots,Transportation,66,5,97,wide,0.769,66,85,80,78,74,77,19,5.1,122670,0.239,Postsecondary nondegree award,false
+11-9021.00,Construction managers,Management,66,5,97,wide,0.721,66,91,74,73,74,76,25,8.7,106980,0.444,Bachelor's degree,false
+47-4021.00,Elevator and escalator installers and repairers,Construction,66,5,97,wide,0.864,66,83,85,80,74,78,19,5,106580,0.184,High school diploma or equivalent,false
+13-1111.00,Management analysts,Business & finance,66,5,97,narrow,0.601,66,89,68,74,74,74,23,8.8,101190,0.405,Bachelor's degree,false
+21-1013.00,Marriage and family therapists,Community & social service,66,5,97,wide,0.933,66,77,86,90,74,79,24,12.6,63780,0.111,Master's degree,false
+31-2011.00,Occupational therapy assistants,Healthcare support,66,5,97,narrow,0.648,66,82,70,81,74,75,16,19.2,68340,0.267,Associate's degree,false
+29-1127.00,Speech-language pathologists,Healthcare,66,5,97,narrow,0.581,66,90,66,73,74,74,24,15,95410,0.451,Master's degree,false
+29-1291.00,Acupuncturists,Healthcare,65,5,96,wide,0.771,65,79,78,83,73,76,18,6.8,78140,0.167,Master's degree,false
+15-1221.00,Computer and information research scientists,Computer & math,65,5,96,narrow,0.588,65,98,65,68,75,74,33,19.7,140910,0.635,Master's degree,false
+19-1041.00,Epidemiologists,Science,65,5,96,narrow,0.671,65,88,70,73,73,74,23,16.2,83980,0.442,Master's degree,false
+17-2141.00,Mechanical engineers,Architecture & engineering,65,5,96,narrow,0.679,65,90,71,72,74,74,25,9.1,102320,0.453,Bachelor's degree,false
+25-1072.00,"Nursing instructors and teachers, postsecondary",Education,65,5,96,wide,0.708,65,87,72,75,74,75,22,16.8,79940,0.402,Doctoral or professional degree,false
+29-1021.00,"Dentists, general",Healthcare,64,5,95,wide,0.794,64,83,81,75,72,75,19,4.1,172790,0.25,Doctoral or professional degree,false
+13-2061.00,Financial examiners,Business & finance,64,5,95,none,0.53,64,90,62,71,73,72,28,18.5,90400,0.5,Bachelor's degree,false
+53-2031.00,Flight attendants,Transportation,64,5,95,wide,0.751,64,78,76,85,73,75,21,9.2,67130,0.167,High school diploma or equivalent,false
+29-2092.00,Hearing aid specialists,Healthcare,64,5,95,wide,0.788,64,77,76,84,72,75,20,18.4,61560,0.2,High school diploma or equivalent,false
+15-1212.00,Information security analysts,Computer & math,64,5,95,none,0.394,64,97,55,68,74,72,42,28.5,124910,0.652,Bachelor's degree,false
+29-2035.00,Magnetic resonance imaging technologists,Healthcare,64,5,95,narrow,0.561,64,84,66,76,73,73,20,7.1,88180,0.322,Associate's degree,false
+11-2021.00,Marketing managers,Management,64,5,95,narrow,0.597,64,91,67,69,73,73,27,6.6,161030,0.5,Bachelor's degree,false
+31-9011.00,Massage therapists,Healthcare support,64,5,95,narrow,0.638,64,72,70,92,72,74,28,15.4,57950,0.074,Postsecondary nondegree award,false
+13-2052.00,Personal financial advisors,Business & finance,64,5,95,none,0.508,64,90,62,71,73,72,28,9.6,102140,0.5,Bachelor's degree,false
+49-2021.00,"Radio, cellular, and tower equipment installers and repairers",Installation & repair,64,5,95,wide,0.848,64,75,81,87,72,76,23,8.6,64190,0.107,Associate's degree,false
+17-3021.00,Aerospace engineering and operations technologists and technicians,Architecture & engineering,63,5,94,narrow,0.6,63,82,67,76,72,72,19,8.1,79830,0.325,Associate's degree,false
+29-1181.00,Audiologists,Healthcare,63,5,94,narrow,0.689,63,87,71,72,73,73,24,9.5,92120,0.455,Doctoral or professional degree,false
+49-9092.00,Commercial divers,Installation & repair,63,5,94,wide,0.767,63,72,77,90,71,75,27,8.5,61130,0.067,Postsecondary nondegree award,false
+49-2093.00,"Electrical and electronics installers and repairers, transportation equipment",Installation & repair,63,5,94,narrow,0.692,63,80,73,78,72,73,17,6.1,82730,0.24,Postsecondary nondegree award,false
+47-2111.00,Electricians,Construction,63,5,94,wide,0.799,63,74,77,85,71,74,22,9.5,62350,0.146,High school diploma or equivalent,false
+25-1032.00,"Engineering teachers, postsecondary",Education,63,5,94,narrow,0.639,63,90,68,70,73,73,27,8.1,106120,0.5,Doctoral or professional degree,false
+29-9092.00,Genetic counselors,Healthcare,63,5,94,narrow,0.688,63,88,70,70,72,73,25,9.3,98910,0.5,Master's degree,false
+17-2112.00,Industrial engineers,Architecture & engineering,63,5,94,none,0.489,63,90,60,70,73,71,30,11,101140,0.526,Bachelor's degree,false
+49-9041.00,Industrial machinery mechanics,Installation & repair,63,5,94,wide,0.731,63,78,72,80,72,73,17,16.1,63760,0.274,High school diploma or equivalent,false
+13-1081.00,Logisticians,Business & finance,63,5,94,narrow,0.589,63,87,64,71,72,71,24,16.7,80880,0.5,Bachelor's degree,false
+15-1241.00,Computer network architects,Computer & math,62,5,92,narrow,0.602,62,95,65,66,73,72,33,11.9,130390,0.664,Bachelor's degree,false
+49-2095.00,"Electrical and electronics repairers, powerhouse, substation, and relay",Installation & repair,62,5,92,narrow,0.602,62,82,68,73,71,71,20,5.5,100940,0.34,Postsecondary nondegree award,false
+19-1012.00,Food scientists and technologists,Science,62,5,92,wide,0.749,62,82,75,74,71,73,20,6.5,85310,0.346,Bachelor's degree,false
+19-3032.00,Industrial-organizational psychologists,Science,62,5,92,wide,0.706,62,87,72,69,71,72,25,6.3,109840,0.489,Master's degree,false
+17-2121.00,Marine engineers and naval architects,Architecture & engineering,62,5,92,narrow,0.629,62,85,69,70,71,71,23,5.8,105670,0.421,Bachelor's degree,false
+19-1042.00,"Medical scientists, except epidemiologists",Science,62,5,92,narrow,0.583,62,88,64,69,72,71,26,8.7,100590,0.523,Doctoral or professional degree,false
+47-2231.00,Solar photovoltaic installers,Construction,62,5,92,wide,0.889,62,70,80,90,71,75,28,42.1,51860,0.11,High school diploma or equivalent,false
+13-1011.00,"Agents and business managers of artists, performers, and athletes",Business & finance,61,5,92,narrow,0.638,61,87,66,68,71,71,26,8.7,96310,0.543,Bachelor's degree,false
+19-1021.00,Biochemists and biophysicists,Science,61,5,92,wide,0.727,61,85,73,69,70,72,24,5.8,103650,0.455,Doctoral or professional degree,false
+29-1011.00,Chiropractors,Healthcare,61,5,92,narrow,0.58,61,84,64,71,71,70,23,9.5,79000,0.455,Doctoral or professional degree,false
+15-2051.00,Data scientists,Computer & math,61,5,92,none,0.286,61,96,47,64,72,68,49,33.5,112590,0.75,Bachelor's degree,false
+17-2071.00,Electrical engineers,Architecture & engineering,61,5,92,none,0.511,61,89,61,67,71,70,28,7.2,111910,0.563,Bachelor's degree,false
+11-9072.00,"Entertainment and recreation managers, except gambling",Management,61,5,92,narrow,0.665,61,80,69,74,70,71,19,7.7,77180,0.353,Bachelor's degree,true
+13-2054.00,Financial risk specialists,Business & finance,61,5,92,none,0.356,61,88,53,68,71,68,35,6.5,106000,0.533,Bachelor's degree,true
+47-2042.00,"Floor layers, except carpet, wood, and hard tiles",Construction,61,5,92,narrow,0.663,61,68,71,96,71,73,35,9.5,54340,0,No formal educational credential,false
+19-4092.00,Forensic science technicians,Science,61,5,92,none,0.543,61,80,62,74,70,69,19,12.8,67440,0.387,Bachelor's degree,false
+49-9021.00,"Heating, air conditioning, and refrigeration mechanics and installers",Installation & repair,61,5,92,wide,0.843,61,70,79,86,70,73,25,8.1,59810,0.105,Postsecondary nondegree award,false
+49-9062.00,Medical equipment repairers,Installation & repair,61,5,92,narrow,0.699,61,77,69,77,70,71,16,12.9,62630,0.303,Associate's degree,false
+15-2031.00,Operations research analysts,Computer & math,61,5,92,narrow,0.566,61,91,62,67,72,71,30,21.5,91290,0.629,Bachelor's degree,false
+49-2098.00,Security and fire alarm systems installers,Installation & repair,61,5,92,wide,0.764,61,72,74,84,70,72,23,10.4,59300,0.167,High school diploma or equivalent,false
+11-3131.00,Training and development managers,Management,61,5,92,narrow,0.666,61,88,70,68,71,72,27,5.8,127090,0.5,Bachelor's degree,false
+11-3012.00,Administrative services managers,Management,60,4.5,90,narrow,0.628,60,82,69,69,70,70,22,4.6,108390,0.391,Bachelor's degree,false
+17-2011.00,Aerospace engineers,Architecture & engineering,60,4.5,90,narrow,0.657,60,89,68,66,71,71,29,6.1,134830,0.571,Bachelor's degree,false
+53-2011.00,"Airline pilots, copilots, and flight engineers",Transportation,60,4.5,90,wide,0.781,60,83,79,70,70,72,23,3.9,226600,0.352,Bachelor's degree,false
+27-2021.00,Athletes and sports competitors,"Arts, design & media",60,4.5,90,wide,0.704,60,67,74,90,69,72,30,5.5,62360,0,No formal educational credential,false
+25-1042.00,"Biological science teachers, postsecondary",Education,60,4.5,90,narrow,0.663,60,83,68,69,70,70,23,7.3,83460,0.469,Doctoral or professional degree,false
+17-2072.00,"Electronics engineers, except computer",Architecture & engineering,60,4.5,90,narrow,0.589,60,89,65,66,70,70,29,6.2,127590,0.574,Bachelor's degree,false
+13-2051.00,Financial and investment analysts,Business & finance,60,4.5,90,none,0.398,60,84,56,68,70,68,28,5.7,101350,0.462,Bachelor's degree,true
+11-3121.00,Human resources managers,Management,60,4.5,90,wide,0.712,60,86,73,68,70,71,26,5,140030,0.48,Bachelor's degree,false
+17-2131.00,Materials engineers,Architecture & engineering,60,4.5,90,narrow,0.641,60,86,68,68,70,70,26,5.7,108310,0.488,Bachelor's degree,false
+49-3042.00,"Mobile heavy equipment mechanics, except engines",Installation & repair,60,4.5,90,wide,0.847,60,70,80,84,69,73,24,5.8,63980,0.1,High school diploma or equivalent,false
+29-1051.00,Pharmacists,Healthcare,60,4.5,90,narrow,0.652,60,84,70,69,70,71,24,4.6,137480,0.429,Doctoral or professional degree,false
+47-2072.00,Pile driver operators,Construction,60,4.5,90,wide,0.809,60,68,81,88,69,73,28,4.3,70510,0,High school diploma or equivalent,false
+49-3092.00,Recreational vehicle service technicians,Installation & repair,60,4.5,90,wide,0.743,60,66,73,92,69,72,32,11.5,50540,0.061,High school diploma or equivalent,false
+29-1141.00,Registered nurses,Healthcare,60,4.5,90,wide,0.701,60,79,72,72,69,70,19,4.9,93600,0.333,Bachelor's degree,false
+11-2022.00,Sales managers,Management,60,4.5,90,narrow,0.679,60,84,71,68,70,71,24,4.7,138060,0.45,Bachelor's degree,false
+11-3071.00,"Transportation, storage, and distribution managers",Management,60,4.5,90,narrow,0.597,60,85,66,69,70,70,25,6.1,102010,0.482,High school diploma or equivalent,false
+17-2021.00,Agricultural engineers,Architecture & engineering,59,4.5,87,wide,0.744,59,80,72,69,68,70,21,5.9,84630,0.426,Bachelor's degree,false
+29-9091.00,Athletic trainers,Healthcare,59,4.5,87,narrow,0.695,59,73,69,78,69,70,19,11.1,60250,0.279,Master's degree,false
+11-1011.00,Chief executives,Management,59,4.5,87,wide,0.724,59,84,74,67,69,71,25,4.3,206420,0.46,Bachelor's degree,false
+49-3041.00,Farm equipment mechanics and service technicians,Installation & repair,59,4.5,87,wide,0.809,59,67,76,87,69,72,28,11,52080,0.115,High school diploma or equivalent,false
+21-1022.00,Healthcare social workers,Community & social service,59,4.5,87,wide,0.794,59,76,74,73,69,70,17,7.7,68090,0.344,Master's degree,false
+23-1011.00,Lawyers,Legal,59,4.5,87,narrow,0.681,59,83,72,67,69,70,24,4.1,151160,0.425,Doctoral or professional degree,false
+49-9011.00,Mechanical door repairers,Installation & repair,59,4.5,87,wide,0.721,59,67,71,86,68,70,27,11.4,51050,0.136,High school diploma or equivalent,false
+21-1023.00,Mental health and substance abuse social workers,Community & social service,59,4.5,87,wide,0.807,59,72,74,77,68,70,18,9.7,60060,0.271,Master's degree,false
+41-9031.00,Sales engineers,Sales,59,4.5,87,narrow,0.63,59,85,67,66,69,69,26,5.5,121520,0.511,Bachelor's degree,false
+11-9151.00,Social and community service managers,Management,59,4.5,87,narrow,0.654,59,78,68,71,69,69,19,6.4,78240,0.393,Bachelor's degree,false
+47-2044.00,Tile and stone setters,Construction,59,4.5,87,narrow,0.557,59,67,64,89,69,70,30,10.1,52240,0.088,No formal educational credential,false
+49-3011.00,Aircraft mechanics and service technicians,Installation & repair,58,4.5,86,wide,0.838,58,70,81,78,68,71,23,4,78680,0.134,Postsecondary nondegree award,false
+25-1011.00,"Business teachers, postsecondary",Education,58,4.5,86,narrow,0.558,58,82,63,67,68,68,24,5.7,97270,0.489,Doctoral or professional degree,false
+17-2051.00,Civil engineers,Architecture & engineering,58,4.5,86,narrow,0.679,58,80,69,67,68,68,22,5,99590,0.446,Bachelor's degree,false
+17-2061.00,Computer hardware engineers,Architecture & engineering,58,4.5,86,none,0.444,58,93,55,63,70,68,38,7.3,155020,0.727,Bachelor's degree,false
+29-1128.00,Exercise physiologists,Healthcare,58,4.5,86,narrow,0.673,58,70,67,77,67,68,19,9.5,58160,0.26,Bachelor's degree,false
+11-3013.00,Facilities managers,Management,58,4.5,86,narrow,0.58,58,77,67,70,68,68,19,3.8,104690,0.318,Bachelor's degree,false
+33-2022.00,Forest fire inspectors and prevention specialists,Protective service,58,4.5,86,narrow,0.652,58,69,66,81,68,68,23,14.6,52380,0.219,High school diploma or equivalent,false
+19-2032.00,Materials scientists,Science,58,4.5,86,narrow,0.67,58,82,69,66,68,69,24,4.9,104160,0.483,Bachelor's degree,false
+11-2032.00,Public relations managers,Management,58,4.5,86,none,0.545,58,86,63,65,69,68,28,5,138520,0.55,Bachelor's degree,true
+15-1252.00,Software developers,Computer & math,58,4.5,86,none,0.411,58,97,51,61,70,67,46,15.8,133080,0.868,Bachelor's degree,true
+11-9041.00,Architectural and engineering managers,Management,57,4.5,85,narrow,0.594,57,82,66,65,67,67,25,3.8,167740,0.471,Bachelor's degree,false
+35-1011.00,Chefs and head cooks,Food & hospitality,57,4.5,85,wide,0.843,57,70,76,75,67,69,19,7.1,60990,0.262,High school diploma or equivalent,false
+19-2031.00,Chemists,Science,57,4.5,85,narrow,0.641,57,77,68,69,67,68,20,4.9,84150,0.38,Bachelor's degree,false
+25-1021.00,"Computer science teachers, postsecondary",Education,57,4.5,85,narrow,0.585,57,80,63,65,67,66,23,5.3,96690,0.512,Doctoral or professional degree,false
+15-1211.00,Computer systems analysts,Computer & math,57,4.5,85,none,0.476,57,90,55,62,69,67,35,8.7,103790,0.75,Bachelor's degree,false
+47-1011.00,First-line supervisors of construction trades and extraction workers,Construction,57,4.5,85,narrow,0.571,57,76,63,68,67,66,19,5.3,78690,0.4,High school diploma or equivalent,false
+17-2111.00,"Health and safety engineers, except mining safety engineers and inspectors",Architecture & engineering,57,4.5,85,none,0.473,57,81,59,66,68,66,24,4.4,109660,0.47,Bachelor's degree,false
+13-1161.00,Market research analysts and marketing specialists,Business & finance,57,4.5,85,none,0.469,57,79,56,66,67,65,23,6.7,76950,0.5,Bachelor's degree,false
+13-1082.00,Project management specialists,Business & finance,57,4.5,85,narrow,0.559,57,82,62,65,67,67,25,5.6,100750,0.55,Bachelor's degree,true
+47-2221.00,Structural iron and steel workers,Construction,57,4.5,85,wide,0.728,57,64,75,85,67,70,28,4.4,62700,0.029,High school diploma or equivalent,false
+29-9093.00,Surgical assistants,Healthcare,57,4.5,85,narrow,0.683,57,64,72,86,67,69,29,5.1,60290,0.039,Postsecondary nondegree award,false
+27-1011.00,Art directors,"Arts, design & media",56,4.5,83,narrow,0.675,56,80,69,64,66,67,24,4.2,111040,0.5,Bachelor's degree,false
+17-2031.00,Bioengineers and biomedical engineers,Architecture & engineering,56,4.5,83,narrow,0.646,56,83,66,63,67,67,27,5.2,106950,0.59,Bachelor's degree,false
+17-1021.00,Cartographers and photogrammetrists,Architecture & engineering,56,4.5,83,none,0.44,56,79,55,66,67,65,24,6.4,78380,0.52,Bachelor's degree,false
+39-9031.00,Exercise trainers and group fitness instructors,Personal care,56,4.5,83,narrow,0.654,56,60,67,95,67,69,39,11.9,46180,0.015,High school diploma or equivalent,false
+11-1021.00,General and operations managers,Management,56,4.5,83,narrow,0.59,56,80,64,65,67,66,24,4.4,102950,0.481,Bachelor's degree,false
+29-1216.00,General internal medicine physicians,Healthcare,56,4.5,83,wide,0.726,56,79,73,64,66,68,23,3.3,236350,0.457,Doctoral or professional degree,false
+29-2036.00,Medical dosimetrists,Healthcare,56,4.5,83,narrow,0.565,56,79,65,65,66,66,23,3.5,138110,0.45,Bachelor's degree,false
+49-3051.00,Motorboat mechanics and service technicians,Installation & repair,56,4.5,83,wide,0.817,56,63,76,85,66,69,29,6,54950,0.077,High school diploma or equivalent,false
+47-2152.00,"Plumbers, pipefitters, and steamfitters",Construction,56,4.5,83,wide,0.784,56,65,76,80,66,69,24,4.5,62970,0.102,High school diploma or equivalent,false
+51-9141.00,Semiconductor processing technicians,Production,56,4.5,83,narrow,0.557,56,66,60,79,66,65,23,10.9,51180,0.234,High school diploma or equivalent,false
+29-2055.00,Surgical technologists,Healthcare,56,4.5,83,wide,0.708,56,64,73,83,66,68,27,4.5,62830,0.067,Postsecondary nondegree award,false
+13-1151.00,Training and development specialists,Business & finance,56,4.5,83,none,0.523,56,78,56,65,66,64,22,10.8,65850,0.553,Bachelor's degree,false
+19-1011.00,Animal scientists,Science,55,4.5,81,narrow,0.666,55,78,65,64,66,66,23,5.8,79120,0.531,Bachelor's degree,false
+21-1094.00,Community health workers,Community & social service,55,4.5,81,narrow,0.595,55,67,60,73,65,64,18,11.3,51030,0.319,High school diploma or equivalent,false
+15-1243.00,Database architects,Computer & math,55,4.5,81,none,0.397,55,93,50,59,68,65,43,8.7,135980,0.878,Bachelor's degree,false
+11-9051.00,Food service managers,Management,55,4.5,81,narrow,0.694,55,73,67,68,65,66,18,6.4,65310,0.417,High school diploma or equivalent,false
+11-2033.00,Fundraising managers,Management,55,4.5,81,none,0.537,55,81,61,62,66,65,26,4.2,123480,0.563,Bachelor's degree,true
+29-9021.00,Health information technologists and medical registrars,Healthcare,55,4.5,81,none,0.436,55,80,51,63,66,63,29,14.7,67310,0.656,Associate's degree,true
+19-1022.00,Microbiologists,Science,55,4.5,81,narrow,0.652,55,74,67,66,65,65,19,4.1,87330,0.396,Bachelor's degree,false
+27-2012.00,Producers and directors,"Arts, design & media",55,4.5,81,narrow,0.667,55,76,67,65,65,66,21,4.9,83480,0.468,Bachelor's degree,false
+47-4071.00,Septic tank servicers and sewer pipe cleaners,Construction,55,4.5,81,narrow,0.68,55,61,68,87,66,67,32,7.6,49140,0.078,High school diploma or equivalent,false
+15-2041.00,Statisticians,Computer & math,55,4.5,81,none,0.453,55,89,53,60,67,65,36,8.5,103300,0.789,Master's degree,false
+53-1041.00,Aircraft cargo handling supervisors,Transportation,54,4.5,80,wide,0.707,54,67,69,71,64,65,17,5.2,63940,0.3,High school diploma or equivalent,false
+13-1141.00,"Compensation, benefits, and job analysis specialists",Business & finance,54,4.5,80,none,0.437,54,74,54,65,65,62,20,5.3,77020,0.474,Bachelor's degree,false
+29-1215.00,Family medicine physicians,Healthcare,54,4.5,80,wide,0.737,54,76,73,63,64,66,22,2.7,238380,0.438,Doctoral or professional degree,false
+33-2021.00,Fire inspectors and investigators,Protective service,54,4.5,80,narrow,0.641,54,69,67,69,64,65,15,3.8,78060,0.288,Postsecondary nondegree award,false
+33-1012.00,First-line supervisors of police and detectives,Protective service,54,4.5,80,wide,0.718,54,72,73,66,64,66,19,2.9,105980,0.329,High school diploma or equivalent,false
+25-1043.00,"Forestry and conservation science teachers, postsecondary",Education,54,4.5,80,narrow,0.609,54,77,65,63,65,65,23,4,100830,0.478,Doctoral or professional degree,false
+47-2132.00,"Insulation workers, mechanical",Construction,54,4.5,80,wide,0.748,54,59,73,84,64,67,30,4.7,57250,0.045,High school diploma or equivalent,false
+31-9093.00,Medical equipment preparers,Healthcare support,54,4.5,80,narrow,0.654,54,59,65,86,65,66,32,10,46490,0.111,High school diploma or equivalent,false
+11-9121.00,Natural sciences managers,Management,54,4.5,80,none,0.543,54,81,61,61,65,64,27,3.7,161180,0.567,Bachelor's degree,false
+29-2033.00,Nuclear medicine technologists,Healthcare,54,4.5,80,narrow,0.691,54,70,71,67,64,65,17,3,97020,0.29,Associate's degree,false
+19-5012.00,Occupational health and safety technicians,Science,54,4.5,80,none,0.494,54,69,55,69,64,62,15,8.5,58440,0.396,High school diploma or equivalent,false
+29-2053.00,Psychiatric technicians,Healthcare,54,4.5,80,wide,0.799,54,59,71,87,65,67,33,20,42590,0.12,Postsecondary nondegree award,false
+29-2034.00,Radiologic technologists and technicians,Healthcare,54,4.5,80,none,0.515,54,71,60,66,64,63,17,4.3,77660,0.377,Associate's degree,false
+47-2171.00,Reinforcing iron and rebar workers,Construction,54,4.5,80,narrow,0.618,54,61,67,82,65,66,28,4.6,59280,0.071,High school diploma or equivalent,false
+47-2181.00,Roofers,Construction,54,4.5,80,wide,0.717,54,60,71,87,65,67,33,5.9,50970,0.04,No formal educational credential,false
+15-1253.00,Software quality assurance analysts and testers,Computer & math,54,4.5,80,none,0.354,54,91,46,59,67,63,45,10,102610,0.877,Bachelor's degree,false
+25-1041.00,"Agricultural sciences teachers, postsecondary",Education,53,4,78,narrow,0.639,53,74,64,62,63,63,21,4.1,86350,0.5,Doctoral or professional degree,false
+17-1011.00,"Architects, except landscape and naval",Architecture & engineering,53,4,78,wide,0.707,53,75,69,62,64,65,22,3.9,96690,0.488,Bachelor's degree,false
+47-2031.00,Carpenters,Construction,53,4,78,wide,0.714,53,61,70,76,63,65,23,4.5,59310,0.144,High school diploma or equivalent,false
+27-2032.00,Choreographers,"Arts, design & media",53,4,78,wide,0.73,53,64,68,72,63,64,19,6.1,55600,0.271,High school diploma or equivalent,false
+47-2061.00,Construction laborers,Construction,53,4,78,narrow,0.638,53,57,65,89,64,66,36,7.3,46730,0.05,No formal educational credential,false
+25-4012.00,Curators,Education,53,4,78,wide,0.7,53,70,64,64,63,63,17,7,61770,0.5,Master's degree,false
+47-2081.00,Drywall and ceiling tile installers,Construction,53,4,78,narrow,0.638,53,58,68,82,63,65,29,4.2,58140,0.042,No formal educational credential,false
+17-2081.00,Environmental engineers,Architecture & engineering,53,4,78,narrow,0.594,53,78,63,61,64,64,25,3.9,104170,0.556,Bachelor's degree,false
+19-2041.00,"Environmental scientists and specialists, including health",Science,53,4,78,none,0.501,53,73,57,62,63,62,20,4.4,80060,0.5,Bachelor's degree,false
+33-1021.00,First-line supervisors of firefighting and prevention workers,Protective service,53,4,78,narrow,0.594,53,71,64,63,63,63,18,3.4,92430,0.415,Postsecondary nondegree award,false
+23-1023.00,"Judges, magistrate judges, and magistrates",Legal,53,4,78,wide,0.712,53,75,72,63,64,65,22,2.5,156210,0.417,Doctoral or professional degree,false
+29-2043.00,Paramedics,Healthcare,53,4,78,narrow,0.572,53,61,63,77,64,64,24,5,58410,0.154,Postsecondary nondegree award,true
+29-1081.00,Podiatrists,Healthcare,53,4,78,narrow,0.697,53,71,73,66,64,65,20,1.8,152800,0.286,Doctoral or professional degree,false
+19-1013.00,Soil and plant scientists,Science,53,4,78,narrow,0.625,53,72,62,64,63,63,19,5.4,71410,0.489,Bachelor's degree,false
+13-2011.00,Accountants and auditors,Business & finance,52,4,76,none,0.412,52,75,52,61,63,61,23,4.6,81680,0.56,Bachelor's degree,false
+49-2097.00,Audiovisual equipment installers and repairers,Installation & repair,52,4,76,wide,0.748,52,61,69,74,63,64,22,6.6,50620,0.238,Postsecondary nondegree award,false
+17-3028.00,Calibration technologists and technicians,Architecture & engineering,52,4,76,none,0.469,52,67,55,65,62,60,15,4.7,65040,0.4,Associate's degree,true
+39-3092.00,Costume attendants,Personal care,52,4,76,narrow,0.557,52,62,59,72,62,61,20,5.9,54810,0.264,High school diploma or equivalent,false
+29-1031.00,Dietitians and nutritionists,Healthcare,52,4,76,narrow,0.619,52,73,61,62,63,62,21,5.5,73850,0.549,Bachelor's degree,false
+11-9171.00,Funeral home managers,Management,52,4,76,narrow,0.581,52,69,61,63,62,61,17,4.1,76830,0.429,Associate's degree,false
+13-1071.00,Human resources specialists,Business & finance,52,4,76,none,0.395,52,75,48,60,62,59,27,6.2,72910,0.644,Bachelor's degree,false
+39-5091.00,"Makeup artists, theatrical and performance",Personal care,52,4,76,narrow,0.555,52,63,57,70,62,61,18,8.1,50280,0.341,Postsecondary nondegree award,false
+53-5031.00,Ship engineers,Transportation,52,4,76,wide,0.748,52,65,76,68,62,65,24,1.6,101320,0.172,Postsecondary nondegree award,false
+49-9097.00,Signal and track switch repairers,Installation & repair,52,4,76,wide,0.901,52,61,84,72,62,66,32,1.7,83600,0.077,High school diploma or equivalent,false
+19-3041.00,Sociologists,Science,52,4,76,narrow,0.653,52,75,66,60,63,63,23,3.6,101690,0.538,Master's degree,false
+53-4041.00,Subway and streetcar operators,Transportation,52,4,76,none,0.528,52,70,60,63,62,61,18,3.4,84830,0.409,High school diploma or equivalent,false
+53-7121.00,"Tank car, truck, and ship loaders",Transportation,52,4,76,narrow,0.65,52,59,68,81,63,65,29,4.3,58070,0.071,No formal educational credential,false
+33-3052.00,Transit and railroad police,Protective service,52,4,76,wide,0.779,52,66,75,68,63,65,23,3,82320,0.25,High school diploma or equivalent,false
+29-2056.00,Veterinary technologists and technicians,Healthcare,52,4,76,narrow,0.682,52,58,65,81,63,64,29,9.1,45980,0.164,Associate's degree,false
+15-1255.00,Web and digital interface designers,Computer & math,52,4,76,none,0.498,52,85,53,57,64,62,33,7,98090,0.833,Bachelor's degree,false
+45-2091.00,Agricultural equipment operators,Farming & outdoors,51,4,74,wide,0.707,51,53,68,93,63,66,42,7.7,42580,0,No formal educational credential,false
+53-2021.00,Air traffic controllers,Transportation,51,4,74,narrow,0.674,51,69,71,62,61,63,20,1.2,144580,0.341,Associate's degree,false
+19-2011.00,Astronomers,Science,51,4,74,wide,0.707,51,71,70,60,61,63,20,2.2,132170,0.438,Doctoral or professional degree,false
+17-2041.00,Chemical engineers,Architecture & engineering,51,4,74,wide,0.723,51,73,71,61,62,64,22,2.6,121860,0.462,Bachelor's degree,false
+51-9162.00,Computer numerically controlled tool programmers,Production,51,4,74,none,0.41,51,79,46,58,62,59,33,12.8,65670,0.804,Postsecondary nondegree award,false
+13-1074.00,Farm labor contractors,Business & finance,51,4,74,wide,0.79,51,57,71,78,62,64,27,6,48690,0.143,No formal educational credential,false
+19-2042.00,"Geoscientists, except hydrologists and geographers",Science,51,4,74,narrow,0.606,51,72,64,61,62,62,21,3.2,99240,0.467,Bachelor's degree,false
+17-1012.00,Landscape architects,Architecture & engineering,51,4,74,wide,0.711,51,68,68,62,61,62,17,3.5,79660,0.421,Bachelor's degree,false
+51-9195.00,"Molders, shapers, and casters, except metal and plastic",Production,51,4,74,narrow,0.6,51,53,63,91,63,64,40,6.2,45690,0,High school diploma or equivalent,false
+29-2057.00,Ophthalmic medical technicians,Healthcare,51,4,74,none,0.439,51,60,49,72,62,59,23,19.8,44080,0.329,Postsecondary nondegree award,false
+47-2142.00,Paperhangers,Construction,51,4,74,narrow,0.586,51,54,63,86,62,63,35,5.3,48260,0.027,No formal educational credential,false
+19-2012.00,Physicists,Science,51,4,74,narrow,0.55,51,83,58,57,63,62,32,4,166290,0.75,Doctoral or professional degree,false
+47-2161.00,Plasterers and stucco masons,Construction,51,4,74,narrow,0.604,51,56,65,79,62,63,28,4.1,56020,0.077,No formal educational credential,false
+33-3051.00,Police and sheriff's patrol officers,Protective service,51,4,74,wide,0.753,51,64,73,67,62,63,22,3.1,76290,0.25,High school diploma or equivalent,false
+11-3061.00,Purchasing managers,Management,51,4,74,narrow,0.617,51,77,64,59,62,63,26,3.1,139510,0.586,Bachelor's degree,false
+29-1124.00,Radiation therapists,Healthcare,51,4,74,narrow,0.64,51,66,69,65,62,63,18,1.9,101990,0.28,Associate's degree,false
+49-9096.00,Riggers,Installation & repair,51,4,74,narrow,0.692,51,57,72,81,63,65,30,3.2,62060,0,High school diploma or equivalent,false
+17-1022.00,Surveyors,Architecture & engineering,51,4,74,narrow,0.613,51,69,61,62,61,61,18,4.4,72740,0.489,Bachelor's degree,false
+25-1051.00,"Atmospheric, earth, marine, and space sciences teachers, postsecondary",Education,50,4,71,narrow,0.618,50,70,64,59,61,61,20,2.6,101390,0.475,Doctoral or professional degree,false
+47-2021.00,Brickmasons and blockmasons,Construction,50,4,71,narrow,0.668,50,55,69,77,61,62,27,3.2,60800,0.038,High school diploma or equivalent,false
+43-5011.00,Cargo and freight agents,Office & admin,50,4,71,narrow,0.645,50,63,59,64,60,59,14,8.5,49900,0.47,High school diploma or equivalent,false
+35-2014.00,"Cooks, restaurant",Food & hospitality,50,4,71,narrow,0.619,50,52,60,87,62,62,37,14.9,36830,0.095,No formal educational credential,false
+53-7021.00,Crane and tower operators,Transportation,50,4,71,narrow,0.578,50,59,63,69,60,60,19,3,66370,0.184,High school diploma or equivalent,false
+21-1012.00,"Educational, guidance, and career counselors and advisors",Community & social service,50,4,71,narrow,0.632,50,61,64,66,60,60,16,3.5,65140,0.289,Master's degree,false
+11-9161.00,Emergency management directors,Management,50,4,71,narrow,0.685,50,68,67,61,61,61,18,3,86130,0.422,Bachelor's degree,false
+25-1064.00,"Geography teachers, postsecondary",Education,50,4,71,narrow,0.671,50,69,66,60,61,61,19,3.3,86730,0.477,Doctoral or professional degree,false
+25-1112.00,"Law teachers, postsecondary",Education,50,4,71,narrow,0.627,50,71,66,60,61,62,21,2.2,126650,0.45,Doctoral or professional degree,false
+49-3052.00,Motorcycle mechanics,Installation & repair,50,4,71,wide,0.84,50,53,76,88,62,66,38,5.3,47200,0,Postsecondary nondegree award,false
+47-2073.00,Operating engineers and other construction equipment operators,Construction,50,4,71,narrow,0.668,50,56,69,79,62,63,29,3.6,58710,0.054,High school diploma or equivalent,false
+25-1054.00,"Physics teachers, postsecondary",Education,50,4,71,narrow,0.677,50,68,68,61,61,62,18,2.5,97360,0.419,Doctoral or professional degree,false
+25-1066.00,"Psychology teachers, postsecondary",Education,50,4,71,narrow,0.657,50,69,65,61,61,61,19,3.6,80330,0.48,Doctoral or professional degree,false
+49-3043.00,Rail car repairers,Installation & repair,50,4,71,wide,0.825,50,57,77,73,61,64,27,2.8,65680,0.097,High school diploma or equivalent,false
+19-3051.00,Urban and regional planners,Science,50,4,71,narrow,0.669,50,69,66,61,61,61,19,3.4,83720,0.477,Master's degree,false
+23-1022.00,"Arbitrators, mediators, and conciliators",Legal,49,4,69,narrow,0.624,49,67,61,60,60,59,18,4.3,67710,0.5,Bachelor's degree,false
+53-3052.00,"Bus drivers, transit and intercity",Transportation,49,4,69,narrow,0.643,49,58,64,69,60,60,20,4.3,57440,0.241,High school diploma or equivalent,false
+27-1021.00,Commercial and industrial designers,"Arts, design & media",49,4,69,narrow,0.66,49,66,64,59,59,59,17,3.2,79450,0.466,Bachelor's degree,false
+31-9091.00,Dental assistants,Healthcare support,49,4,69,narrow,0.562,49,56,57,70,60,58,21,6.4,47300,0.267,Postsecondary nondegree award,false
+25-1063.00,"Economics teachers, postsecondary",Education,49,4,69,narrow,0.567,49,70,62,58,60,60,21,2.1,119980,0.476,Doctoral or professional degree,false
+33-2011.00,Firefighters,Protective service,49,4,69,wide,0.778,49,56,73,72,60,62,24,3.4,59530,0.14,Postsecondary nondegree award,false
+49-1011.00,"First-line supervisors of mechanics, installers, and repairers",Installation & repair,49,4,69,narrow,0.603,49,65,62,61,60,59,16,3.1,78300,0.41,High school diploma or equivalent,false
+13-1131.00,Fundraisers,Business & finance,49,4,69,narrow,0.566,49,66,57,59,59,58,17,4.3,66490,0.519,Bachelor's degree,false
+31-9092.00,Medical assistants,Healthcare support,49,4,69,narrow,0.609,49,58,57,68,60,58,19,12.5,44200,0.359,Postsecondary nondegree award,false
+33-9021.00,Private detectives and investigators,Protective service,49,4,69,none,0.452,49,62,51,65,60,57,16,6,52370,0.389,High school diploma or equivalent,false
+27-3031.00,Public relations specialists,"Arts, design & media",49,4,69,narrow,0.561,49,70,56,58,60,59,21,4.8,69780,0.591,Bachelor's degree,false
+51-8021.00,Stationary engineers and boiler operators,Production,49,4,69,narrow,0.66,49,59,69,68,60,61,20,2.2,75190,0.163,High school diploma or equivalent,false
+15-1254.00,Web developers,Computer & math,49,4,69,none,0.375,49,85,44,55,63,59,41,7.5,90930,0.933,Bachelor's degree,false
+25-1061.00,"Anthropology and archeology teachers, postsecondary",Education,48,3.5,67,narrow,0.688,48,68,66,57,59,60,20,2.7,95770,0.52,Doctoral or professional degree,false
+49-3023.00,Automotive service technicians and mechanics,Installation & repair,48,3.5,67,wide,0.808,48,53,73,78,60,62,30,4.2,49670,0.082,Postsecondary nondegree award,false
+49-3031.00,Bus and truck mechanics and diesel engine specialists,Installation & repair,48,3.5,67,wide,0.875,48,51,80,77,59,63,32,2.4,60640,0,High school diploma or equivalent,false
+19-1031.00,Conservation scientists,Science,48,3.5,67,narrow,0.605,48,63,61,60,58,58,15,3.4,67950,0.432,Bachelor's degree,false
+51-9193.00,Cooling and freezing equipment operators and tenders,Production,48,3.5,67,wide,0.746,48,51,67,83,60,62,35,7.2,40160,0.08,High school diploma or equivalent,false
+11-9033.00,"Education administrators, postsecondary",Management,48,3.5,67,narrow,0.632,48,66,65,58,59,59,18,1.7,103960,0.439,Master's degree,false
+25-1192.00,"Family and consumer sciences teachers, postsecondary",Education,48,3.5,67,none,0.485,48,66,54,57,58,57,18,3.4,77280,0.538,Doctoral or professional degree,false
+27-4032.00,Film and video editors,"Arts, design & media",48,3.5,67,narrow,0.683,48,67,63,59,59,59,19,4,70980,0.528,Bachelor's degree,false
+51-3092.00,Food batchmakers,Production,48,3.5,67,wide,0.759,48,51,67,80,60,61,32,6.9,40790,0.115,High school diploma or equivalent,false
+21-1091.00,Health education specialists,Community & social service,48,3.5,67,none,0.529,48,65,54,58,58,57,17,4.5,63000,0.532,Bachelor's degree,false
+11-3051.00,Industrial production managers,Management,48,3.5,67,narrow,0.671,48,69,67,57,59,60,21,1.9,121440,0.485,Bachelor's degree,false
+11-9141.00,"Property, real estate, and community association managers",Management,48,3.5,67,narrow,0.62,48,63,61,60,58,58,15,3.6,66700,0.443,High school diploma or equivalent,false
+47-4061.00,Rail-track laying and maintenance equipment operators,Construction,48,3.5,67,wide,0.763,48,53,76,75,60,62,28,1.6,67370,0,High school diploma or equivalent,false
+19-3091.00,Anthropologists and archeologists,Science,47,3.5,66,wide,0.736,47,62,66,60,58,59,19,3.7,64910,0.44,Master's degree,false
+17-3011.00,Architectural and civil drafters,Architecture & engineering,47,3.5,66,none,0.5,47,64,53,57,57,56,17,4.1,64280,0.54,Associate's degree,false
+25-1031.00,"Architecture teachers, postsecondary",Education,47,3.5,66,narrow,0.668,47,67,66,57,58,59,20,2,101480,0.488,Doctoral or professional degree,false
+29-2031.00,Cardiovascular technologists and technicians,Healthcare,47,3.5,66,none,0.498,47,60,56,60,58,56,13,3,67260,0.357,Associate's degree,false
+51-9011.00,Chemical equipment operators and tenders,Production,47,3.5,66,wide,0.748,47,52,70,69,58,59,23,3.3,57090,0.152,High school diploma or equivalent,false
+25-1052.00,"Chemistry teachers, postsecondary",Education,47,3.5,66,narrow,0.655,47,64,65,58,58,58,18,2.2,86220,0.431,Doctoral or professional degree,false
+21-1021.00,"Child, family, and school social workers",Community & social service,47,3.5,66,wide,0.758,47,55,69,65,58,59,22,3.4,58570,0.243,Bachelor's degree,false
+27-2022.00,Coaches and scouts,"Arts, design & media",47,3.5,66,wide,0.743,47,54,64,67,58,58,20,6.4,45920,0.3,Bachelor's degree,false
+49-9012.00,"Control and valve installers and repairers, except mechanical door",Installation & repair,47,3.5,66,narrow,0.674,47,55,70,67,58,59,23,1.3,74690,0.131,High school diploma or equivalent,false
+49-2092.00,"Electric motor, power tool, and related repairers",Installation & repair,47,3.5,66,wide,0.887,47,52,77,73,59,62,30,3.4,53990,0.106,High school diploma or equivalent,false
+25-1053.00,"Environmental science teachers, postsecondary",Education,47,3.5,66,narrow,0.604,47,67,61,57,58,58,20,2.9,87710,0.522,Doctoral or professional degree,false
+47-4031.00,Fence erectors,Construction,47,3.5,66,wide,0.759,47,50,70,81,60,62,34,4.6,46940,0.051,No formal educational credential,false
+39-1022.00,First-line supervisors of personal service workers,Personal care,47,3.5,66,narrow,0.577,47,57,54,62,57,55,15,6.7,47080,0.414,High school diploma or equivalent,false
+47-2121.00,Glaziers,Construction,47,3.5,66,narrow,0.666,47,51,67,74,59,60,27,3.3,55440,0.083,High school diploma or equivalent,false
+53-3032.00,Heavy and tractor-trailer truck drivers,Transportation,47,3.5,66,narrow,0.587,47,57,60,65,58,57,18,4,57440,0.279,Postsecondary nondegree award,false
+47-3016.00,Helpers--roofers,Construction,47,3.5,66,wide,0.701,47,48,66,89,60,62,42,5.7,40590,0,No formal educational credential,false
+25-1082.00,"Library science teachers, postsecondary",Education,47,3.5,66,none,0.531,47,65,57,57,58,57,18,3,78630,0.511,Doctoral or professional degree,false
+11-9081.00,Lodging managers,Management,47,3.5,66,wide,0.726,47,63,66,59,58,59,19,3.4,68130,0.457,High school diploma or equivalent,false
+49-9095.00,Manufactured building and mobile home installers,Installation & repair,47,3.5,66,wide,0.824,47,49,71,82,59,62,35,5.9,41080,0.077,High school diploma or equivalent,false
+13-1121.00,"Meeting, convention, and event planners",Business & finance,47,3.5,66,none,0.549,47,62,55,60,58,56,15,4.8,59440,0.486,Bachelor's degree,false
+25-4013.00,Museum technicians and conservators,Education,47,3.5,66,narrow,0.647,47,54,61,69,58,58,22,5.4,47460,0.237,Bachelor's degree,false
+29-1221.00,"Pediatricians, general",Healthcare,47,3.5,66,wide,0.71,47,68,69,56,58,60,22,0.8,210130,0.483,Doctoral or professional degree,false
+17-2171.00,Petroleum engineers,Architecture & engineering,47,3.5,66,none,0.528,47,69,60,56,58,58,22,1.3,141280,0.528,Bachelor's degree,false
+41-9021.00,Real estate brokers,Sales,47,3.5,66,none,0.543,47,63,57,57,57,56,16,3.3,72280,0.5,High school diploma or equivalent,false
+47-5051.00,"Rock splitters, quarry",Construction,47,3.5,66,narrow,0.554,47,50,60,78,59,59,31,4.4,47460,0.077,No formal educational credential,false
+47-2211.00,Sheet metal workers,Construction,47,3.5,66,wide,0.74,47,52,72,72,58,60,25,2.4,60850,0.066,High school diploma or equivalent,false
+39-5094.00,Skincare specialists,Personal care,47,3.5,66,none,0.497,47,52,53,74,59,57,27,6.7,41560,0.197,Postsecondary nondegree award,false
+53-2022.00,Airfield operations specialists,Transportation,46,3.5,62,narrow,0.653,46,57,61,62,57,57,16,4.2,56750,0.366,High school diploma or equivalent,false
+25-1062.00,"Area, ethnic, and cultural studies teachers, postsecondary",Education,46,3.5,62,wide,0.7,46,64,66,56,57,58,20,2.4,84290,0.5,Doctoral or professional degree,false
+53-5021.00,"Captains, mates, and pilots of water vessels",Transportation,46,3.5,62,narrow,0.646,46,57,67,60,56,57,21,0.5,85540,0.264,Postsecondary nondegree award,false
+47-5023.00,"Earth drillers, except oil and gas",Construction,46,3.5,62,narrow,0.678,46,52,67,68,58,58,22,2.9,59600,0.136,High school diploma or equivalent,false
+19-3011.00,Economists,Science,46,3.5,62,narrow,0.591,46,66,62,55,57,57,20,1.2,115440,0.5,Master's degree,false
+27-1022.00,Fashion designers,"Arts, design & media",46,3.5,62,narrow,0.611,46,61,63,58,57,57,17,2,80690,0.391,Bachelor's degree,false
+39-1014.00,"First-line supervisors of entertainment and recreation workers, except gambling services",Personal care,46,3.5,62,none,0.527,46,55,52,64,57,55,18,6.3,46900,0.368,High school diploma or equivalent,true
+19-4013.00,Food science technicians,Science,46,3.5,62,narrow,0.605,46,55,58,62,57,56,16,4.8,49430,0.357,Associate's degree,false
+47-2131.00,"Insulation workers, floor, ceiling, and wall",Construction,46,3.5,62,narrow,0.57,46,49,61,78,58,58,32,3.8,48680,0.05,No formal educational credential,false
+53-3033.00,Light truck drivers,Transportation,46,3.5,62,none,0.385,46,54,44,64,57,53,20,7.3,44140,0.365,High school diploma or equivalent,false
+29-2072.00,Medical records specialists,Healthcare,46,3.5,62,none,0.294,46,62,38,57,57,52,24,7.1,50250,0.618,Postsecondary nondegree award,true
+47-2141.00,"Painters, construction and maintenance",Construction,46,3.5,62,narrow,0.667,46,49,65,76,58,59,30,3.8,48660,0.057,No formal educational credential,false
+47-2071.00,"Paving, surfacing, and tamping equipment operators",Construction,46,3.5,62,narrow,0.698,46,49,69,79,59,60,33,3.2,51650,0,High school diploma or equivalent,false
+25-1065.00,"Political science teachers, postsecondary",Education,46,3.5,62,narrow,0.658,46,64,65,56,57,58,19,2,94680,0.476,Doctoral or professional degree,false
+29-1125.00,Recreational therapists,Healthcare,46,3.5,62,wide,0.735,46,55,67,61,56,57,21,3.3,60280,0.318,Bachelor's degree,false
+41-4011.00,"Sales representatives, wholesale and manufacturing, technical and scientific products",Sales,46,3.5,62,narrow,0.562,46,65,59,55,57,56,19,1.9,100070,0.535,Bachelor's degree,false
+41-3031.00,"Securities, commodities, and financial services sales agents",Sales,46,3.5,62,none,0.452,46,66,51,54,57,55,20,3.3,78140,0.606,Bachelor's degree,false
+25-1067.00,"Sociology teachers, postsecondary",Education,46,3.5,62,wide,0.741,46,62,69,57,57,58,23,2.1,82540,0.432,Doctoral or professional degree,false
+53-7065.00,Stockers and order fillers,Transportation,46,3.5,62,none,0.491,46,49,51,75,58,56,29,8.5,37090,0.182,No formal educational credential,false
+53-3054.00,Taxi drivers,Transportation,46,3.5,62,narrow,0.619,46,51,56,70,57,56,24,11.1,36220,0.281,No formal educational credential,true
+53-6051.00,Transportation inspectors,Transportation,46,3.5,62,none,0.386,46,62,51,56,56,54,16,1.7,85750,0.439,High school diploma or equivalent,false
+31-9096.00,Veterinary assistants and laboratory animal caretakers,Healthcare support,46,3.5,62,narrow,0.563,46,50,55,73,58,56,27,8.7,37320,0.222,High school diploma or equivalent,false
+39-2021.00,Animal caretakers,Personal care,45,3.5,59,none,0.436,45,49,46,70,57,53,25,12.1,33470,0.273,High school diploma or equivalent,false
+25-4011.00,Archivists,Education,45,3.5,59,none,0.505,45,60,52,56,56,54,15,3.8,61570,0.5,Master's degree,false
+25-1121.00,"Art, drama, and music teachers, postsecondary",Education,45,3.5,59,wide,0.737,45,60,68,55,55,57,23,1.7,80190,0.438,Master's degree,false
+49-3022.00,Automotive glass installers and repairers,Installation & repair,45,3.5,59,wide,0.729,45,46,69,81,58,60,36,3.6,47260,0,High school diploma or equivalent,false
+19-4031.00,Chemical technicians,Science,45,3.5,59,none,0.546,45,55,55,59,55,54,14,3.7,57790,0.393,Associate's degree,false
+25-1122.00,"Communications teachers, postsecondary",Education,45,3.5,59,wide,0.745,45,60,68,56,56,57,23,2.1,77800,0.425,Doctoral or professional degree,false
+11-3111.00,Compensation and benefits managers,Management,45,3.5,59,narrow,0.581,45,65,62,54,56,56,20,0.2,140360,0.513,Bachelor's degree,false
+43-5021.00,Couriers and messengers,Office & admin,45,3.5,59,none,0.414,45,50,46,67,56,53,22,8.2,38340,0.31,High school diploma or equivalent,false
+51-2051.00,Fiberglass laminators and fabricators,Production,45,3.5,59,narrow,0.674,45,46,65,81,58,59,36,4.2,45760,0.021,High school diploma or equivalent,false
+47-3012.00,Helpers--carpenters,Construction,45,3.5,59,wide,0.835,45,45,73,83,58,61,38,4.5,41600,0,No formal educational credential,false
+29-2061.00,Licensed practical and licensed vocational nurses,Healthcare,45,3.5,59,narrow,0.672,45,54,65,63,57,57,20,2.6,62340,0.25,Postsecondary nondegree award,false
+49-9071.00,"Maintenance and repair workers, general",Installation & repair,45,3.5,59,wide,0.817,45,49,71,71,57,59,26,3.8,48620,0.137,High school diploma or equivalent,false
+41-9012.00,Models,Sales,45,3.5,59,none,0.46,45,56,58,60,56,55,15,-0.5,89990,0.233,No formal educational credential,false
+31-9097.00,Phlebotomists,Healthcare support,45,3.5,59,narrow,0.561,45,49,56,72,57,56,27,5.6,43660,0.183,Postsecondary nondegree award,false
+21-1093.00,Social and human service assistants,Community & social service,45,3.5,59,narrow,0.601,45,53,55,62,56,54,17,6.4,45120,0.393,High school diploma or equivalent,false
+25-1113.00,"Social work teachers, postsecondary",Education,45,3.5,59,wide,0.748,45,60,68,57,56,57,23,2.3,76210,0.42,Doctoral or professional degree,false
+27-1014.00,Special effects artists and animators,"Arts, design & media",45,3.5,59,narrow,0.592,45,64,61,54,56,56,19,1.6,99800,0.525,Bachelor's degree,false
+37-3013.00,Tree trimmers and pruners,Building & grounds,45,3.5,59,narrow,0.635,45,48,64,74,57,58,29,3.3,50430,0.061,High school diploma or equivalent,false
+53-6032.00,Aircraft service attendants,Transportation,44,3.5,56,narrow,0.669,44,47,62,73,57,57,29,5.1,41540,0.139,High school diploma or equivalent,true
+47-5041.00,Continuous mining machine operators,Construction,44,3.5,56,wide,0.744,44,47,73,71,56,58,29,0.6,63380,0,No formal educational credential,false
+35-2013.00,"Cooks, private household",Food & hospitality,44,3.5,56,wide,0.718,44,48,63,67,56,56,23,5.1,44530,0.24,Postsecondary nondegree award,false
+33-3021.00,Detectives and criminal investigators,Protective service,44,3.5,56,narrow,0.663,44,56,67,56,55,56,23,-0.7,93580,0.317,High school diploma or equivalent,false
+53-3031.00,Driver/sales workers,Transportation,44,3.5,56,none,0.524,44,49,50,65,56,53,21,8.8,37130,0.333,High school diploma or equivalent,false
+47-3015.00,"Helpers--pipelayers, plumbers, pipefitters, and steamfitters",Construction,44,3.5,56,wide,0.706,44,44,66,85,58,59,41,4.9,39270,0,High school diploma or equivalent,false
+19-3093.00,Historians,Science,44,3.5,56,narrow,0.672,44,58,63,54,54,55,19,2.2,74050,0.474,Master's degree,false
+27-1025.00,Interior designers,"Arts, design & media",44,3.5,56,narrow,0.628,44,58,59,55,55,54,15,3.2,63490,0.5,Bachelor's degree,false
+39-3093.00,"Locker room, coatroom, and dressing room attendants",Personal care,44,3.5,56,narrow,0.561,44,44,56,81,57,56,37,6.4,34800,0.065,High school diploma or equivalent,false
+53-4011.00,Locomotive engineers,Transportation,44,3.5,56,narrow,0.609,44,54,63,58,55,55,19,0.7,77400,0.286,High school diploma or equivalent,false
+39-5092.00,Manicurists and pedicurists,Personal care,44,3.5,56,narrow,0.55,44,45,55,82,57,57,38,7,34660,0.083,Postsecondary nondegree award,false
+25-1022.00,"Mathematical science teachers, postsecondary",Education,44,3.5,56,none,0.532,44,62,56,54,55,54,18,2.3,79350,0.541,Doctoral or professional degree,false
+51-3022.00,"Meat, poultry, and fish cutters and trimmers",Production,44,3.5,56,wide,0.835,44,44,72,86,58,61,42,5.5,37700,0,No formal educational credential,false
+17-2151.00,"Mining and geological engineers, including mining safety engineers",Architecture & engineering,44,3.5,56,narrow,0.577,44,62,60,54,55,55,18,0.7,101020,0.481,Bachelor's degree,false
+51-9111.00,Packaging and filling machine operators and tenders,Production,44,3.5,56,narrow,0.66,44,44,64,83,57,58,39,4.5,40900,0,High school diploma or equivalent,false
+51-8093.00,"Petroleum pump system operators, refinery operators, and gaugers",Production,44,3.5,56,narrow,0.587,44,53,65,59,55,55,21,-2.8,97540,0.195,High school diploma or equivalent,false
+29-2052.00,Pharmacy technicians,Healthcare,44,3.5,56,none,0.453,44,52,46,60,55,51,16,6.4,43460,0.426,High school diploma or equivalent,false
+21-1092.00,Probation officers and correctional treatment specialists,Community & social service,44,3.5,56,narrow,0.653,44,56,62,57,55,55,18,2.6,64520,0.395,Bachelor's degree,false
+53-7072.00,"Pump operators, except wellhead pumpers",Transportation,44,3.5,56,none,0.524,44,52,57,62,56,54,18,2.6,60020,0.25,High school diploma or equivalent,false
+53-4031.00,Railroad conductors and yardmasters,Transportation,44,3.5,56,narrow,0.585,44,54,62,58,55,55,18,1.1,74080,0.278,High school diploma or equivalent,false
+19-3034.00,School psychologists,Science,44,3.5,56,wide,0.732,44,58,69,55,55,56,25,0.7,86930,0.392,Master's degree,false
+27-1027.00,Set and exhibit designers,"Arts, design & media",44,3.5,56,wide,0.765,44,56,68,57,55,56,24,2.3,66280,0.391,Bachelor's degree,false
+17-3031.00,Surveying and mapping technicians,Architecture & engineering,44,3.5,56,none,0.452,44,56,48,56,55,52,12,4.5,51940,0.5,High school diploma or equivalent,false
+47-2082.00,Tapers,Construction,44,3.5,56,narrow,0.6,44,47,66,70,56,57,26,0.1,64700,0,No formal educational credential,false
+51-9197.00,Tire builders,Production,44,3.5,56,narrow,0.589,44,47,63,73,57,57,29,2.3,55580,0.019,High school diploma or equivalent,false
+49-3093.00,Tire repairers and changers,Installation & repair,44,3.5,56,narrow,0.659,44,44,63,88,58,59,44,5.7,37120,0,High school diploma or equivalent,false
+53-6041.00,Traffic technicians,Transportation,44,3.5,56,none,0.455,44,56,49,56,55,52,12,3.7,58480,0.463,High school diploma or equivalent,false
+23-1021.00,"Administrative law judges, adjudicators, and hearing officers",Legal,43,3.5,53,none,0.525,43,61,58,52,54,54,18,-0.7,115230,0.5,Doctoral or professional degree,false
+39-2011.00,Animal trainers,Personal care,43,3.5,53,narrow,0.569,43,44,56,74,56,55,31,5.1,38750,0.103,High school diploma or equivalent,false
+13-2031.00,Budget analysts,Business & finance,43,3.5,53,narrow,0.573,43,59,58,52,53,53,16,1,87930,0.52,Bachelor's degree,false
+13-1041.00,Compliance officers,Business & finance,43,3.5,53,none,0.251,43,65,39,51,55,51,26,3,78420,0.682,Bachelor's degree,false
+47-5011.00,"Derrick operators, oil and gas",Construction,43,3.5,53,wide,0.75,43,46,73,69,55,57,30,0.5,62740,0,No formal educational credential,false
+35-9011.00,Dining room and cafeteria attendants and bartender helpers,Food & hospitality,43,3.5,53,narrow,0.635,43,42,60,89,57,58,47,6.3,32670,0,No formal educational credential,false
+11-9032.00,"Education administrators, kindergarten through secondary",Management,43,3.5,53,wide,0.74,43,58,69,53,53,55,26,-1.5,104070,0.418,Master's degree,false
+25-1081.00,"Education teachers, postsecondary",Education,43,3.5,53,narrow,0.599,43,57,59,53,54,53,16,2.1,72090,0.488,Doctoral or professional degree,false
+29-2042.00,Emergency medical technicians,Healthcare,43,3.5,53,none,0.54,43,47,54,68,55,53,25,5.1,41340,0.208,Postsecondary nondegree award,true
+45-1011.00,"First-line supervisors of farming, fishing, and forestry workers",Farming & outdoors,43,3.5,53,narrow,0.638,43,51,61,59,54,54,18,2.5,59330,0.281,High school diploma or equivalent,false
+47-4051.00,Highway maintenance workers,Construction,43,3.5,53,wide,0.711,43,45,68,75,56,57,32,3,49070,0.016,High school diploma or equivalent,false
+41-3021.00,Insurance sales agents,Sales,43,3.5,53,none,0.457,43,58,48,53,54,51,15,3.7,60370,0.576,High school diploma or equivalent,false
+51-9082.00,Medical appliance technicians,Production,43,3.5,53,narrow,0.682,43,46,63,68,55,55,25,3.7,47060,0.138,High school diploma or equivalent,false
+49-9044.00,Millwrights,Installation & repair,43,3.5,53,wide,0.96,43,47,84,68,56,60,41,0,65170,0.022,High school diploma or equivalent,false
+39-4031.00,"Morticians, undertakers, and funeral arrangers",Personal care,43,3.5,53,wide,0.707,43,47,65,65,55,55,22,3.1,49800,0.163,Associate's degree,false
+37-2021.00,Pest control workers,Building & grounds,43,3.5,53,none,0.491,43,48,51,66,55,53,23,4.9,44730,0.25,High school diploma or equivalent,false
+37-3012.00,"Pesticide handlers, sprayers, and applicators, vegetation",Building & grounds,43,3.5,53,narrow,0.661,43,44,63,74,56,56,31,3.8,45200,0.056,High school diploma or equivalent,false
+53-4022.00,"Railroad brake, signal, and switch operators and locomotive firers",Transportation,43,3.5,53,narrow,0.562,43,50,62,62,55,54,19,1,65480,0.167,High school diploma or equivalent,false
+25-1193.00,"Recreation and fitness studies teachers, postsecondary",Education,43,3.5,53,none,0.503,43,60,53,52,54,52,17,2.4,75890,0.558,Doctoral or professional degree,false
+47-5012.00,"Rotary drill operators, oil and gas",Construction,43,3.5,53,narrow,0.66,43,47,68,66,55,56,25,0.2,65010,0.053,No formal educational credential,false
+53-3053.00,Shuttle drivers and chauffeurs,Transportation,43,3.5,53,narrow,0.638,43,46,57,68,55,54,25,6.7,36670,0.25,No formal educational credential,true
+11-2011.00,Advertising and promotions managers,Management,42,3,50,narrow,0.602,42,59,62,51,53,53,20,-2.2,126960,0.477,Bachelor's degree,false
+19-4012.00,Agricultural technicians,Science,42,3,50,narrow,0.594,42,48,55,60,54,52,18,4.3,46790,0.319,Associate's degree,false
+19-2021.00,Atmospheric and space scientists,Science,42,3,50,narrow,0.604,42,61,60,51,53,53,19,0.7,97450,0.565,Bachelor's degree,false
+19-4021.00,Biological technicians,Science,42,3,50,none,0.511,42,51,51,55,53,50,13,3.5,52000,0.417,Bachelor's degree,false
+47-2011.00,Boilermakers,Construction,42,3,50,wide,0.784,42,46,75,64,54,56,33,-2.4,73340,0.03,High school diploma or equivalent,false
+47-2051.00,Cement masons and concrete finishers,Construction,42,3,50,narrow,0.623,42,43,65,72,55,55,30,1.8,54660,0,No formal educational credential,false
+25-1111.00,"Criminal justice and law enforcement teachers, postsecondary",Education,42,3,50,narrow,0.579,42,56,57,52,53,52,15,2,71470,0.5,Doctoral or professional degree,false
+17-3023.00,Electrical and electronic engineering technologists and technicians,Architecture & engineering,42,3,50,narrow,0.551,42,54,58,53,52,52,16,0.6,77180,0.406,Associate's degree,false
+17-3024.00,Electro-mechanical and mechatronics technologists and technicians,Architecture & engineering,42,3,50,narrow,0.674,42,53,64,55,53,53,22,1.1,70760,0.354,Associate's degree,false
+19-4042.00,"Environmental science and protection technicians, including health",Science,42,3,50,none,0.458,42,51,48,55,53,50,13,4,49490,0.456,Associate's degree,false
+11-9013.00,"Farmers, ranchers, and other agricultural managers",Management,42,3,50,narrow,0.678,42,54,66,53,52,53,24,-1.3,87980,0.367,High school diploma or equivalent,false
+35-3023.00,Fast food and counter workers,Food & hospitality,42,3,50,wide,0.765,42,42,65,81,56,57,39,6.1,30480,0.063,No formal educational credential,false
+51-1011.00,First-line supervisors of production and operating workers,Production,42,3,50,narrow,0.616,42,53,60,54,53,52,18,1.2,71190,0.4,High school diploma or equivalent,false
+47-2043.00,Floor sanders and finishers,Construction,42,3,50,narrow,0.602,42,44,61,69,54,54,27,2.6,49150,0.071,No formal educational credential,false
+19-1032.00,Foresters,Science,42,3,50,narrow,0.638,42,53,62,55,53,53,20,1.2,70660,0.368,Bachelor's degree,false
+11-9071.00,Gambling managers,Management,42,3,50,none,0.532,42,59,55,50,53,52,17,1.2,85580,0.574,High school diploma or equivalent,false
+39-5012.00,"Hairdressers, hairstylists, and cosmetologists",Personal care,42,3,50,narrow,0.612,42,42,58,78,55,55,36,5.6,35250,0.079,Postsecondary nondegree award,false
+33-9092.00,"Lifeguards, ski patrol, and other recreational protective service workers",Protective service,42,3,50,narrow,0.612,42,41,57,77,55,54,36,5.8,33720,0.08,No formal educational credential,false
+17-2161.00,Nuclear engineers,Architecture & engineering,42,3,50,narrow,0.666,42,61,64,50,53,54,22,-1.1,127520,0.55,Bachelor's degree,false
+19-4051.00,Nuclear technicians,Science,42,3,50,wide,0.724,42,50,73,57,53,55,31,-7.7,104240,0.143,Associate's degree,false
+19-3094.00,Political scientists,Science,42,3,50,narrow,0.643,42,59,64,50,52,53,22,-3.1,139380,0.479,Master's degree,false
+51-8012.00,Power distributors and dispatchers,Production,42,3,50,none,0.478,42,55,57,52,53,52,15,-3.2,107240,0.375,High school diploma or equivalent,false
+53-5011.00,Sailors and marine oilers,Transportation,42,3,50,narrow,0.681,42,43,66,70,55,55,28,2.3,49610,0.043,No formal educational credential,false
+41-3091.00,"Sales representatives of services, except advertising, insurance, financial services, and travel",Sales,42,3,50,none,0.378,42,60,44,51,53,50,18,3.1,66260,0.633,High school diploma or equivalent,true
+19-4061.00,Social science research assistants,Science,42,3,50,none,0.284,42,59,37,51,53,48,22,4.4,58040,0.667,Bachelor's degree,false
+25-2051.00,"Special education teachers, preschool",Education,42,3,50,narrow,0.687,42,48,66,60,54,54,24,1.4,62190,0.2,Bachelor's degree,false
+27-2023.00,"Umpires, referees, and other sports officials","Arts, design & media",42,3,50,none,0.412,42,46,45,62,54,50,20,5.7,38820,0.313,High school diploma or equivalent,false
+19-1023.00,Zoologists and wildlife biologists,Science,42,3,50,narrow,0.605,42,55,59,53,53,52,17,1.6,72860,0.452,Bachelor's degree,false
+45-2021.00,Animal breeders,Farming & outdoors,41,3,46,narrow,0.622,41,45,61,63,53,53,22,2.4,52000,0.167,High school diploma or equivalent,false
+27-4011.00,Audio and video technicians,"Arts, design & media",41,3,46,narrow,0.667,41,51,59,54,52,51,18,3.3,54830,0.438,Postsecondary nondegree award,false
+27-4031.00,"Camera operators, television, video, and film","Arts, design & media",41,3,46,none,0.513,41,53,54,52,52,50,13,1.2,68810,0.424,Bachelor's degree,false
+47-4011.00,Construction and building inspectors,Construction,41,3,46,narrow,0.621,41,48,63,55,52,52,22,-0.8,72120,0.241,High school diploma or equivalent,false
+39-4011.00,Embalmers,Personal care,41,3,46,wide,0.766,41,43,71,67,54,55,30,1.3,56280,0.04,Associate's degree,false
+35-1012.00,First-line supervisors of food preparation and serving workers,Food & hospitality,41,3,46,narrow,0.635,41,50,53,54,52,50,13,6,42010,0.511,High school diploma or equivalent,false
+33-1091.00,First-line supervisors of security workers,Protective service,41,3,46,narrow,0.611,41,51,57,54,52,51,16,2.7,58610,0.405,High school diploma or equivalent,true
+49-9031.00,Home appliance repairers,Installation & repair,41,3,46,wide,0.784,41,44,69,64,53,54,28,2.6,49410,0.145,High school diploma or equivalent,false
+19-2043.00,Hydrologists,Science,41,3,46,narrow,0.601,41,57,60,50,52,52,19,-0.1,92060,0.5,Bachelor's degree,false
+17-3026.00,Industrial engineering technologists and technicians,Architecture & engineering,41,3,46,narrow,0.583,41,52,57,52,52,51,16,1.7,64790,0.444,Associate's degree,false
+25-9031.00,Instructional coordinators,Education,41,3,46,narrow,0.628,41,55,60,51,52,52,19,1.3,74720,0.488,Master's degree,false
+13-1075.00,Labor relations specialists,Business & finance,41,3,46,none,0.535,41,57,56,49,51,51,16,-0.1,93500,0.547,Bachelor's degree,false
+51-6011.00,Laundry and dry-cleaning workers,Production,41,3,46,narrow,0.57,41,40,56,78,55,54,38,5.4,33800,0.05,No formal educational credential,false
+13-2072.00,Loan officers,Business & finance,41,3,46,none,0.404,41,57,47,49,51,49,16,1.7,74180,0.591,Bachelor's degree,false
+25-1126.00,"Philosophy and religion teachers, postsecondary",Education,41,3,46,narrow,0.693,41,55,63,50,51,52,22,0.7,78050,0.511,Doctoral or professional degree,false
+41-9022.00,Real estate sales agents,Sales,41,3,46,narrow,0.601,41,51,56,53,52,51,15,3.1,56320,0.438,High school diploma or equivalent,false
+47-5071.00,"Roustabouts, oil and gas",Construction,41,3,46,narrow,0.626,41,41,63,73,54,54,32,2.5,47510,0,No formal educational credential,false
+13-2082.00,Tax preparers,Business & finance,41,3,46,none,0.305,41,55,37,51,52,47,18,4.5,50560,0.625,High school diploma or equivalent,false
+51-4121.00,"Welders, cutters, solderers, and brazers",Production,41,3,46,none,0.547,41,43,59,66,54,53,25,2.2,51000,0.088,High school diploma or equivalent,false
+27-3043.00,Writers and authors,"Arts, design & media",41,3,46,none,0.37,41,65,41,47,52,49,24,3.6,72270,0.865,Bachelor's degree,false
+33-9011.00,Animal control workers,Protective service,40,3,43,none,0.523,40,45,50,56,51,48,16,3.9,45830,0.35,High school diploma or equivalent,false
+49-3021.00,Automotive body and related repairers,Installation & repair,40,3,43,narrow,0.66,40,41,65,66,53,53,26,1.6,51680,0.043,High school diploma or equivalent,false
+51-3011.00,Bakers,Production,40,3,43,none,0.54,40,43,51,63,53,50,23,5.6,36650,0.265,No formal educational credential,false
+39-5011.00,Barbers,Personal care,40,3,43,none,0.503,40,40,51,66,52,50,26,4.1,38960,0.162,Postsecondary nondegree award,false
+35-3011.00,Bartenders,Food & hospitality,40,3,43,none,0.549,40,41,52,68,53,51,28,5.9,33530,0.194,No formal educational credential,false
+51-9192.00,"Cleaning, washing, and metal pickling equipment operators and tenders",Production,40,3,43,none,0.541,40,40,55,68,53,51,28,3.6,41460,0.105,High school diploma or equivalent,false
+15-1231.00,Computer network support specialists,Computer & math,40,3,43,none,0.468,40,56,49,48,50,49,16,1.8,73340,0.635,Associate's degree,false
+39-4012.00,Crematory operators,Personal care,40,3,43,wide,0.764,40,39,68,72,53,54,33,3.3,42880,0.042,High school diploma or equivalent,true
+49-2094.00,"Electrical and electronics repairers, commercial and industrial equipment",Installation & repair,40,3,43,wide,0.7,40,48,66,52,51,51,26,-0.8,71300,0.308,Postsecondary nondegree award,false
+39-1013.00,First-line supervisors of gambling services workers,Personal care,40,3,43,none,0.488,40,50,51,52,51,49,12,2,61590,0.433,High school diploma or equivalent,false
+37-1012.00,"First-line supervisors of landscaping, lawn service, and groundskeeping workers",Building & grounds,40,3,43,narrow,0.652,40,47,60,54,51,50,20,2.3,56170,0.355,High school diploma or equivalent,false
+41-1012.00,First-line supervisors of non-retail sales workers,Sales,40,3,43,narrow,0.558,40,55,56,49,51,50,16,0,84130,0.537,High school diploma or equivalent,false
+51-9051.00,"Furnace, kiln, oven, drier, and kettle operators and tenders",Production,40,3,43,none,0.53,40,42,55,62,52,50,22,3,47010,0.16,High school diploma or equivalent,false
+53-7071.00,Gas compressor and gas pumping station operators,Transportation,40,3,43,narrow,0.66,40,47,64,53,51,51,24,-1.3,71510,0.269,High school diploma or equivalent,false
+25-1125.00,"History teachers, postsecondary",Education,40,3,43,narrow,0.693,40,54,63,49,50,51,23,-0.2,81500,0.511,Doctoral or professional degree,false
+23-1012.00,Judicial law clerks,Legal,40,3,43,none,0.494,40,52,50,50,51,49,12,2.5,60400,0.517,Doctoral or professional degree,false
+53-5022.00,Motorboat operators,Transportation,40,3,43,wide,0.775,40,40,71,69,53,55,31,1.4,51880,0,Postsecondary nondegree award,false
+53-6061.00,Passenger attendants,Transportation,40,3,43,narrow,0.566,40,41,53,63,52,50,23,4.7,37560,0.222,High school diploma or equivalent,false
+39-5093.00,Shampooers,Personal care,40,3,43,none,0.514,40,39,51,70,53,51,31,5.5,31470,0.143,No formal educational credential,false
+49-9052.00,Telecommunications line installers and repairers,Installation & repair,40,3,43,wide,0.795,40,43,75,62,53,55,35,-3.1,70500,0.031,High school diploma or equivalent,false
+17-3022.00,Civil engineering technologists and technicians,Architecture & engineering,39,3,41,none,0.487,39,53,49,48,50,48,14,2.1,64200,0.591,Associate's degree,false
+21-2011.00,Clergy,Community & social service,39,3,41,wide,0.8,39,46,68,52,50,51,29,1,60820,0.333,Bachelor's degree,false
+25-1123.00,"English language and literature teachers, postsecondary",Education,39,3,41,narrow,0.684,39,53,62,48,50,50,23,0,78270,0.527,Doctoral or professional degree,false
+33-1011.00,First-line supervisors of correctional officers,Protective service,39,3,41,wide,0.733,39,46,68,51,50,51,29,-2.8,76310,0.283,High school diploma or equivalent,false
+51-8092.00,Gas plant operators,Production,39,3,41,narrow,0.667,39,43,69,56,51,52,30,-8.8,83400,0.094,High school diploma or equivalent,false
+19-3092.00,Geographers,Science,39,3,41,narrow,0.609,39,52,60,47,49,49,21,-3.1,97200,0.5,Bachelor's degree,false
+27-1024.00,Graphic designers,"Arts, design & media",39,3,41,narrow,0.7,39,50,61,50,50,50,22,2.1,61300,0.5,Bachelor's degree,false
+25-4022.00,Librarians and media collections specialists,Education,39,3,41,none,0.41,39,52,46,48,50,47,13,1.7,64320,0.535,Master's degree,false
+51-8013.00,Power plant operators,Production,39,3,41,narrow,0.599,39,46,64,51,50,50,25,-11.2,99670,0.233,High school diploma or equivalent,false
+25-3021.00,Self-enrichment teachers,Education,39,3,41,none,0.471,39,43,47,54,50,47,15,3.7,45590,0.36,High school diploma or equivalent,false
+47-5013.00,"Service unit operators, oil and gas",Construction,39,3,41,wide,0.704,39,41,67,63,52,52,28,0.4,57980,0.065,No formal educational credential,false
+25-2058.00,"Special education teachers, secondary school",Education,39,3,41,narrow,0.667,39,46,64,51,50,50,25,-1.6,69590,0.301,Bachelor's degree,false
+27-3042.00,Technical writers,"Arts, design & media",39,3,41,none,0.36,39,59,44,46,50,48,20,0.9,91670,0.7,Bachelor's degree,false
+53-7073.00,Wellhead pumpers,Transportation,39,3,41,wide,0.731,39,41,72,62,52,53,33,-4.7,70010,0,High school diploma or equivalent,false
+21-2021.00,"Directors, religious activities and education",Community & social service,38,3,39,narrow,0.643,38,45,57,49,48,47,19,2.1,54840,0.439,Bachelor's degree,false
+27-3041.00,Editors,"Arts, design & media",38,3,39,none,0.482,38,53,49,45,48,47,15,0.6,75260,0.647,Bachelor's degree,false
+37-1011.00,First-line supervisors of housekeeping and janitorial workers,Building & grounds,38,3,39,none,0.537,38,41,53,55,50,47,17,2.5,47520,0.265,High school diploma or equivalent,false
+25-1124.00,"Foreign language and literature teachers, postsecondary",Education,38,3,39,narrow,0.68,38,52,61,47,49,49,23,-0.2,77010,0.533,Doctoral or professional degree,false
+37-3011.00,Landscaping and groundskeeping workers,Building & grounds,38,3,39,narrow,0.586,38,37,58,74,53,52,37,3.6,38090,0.024,No formal educational credential,false
+17-3027.00,Mechanical engineering technologists and technicians,Architecture & engineering,38,3,39,none,0.49,38,49,51,47,48,47,13,0,68730,0.48,Associate's degree,false
+51-8011.00,Nuclear power reactor operators,Production,38,3,39,narrow,0.616,38,49,64,49,49,50,26,-15.3,122610,0.318,High school diploma or equivalent,false
+43-5031.00,Public safety telecommunicators,Office & admin,38,3,39,narrow,0.606,38,50,51,46,48,47,13,3.5,50730,0.656,High school diploma or equivalent,false
+53-4013.00,"Rail yard engineers, dinkey operators, and hostlers",Transportation,38,3,39,narrow,0.629,38,41,61,55,50,49,23,0.3,58030,0.205,High school diploma or equivalent,false
+39-9041.00,Residential advisors,Personal care,38,3,39,narrow,0.688,38,39,59,58,50,49,21,3.8,39180,0.24,High school diploma or equivalent,false
+45-2011.00,Agricultural inspectors,Farming & outdoors,37,3,37,narrow,0.57,37,40,55,51,48,46,18,1.5,50990,0.292,Bachelor's degree,false
+25-1194.00,"Career/technical education teachers, postsecondary",Education,37,3,37,none,0.48,37,46,49,46,47,45,12,0.7,61490,0.487,Bachelor's degree,false
+51-8091.00,Chemical plant and system operators,Production,37,3,37,narrow,0.696,37,41,68,52,49,49,31,-6.1,73540,0.152,High school diploma or equivalent,false
+53-7061.00,Cleaners of vehicles and equipment,Transportation,37,3,37,narrow,0.55,37,35,54,69,51,49,34,3.9,35270,0.083,No formal educational credential,false
+13-2071.00,Credit counselors,Business & finance,37,3,37,none,0.319,37,48,37,46,48,43,11,3.3,50480,0.625,Bachelor's degree,false
+33-9091.00,Crossing guards and flaggers,Protective service,37,3,37,none,0.537,37,36,53,65,51,48,29,3.6,37700,0.105,No formal educational credential,false
+53-7031.00,Dredge operators,Transportation,37,3,37,narrow,0.682,37,36,65,66,51,51,30,1.2,48430,0,High school diploma or equivalent,false
+17-3025.00,Environmental engineering technologists and technicians,Architecture & engineering,37,3,37,none,0.486,37,45,50,49,48,46,13,1.2,58890,0.408,Associate's degree,false
+47-5022.00,"Excavating and loading machine and dragline operators, surface mining",Construction,37,3,37,wide,0.732,37,36,69,63,50,51,33,-0.4,52550,0,High school diploma or equivalent,false
+47-5032.00,"Explosives workers, ordnance handling experts, and blasters",Construction,37,3,37,narrow,0.647,37,39,63,56,49,49,26,-0.9,59110,0.135,High school diploma or equivalent,false
+43-1011.00,First-line supervisors of office and administrative support workers,Office & admin,37,3,37,narrow,0.568,37,46,54,46,47,46,17,-0.3,66140,0.49,High school diploma or equivalent,false
+11-1031.00,Legislators,Management,37,3,37,wide,0.76,37,41,60,51,48,47,23,3.4,44810,0.4,Bachelor's degree,true
+29-2081.00,"Opticians, dispensing",Healthcare,37,3,37,narrow,0.595,37,40,55,54,49,47,18,2.9,46560,0.286,High school diploma or equivalent,false
+31-1132.00,Orderlies,Healthcare support,37,3,37,narrow,0.6,37,34,58,74,52,51,40,3.3,37700,0,High school diploma or equivalent,false
+49-3053.00,Outdoor power equipment and other small engine mechanics,Installation & repair,37,3,37,wide,0.74,37,39,64,59,50,50,27,2.5,46560,0.179,High school diploma or equivalent,false
+11-9131.00,Postmasters and mail superintendents,Management,37,3,37,narrow,0.585,37,50,57,45,47,47,20,-3.5,92730,0.524,High school diploma or equivalent,false
+25-2011.00,"Preschool teachers, except special education",Education,37,3,37,narrow,0.607,37,38,54,59,50,48,22,4.1,37120,0.227,Associate's degree,false
+25-2031.00,"Secondary school teachers, except special and career/technical education",Education,37,3,37,narrow,0.606,37,43,59,48,47,47,22,-1.6,64580,0.333,Bachelor's degree,false
+25-2057.00,"Special education teachers, middle school",Education,37,3,37,narrow,0.677,37,42,63,49,48,48,26,-1.9,64880,0.305,Bachelor's degree,false
+49-9064.00,Watch and clock repairers,Installation & repair,37,3,37,narrow,0.581,37,40,59,53,49,48,22,-1.1,60690,0.2,High school diploma or equivalent,false
+25-2023.00,"Career/technical education teachers, middle school",Education,36,3,35,narrow,0.581,36,41,57,47,47,46,21,-2,63620,0.323,Bachelor's degree,false
+25-2032.00,"Career/technical education teachers, secondary school",Education,36,3,35,narrow,0.592,36,42,58,47,47,46,22,-1.8,63910,0.333,Bachelor's degree,false
+51-4021.00,"Extruding and drawing machine setters, operators, and tenders, metal and plastic",Production,36,3,35,narrow,0.683,36,34,64,63,49,49,30,1.2,46980,0.021,High school diploma or equivalent,false
+47-4041.00,Hazardous materials removal workers,Construction,36,3,35,narrow,0.647,36,35,62,59,49,48,27,1,48490,0.081,High school diploma or equivalent,false
+53-7041.00,Hoist and winch operators,Transportation,36,3,35,narrow,0.671,36,34,65,61,49,49,31,-1.1,52310,0,No formal educational credential,false
+13-2053.00,Insurance underwriters,Business & finance,36,3,35,none,0.257,36,48,39,43,46,42,12,-2.6,79880,0.571,Bachelor's degree,false
+25-2012.00,"Kindergarten teachers, except special education",Education,36,3,35,wide,0.741,36,40,66,50,48,48,30,-1.6,61430,0.233,Bachelor's degree,false
+51-4041.00,Machinists,Production,36,3,35,narrow,0.558,36,39,56,51,48,46,20,0,56150,0.235,High school diploma or equivalent,false
+49-9043.00,"Maintenance workers, machinery",Installation & repair,36,3,35,wide,0.795,36,37,70,52,48,49,34,-2.8,60500,0.143,High school diploma or equivalent,false
+43-6013.00,Medical secretaries and administrative assistants,Office & admin,36,3,35,none,0.339,36,45,34,44,46,41,12,4.2,44640,0.667,High school diploma or equivalent,false
+39-9032.00,Recreation workers,Personal care,36,3,35,narrow,0.65,36,36,55,57,49,47,21,4.1,35380,0.238,High school diploma or equivalent,false
+41-4012.00,"Sales representatives, wholesale and manufacturing, except technical and scientific products",Sales,36,3,35,none,0.511,36,49,49,43,46,45,13,0.3,66780,0.621,High school diploma or equivalent,false
+27-4014.00,Sound engineering technicians,"Arts, design & media",36,3,35,wide,0.713,36,44,62,45,46,47,26,-1.7,66430,0.426,Postsecondary nondegree award,false
+23-2093.00,"Title examiners, abstractors, and searchers",Legal,36,3,35,none,0.257,36,45,35,44,46,41,11,2,54980,0.571,High school diploma or equivalent,false
+33-3011.00,Bailiffs,Protective service,35,3,33,narrow,0.69,35,35,66,57,48,48,31,-2.2,57050,0.036,High school diploma or equivalent,false
+51-9124.00,"Coating, painting, and spraying machine setters, operators, and tenders",Production,35,3,33,narrow,0.656,35,34,62,60,49,48,28,0.7,47590,0.043,High school diploma or equivalent,false
+13-1051.00,Cost estimators,Business & finance,35,3,33,narrow,0.588,35,45,56,43,45,45,21,-4.2,77070,0.5,Bachelor's degree,false
+13-2041.00,Credit analysts,Business & finance,35,3,33,none,0.416,35,47,47,42,45,43,12,-4.4,80970,0.556,Bachelor's degree,false
+15-1242.00,Database administrators,Computer & math,35,3,33,none,0.335,35,60,39,41,46,44,25,-0.7,104620,0.935,Bachelor's degree,false
+25-2021.00,"Elementary school teachers, except special education",Education,35,3,33,wide,0.705,35,40,63,47,46,46,28,-2,62340,0.311,Bachelor's degree,false
+43-6011.00,Executive secretaries and executive administrative assistants,Office & admin,35,3,33,none,0.307,35,48,39,41,44,41,13,-1.6,74260,0.649,High school diploma or equivalent,false
+51-9041.00,"Extruding, forming, pressing, and compacting machine setters, operators, and tenders",Production,35,3,33,narrow,0.686,35,34,62,60,49,48,28,2,45130,0.075,High school diploma or equivalent,false
+33-3031.00,Fish and game wardens,Protective service,35,3,33,wide,0.748,35,39,67,46,46,47,32,-6,68180,0.284,Bachelor's degree,false
+25-2022.00,"Middle school teachers, except special and career/technical education",Education,35,3,33,wide,0.76,35,41,66,46,46,47,31,-2,62970,0.348,Bachelor's degree,false
+49-9063.00,Musical instrument repairers and tuners,Installation & repair,35,3,33,wide,0.861,35,32,72,62,49,50,40,1.4,45320,0.02,High school diploma or equivalent,false
+23-2011.00,Paralegals and legal assistants,Legal,35,3,33,none,0.458,35,44,47,43,45,43,12,0.2,61010,0.525,Associate's degree,false
+47-5043.00,"Roof bolters, mining",Construction,35,3,33,wide,0.712,35,36,71,54,48,49,36,-34.2,76640,0,High school diploma or equivalent,false
+13-1031.00,"Claims adjusters, examiners, and investigators",Business & finance,34,2.5,31,none,0.383,34,43,45,41,44,41,11,-5.1,76790,0.52,High school diploma or equivalent,false
+43-4031.00,"Court, municipal, and license clerks",Office & admin,34,2.5,31,none,0.286,34,43,32,41,43,39,11,3,47700,0.7,High school diploma or equivalent,false
+27-1013.00,"Fine artists, including painters, sculptors, and illustrators","Arts, design & media",34,2.5,31,narrow,0.575,34,40,54,43,44,43,20,-1.2,60560,0.425,Bachelor's degree,false
+19-4043.00,"Geological technicians, except hydrologic technicians",Science,34,2.5,31,none,0.463,34,37,46,45,45,41,12,1.5,48390,0.39,Associate's degree,false
+49-9098.00,"Helpers--installation, maintenance, and repair workers",Installation & repair,34,2.5,31,wide,0.744,34,31,64,63,49,48,33,2.3,38860,0.033,High school diploma or equivalent,false
+47-3014.00,"Helpers--painters, paperhangers, plasterers, and stucco masons",Construction,34,2.5,31,narrow,0.6,34,30,58,67,49,48,37,2.3,38140,0,No formal educational credential,false
+53-7051.00,Industrial truck and tractor operators,Transportation,34,2.5,31,narrow,0.633,34,32,61,60,48,47,29,1.1,46390,0.031,No formal educational credential,false
+51-4192.00,"Layout workers, metal and plastic",Production,34,2.5,31,narrow,0.623,34,35,62,50,46,45,28,-5.4,61870,0.13,High school diploma or equivalent,false
+27-4015.00,Lighting technicians,"Arts, design & media",34,2.5,31,wide,0.777,34,35,69,49,46,47,35,-4.6,60560,0.156,Postsecondary nondegree award,true
+47-5044.00,"Loading and moving machine operators, underground mining",Construction,34,2.5,31,narrow,0.64,34,34,66,52,47,47,32,-22.3,68860,0.023,No formal educational credential,false
+15-2021.00,Mathematicians,Computer & math,34,2.5,31,none,0.335,34,61,38,40,45,44,27,-0.7,121680,1,Master's degree,false
+51-4051.00,Metal-refining furnace operators and tenders,Production,34,2.5,31,narrow,0.662,34,34,63,52,47,46,29,-2.3,55770,0.104,High school diploma or equivalent,false
+15-1244.00,Network and computer systems administrators,Computer & math,34,2.5,31,none,0.529,34,51,50,40,44,44,17,-4.2,96800,0.73,Bachelor's degree,false
+31-1131.00,Nursing assistants,Healthcare support,34,2.5,31,narrow,0.644,34,32,58,58,48,46,26,2.3,39530,0.102,Postsecondary nondegree award,false
+43-5051.00,Postal service clerks,Office & admin,34,2.5,31,none,0.411,34,37,47,44,44,41,13,-3.5,61630,0.315,No formal educational credential,false
+53-7081.00,Refuse and recyclable material collectors,Transportation,34,2.5,31,none,0.482,34,34,51,51,46,43,17,0.9,48350,0.196,No formal educational credential,false
+51-3023.00,Slaughterers and meat packers,Production,34,2.5,31,narrow,0.625,34,31,59,66,49,48,35,2.2,39790,0,No formal educational credential,false
+25-9044.00,"Teaching assistants, postsecondary",Education,34,2.5,31,none,0.4,34,39,39,44,45,40,11,3.1,44930,0.53,Bachelor's degree,false
+49-2022.00,"Telecommunications equipment installers and repairers, except line installers",Installation & repair,34,2.5,31,wide,0.817,34,37,69,45,45,46,35,-4.2,62630,0.281,Postsecondary nondegree award,false
+41-3041.00,Travel agents,Sales,34,2.5,31,none,0.488,34,40,44,42,44,41,10,2.2,48450,0.563,High school diploma or equivalent,false
+51-9191.00,Adhesive bonding machine operators and tenders,Production,33,2.5,28,narrow,0.686,33,30,62,57,47,46,32,1,45210,0.065,High school diploma or equivalent,false
+39-3091.00,Amusement and recreation attendants,Personal care,33,2.5,28,none,0.473,33,31,46,53,46,42,22,3.4,30490,0.212,No formal educational credential,false
+39-4021.00,Funeral attendants,Personal care,33,2.5,28,none,0.493,33,30,48,54,46,42,24,3.1,34610,0.178,High school diploma or equivalent,false
+13-1032.00,"Insurance appraisers, auto damage",Business & finance,33,2.5,28,none,0.3,33,40,41,39,42,39,9,-8.2,76650,0.5,Postsecondary nondegree award,false
+27-1026.00,Merchandise displayers and window trimmers,"Arts, design & media",33,2.5,28,none,0.427,33,33,43,49,46,41,16,3.2,37350,0.305,High school diploma or equivalent,false
+27-2041.00,Music directors and composers,"Arts, design & media",33,2.5,28,none,0.472,33,45,44,39,42,41,12,-0.3,63670,0.711,Bachelor's degree,false
+51-9083.00,Ophthalmic laboratory technicians,Production,33,2.5,28,narrow,0.593,33,31,55,58,47,45,27,2.3,38420,0.094,High school diploma or equivalent,false
+51-9123.00,"Painting, coating, and decorating workers",Production,33,2.5,28,narrow,0.6,33,29,58,61,47,46,32,1.4,40860,0,No formal educational credential,false
+53-6021.00,Parking attendants,Transportation,33,2.5,28,none,0.536,33,30,51,58,47,44,28,3,34600,0.107,No formal educational credential,false
+41-2022.00,Parts salespersons,Sales,33,2.5,28,narrow,0.603,33,33,51,47,45,42,18,3.1,37440,0.343,No formal educational credential,false
+43-4181.00,Reservation and transportation ticket agents and travel clerks,Office & admin,33,2.5,28,narrow,0.571,33,35,48,43,44,41,15,2.8,41460,0.457,High school diploma or equivalent,false
+47-2022.00,Stonemasons,Construction,33,2.5,28,narrow,0.698,33,31,66,56,47,47,35,-3,51990,0,High school diploma or equivalent,false
+33-9093.00,Transportation security screeners,Protective service,33,2.5,28,none,0.444,33,36,51,45,44,42,18,-6,63360,0.26,High school diploma or equivalent,false
+51-2011.00,"Aircraft structure, surfaces, rigging, and systems assemblers",Production,32,2.5,26,wide,0.748,32,30,69,49,45,45,39,-14.5,61680,0.025,High school diploma or equivalent,false
+53-6011.00,Bridge and lock tenders,Transportation,32,2.5,26,none,0.428,32,34,48,44,44,40,16,-3.3,58490,0.286,High school diploma or equivalent,false
+41-2021.00,Counter and rental clerks,Sales,32,2.5,26,none,0.317,32,35,33,41,42,37,10,3.2,38540,0.532,No formal educational credential,false
+17-3012.00,Electrical and electronics drafters,Architecture & engineering,32,2.5,26,none,0.447,32,41,46,38,42,40,14,-5.6,73720,0.574,Associate's degree,false
+25-9021.00,Farm and home management educators,Education,32,2.5,26,narrow,0.649,32,35,57,42,43,42,25,-2.5,58120,0.37,Master's degree,false
+35-3041.00,"Food servers, nonrestaurant",Food & hospitality,32,2.5,26,none,0.522,32,29,50,56,46,43,27,3,34460,0.13,No formal educational credential,false
+47-5081.00,Helpers--extraction workers,Construction,32,2.5,26,wide,0.773,32,28,68,55,46,46,40,-1.7,48400,0,High school diploma or equivalent,false
+43-4081.00,"Hotel, motel, and resort desk clerks",Office & admin,32,2.5,26,none,0.362,32,33,35,42,43,37,11,3.7,34270,0.5,High school diploma or equivalent,false
+27-3091.00,Interpreters and translators,"Arts, design & media",32,2.5,26,none,0.301,32,47,32,37,41,38,15,1.7,59440,0.88,Bachelor's degree,false
+53-7062.00,"Laborers and freight, stock, and material movers, hand",Transportation,32,2.5,26,narrow,0.576,32,27,55,56,46,43,29,1.5,38940,0.04,No formal educational credential,false
+45-4022.00,Logging equipment operators,Farming & outdoors,32,2.5,26,narrow,0.622,32,31,58,47,44,42,27,-1.4,49210,0.188,High school diploma or equivalent,false
+17-3013.00,Mechanical drafters,Architecture & engineering,32,2.5,26,narrow,0.595,32,38,54,38,41,41,22,-6.5,68510,0.5,Associate's degree,false
+31-2012.00,Occupational therapy aides,Healthcare support,32,2.5,26,narrow,0.644,32,30,54,48,45,42,24,2.5,37370,0.241,High school diploma or equivalent,false
+43-5052.00,Postal service mail carriers,Office & admin,32,2.5,26,none,0.461,32,33,50,44,44,41,18,-3.5,57490,0.231,No formal educational credential,false
+21-1015.00,Rehabilitation counselors,Community & social service,32,2.5,26,narrow,0.625,32,33,53,43,43,41,21,1.4,46110,0.355,Master's degree,false
+51-4111.00,Tool and die makers,Production,32,2.5,26,narrow,0.68,32,33,63,44,44,43,31,-10.8,63180,0.188,Postsecondary nondegree award,false
+53-3051.00,"Bus drivers, school",Transportation,31,2.5,24,narrow,0.593,31,31,52,41,42,39,21,0.2,47040,0.324,High school diploma or equivalent,true
+27-3092.00,Court reporters and simultaneous captioners,"Arts, design & media",31,2.5,24,none,0.203,31,47,27,35,39,36,20,-0.3,67310,0.958,Postsecondary nondegree award,false
+27-1012.00,Craft artists,"Arts, design & media",31,2.5,24,narrow,0.699,31,29,57,46,44,41,28,2.1,38480,0.259,No formal educational credential,false
+11-9031.00,"Education and childcare administrators, preschool and daycare",Management,31,2.5,24,narrow,0.629,31,34,54,37,40,39,23,-2.5,56270,0.469,Bachelor's degree,false
+43-4061.00,"Eligibility interviewers, government programs",Office & admin,31,2.5,24,none,0.327,31,39,35,37,40,36,9,1,51500,0.68,High school diploma or equivalent,false
+51-6092.00,Fabric and apparel patternmakers,Production,31,2.5,24,none,0.44,31,36,47,37,40,38,16,-10.2,67670,0.469,High school diploma or equivalent,false
+51-3091.00,"Food and tobacco roasting, baking, and drying machine operators and tenders",Production,31,2.5,24,narrow,0.66,31,27,60,53,45,43,33,0.6,42730,0.067,No formal educational credential,false
+19-4071.00,Forest and conservation technicians,Science,31,2.5,24,narrow,0.562,31,31,53,40,41,39,22,-3.2,54310,0.327,Associate's degree,false
+19-4044.00,Hydrologic technicians,Science,31,2.5,24,none,0.374,31,36,41,38,41,37,10,-2.1,58570,0.5,Associate's degree,true
+37-2011.00,"Janitors and cleaners, except maids and housekeeping cleaners",Building & grounds,31,2.5,24,narrow,0.6,31,26,56,60,46,44,34,2,35930,0,No formal educational credential,false
+51-4061.00,"Model makers, metal and plastic",Production,31,2.5,24,narrow,0.619,31,30,60,42,42,41,30,-18.2,62700,0.161,High school diploma or equivalent,false
+51-4081.00,"Multiple machine tool setters, operators, and tenders, metal and plastic",Production,31,2.5,24,narrow,0.686,31,28,61,50,44,43,33,-0.5,46060,0.103,High school diploma or equivalent,false
+27-4021.00,Photographers,"Arts, design & media",31,2.5,24,narrow,0.666,31,31,54,41,42,40,23,1.8,42520,0.385,High school diploma or equivalent,false
+31-2022.00,Physical therapist aides,Healthcare support,31,2.5,24,none,0.53,31,28,49,50,45,41,22,2.8,34520,0.182,High school diploma or equivalent,false
+13-2081.00,"Tax examiners and collectors, and revenue agents",Business & finance,31,2.5,24,none,0.377,31,38,40,37,41,37,10,-1.8,59740,0.581,Bachelor's degree,false
+51-8031.00,Water and wastewater treatment plant and system operators,Production,31,2.5,24,wide,0.739,31,30,66,46,44,43,36,-6.5,58260,0.125,High school diploma or equivalent,false
+51-3021.00,Butchers and meat cutters,Production,30,2.5,22,narrow,0.639,30,25,56,47,43,40,31,1,38960,0.132,No formal educational credential,false
+15-1251.00,Computer programmers,Computer & math,30,2.5,22,none,0.43,30,49,41,35,39,39,19,-6,98670,0.95,Bachelor's degree,false
+15-1232.00,Computer user support specialists,Computer & math,30,2.5,22,none,0.452,30,35,43,34,38,36,13,-3.7,60340,0.611,"Some college, no degree",false
+35-2012.00,"Cooks, institution and cafeteria",Food & hospitality,30,2.5,22,narrow,0.648,30,26,56,51,44,41,30,2,36450,0.121,No formal educational credential,false
+45-4021.00,Fallers,Farming & outdoors,30,2.5,22,narrow,0.619,30,26,61,47,43,41,35,-7.3,53900,0.031,High school diploma or equivalent,false
+51-3093.00,Food cooking machine operators and tenders,Production,30,2.5,22,narrow,0.687,30,26,59,47,43,41,33,0.6,40550,0.129,High school diploma or equivalent,false
+47-3013.00,Helpers--electricians,Construction,30,2.5,22,wide,0.813,30,24,67,52,44,43,43,0.2,39890,0.024,High school diploma or equivalent,false
+51-9061.00,"Inspectors, testers, sorters, samplers, and weighers",Production,30,2.5,22,none,0.41,30,31,42,38,41,36,12,0,47460,0.417,High school diploma or equivalent,false
+45-4023.00,Log graders and scalers,Farming & outdoors,30,2.5,22,none,0.473,30,28,48,44,43,39,20,-0.7,46710,0.211,High school diploma or equivalent,false
+51-7031.00,"Model makers, wood",Production,30,2.5,22,narrow,0.645,30,28,59,44,43,41,31,-4.5,51850,0.154,High school diploma or equivalent,false
+51-7032.00,"Patternmakers, wood",Production,30,2.5,22,narrow,0.553,30,29,53,40,41,39,24,-5,52520,0.256,High school diploma or equivalent,false
+47-2151.00,Pipelayers,Construction,30,2.5,22,wide,0.754,30,26,66,49,44,43,40,-4.1,48710,0.036,No formal educational credential,false
+43-5053.00,"Postal service mail sorters, processors, and processing machine operators",Office & admin,30,2.5,22,none,0.54,30,28,56,45,43,40,28,-8.4,56530,0.1,No formal educational credential,false
+51-4052.00,"Pourers and casters, metal",Production,30,2.5,22,narrow,0.6,30,25,59,50,44,42,34,-4.7,48940,0,High school diploma or equivalent,false
+43-5061.00,"Production, planning, and expediting clerks",Office & admin,30,2.5,22,none,0.34,30,36,37,36,39,36,9,-1.8,57770,0.596,High school diploma or equivalent,false
+49-9045.00,"Refractory materials repairers, except brickmasons",Installation & repair,30,2.5,22,narrow,0.658,30,26,64,47,43,42,38,-16.9,58540,0,High school diploma or equivalent,false
+51-9012.00,"Separating, filtering, clarifying, precipitating, and still machine setters, operators, and tenders",Production,30,2.5,22,narrow,0.602,30,27,57,43,42,40,30,-4.3,49500,0.143,High school diploma or equivalent,false
+19-3022.00,Survey researchers,Science,30,2.5,22,none,0.364,30,36,39,34,38,35,9,-5.2,63380,0.625,Master's degree,false
+47-2053.00,Terrazzo workers and finishers,Construction,30,2.5,22,wide,0.705,30,26,66,48,44,43,40,-11.1,57260,0,High school diploma or equivalent,false
+41-3011.00,Advertising sales agents,Sales,29,2,19,narrow,0.581,29,34,51,34,38,37,22,-6.4,61460,0.538,High school diploma or equivalent,false
+27-4012.00,Broadcast technicians,"Arts, design & media",29,2,19,none,0.519,29,32,46,34,38,36,17,-2.8,53920,0.524,Associate's degree,false
+51-7011.00,Cabinetmakers and bench carpenters,Production,29,2,19,narrow,0.684,29,25,60,45,42,40,35,-1.6,46020,0.118,High school diploma or equivalent,false
+49-2011.00,"Computer, automated teller, and office machine repairers",Installation & repair,29,2,19,narrow,0.629,29,28,53,37,40,37,25,-0.9,46860,0.367,"Some college, no degree",false
+39-6012.00,Concierges,Personal care,29,2,19,none,0.515,29,29,43,38,40,36,14,2.3,37320,0.467,High school diploma or equivalent,false
+33-3012.00,Correctional officers and jailers,Protective service,29,2,19,narrow,0.629,29,29,57,39,41,39,28,-7.8,57970,0.261,High school diploma or equivalent,false
+51-9021.00,"Crushing, grinding, and polishing machine setters, operators, and tenders",Production,29,2,19,narrow,0.624,29,25,57,44,42,39,32,-2.5,46890,0.108,High school diploma or equivalent,false
+51-9032.00,"Cutting and slicing machine setters, operators, and tenders",Production,29,2,19,narrow,0.66,29,23,59,45,42,40,36,-2.3,45700,0.068,High school diploma or equivalent,false
+51-9081.00,Dental laboratory technicians,Production,29,2,19,narrow,0.682,29,24,62,46,43,41,38,-4.7,48310,0.042,High school diploma or equivalent,false
+29-2051.00,Dietetic technicians,Healthcare,29,2,19,none,0.512,29,30,41,36,39,35,12,2.5,37040,0.543,Associate's degree,false
+51-6091.00,"Extruding and forming machine setters, operators, and tenders, synthetic and glass fibers",Production,29,2,19,narrow,0.665,29,25,60,48,43,41,35,-1.1,44980,0.069,High school diploma or equivalent,false
+27-3023.00,"News analysts, reporters, and journalists","Arts, design & media",29,2,19,none,0.504,29,35,45,33,37,36,16,-3.9,60280,0.65,Bachelor's degree,false
+51-9196.00,"Paper goods machine setters, operators, and tenders",Production,29,2,19,narrow,0.662,29,24,63,48,43,41,39,-6.3,49390,0,High school diploma or equivalent,false
+33-3041.00,Parking enforcement workers,Protective service,29,2,19,none,0.485,29,27,46,38,40,36,19,-1.5,47150,0.321,High school diploma or equivalent,false
+31-1133.00,Psychiatric aides,Healthcare support,29,2,19,narrow,0.683,29,24,59,44,42,40,35,-0.4,41590,0.125,High school diploma or equivalent,false
+25-3031.00,"Substitute teachers, short-term",Education,29,2,19,none,0.476,29,27,43,39,40,36,16,1.6,38470,0.361,Bachelor's degree,true
+51-6093.00,Upholsterers,Production,29,2,19,none,0.485,29,25,48,40,41,37,23,-1.8,46190,0.191,High school diploma or equivalent,false
+25-3011.00,"Adult basic education, adult secondary education, and english as a second language instructors",Education,28,2,17,none,0.485,28,28,47,33,37,35,19,-13.7,59950,0.404,Bachelor's degree,false
+47-2041.00,Carpet installers,Construction,28,2,17,narrow,0.562,28,23,56,41,41,38,33,-9.6,49850,0.063,No formal educational credential,false
+49-9091.00,"Coin, vending, and amusement machine servicers and repairers",Installation & repair,28,2,17,none,0.544,28,25,49,35,39,35,24,-2.9,47350,0.321,High school diploma or equivalent,false
+43-5032.00,"Dispatchers, except police, fire, and ambulance",Office & admin,28,2,17,none,0.375,28,31,35,31,36,32,8,-0.9,48880,0.674,High school diploma or equivalent,false
+51-9194.00,Etchers and engravers,Production,28,2,17,narrow,0.593,28,23,54,42,41,38,31,-0.7,40450,0.136,High school diploma or equivalent,false
+33-9031.00,Gambling surveillance officers and gambling investigators,Protective service,28,2,17,none,0.449,28,28,41,35,39,34,13,0.3,43900,0.438,High school diploma or equivalent,false
+51-9071.00,Jewelers and precious stone and metal workers,Production,28,2,17,none,0.535,28,25,52,39,40,37,27,-5.5,49140,0.179,High school diploma or equivalent,false
+49-9094.00,Locksmiths and safe repairers,Installation & repair,28,2,17,wide,0.759,28,24,66,42,41,40,42,-8.3,50490,0.08,High school diploma or equivalent,false
+51-7041.00,"Sawing machine setters, operators, and tenders, wood",Production,28,2,17,narrow,0.577,28,22,54,47,42,39,32,-0.6,39950,0.059,High school diploma or equivalent,false
+33-9032.00,Security guards,Protective service,28,2,17,wide,0.815,28,23,64,43,41,40,41,0.4,38370,0.167,High school diploma or equivalent,false
+51-4194.00,"Tool grinders, filers, and sharpeners",Production,28,2,17,wide,0.742,28,22,65,43,41,40,43,-7.8,48970,0.033,High school diploma or equivalent,false
+43-4011.00,Brokerage clerks,Office & admin,27,2,15,none,0.183,27,33,26,29,34,30,8,-9.5,62940,0.767,High school diploma or equivalent,false
+41-9011.00,Demonstrators and product promoters,Sales,27,2,15,narrow,0.65,27,21,56,41,40,37,35,-0.1,37960,0.128,No formal educational credential,false
+51-2031.00,Engine and other machine assemblers,Production,27,2,15,narrow,0.611,27,22,58,38,40,37,36,-21.1,52540,0.095,High school diploma or equivalent,false
+43-4131.00,Loan interviewers and clerks,Office & admin,27,2,15,none,0.299,27,28,32,30,35,30,8,-2.3,48950,0.594,High school diploma or equivalent,false
+37-2012.00,Maids and housekeeping cleaners,Building & grounds,27,2,15,narrow,0.6,27,19,55,49,42,38,36,0.4,34660,0,No formal educational credential,false
+51-4062.00,"Patternmakers, metal and plastic",Production,27,2,15,narrow,0.55,27,22,54,35,39,35,32,-24.4,54540,0.152,High school diploma or equivalent,false
+25-3041.00,Tutors,Education,27,2,15,none,0.423,27,25,37,30,36,31,12,0.6,40090,0.543,"Some college, no degree",false
+39-3031.00,"Ushers, lobby attendants, and ticket takers",Personal care,27,2,15,none,0.515,27,20,48,42,41,36,28,1.2,31150,0.143,No formal educational credential,false
+51-7042.00,"Woodworking machine setters, operators, and tenders, except sawing",Production,27,2,15,narrow,0.65,27,20,58,43,41,38,38,-1.8,40440,0.065,High school diploma or equivalent,false
+49-3091.00,Bicycle repairers,Installation & repair,26,2,14,wide,0.828,26,19,66,39,40,38,47,-2.3,40360,0.103,High school diploma or equivalent,false
+43-3021.00,Billing and posting clerks,Office & admin,26,2,14,none,0.259,26,30,26,28,34,29,8,-0.4,47170,0.774,High school diploma or equivalent,false
+51-2021.00,"Coil winders, tapers, and finishers",Production,26,2,14,none,0.496,26,21,48,33,37,33,27,-6.3,47260,0.222,High school diploma or equivalent,false
+51-9161.00,Computer numerically controlled tool operators,Production,26,2,14,narrow,0.627,26,22,55,33,37,35,33,-10.7,49970,0.25,High school diploma or equivalent,false
+35-9021.00,Dishwashers,Food & hospitality,26,2,14,narrow,0.627,26,18,56,47,41,38,38,0.2,33670,0,No formal educational credential,false
+45-4011.00,Forest and conservation workers,Farming & outdoors,26,2,14,narrow,0.622,26,18,57,39,40,36,39,-4.7,43680,0.043,High school diploma or equivalent,false
+51-4022.00,"Forging machine setters, operators, and tenders, metal and plastic",Production,26,2,14,narrow,0.631,26,19,59,37,39,36,40,-18.9,49240,0.042,High school diploma or equivalent,false
+51-7021.00,Furniture finishers,Production,26,2,14,narrow,0.583,26,19,55,42,41,37,36,-3.3,42530,0.029,High school diploma or equivalent,false
+43-6012.00,Legal secretaries and administrative assistants,Office & admin,26,2,14,none,0.33,26,28,33,27,33,29,7,-5.8,54140,0.696,High school diploma or equivalent,false
+51-9023.00,"Mixing and blending machine setters, operators, and tenders",Production,26,2,14,narrow,0.67,26,21,59,38,39,37,38,-6.8,47680,0.111,High school diploma or equivalent,false
+51-4023.00,"Rolling machine setters, operators, and tenders, metal and plastic",Production,26,2,14,narrow,0.669,26,21,58,34,38,35,37,-8.3,48630,0.176,High school diploma or equivalent,false
+43-6014.00,"Secretaries and administrative assistants, except legal, medical, and executive",Office & admin,26,2,14,none,0.312,26,25,31,27,33,28,8,-1.6,46290,0.644,High school diploma or equivalent,false
+51-2041.00,Structural metal fabricators and fitters,Production,26,2,14,narrow,0.586,26,20,57,39,40,36,37,-16.3,49900,0.023,High school diploma or equivalent,false
+49-9061.00,Camera and photographic equipment repairers,Installation & repair,25,2,12,narrow,0.649,25,20,56,30,36,33,36,-15.1,49300,0.24,High school diploma or equivalent,false
+53-7011.00,Conveyor operators and tenders,Transportation,25,2,12,narrow,0.612,25,18,54,36,39,34,36,-3.4,41230,0.103,No formal educational credential,false
+41-1011.00,First-line supervisors of retail sales workers,Sales,25,2,12,none,0.529,25,22,45,27,34,31,23,-5,47320,0.486,High school diploma or equivalent,false
+47-3011.00,"Helpers--brickmasons, blockmasons, stonemasons, and tile and marble setters",Construction,25,2,12,narrow,0.655,25,17,60,37,39,36,43,-10.5,46480,0,No formal educational credential,false
+51-4034.00,"Lathe and turning machine tool setters, operators, and tenders, metal and plastic",Production,25,2,12,narrow,0.597,25,19,54,32,37,33,35,-13.6,48620,0.161,High school diploma or equivalent,false
+51-4072.00,"Molding, coremaking, and casting machine setters, operators, and tenders, metal and plastic",Production,25,2,12,narrow,0.603,25,18,55,37,39,35,37,-3.8,41230,0.081,High school diploma or equivalent,false
+31-9095.00,Pharmacy aides,Healthcare support,25,2,12,none,0.385,25,20,37,29,36,29,17,-0.1,37000,0.38,High school diploma or equivalent,false
+43-9081.00,Proofreaders and copy markers,Office & admin,25,2,12,none,0.086,25,32,15,26,31,26,17,-0.6,49210,0.975,Bachelor's degree,false
+43-9111.00,Statistical assistants,Office & admin,25,2,12,none,0.261,25,31,25,26,32,28,7,-2.5,51440,0.891,Bachelor's degree,false
+43-5111.00,"Weighers, measurers, checkers, and samplers, recordkeeping",Office & admin,25,2,12,none,0.483,25,19,45,29,36,31,26,-4.8,45650,0.293,High school diploma or equivalent,false
+51-4122.00,"Welding, soldering, and brazing machine setters, operators, and tenders",Production,25,2,12,narrow,0.593,25,18,56,36,39,35,38,-9,47060,0.068,High school diploma or equivalent,false
+53-3011.00,"Ambulance drivers and attendants, except emergency medical technicians",Transportation,24,2,11,narrow,0.655,24,15,55,34,38,33,40,-1.3,34330,0.091,High school diploma or equivalent,false
+53-6031.00,Automotive and watercraft service attendants,Transportation,24,2,11,narrow,0.674,24,16,55,34,38,33,39,-1,34850,0.13,No formal educational credential,false
+39-6011.00,Baggage porters and bellhops,Personal care,24,2,11,narrow,0.587,24,16,51,32,37,32,35,-1.6,36020,0.148,High school diploma or equivalent,false
+43-3031.00,"Bookkeeping, accounting, and auditing clerks",Office & admin,24,2,11,none,0.213,24,24,23,23,29,25,6,-5.8,49210,0.802,"Some college, no degree",false
+43-4041.00,"Credit authorizers, checkers, and clerks",Office & admin,24,2,11,none,0.24,24,23,27,24,31,26,8,-6.2,49130,0.65,High school diploma or equivalent,false
+43-9031.00,Desktop publishers,Office & admin,24,2,11,none,0.345,24,24,33,24,31,27,9,-12.4,53620,0.645,Associate's degree,false
+49-2096.00,"Electronic equipment installers and repairers, motor vehicles",Installation & repair,24,2,11,wide,0.761,24,18,62,30,36,34,44,-13.6,47940,0.167,High school diploma or equivalent,false
+39-3011.00,Gambling dealers,Personal care,24,2,11,none,0.519,24,16,47,33,38,32,31,-0.6,33280,0.135,High school diploma or equivalent,false
+51-4191.00,"Heat treating equipment setters, operators, and tenders, metal and plastic",Production,24,2,11,narrow,0.602,24,18,54,30,36,32,36,-12.8,47450,0.176,High school diploma or equivalent,false
+43-4161.00,"Human resources assistants, except payroll and timekeeping",Office & admin,24,2,11,none,0.364,24,23,34,25,32,28,11,-7.1,49440,0.621,Associate's degree,false
+43-9041.00,Insurance claims and policy processing clerks,Office & admin,24,2,11,none,0.105,24,25,17,23,29,24,12,-3.7,48450,0.833,High school diploma or equivalent,false
+43-5041.00,"Meter readers, utilities",Office & admin,24,2,11,none,0.338,24,21,36,26,33,28,15,-12,49180,0.437,High school diploma or equivalent,false
+51-4035.00,"Milling and planing machine setters, operators, and tenders, metal and plastic",Production,24,2,11,none,0.518,24,18,49,28,35,31,31,-14.4,48310,0.241,High school diploma or equivalent,false
+51-9151.00,Photographic process workers and processing machine operators,Production,24,2,11,none,0.454,24,18,41,26,34,29,23,-2.6,40100,0.38,High school diploma or equivalent,false
+43-4171.00,Receptionists and information clerks,Office & admin,24,2,11,none,0.315,24,20,30,26,33,27,13,0,37230,0.533,High school diploma or equivalent,false
+41-2031.00,Retail salespersons,Sales,24,2,11,narrow,0.595,24,17,47,27,35,30,30,-0.5,34580,0.342,No formal educational credential,false
+51-6052.00,"Tailors, dressmakers, and custom sewers",Production,24,2,11,none,0.55,24,17,52,35,38,33,35,-4.5,40860,0.091,No formal educational credential,false
+35-3031.00,Waiters and waitresses,Food & hospitality,24,2,11,narrow,0.623,24,16,51,31,37,32,35,-0.7,33760,0.184,No formal educational credential,false
+51-4031.00,"Cutting, punching, and press machine setters, operators, and tenders, metal and plastic",Production,23,1.5,8,narrow,0.641,23,14,58,33,37,33,44,-12.1,45590,0.01,High school diploma or equivalent,false
+51-4032.00,"Drilling and boring machine tool setters, operators, and tenders, metal and plastic",Production,23,1.5,8,wide,0.743,23,14,63,30,37,33,49,-19.6,46630,0.03,High school diploma or equivalent,false
+51-4033.00,"Grinding, lapping, polishing, and buffing machine tool setters, operators, and tenders, metal and plastic",Production,23,1.5,8,narrow,0.691,23,15,59,31,37,33,44,-12,45190,0.065,High school diploma or equivalent,false
+39-3021.00,Motion picture projectionists,Personal care,23,1.5,8,none,0.523,23,15,47,28,36,30,32,-3.7,38180,0.182,No formal educational credential,false
+43-3051.00,Payroll and timekeeping clerks,Office & admin,23,1.5,8,none,0.356,23,24,30,21,27,25,9,-16.7,55290,0.838,High school diploma or equivalent,false
+51-5112.00,Printing press operators,Production,23,1.5,8,narrow,0.56,23,16,48,25,34,29,32,-8.1,45160,0.288,High school diploma or equivalent,false
+43-3061.00,Procurement clerks,Office & admin,23,1.5,8,none,0.33,23,21,32,23,31,26,11,-8.7,48510,0.614,High school diploma or equivalent,false
+51-6042.00,Shoe machine operators and tenders,Production,23,1.5,8,narrow,0.559,23,15,51,32,37,32,36,-3.7,38160,0.087,High school diploma or equivalent,false
+27-3011.00,Broadcast announcers and radio disc jockeys,"Arts, design & media",22,1.5,7,none,0.55,22,19,41,21,29,26,22,-5.5,45680,0.65,Bachelor's degree,false
+43-4051.00,Customer service representatives,Office & admin,22,1.5,7,none,0.361,22,17,32,20,30,24,15,-5.5,42830,0.568,High school diploma or equivalent,false
+45-2092.00,"Farmworkers and laborers, crop, nursery, and greenhouse",Farming & outdoors,22,1.5,7,narrow,0.58,22,13,50,27,35,29,37,-3.3,35690,0.143,No formal educational credential,false
+51-4071.00,Foundry mold and coremakers,Production,22,1.5,7,narrow,0.64,22,13,58,29,36,32,45,-25.9,45700,0,High school diploma or equivalent,false
+35-9031.00,"Hosts and hostesses, restaurant, lounge, and coffee shop",Food & hospitality,22,1.5,7,narrow,0.582,22,13,48,25,35,29,35,-1.5,30380,0.229,No formal educational credential,false
+51-5111.00,Prepress technicians and workers,Production,22,1.5,7,none,0.372,22,17,36,22,31,26,19,-14.6,47300,0.438,Postsecondary nondegree award,false
+33-9094.00,School bus monitors,Protective service,22,1.5,7,none,0.5,22,13,46,27,35,29,33,-2.7,34980,0.167,High school diploma or equivalent,true
+43-5071.00,"Shipping, receiving, and inventory clerks",Office & admin,22,1.5,7,none,0.3,22,15,30,19,30,23,15,-7.7,43190,0.5,High school diploma or equivalent,false
+51-6041.00,Shoe and leather workers and repairers,Production,22,1.5,7,narrow,0.565,22,12,51,29,36,30,39,-3.8,35950,0.059,High school diploma or equivalent,false
+43-3011.00,Bill and account collectors,Office & admin,21,1.5,6,none,0.223,21,16,23,17,26,21,10,-10.5,46040,0.696,High school diploma or equivalent,false
+39-9011.00,Childcare workers,Personal care,21,1.5,6,none,0.511,21,11,46,24,34,27,35,-2.9,32050,0.148,High school diploma or equivalent,false
+35-2015.00,"Cooks, short order",Food & hospitality,21,1.5,6,narrow,0.669,21,10,57,27,36,30,47,-5.6,35620,0,No formal educational credential,false
+43-4021.00,Correspondence clerks,Office & admin,21,1.5,6,none,0.127,21,20,14,18,24,19,10,-5.6,46740,0.964,High school diploma or equivalent,false
+45-2093.00,"Farmworkers, farm, ranch, and aquacultural animals",Farming & outdoors,21,1.5,6,narrow,0.693,21,11,57,27,36,30,46,-5,36150,0.063,No formal educational credential,false
+35-2021.00,Food preparation workers,Food & hospitality,21,1.5,6,narrow,0.578,21,11,51,29,36,30,40,-3.4,34220,0.037,No formal educational credential,false
+45-2041.00,"Graders and sorters, agricultural products",Farming & outdoors,21,1.5,6,narrow,0.571,21,10,50,22,34,27,40,-5.4,35430,0.1,No formal educational credential,false
+51-9022.00,"Grinding and polishing workers, hand",Production,21,1.5,6,narrow,0.668,21,10,58,24,35,30,48,-21.2,41690,0.036,No formal educational credential,false
+43-9051.00,"Mail clerks and mail machine operators, except postal service",Office & admin,21,1.5,6,none,0.47,21,11,43,21,33,26,32,-6.6,38150,0.216,High school diploma or equivalent,false
+43-4141.00,New accounts clerks,Office & admin,21,1.5,6,none,0.454,21,16,38,19,28,24,22,-13.2,46610,0.56,High school diploma or equivalent,false
+43-9061.00,"Office clerks, general",Office & admin,21,1.5,6,none,0.254,21,16,27,19,29,22,13,-6.7,43630,0.576,High school diploma or equivalent,false
+53-7064.00,"Packers and packagers, hand",Transportation,21,1.5,6,none,0.54,21,10,48,22,34,27,38,-5.4,35580,0.1,No formal educational credential,false
+51-4193.00,"Plating machine setters, operators, and tenders, metal and plastic",Production,21,1.5,6,narrow,0.649,21,11,55,23,34,29,44,-13.6,41600,0.104,High school diploma or equivalent,false
+43-9022.00,Word processors and typists,Office & admin,21,1.5,6,none,0.209,21,16,22,16,25,20,9,-36.1,47850,0.743,High school diploma or equivalent,false
+27-1023.00,Floral designers,"Arts, design & media",20,1,4,narrow,0.602,20,10,49,20,33,26,39,-5.9,36120,0.2,High school diploma or equivalent,false
+43-3041.00,Gambling cage workers,Office & admin,20,1,4,none,0.377,20,12,34,17,30,23,22,-5,36990,0.419,High school diploma or equivalent,false
+51-9198.00,Helpers--production workers,Production,20,1,4,none,0.547,20,10,49,22,34,27,39,-8.9,38220,0.089,High school diploma or equivalent,false
+43-4111.00,"Interviewers, except eligibility and loan",Office & admin,20,1,4,none,0.223,20,14,23,15,26,20,12,-11.6,43830,0.672,High school diploma or equivalent,false
+25-4031.00,Library technicians,Education,20,1,4,none,0.26,20,13,26,16,27,20,14,-6.8,39970,0.567,Postsecondary nondegree award,false
+53-7063.00,Machine feeders and offbearers,Transportation,20,1,4,none,0.545,20,10,50,21,34,27,40,-13,39700,0.091,No formal educational credential,false
+51-5113.00,Print binding and finishing workers,Production,20,1,4,narrow,0.587,20,9,52,20,33,27,43,-16.1,39820,0.09,High school diploma or equivalent,false
+51-6063.00,"Textile knitting and weaving machine setters, operators, and tenders",Production,20,1,4,none,0.506,20,9,46,18,32,25,37,-11.2,38260,0.156,High school diploma or equivalent,false
+51-6064.00,"Textile winding, twisting, and drawing out machine setters, operators, and tenders",Production,20,1,4,narrow,0.595,20,9,52,21,34,27,43,-9,37660,0.086,High school diploma or equivalent,false
+51-2061.00,Timing device assemblers and adjusters,Production,20,1,4,narrow,0.65,20,9,56,21,34,28,47,-17.5,40790,0.06,High school diploma or equivalent,false
+51-9031.00,"Cutters and trimmers, hand",Production,19,1,3,narrow,0.6,19,8,54,21,34,27,46,-18.1,38800,0,No formal educational credential,false
+43-4071.00,File clerks,Office & admin,19,1,3,none,0.125,19,10,14,11,21,15,11,-15.9,41270,0.794,High school diploma or equivalent,false
+41-2012.00,Gambling change persons and booth cashiers,Sales,19,1,3,none,0.443,19,9,40,16,31,23,31,-6.4,34810,0.262,No formal educational credential,false
+43-4121.00,"Library assistants, clerical",Office & admin,19,1,3,none,0.308,19,9,27,12,26,19,18,-6.7,36010,0.534,High school diploma or equivalent,false
+31-9094.00,Medical transcriptionists,Healthcare support,19,1,3,none,0.187,19,12,15,12,22,16,10,-4.9,37550,0.875,Postsecondary nondegree award,false
+43-9071.00,"Office machine operators, except computer",Office & admin,19,1,3,none,0.385,19,8,35,12,27,20,27,-15.2,39020,0.397,High school diploma or equivalent,false
+43-4151.00,Order clerks,Office & admin,19,1,3,none,0.326,19,12,27,13,24,19,15,-17.2,44660,0.714,"Some college, no degree",false
+51-6051.00,"Sewers, hand",Production,19,1,3,narrow,0.575,19,6,50,17,33,25,44,-7,33760,0.042,No formal educational credential,false
+51-6031.00,Sewing machine operators,Production,19,1,3,narrow,0.551,19,7,49,16,32,25,42,-10.8,36000,0.081,No formal educational credential,false
+43-3071.00,Tellers,Office & admin,19,1,3,none,0.275,19,10,27,13,26,19,17,-12.9,39340,0.542,High school diploma or equivalent,false
+51-6061.00,Textile bleaching and dyeing machine operators and tenders,Production,19,1,3,none,0.546,19,8,47,17,32,25,39,-10.1,37320,0.158,High school diploma or equivalent,false
+51-6062.00,"Textile cutting machine setters, operators, and tenders",Production,19,1,3,narrow,0.582,19,8,49,17,32,25,41,-11.7,37940,0.161,High school diploma or equivalent,false
+41-9091.00,"Door-to-door sales workers, news and street vendors, and related workers",Sales,18,1,1,narrow,0.614,18,6,48,12,29,23,42,-10,34530,0.261,No formal educational credential,false
+39-3012.00,Gambling and sports book writers and runners,Personal care,18,1,1,none,0.439,18,6,38,12,29,21,32,-6.1,30460,0.269,High school diploma or equivalent,false
+41-2011.00,Cashiers,Sales,17,1,1,none,0.475,17,5,41,10,29,20,36,-9.9,31190,0.209,No formal educational credential,false
+43-9021.00,Data entry keyers,Office & admin,17,1,1,none,0.174,17,8,14,8,19,13,11,-25.9,39850,0.893,High school diploma or equivalent,false
+51-6021.00,"Pressers, textile, garment, and related materials",Production,17,1,1,narrow,0.594,17,4,52,12,32,23,48,-13.5,33880,0.01,No formal educational credential,false
+43-2011.00,"Switchboard operators, including answering service",Office & admin,17,1,1,none,0.287,17,7,25,8,22,16,18,-26.3,38370,0.629,High school diploma or equivalent,false
+43-2021.00,Telephone operators,Office & admin,17,1,1,none,0.158,17,7,13,7,18,12,11,-27.5,39130,0.895,High school diploma or equivalent,false
+35-2011.00,"Cooks, fast food",Food & hospitality,16,1,0,narrow,0.623,16,3,52,8,32,22,49,-13.5,30160,0,No formal educational credential,false
+41-9041.00,Telemarketers,Sales,16,1,0,none,0.283,16,2,19,2,17,11,17,-22.1,34410,0.806,No formal educational credential,false

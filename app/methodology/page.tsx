@@ -270,6 +270,34 @@ No moat     < 0.55      (~30%)`}
           </Section>
         )}
 
+        <Section title="Check my math — download the data">
+          <p>
+            Every rating on this site is in one open CSV:{" "}
+            <a
+              href="/careerstar-ratings.csv"
+              download
+              className="font-medium text-blue-600 hover:underline"
+            >
+              careerstar-ratings.csv
+            </a>{" "}
+            — all {typed.occupations.length} occupations with the default-weight score, stars,
+            percentile, AI-moat, all five model scores, consensus, growth, pay, exposure, and a
+            flag for the {"≈25"} careers whose capability vectors are estimated. If a number
+            looks wrong, the formulas are on this page and the code is{" "}
+            <a
+              href="https://github.com/ashleylibasci/careerstar"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-blue-600 hover:underline"
+            >
+              on GitHub
+            </a>{" "}
+            — auditing it is encouraged. Derived ratings are CC&nbsp;BY&nbsp;4.0 (cite CareerStar);
+            upstream data keeps its own licenses (BLS public domain, O*NET CC&nbsp;BY&nbsp;4.0,
+            Eloundou MIT).
+          </p>
+        </Section>
+
         <Section title="Limitations (read these)">
           <ul className="list-disc space-y-1 pl-5">
             <li>

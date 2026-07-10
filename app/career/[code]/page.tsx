@@ -10,6 +10,7 @@ import { percentileOf, starsFromPercentile, bullsAndBears, uncertaintyLabel } fr
 import { plainVerdict, scoreBand } from "@/lib/scorer/verdict";
 import { Stars, MOAT_BADGE } from "@/app/components/rating-ui";
 import PrintButton from "@/app/components/PrintButton";
+import FeedbackWidget from "@/app/components/FeedbackWidget";
 import type { Occupation, ScoreResult } from "@/lib/scorer/types";
 
 const typed = data as {
@@ -239,6 +240,10 @@ export default async function CareerPage({
                 </div>
               </div>
             )}
+
+            <div className="mt-4">
+              <FeedbackWidget code={code} />
+            </div>
           </div>
         )}
 

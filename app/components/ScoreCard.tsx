@@ -3,6 +3,7 @@ import type { ScoreResult } from "@/lib/scorer/types";
 import { scoreBand, type Tone } from "@/lib/scorer/verdict";
 import { uncertaintyLabel } from "@/lib/scorer/rating";
 import { Stars, MOAT_BADGE } from "./rating-ui";
+import FeedbackWidget from "./FeedbackWidget";
 
 const BAR_HELP: Record<string, string> = {
   Return: "Growth + pay, percentile-ranked against all 730 careers. Higher is better.",
@@ -182,10 +183,11 @@ export default function ScoreCard({
         </details>
       )}
 
-      <div className="mt-3">
+      <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
         <Link href={`/career/${result.code}`} className="text-xs text-blue-600 hover:underline">
           View full details →
         </Link>
+        <FeedbackWidget code={result.code} />
       </div>
     </div>
   );
