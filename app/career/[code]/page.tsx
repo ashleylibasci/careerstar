@@ -147,7 +147,9 @@ export default async function CareerPage({
         </Link>
 
         <p className="mt-4 text-sm font-medium text-foreground/60">
-          {fieldName(group)}
+          <Link href={`/field/${group}`} className="hover:text-blue-600 hover:underline">
+            {fieldName(group)}
+          </Link>
         </p>
         <h1 className="mt-1 text-3xl font-bold tracking-tight">{occ.title}</h1>
         <p className="mt-2 text-sm text-foreground/60">

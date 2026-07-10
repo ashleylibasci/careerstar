@@ -1,6 +1,9 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import data from "@/data/data.json";
+import { computeScores } from "@/lib/scorer/scorer";
+import { MODELS } from "@/lib/scorer/models";
+import type { Occupation } from "@/lib/scorer/types";
 
 export const metadata: Metadata = {
   title: "Methodology — CareerStar",
@@ -8,10 +11,33 @@ export const metadata: Metadata = {
     "How CareerStar computes its risk-adjusted career viability scores: the model, the weights, the data sources, robustness, and the limitations.",
 };
 
-const validation = (data as { meta: { validation?: {
-  exposureGrowthSpearman: number;
-  exposureQuartileGrowthPct: number[];
-} } }).meta.validation;
+const typed = data as {
+  occupations: Occupation[];
+  meta: {
+    skillMean: number[];
+    skillStd: number[];
+    validation?: { exposureGrowthSpearman: number; exposureQuartileGrowthPct: number[] };
+  };
+};
+const validation = typed.meta.validation;
+
+// Real distributions across all 730 careers at default weights (module-level, once).
+const ALL = computeScores(
+  typed.occupations,
+  [],
+  typed.occupations.map((o) => o.code),
+  undefined,
+  { skillMean: typed.meta.skillMean, skillStd: typed.meta.skillStd },
+);
+const SCORE_BINS = Array.from({ length: 10 }, (_, i) => ({
+  label: `${i * 10}`,
+  n: ALL.filter((r) => r.score >= i * 10 && (i === 9 ? r.score <= 100 : r.score < (i + 1) * 10)).length,
+}));
+const MAX_BIN = Math.max(...SCORE_BINS.map((b) => b.n));
+const MOAT_COUNTS = ["wide", "narrow", "none"].map((m) => ({
+  m,
+  n: typed.occupations.filter((o) => o.moat === m).length,
+}));
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
@@ -120,6 +146,47 @@ No moat     < 0.55      (~30%)`}
           </p>
         </Section>
 
+        <Section title="What the rated universe looks like">
+          <p>
+            The real distributions across all {typed.occupations.length} occupations at default
+            weights — the forced star-curve is applied on top of the score distribution, and the
+            moat split is calibrated once to a Morningstar-like shape:
+          </p>
+          <div className="rounded-2xl border border-foreground/10 bg-foreground/[.02] p-4">
+            <div className="text-xs font-medium text-foreground/60">Score distribution (0–100, bins of 10)</div>
+            <div className="mt-2 flex h-24 items-end gap-1" role="img" aria-label="Histogram of scores across all careers">
+              {SCORE_BINS.map((b) => (
+                <div key={b.label} className="flex flex-1 flex-col items-center gap-1" title={`${b.label}–${Number(b.label) + 9}: ${b.n} careers`}>
+                  <div
+                    className="w-full rounded-t bg-blue-500/70"
+                    style={{ height: `${Math.max(2, (b.n / MAX_BIN) * 80)}px` }}
+                  />
+                  <span className="text-[9px] tabular-nums text-foreground/55">{b.label}</span>
+                </div>
+              ))}
+            </div>
+            <div className="mt-4 text-xs font-medium text-foreground/60">AI-moat split</div>
+            <div className="mt-2 flex h-4 w-full overflow-hidden rounded-full" role="img" aria-label="Moat distribution across all careers">
+              {MOAT_COUNTS.map(({ m, n }) => (
+                <div
+                  key={m}
+                  title={`${m}: ${n} careers`}
+                  className={m === "wide" ? "bg-blue-600" : m === "narrow" ? "bg-blue-400/60" : "bg-foreground/15"}
+                  style={{ width: `${(n / typed.occupations.length) * 100}%` }}
+                />
+              ))}
+            </div>
+            <div className="mt-1.5 flex flex-wrap gap-x-4 text-xs text-foreground/60">
+              {MOAT_COUNTS.map(({ m, n }) => (
+                <span key={m}>
+                  <span className={`mr-1 inline-block h-2 w-2 rounded-full ${m === "wide" ? "bg-blue-600" : m === "narrow" ? "bg-blue-400/60" : "bg-foreground/15"}`} />
+                  {m} {n} ({Math.round((n / typed.occupations.length) * 100)}%)
+                </span>
+              ))}
+            </div>
+          </div>
+        </Section>
+
         <Section title="Robustness (does the answer survive?)">
           <p>
             The weights are a deliberate choice, so the fair test is whether the ranking holds when
@@ -128,6 +195,39 @@ No moat     < 0.55      (~30%)`}
             how often each career keeps its rank. A result that holds across all 729 is robust; one
             that shuffles is flagged as a <em>close call</em> rather than sold as a verdict. You can
             watch this live by moving the sliders on the results screen.
+          </p>
+        </Section>
+
+        <Section title="Five rival models (model risk, made visible)">
+          <p>
+            Any single formula is one opinion about how much AI risk should count. So every
+            comparison is also scored under <strong>four rival models</strong> — different
+            philosophies, not weight tweaks — and the app shows when they agree (conviction) and
+            when they crown different winners (genuine uncertainty):
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-xs">
+              <thead>
+                <tr className="border-b border-foreground/10 text-left text-foreground/60">
+                  <th scope="col" className="py-1.5 pr-3 font-medium">Model</th>
+                  <th scope="col" className="py-1.5 px-3 font-medium">Philosophy</th>
+                  <th scope="col" className="py-1.5 pl-3 font-medium">Formula</th>
+                </tr>
+              </thead>
+              <tbody>
+                {MODELS.map((m) => (
+                  <tr key={m.id} className="border-b border-foreground/5 align-top">
+                    <td className="whitespace-nowrap py-2 pr-3 font-semibold">{m.name}</td>
+                    <td className="py-2 px-3 text-foreground/70">{m.tagline}</td>
+                    <td className="whitespace-nowrap py-2 pl-3 font-mono text-[11px] text-foreground/60">{m.formula}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p>
+            The naive equal-weight model is deliberately included as a control — a model that
+            can&rsquo;t distinguish itself from 1/N isn&rsquo;t earning its complexity.
           </p>
         </Section>
 

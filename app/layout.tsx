@@ -26,9 +26,11 @@ export const metadata: Metadata = {
     url: "/",
     siteName: "CareerStar",
     type: "website",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "CareerStar — rate careers like stocks" }],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
+    images: ["/og.png"],
     title: "CareerStar — rate careers like stocks",
     description:
       "A data-grounded, risk-adjusted 0–100 career viability score for an AI-shaped economy — with the math shown.",

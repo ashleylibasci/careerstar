@@ -6,6 +6,7 @@ import { parseInput } from "@/lib/scorer/parse";
 import { findRedirect, VIABILITY_THRESHOLD } from "@/lib/scorer/redirect";
 import { plainVerdict } from "@/lib/scorer/verdict";
 import { starsFromPercentile, percentileOf, bullsAndBears } from "@/lib/scorer/rating";
+import { modelScores } from "@/lib/scorer/models";
 import { explainResults } from "@/lib/explain/explain";
 import { validateInput } from "@/lib/security/limits";
 import { rateLimit, clientKey } from "@/lib/security/rate-limit";
@@ -140,6 +141,7 @@ export async function POST(request: Request) {
       percentile: Math.round(pct),
       stars: starsFromPercentile(pct),
       moat: occ.moat,
+      models: modelScores(r, occ.moatScore),
       ...bullsAndBears(r),
     };
   });

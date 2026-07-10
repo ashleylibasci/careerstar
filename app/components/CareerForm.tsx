@@ -6,6 +6,7 @@ import type { ScoreResponse } from "@/lib/scorer/types";
 import { FIELDS } from "@/lib/fields";
 import ScoreCard from "./ScoreCard";
 import RobustnessPanel from "./RobustnessPanel";
+import ModelComparison from "./ModelComparison";
 import FrontierChart from "./FrontierChart";
 import CompareRadar from "./CompareRadar";
 
@@ -466,6 +467,23 @@ export default function CareerForm() {
             ))}
           </div>
 
+          {/* Portfolio check: warn when every compared path shares the same weakness. */}
+          {response.results.length >= 2 &&
+            response.results.every((r) => (r.breakdown?.aiExposurePct ?? 0) >= 60) && (
+              <div className="mt-4 flex items-start gap-2 rounded-xl border border-amber-500/30 bg-amber-500/[.06] p-3 text-sm print:hidden">
+                <span aria-hidden>⚠️</span>
+                <p className="text-foreground/75">
+                  <strong>Your career portfolio isn&rsquo;t diversified</strong>{" "}— every path
+                  you&rsquo;re comparing is high-AI-exposure. Like holding only one sector: fine if
+                  you&rsquo;re right, painful if you&rsquo;re not. Consider adding a{" "}
+                  <Link href="/explore" className="font-medium text-blue-600 hover:underline">
+                    wide-moat option
+                  </Link>{" "}
+                  to the mix.
+                </p>
+              </div>
+            )}
+
           <p className="pt-4 text-xs leading-relaxed text-foreground/60">
             A grounded estimate, not a prediction. Scores blend official BLS 2024&ndash;2034
             projections with AI-exposure research — and <strong>AI exposure is not the same as
@@ -572,6 +590,8 @@ export default function CareerForm() {
           </div>
 
           {response.sensitivity && <RobustnessPanel sensitivity={response.sensitivity} />}
+
+          <ModelComparison results={response.results} />
         </div>
       )}
 

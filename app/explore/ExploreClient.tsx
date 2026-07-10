@@ -134,7 +134,9 @@ export default function ExploreClient() {
                     {r.title}
                   </Link>
                 </td>
-                <td className="py-2 px-3 text-foreground/60">{r.field}</td>
+                <td className="py-2 px-3 text-foreground/60">
+                  <Link href={`/field/${r.group}`} className="hover:text-blue-600 hover:underline">{r.field}</Link>
+                </td>
                 <td className="py-2 px-3 text-foreground/60">{r.educationShort}</td>
                 <td className={`py-2 px-3 text-right font-semibold tabular-nums ${TONE[scoreBand(r.score).tone]}`}>
                   <span aria-label={`${r.stars} stars`}>★{r.stars.toFixed(1)}</span>

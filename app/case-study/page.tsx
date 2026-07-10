@@ -146,6 +146,23 @@ Score  = 100 · [ α·RAV + (1 − α)·Fit ]`}
           </p>
         </Section>
 
+        <Section kicker="Model risk" title="Five models, not one — because a formula is an opinion">
+          <p>
+            The deepest critique of any scoring app is: <em>who says your formula is right?</em> My
+            answer is to stop pretending there&rsquo;s one formula. Every comparison is also scored
+            under <strong>four rival models</strong> — a growth maximalist that ignores AI risk
+            entirely, a moat-first defensive model, a Sharpe-style efficiency ratio, and a naive
+            equal-weight control — and the app shows the spread. When all five agree, the ranking
+            isn&rsquo;t an artifact of my assumptions. When they crown different winners, the app
+            says so, because <strong>that disagreement is the honest finding</strong>: it means the
+            answer turns on how much AI risk you believe in, and no formula can settle that for you.
+          </p>
+          <p className="text-foreground/60">
+            (The equal-weight control is there on purpose: a clever model that can&rsquo;t beat 1/N
+            isn&rsquo;t earning its complexity — a lesson borrowed from portfolio research.)
+          </p>
+        </Section>
+
         <Section kicker="How it was built" title="Solo, one summer, AI-native, on AWS">
           <ul className="list-disc space-y-1.5 pl-5">
             <li><strong>One person</strong>, one summer — from brief to PRD to architecture to build, using a structured AI-native (BMAD) workflow.</li>

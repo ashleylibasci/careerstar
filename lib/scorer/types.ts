@@ -54,6 +54,8 @@ export interface ScoreResult {
   percentile?: number;
   /** AI-moat rating carried from the occupation (wide/narrow/none). */
   moat?: "wide" | "narrow" | "none";
+  /** Score under each alternative rating model (keyed by model id — see lib/scorer/models.ts). */
+  models?: Record<string, number>;
   /** Deterministic strongest-case bullets (top 2–3). */
   bulls?: string[];
   /** Deterministic weakest-case bullets (top 2–3, always ≥1). */
