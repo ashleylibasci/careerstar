@@ -426,6 +426,29 @@ export default function CareerForm() {
           {error}
         </p>
       )}
+
+      {/* Skeletons for the first score, so the wait reads as progress, not silence. */}
+      {loading && !response && (
+        <div className="mt-8 space-y-4" aria-hidden>
+          {[0, 1].map((i) => (
+            <div key={i} className="animate-pulse rounded-2xl border border-foreground/10 bg-foreground/[.02] p-5">
+              <div className="flex items-start justify-between gap-4">
+                <div className="w-full">
+                  <div className="h-4 w-1/3 rounded bg-foreground/10" />
+                  <div className="mt-2 h-3 w-1/4 rounded bg-foreground/10" />
+                </div>
+                <div className="h-8 w-14 rounded bg-foreground/10" />
+              </div>
+              <div className="mt-5 grid grid-cols-3 gap-3">
+                <div className="h-2 rounded bg-foreground/10" />
+                <div className="h-2 rounded bg-foreground/10" />
+                <div className="h-2 rounded bg-foreground/10" />
+              </div>
+              <div className="mt-4 h-3 w-2/3 rounded bg-foreground/10" />
+            </div>
+          ))}
+        </div>
+      )}
       {response?.message && (
         <p className="mt-6 text-sm text-foreground/60">{response.message}</p>
       )}
@@ -476,7 +499,7 @@ export default function CareerForm() {
                   <strong>Your career portfolio isn&rsquo;t diversified</strong>{" "}— every path
                   you&rsquo;re comparing is high-AI-exposure. Like holding only one sector: fine if
                   you&rsquo;re right, painful if you&rsquo;re not. Consider adding a{" "}
-                  <Link href="/explore" className="font-medium text-blue-600 hover:underline">
+                  <Link href="/explore?moat=wide" className="font-medium text-blue-600 hover:underline">
                     wide-moat option
                   </Link>{" "}
                   to the mix.

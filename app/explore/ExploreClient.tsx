@@ -39,13 +39,15 @@ const SORTS: { key: keyof Row; label: string }[] = [
   { key: "roi", label: "Best ROI (pay ÷ schooling)" },
 ];
 
-export default function ExploreClient() {
+export default function ExploreClient({ initialMoat = "all" }: { initialMoat?: string }) {
   const [rows, setRows] = useState<Row[]>([]);
   const [sortKey, setSortKey] = useState<keyof Row>("score");
   const [field, setField] = useState("all");
   const [edu, setEdu] = useState("all");
   const [minPay, setMinPay] = useState(0);
   const [search, setSearch] = useState("");
+  // Deep-linkable (the diversification warning links to /explore?moat=wide).
+  const [moatF, setMoatF] = useState(initialMoat);
 
   useEffect(() => {
     fetch("/api/leaderboard")
@@ -61,12 +63,13 @@ export default function ExploreClient() {
         (r) =>
           (field === "all" || r.group === field) &&
           (edu === "all" || r.education === edu) &&
+          (moatF === "all" || r.moat === moatF) &&
           r.medianPay >= minPay &&
           (q === "" || r.title.toLowerCase().includes(q)),
       )
       .sort((a, b) => (b[sortKey] as number) - (a[sortKey] as number))
       .slice(0, 150);
-  }, [rows, sortKey, field, edu, minPay, search]);
+  }, [rows, sortKey, field, edu, minPay, search, moatF]);
 
   const inputCls =
     "rounded-lg border border-foreground/15 bg-background px-3 py-1.5 text-sm outline-none focus-visible:ring-2 focus-visible:ring-blue-500";
@@ -82,6 +85,12 @@ export default function ExploreClient() {
           aria-label="Search careers"
           className={`${inputCls} flex-1 min-w-[140px]`}
         />
+        <select aria-label="Filter by moat" value={moatF} onChange={(e) => setMoatF(e.target.value)} className={inputCls}>
+          <option value="all">Any moat</option>
+          <option value="wide">🏰 Wide moat</option>
+          <option value="narrow">🛡 Narrow moat</option>
+          <option value="none">No moat</option>
+        </select>
         <select aria-label="Filter by field" value={field} onChange={(e) => setField(e.target.value)} className={inputCls}>
           <option value="all">All fields</option>
           {FIELDS.map((f) => (

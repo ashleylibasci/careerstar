@@ -7,7 +7,13 @@ export const metadata: Metadata = {
     "Browse, filter, and rank all ~730 occupations by viability, AI-resilience, growth, or pay.",
 };
 
-export default function ExplorePage() {
+export default async function ExplorePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ moat?: string }>;
+}) {
+  const { moat } = await searchParams;
+  const initialMoat = moat && ["wide", "narrow", "none"].includes(moat) ? moat : "all";
   return (
     <main className="flex flex-1 flex-col items-center px-6 py-12 sm:py-16">
       <div className="w-full max-w-3xl">
@@ -17,7 +23,7 @@ export default function ExplorePage() {
           field or pay, sort by what you care about, and click any career to score it.
         </p>
         <div className="mt-8">
-          <ExploreClient />
+          <ExploreClient initialMoat={initialMoat} />
         </div>
       </div>
     </main>
