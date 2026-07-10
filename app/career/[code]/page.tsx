@@ -9,6 +9,7 @@ import { computeScores } from "@/lib/scorer/scorer";
 import { percentileOf, starsFromPercentile, bullsAndBears, uncertaintyLabel } from "@/lib/scorer/rating";
 import { plainVerdict, scoreBand } from "@/lib/scorer/verdict";
 import { Stars, MOAT_BADGE } from "@/app/components/rating-ui";
+import PrintButton from "@/app/components/PrintButton";
 import type { Occupation, ScoreResult } from "@/lib/scorer/types";
 
 const typed = data as {
@@ -354,13 +355,22 @@ export default async function CareerPage({
           </div>
         ) : null}
 
-        <div className="mt-8">
+        <div className="mt-8 flex flex-wrap gap-3">
           <Link
             href={`/?careers=${code}`}
-            className="inline-flex items-center rounded-2xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white hover:bg-blue-700"
+            className="inline-flex items-center rounded-2xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white hover:bg-blue-700 print:hidden"
           >
             Score this career →
           </Link>
+          {related.length > 0 && (
+            <Link
+              href={`/?careers=${[code, ...related.slice(0, 2).map((o) => o.code)].join(",")}`}
+              className="inline-flex items-center rounded-2xl border border-foreground/15 px-5 py-3 text-sm font-semibold transition hover:border-blue-500/50 print:hidden"
+            >
+              ⚖️ Compare with similar careers
+            </Link>
+          )}
+          <PrintButton />
         </div>
 
         {related.length > 0 ? (

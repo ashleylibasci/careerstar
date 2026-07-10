@@ -1,5 +1,7 @@
 # CareerStar
 
+[![CI](https://github.com/ashleylibasci/careerstar/actions/workflows/ci.yml/badge.svg)](https://github.com/ashleylibasci/careerstar/actions/workflows/ci.yml)
+
 **Rate careers like stocks — a data-grounded, risk-adjusted viability score in an AI-shaped economy.**
 
 Live: **https://main.d3ag7o87gtn2c8.amplifyapp.com**

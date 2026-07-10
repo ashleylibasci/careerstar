@@ -164,6 +164,20 @@ Score  = 100 · [ α·RAV + (1 − α)·Fit ]`}
         </Section>
 
         <Section kicker="How it was built" title="Solo, one summer, AI-native, on AWS">
+          <div className="flex flex-wrap gap-2">
+            {[
+              "30 unit tests",
+              "CI on every push",
+              "deterministic scorer",
+              "stateless — no DB, nothing stored",
+              "rate-limited + security headers",
+              "prompt-injection-proof by design",
+            ].map((t) => (
+              <span key={t} className="rounded-full border border-foreground/10 bg-foreground/[.03] px-3 py-1 text-xs font-medium text-foreground/70">
+                ✓ {t}
+              </span>
+            ))}
+          </div>
           <ul className="list-disc space-y-1.5 pl-5">
             <li><strong>One person</strong>, one summer — from brief to PRD to architecture to build, using a structured AI-native (BMAD) workflow.</li>
             <li><strong>Real public data</strong>: U.S. BLS Employment Projections, O*NET 29.0 (skills + knowledge), Eloundou et al. AI-exposure, and College Scorecard for the education-ROI layer.</li>

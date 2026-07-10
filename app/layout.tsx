@@ -71,6 +71,10 @@ export default function RootLayout({
         <div id="main-content" className="flex flex-1 flex-col">{children}</div>
         <footer className="border-t border-foreground/10 px-6 py-6">
           <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-x-6 gap-y-2 text-xs text-foreground/60">
+            <span className="w-full text-[11px] text-foreground/45">
+              Data: BLS Employment Projections 2024–2034 · O*NET 29.0 · Eloundou et&nbsp;al. 2023 ·
+              College Scorecard — refreshed 2026-07-09
+            </span>
             <span>
               Built by <span className="font-semibold text-foreground/80">Ashley Libasci</span> — Math + CS @ UIUC
             </span>
