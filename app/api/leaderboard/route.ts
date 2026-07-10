@@ -1,6 +1,7 @@
 import data from "@/data/data.json";
 import type { Occupation } from "@/lib/scorer/types";
 import { computeScores } from "@/lib/scorer/scorer";
+import { percentileOf, starsFromPercentile } from "@/lib/scorer/rating";
 import { fieldName } from "@/lib/fields";
 import { educationShort, roi } from "@/lib/education";
 
@@ -14,6 +15,7 @@ const scored = computeScores(
   dataset.map((o) => o.code),
 );
 const byCode = new Map(dataset.map((o) => [o.code, o]));
+const allScores = scored.map((r) => r.score);
 
 const list = scored
   .map((r) => {
@@ -23,6 +25,8 @@ const list = scored
       code: r.code,
       title: r.path,
       score: r.score,
+      stars: starsFromPercentile(percentileOf(r.score, allScores)),
+      moat: o.moat ?? null,
       growthPct: o.growthPct,
       medianPay: o.medianPay,
       aiExposurePct: r.breakdown?.aiExposurePct ?? Math.round(o.aiExposure * 100),

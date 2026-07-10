@@ -90,6 +90,36 @@ Score  = 100 · [ α·RAV + (1 − α)·Fit ]`}
           </p>
         </Section>
 
+        <Section title="The AI-moat rating">
+          <p>
+            Borrowed from Morningstar&rsquo;s economic moat: how <strong>defensible</strong> is a
+            career against AI pressure? It is a fixed, documented formula — not a vibe:
+          </p>
+          <pre className="overflow-x-auto rounded-xl border border-foreground/10 bg-foreground/[.03] p-4 text-xs leading-relaxed">
+{`defensibility = 0.6·(1 − aiExposure) + 0.4·distinctiveness
+distinctiveness = clamp( (mean of top-5 z-scored capabilities − 1) / 2 )
+
+Wide moat   ≥ 0.70      (~20% of careers)
+Narrow moat ≥ 0.55      (~50%)
+No moat     < 0.55      (~30%)`}
+          </pre>
+          <p>
+            Low AI exposure is shelter; <em>distinctiveness</em> asks whether the career&rsquo;s
+            defining capabilities are rare in the labor market or ones every job shares. The
+            thresholds are calibrated once on the full 730-occupation distribution to a
+            Morningstar-like shape and then fixed. The model makes uncomfortable calls — it gives
+            software developers <strong>no moat</strong> (extreme LLM exposure) while their
+            risk-adjusted <em>score</em> stays high — and we ship those calls rather than tune them
+            away. For 25 newer SOC codes O*NET hasn&rsquo;t yet rated (software developers among
+            them), capability vectors are <strong>estimated from their SOC-group siblings</strong>{" "}
+            and flagged as estimates in the data.
+          </p>
+          <p>
+            Score uncertainty is also stated in words on every card — Low (±5 or less), Medium
+            (±6–8), High (±9–10), Very high (±11+) — wider with high AI exposure or weak fit.
+          </p>
+        </Section>
+
         <Section title="Robustness (does the answer survive?)">
           <p>
             The weights are a deliberate choice, so the fair test is whether the ranking holds when

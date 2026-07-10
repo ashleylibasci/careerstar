@@ -1,6 +1,14 @@
 import Link from "next/link";
 import type { ScoreResult } from "@/lib/scorer/types";
 import { scoreBand, type Tone } from "@/lib/scorer/verdict";
+import { uncertaintyLabel } from "@/lib/scorer/rating";
+import { Stars, MOAT_BADGE } from "./rating-ui";
+
+const BAR_HELP: Record<string, string> = {
+  Return: "Growth + pay, percentile-ranked against all 730 careers. Higher is better.",
+  Resilience: "The inverse of AI-exposure + volatility risk. Higher = harder to disrupt.",
+  Fit: "How well this career's real O*NET skill profile matches your interests.",
+};
 
 const TONE: Record<Tone, { text: string; pill: string; bar: string; star: string }> = {
   strong: { text: "text-emerald-600", pill: "bg-emerald-500/12 text-emerald-700", bar: "bg-emerald-500", star: "fill-emerald-500" },
@@ -8,39 +16,11 @@ const TONE: Record<Tone, { text: string; pill: string; bar: string; star: string
   risky: { text: "text-red-600", pill: "bg-red-500/12 text-red-600", bar: "bg-red-500", star: "fill-red-500" },
 };
 
-const STAR_PATH = "M10 1l2.6 5.27 5.82.85-4.21 4.1.99 5.8L10 14.77 4.79 17.5l.99-5.8-4.21-4.1 5.82-.85z";
-
-/** 5 stars with half-star precision, tinted by band tone. `id` keeps clip paths unique per card. */
-function Stars({ value, colorClass, id }: { value: number; colorClass: string; id: string }) {
-  return (
-    <div className="flex gap-0.5" role="img" aria-label={`${value} out of 5 stars`}>
-      {[1, 2, 3, 4, 5].map((i) => {
-        const frac = Math.max(0, Math.min(1, value - (i - 1)));
-        const clipId = `star-${id}-${i}`;
-        return (
-          <svg key={i} viewBox="0 0 20 20" className="h-4 w-4">
-            {frac > 0 && frac < 1 && (
-              <defs>
-                <clipPath id={clipId}>
-                  <rect x="0" y="0" width={20 * frac} height="20" />
-                </clipPath>
-              </defs>
-            )}
-            <path d={STAR_PATH} className="fill-foreground/15" />
-            {frac >= 1 && <path d={STAR_PATH} className={colorClass} />}
-            {frac > 0 && frac < 1 && <path d={STAR_PATH} className={colorClass} clipPath={`url(#${clipId})`} />}
-          </svg>
-        );
-      })}
-    </div>
-  );
-}
-
 function Bar({ label, value, colorClass }: { label: string; value: number; colorClass: string }) {
   return (
-    <div>
+    <div title={BAR_HELP[label]}>
       <div className="mb-1 flex items-center justify-between text-xs">
-        <span className="text-foreground/60">{label}</span>
+        <span className="cursor-help text-foreground/60 underline decoration-dotted decoration-foreground/25 underline-offset-2">{label}</span>
         <span className="font-medium tabular-nums text-foreground/80">{value}</span>
       </div>
       <div className="h-1.5 w-full overflow-hidden rounded-full bg-foreground/10">
@@ -83,11 +63,19 @@ export default function ScoreCard({
           )}
           <h3 className="text-base font-semibold leading-snug">{result.path}</h3>
           {result.stars != null && (
-            <div className="mt-1.5 flex items-center gap-2">
+            <div className="mt-1.5 flex flex-wrap items-center gap-2">
               <Stars value={result.stars} colorClass={tone.star} id={result.code} />
               <span className={`text-xs font-semibold ${tone.text}`}>{band.label}</span>
               {result.percentile != null && result.percentile >= 50 && (
                 <span className="text-xs text-foreground/60">· top {Math.max(1, 100 - result.percentile)}% of careers</span>
+              )}
+              {result.moat && (
+                <span
+                  title="AI moat — how defensible this career is against AI pressure (low exposure + rare capabilities)."
+                  className={`cursor-help rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide ${MOAT_BADGE[result.moat].cls}`}
+                >
+                  {MOAT_BADGE[result.moat].label}
+                </span>
               )}
             </div>
           )}
@@ -101,7 +89,14 @@ export default function ScoreCard({
               </span>
             )}
           </div>
-          <div className="text-[10px] font-medium uppercase tracking-wide text-foreground/55">/ 100</div>
+          <div className="text-[10px] font-medium uppercase tracking-wide text-foreground/55">
+            / 100
+            {uncertaintyLabel(result.confidence) && (
+              <span title="How speculative this estimate is — wider with high AI exposure or weak fit.">
+                {" "}· {uncertaintyLabel(result.confidence)} uncertainty
+              </span>
+            )}
+          </div>
         </div>
       </div>
 

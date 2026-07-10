@@ -17,6 +17,12 @@ export interface Occupation {
   skills: string[];
   /** 68-d O*NET capability vector (35 Skills + 33 Knowledge importance, 1–5) for cosine FIT. */
   skillVector?: number[] | null;
+  /** True when the vector is estimated from the SOC-group mean (O*NET lacks the code). */
+  skillVectorEstimated?: boolean;
+  /** AI-moat rating: how defensible the career is against AI pressure (see lib/scorer/moat.ts). */
+  moat?: "wide" | "narrow" | "none";
+  /** The 0–1 defensibility score behind `moat`. */
+  moatScore?: number;
   /** Alternate job titles (from BLS) — used for synonym search. */
   aliases?: string[];
   /** Typical entry-level education (BLS). */
@@ -46,6 +52,8 @@ export interface ScoreResult {
   stars?: number;
   /** Percentile (0–100) among all careers under the current weights — the basis for `stars`. */
   percentile?: number;
+  /** AI-moat rating carried from the occupation (wide/narrow/none). */
+  moat?: "wide" | "narrow" | "none";
   /** Deterministic strongest-case bullets (top 2–3). */
   bulls?: string[];
   /** Deterministic weakest-case bullets (top 2–3, always ≥1). */

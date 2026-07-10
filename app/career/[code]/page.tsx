@@ -5,9 +5,64 @@ import data from "@/data/data.json";
 import educationData from "@/data/education.json";
 import { fieldName } from "@/lib/fields";
 import { roi } from "@/lib/education";
-import type { Occupation } from "@/lib/scorer/types";
+import { computeScores } from "@/lib/scorer/scorer";
+import { percentileOf, starsFromPercentile, bullsAndBears, uncertaintyLabel } from "@/lib/scorer/rating";
+import { plainVerdict, scoreBand } from "@/lib/scorer/verdict";
+import { Stars, MOAT_BADGE } from "@/app/components/rating-ui";
+import type { Occupation, ScoreResult } from "@/lib/scorer/types";
 
-const OCCUPATIONS = (data as { occupations: Occupation[] }).occupations;
+const typed = data as {
+  occupations: Occupation[];
+  meta: { skillMean: number[]; skillStd: number[] };
+};
+const OCCUPATIONS = typed.occupations;
+
+// The "analyst rating": every career scored once at module load under the
+// DEFAULT weights with no personal interests — the neutral, comparable rating
+// a research report needs (personalization happens on the home page).
+const SKILL_STATS = { skillMean: typed.meta.skillMean, skillStd: typed.meta.skillStd };
+const ALL_SCORED = computeScores(OCCUPATIONS, [], OCCUPATIONS.map((o) => o.code), undefined, SKILL_STATS);
+const SCORE_BY_CODE = new Map(ALL_SCORED.map((r) => [r.code, r]));
+const ALL_SCORES = ALL_SCORED.map((r) => r.score);
+
+// Style-box boundaries: terciles of return and risk across the whole market.
+function terciles(values: number[]): [number, number] {
+  const s = [...values].sort((a, b) => a - b);
+  return [s[Math.floor(s.length / 3)], s[Math.floor((2 * s.length) / 3)]];
+}
+const RETURN_T = terciles(ALL_SCORED.map((r) => r.components.return));
+const RISK_T = terciles(ALL_SCORED.map((r) => r.components.risk));
+const tercileOf = (v: number, [t1, t2]: [number, number]) => (v < t1 ? 0 : v < t2 ? 1 : 2);
+
+const TONE_TEXT = { strong: "text-emerald-600", mixed: "text-amber-600", risky: "text-red-600" } as const;
+const TONE_STAR = { strong: "fill-emerald-500", mixed: "fill-amber-500", risky: "fill-red-500" } as const;
+
+/** Morningstar-style 3×3 style box: reward (rows, high→low) × risk (cols, low→high). */
+function StyleBox({ result }: { result: ScoreResult }) {
+  const rewardRow = 2 - tercileOf(result.components.return, RETURN_T); // 0 = high reward on top
+  const riskCol = tercileOf(result.components.risk, RISK_T); // 0 = low risk on left
+  return (
+    <div>
+      <div className="grid w-28 grid-cols-3 overflow-hidden rounded-lg border border-foreground/15">
+        {[0, 1, 2].map((row) =>
+          [0, 1, 2].map((col) => (
+            <div
+              key={`${row}${col}`}
+              className={`aspect-square border border-foreground/10 ${
+                row === rewardRow && col === riskCol ? "bg-blue-600" : "bg-foreground/[.03]"
+              }`}
+            />
+          )),
+        )}
+      </div>
+      <div className="mt-1 flex w-28 justify-between text-[9px] text-foreground/55">
+        <span>low risk</span>
+        <span>high</span>
+      </div>
+      <div className="text-[9px] text-foreground/55">top row = high reward</div>
+    </div>
+  );
+}
 
 interface EduRow {
   earn1yr: number | null;
@@ -75,6 +130,15 @@ export default async function CareerPage({
   ).slice(0, 6);
   const edu = EDUCATION[code.split(".")[0]];
 
+  // Analyst rating (default weights, no personalization).
+  const rated = SCORE_BY_CODE.get(code);
+  const pct = rated ? percentileOf(rated.score, ALL_SCORES) : null;
+  const stars = pct != null ? starsFromPercentile(pct) : null;
+  const band = rated ? scoreBand(rated.score) : null;
+  const bb = rated ? bullsAndBears(rated) : null;
+  const analystTake = rated ? plainVerdict(occ, rated.components, false) : null;
+  const uncertainty = rated ? uncertaintyLabel(rated.confidence) : null;
+
   return (
     <main className="flex flex-1 flex-col items-center px-6 py-16 sm:py-24">
       <article className="w-full max-w-2xl">
@@ -90,6 +154,78 @@ export default async function CareerPage({
           Typically requires {occ.education || "no formal credential"} · ROI ≈ $
           {roi(occ.medianPay, occ.education).toLocaleString()}/yr of schooling
         </p>
+
+        {rated && band && (
+          <div className="mt-8 rounded-2xl border border-foreground/10 bg-foreground/[.02] p-5">
+            <div className="flex flex-wrap items-start justify-between gap-4">
+              <div>
+                <div className="text-xs font-medium uppercase tracking-wide text-foreground/55">
+                  CareerStar rating
+                </div>
+                <div className="mt-1.5 flex flex-wrap items-center gap-2.5">
+                  {stars != null && <Stars value={stars} colorClass={TONE_STAR[band.tone]} id={`report-${code}`} size="h-5 w-5" />}
+                  <span className={`text-sm font-bold ${TONE_TEXT[band.tone]}`}>{band.label}</span>
+                  {occ.moat && (
+                    <span
+                      title="AI moat — how defensible this career is against AI pressure (low exposure + rare capabilities)."
+                      className={`cursor-help rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide ${MOAT_BADGE[occ.moat].cls}`}
+                    >
+                      {MOAT_BADGE[occ.moat].label}
+                    </span>
+                  )}
+                  {uncertainty && (
+                    <span className="rounded-full bg-foreground/8 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-foreground/60">
+                      {uncertainty} uncertainty
+                    </span>
+                  )}
+                </div>
+                {pct != null && pct >= 50 && (
+                  <div className="mt-1 text-xs text-foreground/55">
+                    top {Math.max(1, 100 - Math.round(pct))}% of all {OCCUPATIONS.length} careers, at default weights
+                  </div>
+                )}
+                {analystTake && (
+                  <p className="mt-3 max-w-md text-sm leading-relaxed text-foreground/75">
+                    <span className="font-semibold text-foreground/60">Analyst take: </span>
+                    {analystTake}
+                  </p>
+                )}
+              </div>
+              <div className="flex items-start gap-6">
+                <div className="text-right">
+                  <div className={`text-4xl font-bold tabular-nums ${TONE_TEXT[band.tone]}`}>{rated.score}</div>
+                  <div className="text-[10px] font-medium uppercase tracking-wide text-foreground/55">/ 100</div>
+                </div>
+                <StyleBox result={rated} />
+              </div>
+            </div>
+
+            {bb && (
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/[.05] p-3">
+                  <div className="mb-1.5 text-xs font-bold uppercase tracking-wide text-emerald-700 dark:text-emerald-400">
+                    🐂 Bulls say
+                  </div>
+                  <ul className="space-y-1.5 text-xs leading-snug text-foreground/75">
+                    {bb.bulls.map((b, i) => (
+                      <li key={i} className="flex gap-1.5"><span className="text-emerald-600">+</span>{b}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="rounded-xl border border-red-500/20 bg-red-500/[.05] p-3">
+                  <div className="mb-1.5 text-xs font-bold uppercase tracking-wide text-red-700 dark:text-red-400">
+                    🐻 Bears say
+                  </div>
+                  <ul className="space-y-1.5 text-xs leading-snug text-foreground/75">
+                    {bb.bears.map((b, i) => (
+                      <li key={i} className="flex gap-1.5"><span className="text-red-500">−</span>{b}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
 
         <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
           <Stat

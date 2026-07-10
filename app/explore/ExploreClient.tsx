@@ -10,6 +10,8 @@ interface Row {
   code: string;
   title: string;
   score: number;
+  stars: number;
+  moat: "wide" | "narrow" | "none" | null;
   growthPct: number;
   medianPay: number;
   aiExposurePct: number;
@@ -26,6 +28,8 @@ const TONE: Record<Tone, string> = {
   mixed: "text-amber-600",
   risky: "text-red-600",
 };
+
+const MOAT_CELL: Record<string, string> = { wide: "🏰 Wide", narrow: "🛡 Narrow", none: "—" };
 
 const SORTS: { key: keyof Row; label: string }[] = [
   { key: "score", label: "Overall score" },
@@ -115,7 +119,8 @@ export default function ExploreClient() {
               <th scope="col" className="py-2 pr-3 font-medium">Career</th>
               <th scope="col" className="py-2 px-3 font-medium">Field</th>
               <th scope="col" className="py-2 px-3 font-medium">Education</th>
-              <th scope="col" className="py-2 px-3 text-right font-medium">Score</th>
+              <th scope="col" className="py-2 px-3 text-right font-medium">Rating</th>
+              <th scope="col" className="py-2 px-3 font-medium" title="AI moat — defensibility against AI pressure">Moat</th>
               <th scope="col" className="py-2 px-3 text-right font-medium">Growth</th>
               <th scope="col" className="py-2 px-3 text-right font-medium">Pay</th>
               <th scope="col" className="py-2 pl-3 text-right font-medium">Resilience</th>
@@ -131,7 +136,12 @@ export default function ExploreClient() {
                 </td>
                 <td className="py-2 px-3 text-foreground/60">{r.field}</td>
                 <td className="py-2 px-3 text-foreground/60">{r.educationShort}</td>
-                <td className={`py-2 px-3 text-right font-semibold tabular-nums ${TONE[scoreBand(r.score).tone]}`}>{r.score}</td>
+                <td className={`py-2 px-3 text-right font-semibold tabular-nums ${TONE[scoreBand(r.score).tone]}`}>
+                  <span aria-label={`${r.stars} stars`}>★{r.stars.toFixed(1)}</span>
+                  <span className="text-foreground/40"> · </span>
+                  <span className="text-foreground/55">{r.score}</span>
+                </td>
+                <td className="py-2 px-3 whitespace-nowrap text-xs text-foreground/70">{r.moat ? MOAT_CELL[r.moat] : "—"}</td>
                 {/* Declining fields get a red tint so e.g. a "Best ROI" sort can't
                     quietly surface a shrinking career as if it were a bargain. */}
                 <td className={`py-2 px-3 text-right tabular-nums ${r.growthPct < 0 ? "font-medium text-red-600" : "text-foreground/70"}`}>

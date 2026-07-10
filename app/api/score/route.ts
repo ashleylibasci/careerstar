@@ -139,6 +139,7 @@ export async function POST(request: Request) {
       redirect,
       percentile: Math.round(pct),
       stars: starsFromPercentile(pct),
+      moat: occ.moat,
       ...bullsAndBears(r),
     };
   });

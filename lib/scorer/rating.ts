@@ -38,6 +38,15 @@ export function percentileOf(score: number, allScores: number[]): number {
   return (c / allScores.length) * 100;
 }
 
+// --- Uncertainty, in words (Morningstar says "High", not "±9") ---
+export function uncertaintyLabel(confidence: number | undefined): string | null {
+  if (confidence == null) return null;
+  if (confidence <= 5) return "Low";
+  if (confidence <= 8) return "Medium";
+  if (confidence <= 10) return "High";
+  return "Very high";
+}
+
 // --- Bulls say / Bears say: deterministic, ranked by how extreme each signal is ---
 // Every bullet is picked and phrased from the computed components (the LLM may
 // later restyle wording, never the selection). Balance is enforced: even a great

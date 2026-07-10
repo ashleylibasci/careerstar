@@ -11,6 +11,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { CAPABILITY_ELEMENTS, SKILL_ELEMENTS, KNOWLEDGE_ELEMENTS } from "../../lib/scorer/skills.ts";
+import { moatScore, moatRating } from "../../lib/scorer/moat.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..", "..");
@@ -191,6 +192,32 @@ for (const row of bls) {
   });
 }
 
+// --- second pass: fill missing capability vectors from SOC-group means ---
+// O*NET 29.0 has no data rows for some newer SOC-2018 codes (e.g. 15-1252
+// Software developers). Estimate those from the mean vector of occupations in
+// the same SOC broad group (15-125x siblings: programmers, QA analysts, web
+// devs), falling back to the minor group. Flagged `skillVectorEstimated` and
+// disclosed on /methodology — an estimate labeled as one, not silent data.
+function groupMeanVector(code, prefixLen) {
+  const prefix = code.slice(0, prefixLen);
+  const peers = occupations.filter((o) => o.skillVector && !o.skillVectorEstimated && o.code.startsWith(prefix));
+  if (peers.length === 0) return null;
+  return CAPABILITY_ELEMENTS.map((_, j) => {
+    const s = peers.reduce((a, o) => a + o.skillVector[j], 0);
+    return Math.round((s / peers.length) * 100) / 100;
+  });
+}
+let estimatedVectors = 0;
+for (const o of occupations) {
+  if (o.skillVector) continue;
+  const est = groupMeanVector(o.code, 6) ?? groupMeanVector(o.code, 5);
+  if (est) {
+    o.skillVector = est;
+    o.skillVectorEstimated = true;
+    estimatedVectors++;
+  }
+}
+
 occupations.sort((a, b) => a.title.localeCompare(b.title));
 
 // --- market statistics for distinctiveness-weighted FIT ---
@@ -199,7 +226,9 @@ occupations.sort((a, b) => a.title.localeCompare(b.title));
 // UBIQUITOUS skills (high mean, everyone has them) count for little and
 // DISTINCTIVE strengths dominate fit. Without this, cosine over raw importance is
 // dominated by the common skills and barely discriminates (verified empirically).
-const withVec = occupations.filter((o) => o.skillVector);
+// Market stats come from directly-measured vectors only (estimated group-mean
+// vectors would artificially shrink the variance).
+const withVec = occupations.filter((o) => o.skillVector && !o.skillVectorEstimated);
 const skillMean = CAPABILITY_ELEMENTS.map((_, j) => {
   const s = withVec.reduce((a, o) => a + o.skillVector[j], 0);
   return Math.round((s / withVec.length) * 1000) / 1000;
@@ -209,6 +238,19 @@ const skillStd = CAPABILITY_ELEMENTS.map((_, j) => {
   const v = withVec.reduce((a, o) => a + (o.skillVector[j] - m) ** 2, 0) / withVec.length;
   return Math.round(Math.sqrt(v) * 1000) / 1000;
 });
+
+// --- AI-moat rating per occupation (see lib/scorer/moat.ts for the model) ---
+const moatStats = { skillMean, skillStd };
+let moatCounts = { wide: 0, narrow: 0, none: 0 };
+for (const o of occupations) {
+  const ms = moatScore(o.aiExposure, o.skillVector, moatStats);
+  const rating = moatRating(ms);
+  if (rating) {
+    o.moat = rating;
+    o.moatScore = Math.round(ms * 1000) / 1000;
+    moatCounts[rating]++;
+  }
+}
 
 // --- validation: is AI exposure just a proxy for decline? (construct validity) ---
 // If exposure merely restated low growth, the risk adjustment would be redundant.
@@ -279,5 +321,6 @@ const data = {
 writeFileSync(join(ROOT, "data", "data.json"), JSON.stringify(data, null, 2) + "\n", "utf8");
 
 console.log(`Wrote data/data.json — ${occupations.length} occupations.`);
-console.log(`  O*NET skill vectors: ${matchedOnet}/${occupations.length} matched.`);
+console.log(`  O*NET skill vectors: ${matchedOnet}/${occupations.length} matched, ${estimatedVectors} estimated from SOC-group means.`);
+console.log(`  moat: ${moatCounts.wide} wide / ${moatCounts.narrow} narrow / ${moatCounts.none} none.`);
 console.log(`  skipped: ${skippedNoExposure} no AI-exposure match, ${skippedNoData} missing growth/pay.`);
