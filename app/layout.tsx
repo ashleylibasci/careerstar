@@ -62,6 +62,7 @@ export default function RootLayout({
             <div className="flex flex-wrap gap-x-4 text-foreground/60">
               <Link href="/" className="hover:text-foreground">Home</Link>
               <Link href="/explore" className="hover:text-foreground">Explore</Link>
+              <Link href="/top-20" className="hover:text-foreground">Top 20</Link>
               <Link href="/methodology" className="hover:text-foreground">Methodology</Link>
               <Link href="/architecture" className="hover:text-foreground">How it&rsquo;s built</Link>
               <Link href="/case-study" className="font-medium text-blue-600 hover:text-blue-700">Case study</Link>
