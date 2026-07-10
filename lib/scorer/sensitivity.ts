@@ -46,7 +46,9 @@ export interface SensitivityReport {
 function weightGrid(base: Weights): Weights[] {
   const out: Weights[] = [];
   const rec = (i: number, acc: Partial<Weights>) => {
-    if (i === WEIGHT_KEYS.length) { out.push(acc as Weights); return; }
+    // Start from `base` so non-jittered scoring params (e.g. aiAdoption) persist;
+    // only the six WEIGHT_KEYS are perturbed.
+    if (i === WEIGHT_KEYS.length) { out.push({ ...base, ...acc }); return; }
     const key = WEIGHT_KEYS[i];
     for (const lv of LEVELS) rec(i + 1, { ...acc, [key]: clamp01(base[key] * lv) });
   };

@@ -78,6 +78,9 @@ export async function POST(request: Request) {
       const v = (rawWeights as Record<string, unknown>)[k];
       if (typeof v === "number" && Number.isFinite(v)) w[k] = Math.max(0, Math.min(1, v));
     }
+    // AI-adoption scenario multiplier — not a 0–1 weight; clamped to a sane band.
+    const adopt = (rawWeights as Record<string, unknown>).aiAdoption;
+    if (typeof adopt === "number" && Number.isFinite(adopt)) w.aiAdoption = Math.max(0.3, Math.min(1.7, adopt));
     if (Object.keys(w).length) weights = w;
   }
   if (!weights && typeof bodyObj?.riskPriority === "number") {

@@ -42,6 +42,15 @@ const INTERESTS: { label: string; value: string }[] = [
   { label: "Trades", value: "trades" },
 ];
 
+// AI-adoption scenarios: the multiplier scales each career's *effective* exposure,
+// so faster adoption sinks exposed fields and lifts resilient ones — live.
+const SCENARIOS: { label: string; value: number; caption: string }[] = [
+  { label: "Slower", value: 0.6, caption: "AI adoption stalls — exposure matters less; AI-exposed fields recover ground." },
+  { label: "Today", value: 1.0, caption: "Today's measured AI exposure (Eloundou) — the baseline scores." },
+  { label: "Faster", value: 1.35, caption: "AI adoption accelerates — exposed fields sink, resilient ones climb." },
+  { label: "Aggressive", value: 1.7, caption: "Rapid, broad AI adoption — the risk axis dominates the ranking." },
+];
+
 export default function CareerForm() {
   const [occs, setOccs] = useState<OccOption[]>([]);
   const [search, setSearch] = useState("");
@@ -57,7 +66,8 @@ export default function CareerForm() {
   const [growthPay, setGrowthPay] = useState(0.5); // 0 = growth … 1 = pay
   const [gammaT, setGammaT] = useState(0.5); // AI-risk sensitivity
   const [fitT, setFitT] = useState(0.5); // 0 = market viability … 1 = personal fit
-  const weightsRef = useRef({ growthPay: 0.5, gammaT: 0.5, fitT: 0.5 });
+  const weightsRef = useRef({ growthPay: 0.5, gammaT: 0.5, fitT: 0.5, aiAdoption: 1 });
+  const [aiAdoption, setAiAdoption] = useState(1); // AI-adoption scenario multiplier
   const [copied, setCopied] = useState(false);
   const [maximized, setMaximized] = useState<"frontier" | "radar" | null>(null);
   const [highlight, setHighlight] = useState<string | null>(null);
@@ -83,7 +93,15 @@ export default function CareerForm() {
       wPay: w.growthPay,
       gamma: 0.2 + 0.8 * w.gammaT,
       alpha: 0.9 - 0.4 * w.fitT,
+      aiAdoption: w.aiAdoption,
     };
+  }
+
+  // AI-adoption scenario: rescale how hard exposure bites, then re-score live.
+  function onScenario(value: number) {
+    weightsRef.current = { ...weightsRef.current, aiAdoption: value };
+    setAiAdoption(value);
+    if (response) runScore(tunedWeights());
   }
 
   useEffect(() => {
@@ -415,17 +433,46 @@ export default function CareerForm() {
             </div>
           )}
 
+          <div className="mb-6 rounded-2xl border border-blue-500/25 bg-blue-500/[.04] p-4 print:hidden">
+            <div className="text-sm font-semibold">🔮 AI-adoption scenario</div>
+            <p className="mb-3 mt-0.5 text-xs text-foreground/60">
+              The scores assume today&rsquo;s AI exposure. Ask &ldquo;what if it comes faster — or
+              slower?&rdquo; and watch the ranking react.
+            </p>
+            <div className="inline-flex flex-wrap gap-1 rounded-full border border-foreground/15 p-1" role="group" aria-label="AI-adoption scenario">
+              {SCENARIOS.map((s) => (
+                <button
+                  key={s.value}
+                  type="button"
+                  aria-pressed={aiAdoption === s.value}
+                  onClick={() => onScenario(s.value)}
+                  className={`rounded-full px-3 py-1 text-xs font-medium transition ${
+                    aiAdoption === s.value
+                      ? "bg-blue-600 text-white"
+                      : "text-foreground/70 hover:text-foreground"
+                  }`}
+                >
+                  {s.label}
+                </button>
+              ))}
+            </div>
+            <p className="mt-2 text-xs text-foreground/60">
+              {SCENARIOS.find((s) => s.value === aiAdoption)?.caption ?? SCENARIOS[1].caption}
+            </p>
+          </div>
+
           <div className="mb-6 rounded-2xl border border-foreground/10 bg-foreground/[.02] p-4 print:hidden">
             <div className="mb-1 flex items-center justify-between">
               <div className="text-sm font-semibold">Tune the model</div>
               <button
                 type="button"
                 onClick={() => {
-                  weightsRef.current = { growthPay: 0.5, gammaT: 0.5, fitT: 0.5 };
+                  const adopt = weightsRef.current.aiAdoption; // keep the chosen scenario
+                  weightsRef.current = { growthPay: 0.5, gammaT: 0.5, fitT: 0.5, aiAdoption: adopt };
                   setGrowthPay(0.5);
                   setGammaT(0.5);
                   setFitT(0.5);
-                  if (response) runScore({ wGrowth: 0.5, wPay: 0.5, gamma: 0.6, alpha: 0.7 });
+                  if (response) runScore({ wGrowth: 0.5, wPay: 0.5, gamma: 0.6, alpha: 0.7, aiAdoption: adopt });
                 }}
                 className="text-xs text-blue-600 hover:underline"
               >

@@ -32,6 +32,15 @@ export const WEIGHTS = {
   gamma: 0.6,
   /** Market viability vs. personal fit. */
   alpha: 0.7,
+  /**
+   * AI-adoption scenario multiplier on effective exposure (1 = today's baseline).
+   * <1 models slower AI adoption (exposure bites less); >1 models faster adoption
+   * (exposure bites more). Unlike gamma, this scales EXPOSURE itself, so it moves
+   * high-exposure careers more than low-exposure ones — the whole point of the
+   * "what if AI comes faster/slower" scenario. Not a weight; not jittered by the
+   * sensitivity grid.
+   */
+  aiAdoption: 1,
 };
 
 const clamp01 = (x: number) => Math.max(0, Math.min(1, x));
@@ -84,7 +93,7 @@ export function computeScore(
   const payScore = ctx.payRank(occ.medianPay); // 0–1
   const ret = w.wGrowth * growthScore + w.wPay * payScore;
 
-  const exposure = clamp01(occ.aiExposure);
+  const exposure = clamp01(occ.aiExposure * w.aiAdoption);
   // Constructed volatility proxy: no public dataset exists, so a field
   // projected to shrink (low growth percentile) is treated as more volatile.
   const volatility = clamp01(1 - growthScore);
