@@ -102,7 +102,8 @@ export default async function FieldPage({ params }: { params: Promise<{ group: s
         </div>
 
         <p className="mt-6 text-xs text-foreground/60">
-          Every {fieldName(group).toLowerCase()} career, rated at default weights · median pay ${Math.round(medPay / 1000)}k · click a career for its research report
+          Every {fieldName(group).toLowerCase()} career, rated at default weights · median pay ${Math.round(medPay / 1000)}k · click a career for its research report ·{" "}
+          <strong>moat</strong> = how shielded from AI (🏰 wide = well-defended, 🛡 narrow = some shelter, — = broadly exposed)
         </p>
 
         <div className="mt-2 overflow-x-auto">

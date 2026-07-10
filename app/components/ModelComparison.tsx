@@ -1,10 +1,18 @@
 import type { ScoreResult } from "@/lib/scorer/types";
 import { MODELS, modelConsensus } from "@/lib/scorer/models";
 
-// Model risk, made visible: the same careers scored under five rival rating
-// philosophies. Each model's top pick is highlighted; when the models crown
-// different winners, that disagreement is surfaced as the finding — not hidden
-// behind a single confident number.
+// Model risk, made visible — and legible. The same careers scored by five
+// different "judges," each with a different philosophy about AI risk. The
+// verdict (do the judges agree?) leads; the table and a plain-language legend
+// follow. No finance background assumed.
+
+const PLAIN: Record<string, string> = {
+  standard: "the balanced judge — AI risk discounts the reward (the score used everywhere else)",
+  momentum: "the optimist — bets on growth and pay, ignores AI risk on purpose",
+  defensive: "the safety-first judge — protection from AI matters most, reward is secondary",
+  sharpe: "the efficiency judge — how much reward you get per unit of risk",
+  equal: "the simple average of everything — a sanity-check the fancy models must beat",
+};
 
 export default function ModelComparison({ results }: { results: ScoreResult[] }) {
   const rows = results.filter((r) => r.models);
@@ -18,15 +26,42 @@ export default function ModelComparison({ results }: { results: ScoreResult[] })
     if (best) topByModel[m.id] = best.code;
   }
   const distinctWinners = new Set(Object.values(topByModel)).size;
+  const agree = distinctWinners === 1;
+  const winnerTitle = agree ? rows.find((r) => r.code === Object.values(topByModel)[0])?.path : null;
 
   return (
-    <div className="mb-6 rounded-2xl border border-foreground/10 bg-foreground/[.02] p-4 print:hidden">
-      <div className="text-sm font-semibold">Five models, one question</div>
-      <p className="mb-3 mt-0.5 text-xs text-foreground/60">
-        The Standard score is one philosophy. Here are the same careers under four rivals — from
-        &ldquo;ignore AI risk entirely&rdquo; to &ldquo;moat is everything.&rdquo; Hover a column
-        for each model&rsquo;s worldview; each model&rsquo;s top pick is highlighted.
+    <div className="mb-6 rounded-2xl border border-blue-500/25 bg-blue-500/[.04] p-4 print:hidden">
+      <div className="text-sm font-semibold">🧮 Second opinions — five ways to rate a career</div>
+      <p className="mb-3 mt-1 text-sm leading-relaxed text-foreground/70">
+        Which career &ldquo;wins&rdquo; depends on how much you think AI risk should count — and no
+        single formula can settle that. So the same careers are scored by{" "}
+        <strong>five different judges</strong>, from &ldquo;ignore AI entirely&rdquo; to
+        &ldquo;safety is everything.&rdquo; If they all agree, the ranking is solid. If they
+        don&rsquo;t, that tells you something real.
       </p>
+
+      <div
+        className={`mb-4 rounded-xl border p-3 text-sm font-medium ${
+          agree
+            ? "border-emerald-500/30 bg-emerald-500/[.07] text-foreground/80"
+            : "border-amber-500/30 bg-amber-500/[.07] text-foreground/80"
+        }`}
+      >
+        {agree ? (
+          <>
+            ✅ <strong className="text-emerald-700 dark:text-emerald-400">All five judges pick {winnerTitle} as #1.</strong>{" "}
+            The ranking isn&rsquo;t an artifact of one formula — that&rsquo;s about as solid as a
+            career comparison gets.
+          </>
+        ) : (
+          <>
+            ⚖️ <strong className="text-amber-700 dark:text-amber-500">The judges disagree — {distinctWinners} different careers win depending on the model.</strong>{" "}
+            Translation: your answer genuinely depends on how much you believe AI will reshape work.
+            That&rsquo;s the honest finding, not a bug. (The cards above use the balanced Standard
+            judge.)
+          </>
+        )}
+      </div>
 
       <div className="overflow-x-auto">
         <table className="w-full text-xs">
@@ -37,7 +72,7 @@ export default function ModelComparison({ results }: { results: ScoreResult[] })
                 <th
                   key={m.id}
                   scope="col"
-                  title={`${m.tagline}\n\n${m.formula}`}
+                  title={`${m.tagline}\n\nFormula: ${m.formula}`}
                   className="cursor-help whitespace-nowrap py-1.5 px-2 text-right font-medium underline decoration-dotted decoration-foreground/25 underline-offset-2"
                 >
                   {m.name}
@@ -77,22 +112,18 @@ export default function ModelComparison({ results }: { results: ScoreResult[] })
           </tbody>
         </table>
       </div>
+      <p className="mt-1.5 text-[11px] text-foreground/55">◂ marks each judge&rsquo;s top pick · Consensus = average across all five ± disagreement</p>
 
-      <p className="mt-2 text-xs leading-relaxed text-foreground/60">
-        {distinctWinners === 1 ? (
-          <>
-            <strong className="text-emerald-600">All five models agree on the top pick</strong> —
-            the ranking isn&rsquo;t an artifact of one formula.
-          </>
-        ) : (
-          <>
-            <strong className="text-amber-600">
-              {distinctWinners} different winners across the five models
-            </strong>{" "}
-            — the answer depends on how much AI risk should count. That disagreement is the honest
-            finding, not a bug. The cards above use the Standard model.
-          </>
-        )}
+      <div className="mt-3 grid gap-x-6 gap-y-1.5 border-t border-foreground/10 pt-3 sm:grid-cols-2">
+        {MODELS.map((m) => (
+          <div key={m.id} className="text-xs leading-snug text-foreground/65">
+            <span className="font-semibold text-foreground/80">{m.name}</span> — {PLAIN[m.id]}
+          </div>
+        ))}
+      </div>
+      <p className="mt-2 text-xs text-foreground/55">
+        Exact formulas are on the{" "}
+        <a href="/methodology" className="text-blue-600 hover:underline">methodology page</a>.
       </p>
     </div>
   );

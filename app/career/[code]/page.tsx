@@ -169,7 +169,7 @@ export default async function CareerPage({
                   <span className={`text-sm font-bold ${TONE_TEXT[band.tone]}`}>{band.label}</span>
                   {occ.moat && (
                     <span
-                      title="AI moat — how defensible this career is against AI pressure (low exposure + rare capabilities)."
+                      title="Like a castle's moat: how shielded this career is from AI — few automatable tasks + skills few other jobs have. Explained below."
                       className={`cursor-help rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide ${MOAT_BADGE[occ.moat].cls}`}
                     >
                       {MOAT_BADGE[occ.moat].label}
@@ -201,6 +201,18 @@ export default async function CareerPage({
                 <StyleBox result={rated} />
               </div>
             </div>
+
+            {occ.moat && (
+              <p className="mt-3 text-xs leading-relaxed text-foreground/55">
+                <strong>Moat</strong> (borrowed from investing — the water that defends a castle):
+                how shielded this career is from AI.{" "}
+                {occ.moat === "wide"
+                  ? "Wide = well-defended — few automatable tasks, built on skills few other jobs have."
+                  : occ.moat === "narrow"
+                    ? "Narrow = some shelter, but AI can reach a real share of its tasks."
+                    : "None = broadly exposed — many of its tasks are automatable and its skills are widely shared. (Exposure ≠ job loss; see the bears below.)"}
+              </p>
+            )}
 
             {bb && (
               <div className="mt-4 grid gap-3 sm:grid-cols-2">

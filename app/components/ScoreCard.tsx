@@ -71,7 +71,7 @@ export default function ScoreCard({
               )}
               {result.moat && (
                 <span
-                  title="AI moat — how defensible this career is against AI pressure (low exposure + rare capabilities)."
+                  title="Like a castle's moat: how shielded this career is from AI — few automatable tasks + skills few other jobs have. Explained under the cards."
                   className={`cursor-help rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide ${MOAT_BADGE[result.moat].cls}`}
                 >
                   {MOAT_BADGE[result.moat].label}

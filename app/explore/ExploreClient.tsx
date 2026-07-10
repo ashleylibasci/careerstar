@@ -109,7 +109,10 @@ export default function ExploreClient() {
       </div>
 
       <p className="mb-2 text-xs text-foreground/60">
-        {filtered.length} shown{filtered.length === 150 ? " (top 150)" : ""} · click a career for details
+        {filtered.length} shown{filtered.length === 150 ? " (top 150)" : ""} · click a career for details ·{" "}
+        <span title="Borrowed from investing: how shielded a career is from AI — few automatable tasks + skills few other jobs have.">
+          <strong>moat</strong> = how shielded from AI (🏰 wide = well-defended, 🛡 narrow = some shelter, — = broadly exposed)
+        </span>
       </p>
 
       <div className="overflow-x-auto">

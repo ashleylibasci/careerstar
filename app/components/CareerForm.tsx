@@ -484,6 +484,16 @@ export default function CareerForm() {
               </div>
             )}
 
+          {response.results.some((r) => r.moat) && (
+            <p className="pt-4 text-xs leading-relaxed text-foreground/60">
+              <strong>What&rsquo;s a &ldquo;moat&rdquo;?</strong> Borrowed from investing: the water
+              around a castle that makes it hard to attack. Here it means how{" "}
+              <strong>shielded a career is from AI</strong> — few of its tasks are automatable, and
+              it relies on skills few other jobs have. 🏰 Wide = well-defended, 🛡 Narrow = some
+              shelter, None = broadly exposed.
+            </p>
+          )}
+
           <p className="pt-4 text-xs leading-relaxed text-foreground/60">
             A grounded estimate, not a prediction. Scores blend official BLS 2024&ndash;2034
             projections with AI-exposure research — and <strong>AI exposure is not the same as
