@@ -132,7 +132,9 @@ export default function ExploreClient() {
                 <td className="py-2 px-3 text-foreground/60">{r.field}</td>
                 <td className="py-2 px-3 text-foreground/60">{r.educationShort}</td>
                 <td className={`py-2 px-3 text-right font-semibold tabular-nums ${TONE[scoreBand(r.score).tone]}`}>{r.score}</td>
-                <td className="py-2 px-3 text-right tabular-nums text-foreground/70">
+                {/* Declining fields get a red tint so e.g. a "Best ROI" sort can't
+                    quietly surface a shrinking career as if it were a bargain. */}
+                <td className={`py-2 px-3 text-right tabular-nums ${r.growthPct < 0 ? "font-medium text-red-600" : "text-foreground/70"}`}>
                   {r.growthPct >= 0 ? "+" : ""}{r.growthPct}%
                 </td>
                 <td className="py-2 px-3 text-right tabular-nums text-foreground/70">

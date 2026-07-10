@@ -28,3 +28,21 @@ test("plainVerdict returns a non-empty string mentioning growth", () => {
   assert.ok(verdict.length > 0, "expected a non-empty verdict");
   assert.match(verdict, /growth/);
 });
+
+test("plainVerdict never mentions interests when none were given", () => {
+  const occ: Occupation = {
+    code: "15-1252.00",
+    title: "Software Developers",
+    growthPct: 25,
+    medianPay: 120000,
+    aiExposure: 0.5,
+    skills: ["programming"],
+  };
+  // Neutral fit=50 is what the scorer emits with no interest signal.
+  const components: ScoreComponents = { return: 80, risk: 50, fit: 50 };
+  const withInterests = plainVerdict(occ, components, true);
+  const withoutInterests = plainVerdict(occ, components, false);
+  assert.match(withInterests, /interests/);
+  assert.doesNotMatch(withoutInterests, /interests/);
+  assert.ok(withoutInterests.endsWith("."), "verdict should still end cleanly");
+});

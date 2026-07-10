@@ -135,7 +135,7 @@ export async function POST(request: Request) {
     const pct = percentileOf(r.score, allScores);
     return {
       ...r,
-      note: explanations.get(r.code) ?? plainVerdict(occ, r.components),
+      note: explanations.get(r.code) ?? plainVerdict(occ, r.components, interests.length > 0),
       redirect,
       percentile: Math.round(pct),
       stars: starsFromPercentile(pct),

@@ -14,7 +14,9 @@ export function scoreBand(score: number): { label: string; tone: Tone } {
 }
 
 /** A plain-English one-liner built from the numbers (no LLM needed). */
-export function plainVerdict(occ: Occupation, c: ScoreComponents): string {
+/** `hasInterests` — with no interests given, fit is a neutral 50 and a sentence
+ *  about "your interests" would describe interests that don't exist; drop it. */
+export function plainVerdict(occ: Occupation, c: ScoreComponents, hasInterests = true): string {
   const growth = `${occ.growthPct >= 0 ? "+" : ""}${occ.growthPct}%`;
   const prospects =
     c.return >= 65
@@ -31,12 +33,13 @@ export function plainVerdict(occ: Occupation, c: ScoreComponents): string {
         ? `moderate AI exposure (${exp}/100)`
         : `low AI exposure (${exp}/100)`;
 
-  const fitSentence =
-    c.fit >= 60
-      ? "Fits your interests well."
+  const fitSentence = !hasInterests
+    ? ""
+    : c.fit >= 60
+      ? " Fits your interests well."
       : c.fit >= 30
-        ? "A partial fit for your interests."
-        : "A stretch from your stated interests.";
+        ? " A partial fit for your interests."
+        : " A stretch from your stated interests.";
 
-  return `${prospects} — ${growth} projected growth, ${expClause}. ${fitSentence}`;
+  return `${prospects} — ${growth} projected growth, ${expClause}.${fitSentence}`;
 }
