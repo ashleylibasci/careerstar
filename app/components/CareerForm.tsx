@@ -155,6 +155,29 @@ export default function CareerForm() {
     });
   }
 
+  // One-click demo: pre-fill a real comparison and score it (kills the blank-page problem).
+  function runExample() {
+    const example = [
+      { code: "15-1252.00", title: "Software developers" },
+      { code: "29-1141.00", title: "Registered nurses" },
+      { code: "47-2031.00", title: "Carpenters" },
+    ];
+    const exampleInterests = ["math", "technology"];
+    const cs = example.map((e) => {
+      const o = occs.find((x) => x.code === e.code);
+      return { code: e.code, title: o?.title ?? e.title };
+    });
+    setCareers(cs);
+    setInterests(exampleInterests);
+    void postScore({
+      careerCodes: cs.map((c) => c.code),
+      fieldGroups: [],
+      interests: exampleInterests,
+      text: "",
+      weights: tunedWeights(),
+    });
+  }
+
   // Hydrate from a shared link once the occupation list is loaded.
   useEffect(() => {
     if (hydrated.current || occs.length === 0) return;
@@ -377,7 +400,7 @@ export default function CareerForm() {
         />
       </div>
 
-      <div className="mt-5 print:hidden">
+      <div className="mt-5 flex flex-wrap items-center gap-4 print:hidden">
         <button
           type="button"
           onClick={() => runScore()}
@@ -386,6 +409,15 @@ export default function CareerForm() {
         >
           {loading ? "Scoring…" : "Rate my paths"}
         </button>
+        {!response && !loading && (
+          <button
+            type="button"
+            onClick={runExample}
+            className="text-sm font-medium text-blue-600 hover:underline"
+          >
+            or see an example rating →
+          </button>
+        )}
       </div>
 
       {error && (
@@ -426,12 +458,29 @@ export default function CareerForm() {
             </div>
           </div>
 
-          {response.results.length >= 2 && (
-            <div className="mb-6 grid gap-4 sm:grid-cols-2">
-              <FrontierChart results={response.results} onExpand={() => setMaximized("frontier")} onSelect={focusCard} />
-              <CompareRadar results={response.results} onExpand={() => setMaximized("radar")} onSelect={focusCard} />
-            </div>
-          )}
+          {/* The answer first — the analysis lives below it (Morningstar prints the
+              rating, then the research). */}
+          <div className="space-y-4">
+            {response.results.map((result, i) => (
+              <ScoreCard key={result.code} result={result} top={i === 0} highlighted={highlight === result.code} />
+            ))}
+          </div>
+
+          <p className="pt-4 text-xs leading-relaxed text-foreground/60">
+            A grounded estimate, not a prediction. Scores blend official BLS 2024&ndash;2034
+            projections with AI-exposure research — and <strong>AI exposure is not the same as
+            job loss</strong>. See{" "}
+            <Link href="/methodology" className="underline hover:text-foreground/70">
+              how scores are calculated
+            </Link>
+            .
+          </p>
+
+          <div className="mb-4 mt-10 flex items-center gap-3 print:hidden">
+            <h2 className="text-sm font-semibold text-foreground/70">Dig into the model</h2>
+            <span className="h-px flex-1 bg-foreground/10" aria-hidden />
+            <span className="text-xs text-foreground/60">stress-test the scores above</span>
+          </div>
 
           <div className="mb-6 rounded-2xl border border-blue-500/25 bg-blue-500/[.04] p-4 print:hidden">
             <div className="text-sm font-semibold">🔮 AI-adoption scenario</div>
@@ -460,6 +509,13 @@ export default function CareerForm() {
               {SCENARIOS.find((s) => s.value === aiAdoption)?.caption ?? SCENARIOS[1].caption}
             </p>
           </div>
+
+          {response.results.length >= 2 && (
+            <div className="mb-6 grid gap-4 sm:grid-cols-2">
+              <FrontierChart results={response.results} onExpand={() => setMaximized("frontier")} onSelect={focusCard} />
+              <CompareRadar results={response.results} onExpand={() => setMaximized("radar")} onSelect={focusCard} />
+            </div>
+          )}
 
           <div className="mb-6 rounded-2xl border border-foreground/10 bg-foreground/[.02] p-4 print:hidden">
             <div className="mb-1 flex items-center justify-between">
@@ -516,22 +572,6 @@ export default function CareerForm() {
           </div>
 
           {response.sensitivity && <RobustnessPanel sensitivity={response.sensitivity} />}
-
-          <div className="space-y-4">
-            {response.results.map((result, i) => (
-              <ScoreCard key={result.code} result={result} top={i === 0} highlighted={highlight === result.code} />
-            ))}
-          </div>
-
-          <p className="pt-4 text-xs leading-relaxed text-foreground/60">
-            A grounded estimate, not a prediction. Scores blend official BLS 2024&ndash;2034
-            projections with AI-exposure research — and <strong>AI exposure is not the same as
-            job loss</strong>. See{" "}
-            <Link href="/methodology" className="underline hover:text-foreground/70">
-              how scores are calculated
-            </Link>
-            .
-          </p>
         </div>
       )}
 

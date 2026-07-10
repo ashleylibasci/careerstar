@@ -14,9 +14,25 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://main.d3ag7o87gtn2c8.amplifyapp.com"),
   title: "CareerStar — AI Career Viability Rating",
   description:
     "Rate the career paths you're weighing like stocks: a data-grounded, risk-adjusted 0–100 viability score for an AI-shaped economy.",
+  authors: [{ name: "Ashley Libasci", url: "https://github.com/ashleylibasci" }],
+  openGraph: {
+    title: "CareerStar — rate careers like stocks",
+    description:
+      "A data-grounded, risk-adjusted 0–100 viability score for every career path in an AI-shaped economy — with the math shown.",
+    url: "/",
+    siteName: "CareerStar",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "CareerStar — rate careers like stocks",
+    description:
+      "A data-grounded, risk-adjusted 0–100 career viability score for an AI-shaped economy — with the math shown.",
+  },
 };
 
 export default function RootLayout({
@@ -50,7 +66,32 @@ export default function RootLayout({
             </div>
           </nav>
         </header>
-        <div id="main-content">{children}</div>
+        <div id="main-content" className="flex flex-1 flex-col">{children}</div>
+        <footer className="border-t border-foreground/10 px-6 py-6">
+          <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-x-6 gap-y-2 text-xs text-foreground/60">
+            <span>
+              Built by <span className="font-semibold text-foreground/80">Ashley Libasci</span> — Math + CS @ UIUC
+            </span>
+            <span className="flex flex-wrap gap-x-4">
+              <a
+                href="https://github.com/ashleylibasci/careerstar"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-blue-600 hover:underline"
+              >
+                View source on GitHub
+              </a>
+              <a
+                href="https://www.linkedin.com/in/ashleylibasci/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-blue-600 hover:underline"
+              >
+                LinkedIn
+              </a>
+            </span>
+          </div>
+        </footer>
       </body>
     </html>
   );

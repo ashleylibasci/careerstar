@@ -40,6 +40,16 @@ export default function CaseStudyPage() {
         <h1 className="mt-2 text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
           I built a model that rates careers like stocks — then caught it lying, and fixed it.
         </h1>
+        <p className="mt-3 text-sm text-foreground/60">
+          by <span className="font-semibold text-foreground/80">Ashley Libasci</span> — Math + CS @ UIUC ·{" "}
+          <a href="https://github.com/ashleylibasci/careerstar" target="_blank" rel="noopener noreferrer" className="font-medium text-blue-600 hover:underline">
+            GitHub
+          </a>{" "}
+          ·{" "}
+          <a href="https://www.linkedin.com/in/ashleylibasci/" target="_blank" rel="noopener noreferrer" className="font-medium text-blue-600 hover:underline">
+            LinkedIn
+          </a>
+        </p>
         <p className="mt-4 text-base leading-relaxed text-foreground/70">
           CareerStar scores the <strong>viability</strong> of a career in an AI-shaped economy as a
           single 0–100 <em>risk-adjusted</em>{" "}number — the way a portfolio weighs an asset&rsquo;s
@@ -103,6 +113,16 @@ Score  = 100 · [ α·RAV + (1 − α)·Fit ]`}
           <p className="text-foreground/60">
             The point isn&rsquo;t that I wrote a bug. It&rsquo;s that I went looking for where my own
             model was weakest, found it, and made the claim true instead of quietly deleting it.
+            Don&rsquo;t take my word for it — the{" "}
+            <a
+              href="https://github.com/ashleylibasci/careerstar/blob/main/_bmad-output/planning-artifacts/reconciliation-2026-07-09.md"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-blue-600 hover:underline"
+            >
+              full reconciliation document
+            </a>{" "}
+            is committed in the repo, verdict by verdict.
           </p>
         </Section>
 
@@ -145,6 +165,14 @@ Score  = 100 · [ α·RAV + (1 − α)·Fit ]`}
           <Link href="/architecture" className="rounded-2xl border border-foreground/15 px-5 py-3 text-sm font-semibold hover:border-blue-500/50">
             See the architecture
           </Link>
+          <a
+            href="https://github.com/ashleylibasci/careerstar"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-2xl border border-foreground/15 px-5 py-3 text-sm font-semibold hover:border-blue-500/50"
+          >
+            Read the code ↗
+          </a>
         </div>
       </article>
     </main>
