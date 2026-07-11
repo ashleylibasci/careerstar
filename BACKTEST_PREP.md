@@ -1,46 +1,41 @@
-# Back-test prep — the 2-minute download that unlocks the crown jewel
+# Back-test — ✅ DONE (no download needed after all)
 
-**The question the back-test answers:** *if CareerStar's model had existed in 2014, would it
-have flagged the careers that actually declined by 2024?* No student project has this. It
-turns "grounded estimate" into "validated against a decade of ground truth."
+**Status: complete, 2026-07-10.** BLS blocks scripted downloads of live files, but the
+2014–24 projections vintage was recovered from the **Internet Archive's 2016-06-05 snapshot
+of BLS Table 1.2** (`ep_table_102.htm`) — parsed into
+`data/sources/bls_projections_2014_24.csv` (819 detailed occupations).
 
-**Why you have to do the download:** BLS blocks automated/scripted downloads (403), but a
-normal browser works fine. It's one file.
+## What was built
 
-## What to download
+- `scripts/pipeline/build-backtest.mjs` (`npm run build:backtest`) → `data/backtest.json`
+- Joined **647 occupations** across the decade (2014 vintage × realized 2024 employment,
+  which is the base year of the current EP file already in the repo).
+- Published on `/methodology` ("The back-test: 2014 → 2024") and in the case study
+  ("The receipt"), with the misses named.
 
-The **BLS 2014–24 Employment Projections** occupation table (the decade-old counterpart of
-the file already in `data/sources/`):
+## The results (honest version)
 
-1. Go to **bls.gov/emp** → *Tables* → look for the **archived projections** (older vintages
-   are linked from the Employment Projections tables/archives page).
-2. You want the 2014–24 vintage of the occupational projections table — usually
-   **"Table 1.2 Occupational projections and worker characteristics, 2014–24"** (xlsx).
-   If the archive page is hard to find, search:
-   `bls.gov "Table 1.2" occupational projections 2014-24 xlsx`
-3. Any file with, per occupation (SOC code): **2014 employment** and **projected 2024
-   employment** (or projected percent change 2014–24) is exactly right. XLSX or CSV both fine.
+| Metric | Value | Meaning |
+|---|---|---|
+| Spearman ρ, 2014 score vs realized change | **0.39** | The score genuinely tracked a real decade |
+| Decliner hit rate (bottom-tercile flag) | **48%** vs 33% base | 1.45× lift on the careers that actually shrank |
+| Median 2014 score, decliners vs growers | **37 vs 46** | Decliners looked worse in advance |
+| Raw BLS projection vs realized | **0.411** | Slightly better than the composite — see below |
+| AI exposure vs realized (2014–24) | **0.099** | ≈ zero, as expected for a pre-LLM decade |
 
-## Where to put it
+**The honest headline:** the growth/pay engine validated against history; the AI-risk
+adjustment added nothing *for that decade* — which is exactly the model's own claim
+(exposure is a forward-looking bet). The back-test validates what history can test and is
+explicit about what it can't.
 
-Save it as:
+**Named misses** (in `data/backtest.json`): 2014's oil-and-gas roles scored well and then
+fell ~50% in the price crash — a systemic shock no occupation-level model catches; couriers
+were under-rated and grew +166% on e-commerce. Some extreme outliers reflect SOC
+reclassification rather than real change.
 
-```
-data/sources/bls_projections_2014_24.xlsx     (or .csv — either works)
-```
+## Caveats (also in `backtest.json` meta)
 
-Then say the word, and the build proceeds:
-
-## What gets built once the file lands (no further input needed)
-
-1. **Join** 2014-vintage projections to today's data by SOC code.
-2. **Ground truth:** the *actual* 2024 employment per occupation is already in
-   `data/sources/bls_employment_projections.csv` (the 2024–34 file's base year) — so the
-   test compares *2014's predicted decade* against *the decade that actually happened*.
-3. **Score the 2014 market with today's model** (growth/pay percentiles from the 2014
-   vintage; exposure held at measured values, disclosed as a limitation).
-4. **Report, honestly:** hit rate on decliners (did low scores predict actual decline?),
-   rank correlation between 2014 scores and realized 2014→2024 growth, the confusion
-   matrix, **and the misses, named** — a back-test without misses is marketing.
-5. **Publish** on `/methodology` (new "Back-test" section with the real numbers) and a
-   "Validated against a decade" beat in the case study + talking points.
+- 2015 wages absent from the archived table → pay percentile proxied by today's pay ranking
+  (occupational pay *order* is highly persistent); growth-only variant computed alongside
+  (ρ = 0.389 — nearly identical, so the proxy isn't doing the work).
+- SOC-2010 → SOC-2018 joined on matching codes only; reorganized occupations drop out.

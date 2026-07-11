@@ -10,7 +10,8 @@
     "test": "node --test \"lib/**/*.test.ts\"",
     "build:data": "node scripts/pipeline/build-data.mjs",
     "build:education": "node scripts/pipeline/build-education.mjs",
-    "build:dataset": "node scripts/pipeline/build-dataset.mjs"
+    "build:dataset": "node scripts/pipeline/build-dataset.mjs",
+    "build:backtest": "node scripts/pipeline/build-backtest.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.110.0",

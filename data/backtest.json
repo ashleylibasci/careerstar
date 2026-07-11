@@ -1,0 +1,129 @@
+{
+  "meta": {
+    "generated": "2026-07-10",
+    "vintageSource": "BLS Employment Projections 2014–24, Table 1.2 — recovered from the Internet Archive snapshot of 2016-06-05 (BLS blocks scripted downloads of live files).",
+    "groundTruth": "Realized 2024 employment = base year of the current BLS EP 2024–34 file.",
+    "joined": 647,
+    "unjoined": {
+      "noActual2024": 100,
+      "noTodayData": 72
+    },
+    "caveats": [
+      "2015 wages absent from the archived table → pay percentile uses today's pay ranking as a proxy (occupational pay order is highly persistent); the growth-only variant shows the proxy's effect.",
+      "AI exposure is measured ~2023 and applied retrospectively; 2014–24 was a pre-LLM decade, so exposure is expected to carry little signal here.",
+      "SOC-2010 (2014 vintage) joined to SOC-2018 (today) on matching codes only — reorganized occupations drop out."
+    ]
+  },
+  "metrics": {
+    "spearmanScoreVsRealized": 0.39,
+    "spearmanScoreGrowthOnlyVsRealized": 0.389,
+    "spearmanBlsProjectionVsRealized": 0.411,
+    "spearmanExposureVsRealized": 0.099,
+    "decliners": 311,
+    "declinersFlaggedBottomTercile": 150,
+    "declinerHitRatePct": 48,
+    "baseRateBottomTercilePct": 33,
+    "medianScoreDecliners": 37,
+    "medianScoreGrowers": 46
+  },
+  "biggestMisses": [
+    {
+      "soc": "47-5081",
+      "title": "Helpers--extraction workers",
+      "score2014": 55,
+      "realizedPct": -72.9
+    },
+    {
+      "soc": "47-3016",
+      "title": "Helpers--roofers",
+      "score2014": 51,
+      "realizedPct": -54
+    },
+    {
+      "soc": "47-5012",
+      "title": "Rotary drill operators, oil and gas",
+      "score2014": 64,
+      "realizedPct": -52
+    },
+    {
+      "soc": "47-5011",
+      "title": "Derrick operators, oil and gas",
+      "score2014": 64,
+      "realizedPct": -47.9
+    },
+    {
+      "soc": "19-3022",
+      "title": "Survey researchers",
+      "score2014": 50,
+      "realizedPct": -47.3
+    },
+    {
+      "soc": "17-2171",
+      "title": "Petroleum engineers",
+      "score2014": 59,
+      "realizedPct": -44.2
+    },
+    {
+      "soc": "47-2011",
+      "title": "Boilermakers",
+      "score2014": 62,
+      "realizedPct": -40.2
+    },
+    {
+      "soc": "49-9043",
+      "title": "Maintenance workers, machinery",
+      "score2014": 52,
+      "realizedPct": -37
+    }
+  ],
+  "falseAlarms": [
+    {
+      "soc": "13-1074",
+      "title": "Farm labor contractors",
+      "score2014": 33,
+      "realizedPct": 3800
+    },
+    {
+      "soc": "43-5021",
+      "title": "Couriers and messengers",
+      "score2014": 32,
+      "realizedPct": 166.1
+    },
+    {
+      "soc": "29-2053",
+      "title": "Psychiatric technicians",
+      "score2014": 35,
+      "realizedPct": 112.8
+    },
+    {
+      "soc": "51-9011",
+      "title": "Chemical equipment operators and tenders",
+      "score2014": 31,
+      "realizedPct": 94.4
+    },
+    {
+      "soc": "41-2012",
+      "title": "Gaming change persons and booth cashiers",
+      "score2014": 19,
+      "realizedPct": 69.9
+    },
+    {
+      "soc": "27-1026",
+      "title": "Merchandise displayers and window trimmers",
+      "score2014": 28,
+      "realizedPct": 59.8
+    },
+    {
+      "soc": "53-6061",
+      "title": "Transportation attendants, except flight attendants",
+      "score2014": 36,
+      "realizedPct": 55.2
+    },
+    {
+      "soc": "53-7051",
+      "title": "Industrial truck and tractor operators",
+      "score2014": 34,
+      "realizedPct": 49.3
+    }
+  ]
+}

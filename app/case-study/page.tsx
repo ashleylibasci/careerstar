@@ -126,6 +126,21 @@ Score  = 100 · [ α·RAV + (1 − α)·Fit ]`}
           </p>
         </Section>
 
+        <Section kicker="The receipt" title="Back-tested against a real decade">
+          <p>
+            The strongest evidence isn&rsquo;t a formula — it&rsquo;s history. I recovered the{" "}
+            <strong>2014&ndash;24 BLS projections vintage</strong> from the Internet Archive,
+            scored the 2014 labor market with today&rsquo;s model, and compared against what
+            actually happened by 2024 — <strong>647 occupations across a real decade</strong>. The
+            score tracked reality (rank correlation ρ&nbsp;=&nbsp;0.39; it flagged 48% of the
+            careers that actually declined vs a 33% base rate). And the honest part: the AI-risk
+            adjustment added <em>nothing</em> for that decade (exposure ρ&nbsp;≈&nbsp;0.1) —
+            exactly as it should, because 2014&ndash;24 was a pre-LLM decade and exposure is a
+            forward-looking bet. The misses are published by name, including the oil-crash
+            casualties no occupation model catches.
+          </p>
+        </Section>
+
         <Section kicker="The proof" title="Robust to ±20%, and the risk axis isn't redundant">
           <p>
             <strong>Robustness.</strong> The weights are a modeling choice, so the fair question is

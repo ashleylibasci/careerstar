@@ -81,12 +81,27 @@ Retry-After), security headers, and server-only secrets.
 
 **Code:** `lib/security/*` · `lib/explain/explain.ts` · `next.config.ts`
 
+## "You back-tested a career model? Walk me through it."
+
+**Answer:** BLS blocks scripted downloads of archived projections, so I recovered the
+**2014–24 vintage from the Internet Archive's 2016 snapshot** of BLS Table 1.2, scored the
+2014 labor market with today's model, and compared against realized 2024 employment (the base
+year of the current EP file) — 647 occupations joined across a real decade. Results, honestly:
+the score tracked reality (Spearman ρ = 0.39; 48% of actual decliners flagged vs a 33% base
+rate — a 1.45× lift), but the raw BLS projection alone was slightly better (ρ = 0.411),
+because the **AI-risk adjustment added nothing for a pre-LLM decade** (exposure ρ ≈ 0.1) —
+which is exactly the model's own claim: exposure is a forward-looking bet the past can't
+score. The misses are published by name (the model liked oil-and-gas jobs in 2014; the oil
+crash disagreed — a systemic shock no occupation-level model catches).
+
+**Code:** `scripts/pipeline/build-backtest.mjs` · `data/backtest.json` · /methodology
+
 ## "What would you do differently / what's next?"
 
-**Answer:** A true out-of-sample back-test against an archived BLS projections vintage — the
-current validation is construct-level, not temporal, and I say so on the methodology page
-rather than overclaiming. The scorer already has the hook for a historical dataset; BLS blocks
-automated download, so it needs a manual pull.
+**Answer:** Ship it to real users and close the loop: the site logs "was this rating fair?"
+votes (zero-PII), and the plan is to analyze where users disagree with the model and either
+adjust it or defend it — both are wins. Longer-term: re-run the back-test on the 2024–34
+vintage in 2034, which is the model betting on itself in public.
 
 ## Process footnote (if asked how it was built)
 

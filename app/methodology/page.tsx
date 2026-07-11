@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import data from "@/data/data.json";
+import backtest from "@/data/backtest.json";
 import { computeScores } from "@/lib/scorer/scorer";
 import { MODELS } from "@/lib/scorer/models";
 import type { Occupation } from "@/lib/scorer/types";
@@ -269,6 +270,65 @@ No moat     < 0.55      (~30%)`}
             </p>
           </Section>
         )}
+
+        <Section title="The back-test: 2014 → 2024, a real decade">
+          <p>
+            The strongest test we could run: score the <strong>2014 labor market</strong>{" "}with
+            today&rsquo;s model (using the archived BLS 2014&ndash;24 projections vintage,
+            recovered from the Internet Archive) and compare against{" "}
+            <strong>what actually happened by 2024</strong> — {backtest.meta.joined} occupations
+            joined across the decade.
+          </p>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+            <div className="rounded-2xl border border-foreground/10 bg-foreground/[.02] p-3 text-center">
+              <div className="text-xl font-bold tabular-nums text-blue-600">ρ {backtest.metrics.spearmanScoreVsRealized}</div>
+              <div className="mt-1 text-xs text-foreground/60">2014 score vs realized change</div>
+            </div>
+            <div className="rounded-2xl border border-foreground/10 bg-foreground/[.02] p-3 text-center">
+              <div className="text-xl font-bold tabular-nums text-blue-600">{backtest.metrics.declinerHitRatePct}%</div>
+              <div className="mt-1 text-xs text-foreground/60">of actual decliners flagged (33% base rate)</div>
+            </div>
+            <div className="rounded-2xl border border-foreground/10 bg-foreground/[.02] p-3 text-center">
+              <div className="text-xl font-bold tabular-nums text-blue-600">{backtest.metrics.medianScoreDecliners} vs {backtest.metrics.medianScoreGrowers}</div>
+              <div className="mt-1 text-xs text-foreground/60">median 2014 score: decliners vs growers</div>
+            </div>
+            <div className="rounded-2xl border border-foreground/10 bg-foreground/[.02] p-3 text-center">
+              <div className="text-xl font-bold tabular-nums text-blue-600">ρ {backtest.metrics.spearmanExposureVsRealized}</div>
+              <div className="mt-1 text-xs text-foreground/60">AI exposure vs that decade (expected ≈ 0)</div>
+            </div>
+          </div>
+          <p>
+            Read it honestly. The score genuinely tracked a real decade (rank correlation{" "}
+            {backtest.metrics.spearmanScoreVsRealized}; decliners flagged at{" "}
+            {backtest.metrics.declinerHitRatePct}% vs a 33% base rate — a{" "}
+            {Math.round((backtest.metrics.declinerHitRatePct / 33) * 100) / 100}× lift). The raw
+            BLS projection alone scored ρ {backtest.metrics.spearmanBlsProjectionVsRealized} —
+            slightly better — because the <strong>AI-risk adjustment added nothing for
+            2014&ndash;24</strong> (exposure ρ ≈ {backtest.metrics.spearmanExposureVsRealized}).
+            That is exactly what the model claims: 2014&ndash;24 was a pre-LLM decade, and
+            exposure is a <em>forward-looking</em>{" "}bet the past cannot score. The back-test
+            validates the part of the model that history can test, and says so about the part it
+            can&rsquo;t.
+          </p>
+          <p>
+            The misses, named: the model liked oil-and-gas roles in 2014 (
+            {backtest.biggestMisses[2].title.toLowerCase()}, score{" "}
+            {backtest.biggestMisses[2].score2014}) that fell{" "}
+            {Math.abs(backtest.biggestMisses[2].realizedPct)}% when oil prices crashed — a
+            systemic shock no occupation-level model catches. And it under-rated couriers
+            (+166% on the e-commerce boom). Some extreme outliers also reflect SOC
+            reclassification rather than real change. Full numbers, misses, and false alarms:{" "}
+            <a
+              href="https://github.com/ashleylibasci/careerstar/blob/main/data/backtest.json"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-blue-600 hover:underline"
+            >
+              data/backtest.json
+            </a>
+            .
+          </p>
+        </Section>
 
         <Section title="Check my math — download the data">
           <p>
