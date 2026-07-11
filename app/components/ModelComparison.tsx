@@ -9,7 +9,7 @@ import { MODELS, modelConsensus } from "@/lib/scorer/models";
 const PLAIN: Record<string, string> = {
   standard: "the balanced judge — AI risk discounts the reward (the score used everywhere else)",
   momentum: "the optimist — bets on growth and pay, ignores AI risk on purpose",
-  defensive: "the safety-first judge — protection from AI matters most, reward is secondary",
+  defensive: "the safety-first judge — the career's moat (how shielded it is from AI) matters most, reward is secondary",
   sharpe: "the efficiency judge — how much reward you get per unit of risk",
   equal: "the simple average of everything — a sanity-check the fancy models must beat",
 };

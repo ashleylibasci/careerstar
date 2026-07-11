@@ -8,7 +8,8 @@ import { roi } from "@/lib/education";
 import { computeScores } from "@/lib/scorer/scorer";
 import { percentileOf, starsFromPercentile, bullsAndBears, uncertaintyLabel } from "@/lib/scorer/rating";
 import { plainVerdict, scoreBand } from "@/lib/scorer/verdict";
-import { Stars, MOAT_BADGE } from "@/app/components/rating-ui";
+import { Stars } from "@/app/components/rating-ui";
+import MoatBadge from "@/app/components/MoatBadge";
 import PrintButton from "@/app/components/PrintButton";
 import FeedbackWidget from "@/app/components/FeedbackWidget";
 import type { Occupation, ScoreResult } from "@/lib/scorer/types";
@@ -169,14 +170,7 @@ export default async function CareerPage({
                 <div className="mt-1.5 flex flex-wrap items-center gap-2.5">
                   {stars != null && <Stars value={stars} colorClass={TONE_STAR[band.tone]} id={`report-${code}`} size="h-5 w-5" />}
                   <span className={`text-sm font-bold ${TONE_TEXT[band.tone]}`}>{band.label}</span>
-                  {occ.moat && (
-                    <span
-                      title="Like a castle's moat: how shielded this career is from AI — few automatable tasks + skills few other jobs have. Explained below."
-                      className={`cursor-help rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide ${MOAT_BADGE[occ.moat].cls}`}
-                    >
-                      {MOAT_BADGE[occ.moat].label}
-                    </span>
-                  )}
+                  {occ.moat && <MoatBadge moat={occ.moat} />}
                   {uncertainty && (
                     <span className="rounded-full bg-foreground/8 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-foreground/60">
                       {uncertainty} uncertainty

@@ -2,7 +2,8 @@ import Link from "next/link";
 import type { ScoreResult } from "@/lib/scorer/types";
 import { scoreBand, type Tone } from "@/lib/scorer/verdict";
 import { uncertaintyLabel } from "@/lib/scorer/rating";
-import { Stars, MOAT_BADGE } from "./rating-ui";
+import { Stars } from "./rating-ui";
+import MoatBadge from "./MoatBadge";
 import FeedbackWidget from "./FeedbackWidget";
 
 const BAR_HELP: Record<string, string> = {
@@ -70,14 +71,7 @@ export default function ScoreCard({
               {result.percentile != null && result.percentile >= 50 && (
                 <span className="text-xs text-foreground/60">· top {Math.max(1, 100 - result.percentile)}% of careers</span>
               )}
-              {result.moat && (
-                <span
-                  title="Like a castle's moat: how shielded this career is from AI — few automatable tasks + skills few other jobs have. Explained under the cards."
-                  className={`cursor-help rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide ${MOAT_BADGE[result.moat].cls}`}
-                >
-                  {MOAT_BADGE[result.moat].label}
-                </span>
-              )}
+              {result.moat && <MoatBadge moat={result.moat} />}
             </div>
           )}
         </div>
