@@ -9,10 +9,11 @@ export default function Home() {
             Rate the career paths you&rsquo;re weighing — like stocks.
           </h1>
           <p className="mt-4 text-lg leading-relaxed text-foreground/70">
-            A data-grounded, risk-adjusted{" "}
-            <span className="font-semibold text-foreground">0&ndash;100 viability score</span>{" "}
-            for each path in an AI-shaped economy. Tell it what you&rsquo;re interested in
-            and what you&rsquo;re considering.
+            One{" "}
+            <span className="font-semibold text-foreground">0&ndash;100 score</span>{" "}
+            for how strong a bet each career is — its growth and pay weighed against AI risk, the
+            way you&rsquo;d size up a stock. Tell it what you&rsquo;re considering and what
+            interests you.
           </p>
           <p className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-xs font-medium text-foreground/60">
             <span>★ 730 careers rated</span>

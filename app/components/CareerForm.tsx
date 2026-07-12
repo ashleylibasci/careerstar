@@ -47,7 +47,7 @@ const INTERESTS: { label: string; value: string }[] = [
 // so faster adoption sinks exposed fields and lifts resilient ones — live.
 const SCENARIOS: { label: string; value: number; caption: string }[] = [
   { label: "Slower", value: 0.6, caption: "AI adoption stalls — exposure matters less; AI-exposed fields recover ground." },
-  { label: "Today", value: 1.0, caption: "Today's measured AI exposure (Eloundou) — the baseline scores." },
+  { label: "Today", value: 1.0, caption: "Today's measured AI exposure — the baseline scores." },
   { label: "Faster", value: 1.35, caption: "AI adoption accelerates — exposed fields sink, resilient ones climb." },
   { label: "Aggressive", value: 1.7, caption: "Rapid, broad AI adoption — the risk axis dominates the ranking." },
 ];
@@ -591,8 +591,8 @@ export default function CareerForm() {
               </button>
             </div>
             <p className="mb-4 text-xs text-foreground/60">
-              Move a slider and the rankings re-score live — this is the model&rsquo;s sensitivity
-              analysis, exposed.
+              Move a slider and the rankings re-score live — see how much your priorities change
+              the answer.
             </p>
 
             <label htmlFor="w-growthpay" className="block text-xs font-medium">Reward: growth vs. pay</label>
@@ -605,10 +605,10 @@ export default function CareerForm() {
             />
             <div className="mb-4 mt-1 flex justify-between text-xs text-foreground/60"><span>Growth</span><span>Pay</span></div>
 
-            <label htmlFor="w-gamma" className="block text-xs font-medium">AI-risk sensitivity</label>
+            <label htmlFor="w-gamma" className="block text-xs font-medium">How much should AI risk count?</label>
             <input
               id="w-gamma" type="range" min={0} max={1} step={0.01} value={gammaT}
-              aria-label="AI risk sensitivity"
+              aria-label="How much should AI risk count"
               aria-valuetext={`${Math.round(gammaT * 100)} percent`}
               onChange={(e) => onTune("gammaT", Number(e.target.value))}
               className="mt-2 w-full accent-blue-600"
