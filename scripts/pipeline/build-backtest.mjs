@@ -173,6 +173,19 @@ const backtest = {
   falseAlarms: falseAlarms.slice(0, 8).map((r) => ({ soc: r.soc, title: r.title, score2014: r.score2014, realizedPct: Math.round(r.realizedPct * 10) / 10 })),
 };
 
+// Per-occupation decade data for the career reports' "Reality check" section:
+// what 2014's BLS projected for this career vs what actually happened by 2024.
+backtest.bySoc = Object.fromEntries(
+  rows.map((r) => [
+    r.soc,
+    {
+      projectedPct: Math.round(r.projectedPct * 10) / 10,
+      realizedPct: Math.round(r.realizedPct * 10) / 10,
+      score2014: r.score2014,
+    },
+  ]),
+);
+
 writeFileSync(join(ROOT, "data", "backtest.json"), JSON.stringify(backtest, null, 2) + "\n", "utf8");
 console.log(`Back-test: ${rows.length} occupations joined (${noActual} lacked actual 2024, ${noToday} lacked today's data).`);
 console.log(JSON.stringify(backtest.metrics, null, 1));

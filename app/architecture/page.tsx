@@ -83,7 +83,7 @@ const DECISIONS: { id: string; rule: string; prevents: string }[] = [
 export default function ArchitecturePage() {
   return (
     <main className="flex flex-1 flex-col items-center px-6 py-16 sm:py-24">
-      <div className="w-full max-w-3xl">
+      <div className="w-full max-w-3xl lg:max-w-4xl xl:max-w-5xl">
         <Link href="/" className="text-sm text-blue-600 hover:underline">
           ← Back to CareerStar
         </Link>

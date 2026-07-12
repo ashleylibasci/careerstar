@@ -92,6 +92,7 @@ export function modelScores(r: ScoreResult, moatScore?: number | null): Record<s
 /** Consensus stats across models: mean and spread (max − min). */
 export function modelConsensus(scores: Record<string, number>): { mean: number; spread: number } {
   const vals = Object.values(scores);
+  if (vals.length === 0) return { mean: 0, spread: 0 };
   const mean = Math.round(vals.reduce((a, b) => a + b, 0) / vals.length);
   const spread = Math.max(...vals) - Math.min(...vals);
   return { mean, spread };

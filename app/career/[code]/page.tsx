@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import data from "@/data/data.json";
+import backtestData from "@/data/backtest.json";
 import educationData from "@/data/education.json";
 import { fieldName } from "@/lib/fields";
 import { roi } from "@/lib/education";
@@ -66,6 +67,11 @@ function StyleBox({ result }: { result: ScoreResult }) {
     </div>
   );
 }
+
+// Per-occupation decade data: what 2014's BLS projected vs what actually happened.
+const BACKTEST_BY_SOC = (backtestData as unknown as {
+  bySoc: Record<string, { projectedPct: number; realizedPct: number; score2014: number }>;
+}).bySoc;
 
 interface EduRow {
   earn1yr: number | null;
@@ -132,6 +138,7 @@ export default async function CareerPage({
     (o) => o.code.slice(0, 2) === group && o.code !== code,
   ).slice(0, 6);
   const edu = EDUCATION[code.split(".")[0]];
+  const decade = BACKTEST_BY_SOC[code.split(".")[0]];
 
   // Analyst rating (default weights, no personalization).
   const rated = SCORE_BY_CODE.get(code);
@@ -144,7 +151,7 @@ export default async function CareerPage({
 
   return (
     <main className="flex flex-1 flex-col items-center px-6 py-16 sm:py-24">
-      <article className="w-full max-w-2xl">
+      <article className="w-full max-w-2xl lg:max-w-3xl xl:max-w-4xl">
         <Link href="/explore" className="text-sm text-blue-600 hover:underline">
           ← Back to explore
         </Link>
@@ -232,6 +239,32 @@ export default async function CareerPage({
                     ))}
                   </ul>
                 </div>
+              </div>
+            )}
+
+            {decade && (
+              <div className="mt-4 rounded-xl border border-foreground/10 bg-foreground/[.03] p-3">
+                <div className="text-xs font-bold uppercase tracking-wide text-foreground/60">
+                  📜 Reality check — how the last forecast for this career fared
+                </div>
+                <p className="mt-1.5 text-sm leading-relaxed text-foreground/75">
+                  In 2014, BLS projected{" "}
+                  <strong>{decade.projectedPct >= 0 ? "+" : ""}{decade.projectedPct}%</strong>{" "}
+                  growth for this career by 2024. What actually happened:{" "}
+                  <strong className={decade.realizedPct < 0 ? "text-red-600" : "text-emerald-600"}>
+                    {decade.realizedPct >= 0 ? "+" : ""}{decade.realizedPct}%
+                  </strong>
+                  . {Math.abs(decade.realizedPct - decade.projectedPct) <= 10
+                    ? "The forecast held up well —"
+                    : decade.realizedPct > decade.projectedPct
+                      ? "Reality beat the forecast —"
+                      : "Reality fell short of the forecast —"}{" "}
+                  a reminder that every number on this page is an estimate, and this is how the
+                  last one aged.{" "}
+                  <Link href="/methodology" className="font-medium text-blue-600 hover:underline">
+                    Full back-test →
+                  </Link>
+                </p>
               </div>
             )}
 

@@ -54,7 +54,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 export default function MethodologyPage() {
   return (
     <main className="flex flex-1 flex-col items-center px-6 py-16 sm:py-24">
-      <article className="w-full max-w-2xl">
+      <article className="w-full max-w-2xl lg:max-w-3xl">
         <Link href="/" className="text-sm text-blue-600 hover:underline">
           ← Back to CareerStar
         </Link>

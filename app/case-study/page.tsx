@@ -34,7 +34,7 @@ function Section({ kicker, title, children }: { kicker: string; title: string; c
 export default function CaseStudyPage() {
   return (
     <main className="flex flex-1 flex-col items-center px-6 py-16 sm:py-24">
-      <article className="w-full max-w-2xl">
+      <article className="w-full max-w-2xl lg:max-w-3xl">
         {/* Hero */}
         <div className="text-xs font-semibold uppercase tracking-widest text-blue-600">Case study</div>
         <h1 className="mt-2 text-3xl font-bold leading-tight tracking-tight sm:text-4xl">

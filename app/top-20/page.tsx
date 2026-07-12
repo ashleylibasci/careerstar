@@ -59,7 +59,7 @@ const TONE_STAR = { strong: "fill-emerald-500", mixed: "fill-amber-500", risky: 
 export default function Top20Page() {
   return (
     <main className="flex flex-1 flex-col items-center px-6 py-16 sm:py-24">
-      <article className="w-full max-w-2xl">
+      <article className="w-full max-w-2xl lg:max-w-3xl">
         <div className="text-xs font-semibold uppercase tracking-widest text-blue-600">
           The flagship list
         </div>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import NavBar from "./components/NavBar";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -54,24 +54,10 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <header className="sticky top-0 z-20 border-b border-foreground/10 bg-background/80 px-6 py-3 backdrop-blur print:hidden">
-          <nav className="mx-auto flex max-w-3xl flex-wrap items-center gap-x-4 gap-y-1 text-sm">
-            <Link href="/" aria-label="CareerStar home" className="font-bold text-blue-600">
-              <span aria-hidden="true">★ </span>CareerStar
-            </Link>
-            <div className="flex flex-wrap gap-x-4 text-foreground/60">
-              <Link href="/" className="hover:text-foreground">Home</Link>
-              <Link href="/explore" className="hover:text-foreground">Explore</Link>
-              <Link href="/top-20" className="hover:text-foreground">Top 20</Link>
-              <Link href="/methodology" className="hover:text-foreground">Methodology</Link>
-              <Link href="/architecture" className="hover:text-foreground">How it&rsquo;s built</Link>
-              <Link href="/case-study" className="font-medium text-blue-600 hover:text-blue-700">Case study</Link>
-            </div>
-          </nav>
-        </header>
+        <NavBar />
         <div id="main-content" className="flex flex-1 flex-col">{children}</div>
         <footer className="border-t border-foreground/10 px-6 py-6">
-          <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-x-6 gap-y-2 text-xs text-foreground/60">
+          <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-x-6 gap-y-2 text-xs text-foreground/60 lg:max-w-5xl xl:max-w-6xl">
             <span className="w-full text-[11px] text-foreground/45">
               Data: BLS Employment Projections 2024–2034 · O*NET 29.0 · Eloundou et&nbsp;al. 2023 ·
               College Scorecard — refreshed 2026-07-09

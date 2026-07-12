@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/ashleylibasci/careerstar/actions/workflows/ci.yml/badge.svg)](https://github.com/ashleylibasci/careerstar/actions/workflows/ci.yml)
 
-**Rate careers like stocks — a data-grounded, risk-adjusted viability score in an AI-shaped economy.**
+**Rate careers like stocks — a data-grounded, risk-adjusted viability score in an AI-shaped economy. Back-tested against a real decade: scored the 2014 labor market with today's model vs. what actually happened by 2024 (ρ = 0.39 across 647 occupations, 1.45× lift on actual decliners — misses published by name).**
 
 Live: **https://main.d3ag7o87gtn2c8.amplifyapp.com**
 

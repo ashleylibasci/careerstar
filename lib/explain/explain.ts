@@ -1,5 +1,11 @@
 import Anthropic from "@anthropic-ai/sdk";
 import type { Occupation, ScoreResult } from "@/lib/scorer/types";
+import { INTEREST_LEXICON } from "@/lib/scorer/skills";
+
+// The documented interest vocabulary — the ONLY interest tokens allowed to reach
+// the model, so "controlled tags" is literally true and free-text can't ride in
+// through the interests array (defense in depth over the system-prompt guard).
+const ALLOWED_INTERESTS = new Set(Object.keys(INTEREST_LEXICON));
 
 // LLM explanation layer (Story 3.1). SERVER-ONLY — imported only by the API
 // route. The LLM EXPLAINS the already-computed score; it never computes it
@@ -32,6 +38,9 @@ export async function explainResults(
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey || results.length === 0) return new Map();
 
+  // Whitelist: only documented interest tags survive to the prompt.
+  const safeInterests = interests.filter((i) => ALLOWED_INTERESTS.has(i.toLowerCase().trim()));
+
   try {
     const client = new Anthropic({ apiKey });
 
@@ -56,7 +65,7 @@ export async function explainResults(
       messages: [
         {
           role: "user",
-          content: `User interests (controlled tags): ${interests.join(", ") || "(none)"}\nData: ${JSON.stringify(facts)}`,
+          content: `User interests (controlled tags): ${safeInterests.join(", ") || "(none)"}\nData: ${JSON.stringify(facts)}`,
         },
       ],
     });

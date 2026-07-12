@@ -71,7 +71,7 @@ export default async function FieldPage({ params }: { params: Promise<{ group: s
 
   return (
     <main className="flex flex-1 flex-col items-center px-6 py-16 sm:py-24">
-      <article className="w-full max-w-2xl">
+      <article className="w-full max-w-2xl lg:max-w-4xl xl:max-w-5xl">
         <Link href="/explore" className="text-sm text-blue-600 hover:underline">
           ← All careers
         </Link>
