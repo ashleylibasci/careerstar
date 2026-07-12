@@ -489,9 +489,9 @@ export default function CareerForm() {
           </div>
 
           {/* The answer first — the analysis lives below it (Morningstar prints the
-              rating, then the research). Two-up on wide screens so cards keep a
-              readable width instead of stretching across the whole dashboard. */}
-          <div className="grid gap-4 lg:grid-cols-2">
+              rating, then the research). One clean column so each card reads at a
+              comfortable width, ranked top-to-bottom. */}
+          <div className="space-y-4">
             {response.results.map((result, i) => (
               <ScoreCard key={result.code} result={result} top={i === 0} highlighted={highlight === result.code} />
             ))}
@@ -534,22 +534,25 @@ export default function CareerForm() {
             .
           </p>
 
-          <div className="mb-1 mt-10 text-xs font-semibold uppercase tracking-wide text-foreground/45 print:hidden">
-            Dig deeper — optional
-          </div>
-
+          {/* The visual summary stays in view — charts are the payoff of a
+              comparison, not something to hide behind a click. */}
           {response.results.length >= 2 && (
-            <ResultsSection
-              icon="📊"
-              title="See the charts"
-              subtitle="Return vs. risk, and every axis compared side by side"
-            >
-              <div className="grid gap-4 pt-1 sm:grid-cols-2">
+            <div className="mt-10 border-t border-foreground/10 pt-6 print:hidden">
+              <div className="text-sm font-semibold">The picture</div>
+              <p className="mb-3 mt-0.5 text-xs text-foreground/60">
+                Return vs. risk on the left; every axis compared on the right. Tap any point to jump
+                to its card, or ⤢ to enlarge.
+              </p>
+              <div className="grid gap-4 sm:grid-cols-2">
                 <FrontierChart results={response.results} onExpand={() => setMaximized("frontier")} onSelect={focusCard} />
                 <CompareRadar results={response.results} onExpand={() => setMaximized("radar")} onSelect={focusCard} />
               </div>
-            </ResultsSection>
+            </div>
           )}
+
+          <div className="mb-1 mt-10 text-xs font-semibold uppercase tracking-wide text-foreground/45 print:hidden">
+            Dig deeper — optional
+          </div>
 
           <ResultsSection
             icon="🔮"
