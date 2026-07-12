@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import data from "@/data/data.json";
+import backtest from "@/data/backtest.json";
 
 export const metadata: Metadata = {
   title: "Case study — how CareerStar was built",
@@ -61,7 +62,7 @@ export default function CaseStudyPage() {
           <Stat big={meta.occupationCount.toLocaleString()} label="occupations, real BLS data" />
           <Stat big={`${meta.skillElements.length}-d`} label="O*NET capability model" />
           <Stat big="729" label="robustness scenarios" />
-          <Stat big={`ρ ${meta.validation.exposureGrowthSpearman}`} label="validated thesis" />
+          <Stat big={`ρ ${backtest.metrics.spearmanScoreVsRealized}`} label="back-tested vs a real decade" />
         </div>
 
         <Section kicker="The arc" title="A sequel, not a first draft">

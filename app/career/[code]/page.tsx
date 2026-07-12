@@ -5,7 +5,6 @@ import data from "@/data/data.json";
 import backtestData from "@/data/backtest.json";
 import educationData from "@/data/education.json";
 import { fieldName } from "@/lib/fields";
-import { roi } from "@/lib/education";
 import { computeScores } from "@/lib/scorer/scorer";
 import { percentileOf, starsFromPercentile, bullsAndBears, uncertaintyLabel } from "@/lib/scorer/rating";
 import { plainVerdict, scoreBand } from "@/lib/scorer/verdict";
@@ -163,8 +162,7 @@ export default async function CareerPage({
         </p>
         <h1 className="mt-1 text-3xl font-bold tracking-tight">{occ.title}</h1>
         <p className="mt-2 text-sm text-foreground/60">
-          Typically requires {occ.education || "no formal credential"} · ROI ≈ $
-          {roi(occ.medianPay, occ.education).toLocaleString()}/yr of schooling
+          Typically requires {occ.education || "no formal credential"}
         </p>
 
         {rated && band && (
@@ -295,7 +293,7 @@ export default async function CareerPage({
             <h2 className="text-lg font-semibold tracking-tight">Education &amp; ROI — how to get here</h2>
             <p className="mt-1 text-sm text-foreground/60">
               Real outcomes for the college majors that feed this occupation, across{" "}
-              {edu.programs.toLocaleString()} bachelor&rsquo;s programs.
+              {edu.programs.toLocaleString()}{" "}bachelor&rsquo;s programs.
             </p>
 
             <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
@@ -371,21 +369,26 @@ export default async function CareerPage({
           </div>
         ) : null}
 
-        {occ.skills.length > 0 ? (
-          <div className="mt-10">
-            <h2 className="text-lg font-semibold tracking-tight">Interests &amp; skills</h2>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {occ.skills.map((skill) => (
-                <span
-                  key={skill}
-                  className="rounded-full border border-foreground/10 bg-foreground/[.03] px-3 py-1 text-xs text-foreground/70"
-                >
-                  {skill}
-                </span>
-              ))}
+        {(() => {
+          // Drop tags that just echo the job title ("software", "developers" for
+          // Software developers) — they read as circular. Keep the real themes.
+          const tags = occ.skills.filter((s) => !occ.title.toLowerCase().includes(s.toLowerCase()));
+          return tags.length > 0 ? (
+            <div className="mt-10">
+              <h2 className="text-lg font-semibold tracking-tight">What this work involves</h2>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {tags.map((skill) => (
+                  <span
+                    key={skill}
+                    className="rounded-full border border-foreground/10 bg-foreground/[.03] px-3 py-1 text-xs text-foreground/70"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>
-        ) : null}
+          ) : null;
+        })()}
 
         <div className="mt-8 flex flex-wrap gap-3">
           <Link
