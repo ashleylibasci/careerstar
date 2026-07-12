@@ -7,6 +7,7 @@ import { FIELDS } from "@/lib/fields";
 import ScoreCard from "./ScoreCard";
 import RobustnessPanel from "./RobustnessPanel";
 import ModelComparison from "./ModelComparison";
+import ResultsSection from "./ResultsSection";
 import FrontierChart from "./FrontierChart";
 import CompareRadar from "./CompareRadar";
 
@@ -59,6 +60,10 @@ export default function CareerForm() {
   const [fields, setFields] = useState<FieldChip[]>([]);
   const [interests, setInterests] = useState<string[]>([]);
   const [text, setText] = useState("");
+  const [showInterests, setShowInterests] = useState(false);
+  // Interests are collapsed by default (one clear action up top); open them once
+  // the user asks, or once they exist (shared link / example / prior pick).
+  const interestsOpen = showInterests || interests.length > 0 || text.trim().length > 0;
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -261,11 +266,7 @@ export default function CareerForm() {
     <div className="w-full">
       {/* Input form stays readable-width; results below use the full container. */}
       <div className="mx-auto max-w-2xl">
-      <p className="mb-5 text-sm text-foreground/60 print:hidden">
-        Add careers or fields, pick your interests, or both — whatever you&rsquo;ve got.
-      </p>
-
-      {/* Zone 1 — careers or fields */}
+      {/* Zone 1 — careers or fields (the one primary action) */}
       <div className="relative print:hidden">
         <label htmlFor="career-search" className="block text-sm font-semibold">
           Careers or fields to compare
@@ -354,17 +355,18 @@ export default function CareerForm() {
         )}
       </div>
 
-      {/* and / or divider */}
-      <div className="my-6 flex items-center gap-3 print:hidden">
-        <div className="h-px flex-1 bg-foreground/10" />
-        <span className="rounded-full border border-foreground/15 px-2.5 py-0.5 text-xs text-foreground/60">
-          and / or
-        </span>
-        <div className="h-px flex-1 bg-foreground/10" />
-      </div>
-
-      {/* Zone 2 — interests */}
-      <div className="print:hidden">
+      {/* Zone 2 — interests, collapsed by default so the empty state has one clear action */}
+      {!interestsOpen ? (
+        <button
+          type="button"
+          onClick={() => setShowInterests(true)}
+          className="mt-4 flex items-center gap-1.5 text-sm font-medium text-blue-600 hover:underline print:hidden"
+        >
+          <span aria-hidden className="text-base leading-none">＋</span> Add your interests
+          <span className="font-normal text-foreground/50">(optional — tailors the scores to you)</span>
+        </button>
+      ) : (
+      <div className="mt-6 print:hidden">
         <div id="interests-label" className="block text-sm font-semibold">Your interests</div>
         <p className="mb-2 text-xs text-foreground/55">
           Optional — tailors the scores to you.
@@ -402,6 +404,7 @@ export default function CareerForm() {
           className="mt-3 w-full resize-y rounded-xl border border-foreground/15 bg-background px-4 py-3 text-sm leading-relaxed shadow-sm outline-none transition placeholder:text-foreground/55 focus-visible:border-transparent focus-visible:ring-2 focus-visible:ring-blue-500"
         />
       </div>
+      )}
 
       <div className="mt-5 flex flex-wrap items-center gap-4 print:hidden">
         <button
@@ -531,104 +534,122 @@ export default function CareerForm() {
             .
           </p>
 
-          <div className="mb-4 mt-10 flex items-center gap-3 print:hidden">
-            <h2 className="text-sm font-semibold text-foreground/70">Dig into the model</h2>
-            <span className="h-px flex-1 bg-foreground/10" aria-hidden />
-            <span className="text-xs text-foreground/60">stress-test the scores above</span>
-          </div>
-
-          <div className="mb-6 rounded-2xl border border-blue-500/25 bg-blue-500/[.04] p-4 print:hidden">
-            <div className="text-sm font-semibold">🔮 AI-adoption scenario</div>
-            <p className="mb-3 mt-0.5 text-xs text-foreground/60">
-              The scores assume today&rsquo;s AI exposure. Ask &ldquo;what if it comes faster — or
-              slower?&rdquo; and watch the ranking react.
-            </p>
-            <div className="inline-flex flex-wrap gap-1 rounded-full border border-foreground/15 p-1" role="group" aria-label="AI-adoption scenario">
-              {SCENARIOS.map((s) => (
-                <button
-                  key={s.value}
-                  type="button"
-                  aria-pressed={aiAdoption === s.value}
-                  onClick={() => onScenario(s.value)}
-                  className={`rounded-full px-3 py-1 text-xs font-medium transition ${
-                    aiAdoption === s.value
-                      ? "bg-blue-600 text-white"
-                      : "text-foreground/70 hover:text-foreground"
-                  }`}
-                >
-                  {s.label}
-                </button>
-              ))}
-            </div>
-            <p className="mt-2 text-xs text-foreground/60">
-              {SCENARIOS.find((s) => s.value === aiAdoption)?.caption ?? SCENARIOS[1].caption}
-            </p>
+          <div className="mb-1 mt-10 text-xs font-semibold uppercase tracking-wide text-foreground/45 print:hidden">
+            Dig deeper — optional
           </div>
 
           {response.results.length >= 2 && (
-            <div className="mb-6 grid gap-4 sm:grid-cols-2">
-              <FrontierChart results={response.results} onExpand={() => setMaximized("frontier")} onSelect={focusCard} />
-              <CompareRadar results={response.results} onExpand={() => setMaximized("radar")} onSelect={focusCard} />
-            </div>
+            <ResultsSection
+              icon="📊"
+              title="See the charts"
+              subtitle="Return vs. risk, and every axis compared side by side"
+            >
+              <div className="grid gap-4 pt-1 sm:grid-cols-2">
+                <FrontierChart results={response.results} onExpand={() => setMaximized("frontier")} onSelect={focusCard} />
+                <CompareRadar results={response.results} onExpand={() => setMaximized("radar")} onSelect={focusCard} />
+              </div>
+            </ResultsSection>
           )}
 
-          <div className="mb-6 rounded-2xl border border-foreground/10 bg-foreground/[.02] p-4 print:hidden">
-            <div className="mb-1 flex items-center justify-between">
-              <div className="text-sm font-semibold">Tune the model</div>
-              <button
-                type="button"
-                onClick={() => {
-                  const adopt = weightsRef.current.aiAdoption; // keep the chosen scenario
-                  weightsRef.current = { growthPay: 0.5, gammaT: 0.5, fitT: 0.5, aiAdoption: adopt };
-                  setGrowthPay(0.5);
-                  setGammaT(0.5);
-                  setFitT(0.5);
-                  if (response) runScore({ wGrowth: 0.5, wPay: 0.5, gamma: 0.6, alpha: 0.7, aiAdoption: adopt });
-                }}
-                className="text-xs text-blue-600 hover:underline"
-              >
-                Reset
-              </button>
+          <ResultsSection
+            icon="🔮"
+            title="Stress-test the scores"
+            subtitle="Change the AI outlook or your priorities and watch the ranking react"
+          >
+            <div className="pt-1">
+              <div className="text-sm font-semibold">If AI comes faster — or slower</div>
+              <p className="mb-3 mt-0.5 text-xs text-foreground/60">
+                The scores assume today&rsquo;s AI exposure. Pick a different future and the ranking
+                re-scores live.
+              </p>
+              <div className="inline-flex flex-wrap gap-1 rounded-full border border-foreground/15 p-1" role="group" aria-label="AI-adoption scenario">
+                {SCENARIOS.map((s) => (
+                  <button
+                    key={s.value}
+                    type="button"
+                    aria-pressed={aiAdoption === s.value}
+                    onClick={() => onScenario(s.value)}
+                    className={`rounded-full px-3 py-1 text-xs font-medium transition ${
+                      aiAdoption === s.value
+                        ? "bg-blue-600 text-white"
+                        : "text-foreground/70 hover:text-foreground"
+                    }`}
+                  >
+                    {s.label}
+                  </button>
+                ))}
+              </div>
+              <p className="mt-2 text-xs text-foreground/60">
+                {SCENARIOS.find((s) => s.value === aiAdoption)?.caption ?? SCENARIOS[1].caption}
+              </p>
+
+              <div className="mt-6 flex items-center justify-between">
+                <div className="text-sm font-semibold">Change what the score weighs</div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const adopt = weightsRef.current.aiAdoption; // keep the chosen scenario
+                    weightsRef.current = { growthPay: 0.5, gammaT: 0.5, fitT: 0.5, aiAdoption: adopt };
+                    setGrowthPay(0.5);
+                    setGammaT(0.5);
+                    setFitT(0.5);
+                    if (response) runScore({ wGrowth: 0.5, wPay: 0.5, gamma: 0.6, alpha: 0.7, aiAdoption: adopt });
+                  }}
+                  className="text-xs text-blue-600 hover:underline"
+                >
+                  Reset
+                </button>
+              </div>
+              <p className="mb-4 mt-0.5 text-xs text-foreground/60">
+                Move a slider and the rankings re-score live — see how much your priorities change
+                the answer.
+              </p>
+
+              <label htmlFor="w-growthpay" className="block text-xs font-medium">Reward: growth vs. pay</label>
+              <input
+                id="w-growthpay" type="range" min={0} max={1} step={0.01} value={growthPay}
+                aria-label="Balance growth versus pay"
+                aria-valuetext={`${Math.round((1 - growthPay) * 100)} percent growth, ${Math.round(growthPay * 100)} percent pay`}
+                onChange={(e) => onTune("growthPay", Number(e.target.value))}
+                className="mt-2 w-full accent-blue-600"
+              />
+              <div className="mb-4 mt-1 flex justify-between text-xs text-foreground/60"><span>Growth</span><span>Pay</span></div>
+
+              <label htmlFor="w-gamma" className="block text-xs font-medium">How much should AI risk count?</label>
+              <input
+                id="w-gamma" type="range" min={0} max={1} step={0.01} value={gammaT}
+                aria-label="How much should AI risk count"
+                aria-valuetext={`${Math.round(gammaT * 100)} percent`}
+                onChange={(e) => onTune("gammaT", Number(e.target.value))}
+                className="mt-2 w-full accent-blue-600"
+              />
+              <div className="mb-4 mt-1 flex justify-between text-xs text-foreground/60"><span>Ignore risk</span><span>Punish risk</span></div>
+
+              <label htmlFor="w-fit" className="block text-xs font-medium">Weigh: market vs. personal fit</label>
+              <input
+                id="w-fit" type="range" min={0} max={1} step={0.01} value={fitT}
+                aria-label="Balance market viability versus personal fit"
+                aria-valuetext={`${Math.round((1 - fitT) * 100)} percent market, ${Math.round(fitT * 100)} percent fit`}
+                onChange={(e) => onTune("fitT", Number(e.target.value))}
+                className="mt-2 w-full accent-blue-600"
+              />
+              <div className="mb-6 mt-1 flex justify-between text-xs text-foreground/60"><span>Market viability</span><span>Personal fit</span></div>
+
+              {response.sensitivity && <RobustnessPanel sensitivity={response.sensitivity} />}
             </div>
-            <p className="mb-4 text-xs text-foreground/60">
-              Move a slider and the rankings re-score live — see how much your priorities change
-              the answer.
-            </p>
+          </ResultsSection>
 
-            <label htmlFor="w-growthpay" className="block text-xs font-medium">Reward: growth vs. pay</label>
-            <input
-              id="w-growthpay" type="range" min={0} max={1} step={0.01} value={growthPay}
-              aria-label="Balance growth versus pay"
-              aria-valuetext={`${Math.round((1 - growthPay) * 100)} percent growth, ${Math.round(growthPay * 100)} percent pay`}
-              onChange={(e) => onTune("growthPay", Number(e.target.value))}
-              className="mt-2 w-full accent-blue-600"
-            />
-            <div className="mb-4 mt-1 flex justify-between text-xs text-foreground/60"><span>Growth</span><span>Pay</span></div>
-
-            <label htmlFor="w-gamma" className="block text-xs font-medium">How much should AI risk count?</label>
-            <input
-              id="w-gamma" type="range" min={0} max={1} step={0.01} value={gammaT}
-              aria-label="How much should AI risk count"
-              aria-valuetext={`${Math.round(gammaT * 100)} percent`}
-              onChange={(e) => onTune("gammaT", Number(e.target.value))}
-              className="mt-2 w-full accent-blue-600"
-            />
-            <div className="mb-4 mt-1 flex justify-between text-xs text-foreground/60"><span>Ignore risk</span><span>Punish risk</span></div>
-
-            <label htmlFor="w-fit" className="block text-xs font-medium">Weigh: market vs. personal fit</label>
-            <input
-              id="w-fit" type="range" min={0} max={1} step={0.01} value={fitT}
-              aria-label="Balance market viability versus personal fit"
-              aria-valuetext={`${Math.round((1 - fitT) * 100)} percent market, ${Math.round(fitT * 100)} percent fit`}
-              onChange={(e) => onTune("fitT", Number(e.target.value))}
-              className="mt-2 w-full accent-blue-600"
-            />
-            <div className="mt-1 flex justify-between text-xs text-foreground/60"><span>Market viability</span><span>Personal fit</span></div>
-          </div>
-
-          {response.sensitivity && <RobustnessPanel sensitivity={response.sensitivity} />}
-
-          <ModelComparison results={response.results} />
+          {response.results.length >= 2 && (
+            <ResultsSection
+              icon="🧮"
+              title="Compare 5 rating models"
+              subtitle="Does the answer hold under different philosophies? See where the judges disagree."
+            >
+              <div className="pt-1">
+                <ModelComparison results={response.results} />
+              </div>
+            </ResultsSection>
+          )}
         </div>
       )}
 
