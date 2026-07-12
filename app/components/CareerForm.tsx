@@ -514,6 +514,23 @@ export default function CareerForm() {
               </div>
             )}
 
+          {/* The visual summary sits right under the answer — charts are the payoff,
+              shown for a single career (its position + profile) as well as a comparison. */}
+          {response.results.length >= 1 && (
+            <div className="mt-8 print:hidden">
+              <div className="text-sm font-semibold">The picture</div>
+              <p className="mb-3 mt-0.5 text-xs text-foreground/60">
+                {response.results.length === 1
+                  ? "Where this career sits on return vs. risk, and its profile across every axis. Tap ⤢ to enlarge."
+                  : "Return vs. risk on the left; every axis compared on the right. Tap any point to jump to its card, or ⤢ to enlarge."}
+              </p>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <FrontierChart results={response.results} onExpand={() => setMaximized("frontier")} onSelect={focusCard} />
+                <CompareRadar results={response.results} onExpand={() => setMaximized("radar")} onSelect={focusCard} />
+              </div>
+            </div>
+          )}
+
           {response.results.some((r) => r.moat) && (
             <p className="pt-4 text-xs leading-relaxed text-foreground/60">
               <strong>What&rsquo;s a &ldquo;moat&rdquo;?</strong> Borrowed from investing: the water
@@ -533,23 +550,6 @@ export default function CareerForm() {
             </Link>
             .
           </p>
-
-          {/* The visual summary stays in view — charts are the payoff, shown for
-              a single career (its position + profile) as well as a comparison. */}
-          {response.results.length >= 1 && (
-            <div className="mt-10 border-t border-foreground/10 pt-6 print:hidden">
-              <div className="text-sm font-semibold">The picture</div>
-              <p className="mb-3 mt-0.5 text-xs text-foreground/60">
-                {response.results.length === 1
-                  ? "Where this career sits on return vs. risk, and its profile across every axis. Tap ⤢ to enlarge."
-                  : "Return vs. risk on the left; every axis compared on the right. Tap any point to jump to its card, or ⤢ to enlarge."}
-              </p>
-              <div className="grid gap-4 sm:grid-cols-2">
-                <FrontierChart results={response.results} onExpand={() => setMaximized("frontier")} onSelect={focusCard} />
-                <CompareRadar results={response.results} onExpand={() => setMaximized("radar")} onSelect={focusCard} />
-              </div>
-            </div>
-          )}
 
           <div className="mb-1 mt-10 text-xs font-semibold uppercase tracking-wide text-foreground/45 print:hidden">
             Dig deeper — optional
