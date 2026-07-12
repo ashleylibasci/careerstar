@@ -534,14 +534,15 @@ export default function CareerForm() {
             .
           </p>
 
-          {/* The visual summary stays in view — charts are the payoff of a
-              comparison, not something to hide behind a click. */}
-          {response.results.length >= 2 && (
+          {/* The visual summary stays in view — charts are the payoff, shown for
+              a single career (its position + profile) as well as a comparison. */}
+          {response.results.length >= 1 && (
             <div className="mt-10 border-t border-foreground/10 pt-6 print:hidden">
               <div className="text-sm font-semibold">The picture</div>
               <p className="mb-3 mt-0.5 text-xs text-foreground/60">
-                Return vs. risk on the left; every axis compared on the right. Tap any point to jump
-                to its card, or ⤢ to enlarge.
+                {response.results.length === 1
+                  ? "Where this career sits on return vs. risk, and its profile across every axis. Tap ⤢ to enlarge."
+                  : "Return vs. risk on the left; every axis compared on the right. Tap any point to jump to its card, or ⤢ to enlarge."}
               </p>
               <div className="grid gap-4 sm:grid-cols-2">
                 <FrontierChart results={response.results} onExpand={() => setMaximized("frontier")} onSelect={focusCard} />
