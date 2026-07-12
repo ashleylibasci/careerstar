@@ -488,12 +488,25 @@ export default function CareerForm() {
             </div>
           </div>
 
-          {/* The answer first — the analysis lives below it (Morningstar prints the
-              rating, then the research). One clean column so each card reads at a
-              comfortable width, ranked top-to-bottom. */}
-          <div className="space-y-4">
+          {/* The answer first — a ranked, collapsible list. Small comparisons
+              (1–3) open every card so nothing's hidden; larger ones open just the
+              best bet and keep the rest as compact rows, so six careers don't
+              become an endless scroll. */}
+          {response.results.length >= 4 && (
+            <p className="mb-3 text-xs text-foreground/55 print:hidden">
+              Ranked best-first — the top pick is expanded. Click any row to open its full analysis.
+            </p>
+          )}
+          <div className="space-y-3">
             {response.results.map((result, i) => (
-              <ScoreCard key={result.code} result={result} top={i === 0} highlighted={highlight === result.code} />
+              <ScoreCard
+                key={result.code}
+                result={result}
+                top={i === 0}
+                rank={i + 1}
+                defaultOpen={i === 0 || response.results.length <= 3}
+                highlighted={highlight === result.code}
+              />
             ))}
           </div>
 

@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import type { ScoreResult } from "@/lib/scorer/types";
 import { scoreBand, type Tone } from "@/lib/scorer/verdict";
@@ -39,31 +42,52 @@ export default function ScoreCard({
   result,
   top = false,
   highlighted = false,
+  defaultOpen = true,
+  rank,
 }: {
   result: ScoreResult;
   top?: boolean;
   highlighted?: boolean;
+  defaultOpen?: boolean;
+  rank?: number;
 }) {
   const band = scoreBand(result.score);
   const tone = TONE[band.tone];
   // Resilience = the inverse of risk, so every bar means "higher is better."
   const resilience = 100 - result.components.risk;
 
+  const [open, setOpen] = useState(defaultOpen);
+  // Jumping to a card from a chart point should reveal it, even if collapsed.
+  const [prevHi, setPrevHi] = useState(highlighted);
+  if (highlighted !== prevHi) {
+    setPrevHi(highlighted);
+    if (highlighted) setOpen(true);
+  }
+
   return (
-    <div
+    <details
+      open={open}
+      onToggle={(e) => setOpen((e.currentTarget as HTMLDetailsElement).open)}
       id={`card-${result.code}`}
-      className={`scroll-mt-24 rounded-2xl border bg-foreground/[.02] p-5 shadow-sm transition-all duration-300 ${
+      className={`group scroll-mt-24 overflow-hidden rounded-2xl border bg-foreground/[.02] shadow-sm transition-all duration-300 ${
         highlighted ? "border-blue-500 ring-2 ring-blue-500/40" : "border-foreground/10"
       }`}
     >
-      <div className="flex items-start justify-between gap-4">
-        <div className="min-w-0">
-          {top && (
-            <span className="mb-1 inline-block rounded-full bg-blue-600 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">
-              ★ Best bet
-            </span>
-          )}
-          <h3 className="text-base font-semibold leading-snug">{result.path}</h3>
+      {/* Compact header — always visible. Click to expand the full analysis. */}
+      <summary className="flex cursor-pointer list-none items-start gap-4 p-5 transition hover:bg-foreground/[.02] [&::-webkit-details-marker]:hidden">
+        <div className="min-w-0 flex-1">
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+            {top ? (
+              <span className="inline-block rounded-full bg-blue-600 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">
+                ★ Best bet
+              </span>
+            ) : rank != null ? (
+              <span className="inline-block rounded-full bg-foreground/10 px-2 py-0.5 text-[10px] font-bold tabular-nums text-foreground/60">
+                #{rank}
+              </span>
+            ) : null}
+            <h3 className="text-base font-semibold leading-snug">{result.path}</h3>
+          </div>
           {result.stars != null && (
             <div className="mt-1.5 flex flex-wrap items-center gap-2">
               <Stars value={result.stars} colorClass={tone.star} id={result.code} />
@@ -74,117 +98,133 @@ export default function ScoreCard({
               {result.moat && <MoatBadge moat={result.moat} />}
             </div>
           )}
-        </div>
-        <div className="shrink-0 text-right">
-          <div className={`text-3xl font-bold tabular-nums ${tone.text}`}>
-            {result.score}
-            <span className="align-top text-sm font-medium text-foreground/45">/100</span>
+          {/* Quick stats so the row is scannable without opening it. */}
+          <div className="mt-1.5 text-xs tabular-nums text-foreground/55">
+            Return {result.components.return} · Resilience {resilience} · Fit {result.components.fit}
           </div>
-          {uncertaintyLabel(result.confidence) && (
-            <div
-              className="text-[10px] font-medium uppercase tracking-wide text-foreground/55"
-              title="How rough the estimate is — higher with high AI exposure or weak fit."
-            >
-              {uncertaintyLabel(result.confidence)} uncertainty
-            </div>
-          )}
         </div>
-      </div>
-
-      <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
-        <Bar label="Return" value={result.components.return} colorClass="bg-blue-500" />
-        <Bar label="Resilience" value={resilience} colorClass="bg-blue-500" />
-        <Bar label="Fit" value={result.components.fit} colorClass="bg-blue-500" />
-      </div>
-      {/* Always-visible legend so the bars are clear without hovering (mobile too). */}
-      <p className="mt-2 text-[11px] leading-snug text-foreground/50">
-        <strong className="font-semibold text-foreground/60">Return</strong> = growth + pay ·{" "}
-        <strong className="font-semibold text-foreground/60">Resilience</strong> = how shielded from AI ·{" "}
-        <strong className="font-semibold text-foreground/60">Fit</strong> = matches your interests
-      </p>
-
-      <p className="mt-4 text-sm leading-relaxed text-foreground/70">{result.note}</p>
-
-      {(result.bulls?.length || result.bears?.length) && (
-        <div className="mt-4 grid gap-3 sm:grid-cols-2">
-          {result.bulls?.length ? (
-            <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/[.05] p-3">
-              <div className="mb-1.5 text-xs font-bold uppercase tracking-wide text-emerald-700 dark:text-emerald-400">
-                🐂 Bulls say
+        <div className="flex shrink-0 items-start gap-2 text-right">
+          <div>
+            <div className={`text-3xl font-bold tabular-nums ${tone.text}`}>
+              {result.score}
+              <span className="align-top text-sm font-medium text-foreground/45">/100</span>
+            </div>
+            {uncertaintyLabel(result.confidence) && (
+              <div
+                className="text-[10px] font-medium uppercase tracking-wide text-foreground/55"
+                title="How rough the estimate is — higher with high AI exposure or weak fit."
+              >
+                {uncertaintyLabel(result.confidence)} uncertainty
               </div>
-              <ul className="space-y-1.5 text-xs leading-snug text-foreground/75">
-                {result.bulls.map((b, i) => (
-                  <li key={i} className="flex gap-1.5"><span className="text-emerald-600">+</span>{b}</li>
-                ))}
-              </ul>
-            </div>
-          ) : null}
-          {result.bears?.length ? (
-            <div className="rounded-xl border border-red-500/20 bg-red-500/[.05] p-3">
-              <div className="mb-1.5 text-xs font-bold uppercase tracking-wide text-red-700 dark:text-red-400">
-                🐻 Bears say
+            )}
+          </div>
+          <span
+            aria-hidden
+            className="mt-1.5 shrink-0 text-xs text-foreground/40 transition-transform group-open:rotate-180"
+            title="Expand for the full analysis"
+          >
+            ▼
+          </span>
+        </div>
+      </summary>
+
+      {/* Full analysis — revealed on expand. */}
+      <div className="px-5 pb-5">
+        <div className="grid grid-cols-1 gap-3 border-t border-foreground/10 pt-4 sm:grid-cols-3">
+          <Bar label="Return" value={result.components.return} colorClass="bg-blue-500" />
+          <Bar label="Resilience" value={resilience} colorClass="bg-blue-500" />
+          <Bar label="Fit" value={result.components.fit} colorClass="bg-blue-500" />
+        </div>
+        {/* Always-visible legend so the bars are clear without hovering (mobile too). */}
+        <p className="mt-2 text-[11px] leading-snug text-foreground/50">
+          <strong className="font-semibold text-foreground/60">Return</strong> = growth + pay ·{" "}
+          <strong className="font-semibold text-foreground/60">Resilience</strong> = how shielded from AI ·{" "}
+          <strong className="font-semibold text-foreground/60">Fit</strong> = matches your interests
+        </p>
+
+        <p className="mt-4 text-sm leading-relaxed text-foreground/70">{result.note}</p>
+
+        {(result.bulls?.length || result.bears?.length) && (
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            {result.bulls?.length ? (
+              <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/[.05] p-3">
+                <div className="mb-1.5 text-xs font-bold uppercase tracking-wide text-emerald-700 dark:text-emerald-400">
+                  🐂 Bulls say
+                </div>
+                <ul className="space-y-1.5 text-xs leading-snug text-foreground/75">
+                  {result.bulls.map((b, i) => (
+                    <li key={i} className="flex gap-1.5"><span className="text-emerald-600">+</span>{b}</li>
+                  ))}
+                </ul>
               </div>
-              <ul className="space-y-1.5 text-xs leading-snug text-foreground/75">
-                {result.bears.map((b, i) => (
-                  <li key={i} className="flex gap-1.5"><span className="text-red-500">−</span>{b}</li>
-                ))}
-              </ul>
-            </div>
-          ) : null}
-        </div>
-      )}
-
-      {result.redirect && (
-        <div className="mt-4 flex items-start gap-2 rounded-xl border border-blue-500/25 bg-blue-500/5 p-3">
-          <span className="mt-0.5 text-blue-600">↗</span>
-          <div className="text-sm">
-            <span className="font-semibold text-foreground/60">You might prefer: </span>
-            <span className="font-semibold">{result.redirect.title}</span>{" "}
-            <span className="tabular-nums text-blue-600">{result.redirect.score}/100</span>
-            <div className="text-foreground/60">{result.redirect.reason}</div>
+            ) : null}
+            {result.bears?.length ? (
+              <div className="rounded-xl border border-red-500/20 bg-red-500/[.05] p-3">
+                <div className="mb-1.5 text-xs font-bold uppercase tracking-wide text-red-700 dark:text-red-400">
+                  🐻 Bears say
+                </div>
+                <ul className="space-y-1.5 text-xs leading-snug text-foreground/75">
+                  {result.bears.map((b, i) => (
+                    <li key={i} className="flex gap-1.5"><span className="text-red-500">−</span>{b}</li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
           </div>
-        </div>
-      )}
+        )}
 
-      {result.breakdown && (
-        <details className="mt-4 text-sm">
-          <summary className="cursor-pointer text-xs font-medium text-blue-600 hover:underline">
-            Why this score?
-          </summary>
-          <div className="mt-3 space-y-2 border-t border-foreground/10 pt-3 text-xs leading-relaxed text-foreground/70">
-            <div>
-              <span className="font-semibold">Return {result.components.return}</span> —
-              growth ranks {result.breakdown.growthRank}/100, pay ranks{" "}
-              {result.breakdown.payRank}/100 vs. all careers.
-            </div>
-            <div>
-              <span className="font-semibold">Resilience {resilience}</span> — AI exposure is{" "}
-              {result.breakdown.aiExposurePct}/100 (share of tasks, not job loss).
-            </div>
-            <div>
-              <span className="font-semibold">Fit {result.components.fit}</span> — overlap with
-              the interests you gave.
-            </div>
-            <div className="text-foreground/60">
-              Raw: {result.breakdown.growthPct >= 0 ? "+" : ""}
-              {result.breakdown.growthPct}% projected growth ·{" "}
-              ${result.breakdown.medianPay.toLocaleString()} median pay.
-            </div>
-            <div className="rounded-lg bg-foreground/[.04] p-2 font-mono text-[11px] text-foreground/60">
-              score = 100 · [ α·(return × (1 − γ·risk)) + (1 − α)·fit ]
-              <br />
-              α = {result.breakdown.alpha}, γ = {result.breakdown.gamma.toFixed(2)}
+        {result.redirect && (
+          <div className="mt-4 flex items-start gap-2 rounded-xl border border-blue-500/25 bg-blue-500/5 p-3">
+            <span className="mt-0.5 text-blue-600">↗</span>
+            <div className="text-sm">
+              <span className="font-semibold text-foreground/60">You might prefer: </span>
+              <span className="font-semibold">{result.redirect.title}</span>{" "}
+              <span className="tabular-nums text-blue-600">{result.redirect.score}/100</span>
+              <div className="text-foreground/60">{result.redirect.reason}</div>
             </div>
           </div>
-        </details>
-      )}
+        )}
 
-      <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
-        <Link href={`/career/${result.code}`} className="text-xs text-blue-600 hover:underline">
-          View full details →
-        </Link>
-        <FeedbackWidget code={result.code} />
+        {result.breakdown && (
+          <details className="mt-4 text-sm">
+            <summary className="cursor-pointer text-xs font-medium text-blue-600 hover:underline">
+              Why this score?
+            </summary>
+            <div className="mt-3 space-y-2 border-t border-foreground/10 pt-3 text-xs leading-relaxed text-foreground/70">
+              <div>
+                <span className="font-semibold">Return {result.components.return}</span> —
+                growth ranks {result.breakdown.growthRank}/100, pay ranks{" "}
+                {result.breakdown.payRank}/100 vs. all careers.
+              </div>
+              <div>
+                <span className="font-semibold">Resilience {resilience}</span> — AI exposure is{" "}
+                {result.breakdown.aiExposurePct}/100 (share of tasks, not job loss).
+              </div>
+              <div>
+                <span className="font-semibold">Fit {result.components.fit}</span> — overlap with
+                the interests you gave.
+              </div>
+              <div className="text-foreground/60">
+                Raw: {result.breakdown.growthPct >= 0 ? "+" : ""}
+                {result.breakdown.growthPct}% projected growth ·{" "}
+                ${result.breakdown.medianPay.toLocaleString()} median pay.
+              </div>
+              <div className="rounded-lg bg-foreground/[.04] p-2 font-mono text-[11px] text-foreground/60">
+                score = 100 · [ α·(return × (1 − γ·risk)) + (1 − α)·fit ]
+                <br />
+                α = {result.breakdown.alpha}, γ = {result.breakdown.gamma.toFixed(2)}
+              </div>
+            </div>
+          </details>
+        )}
+
+        <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
+          <Link href={`/career/${result.code}`} className="text-xs text-blue-600 hover:underline">
+            View full details →
+          </Link>
+          <FeedbackWidget code={result.code} />
+        </div>
       </div>
-    </div>
+    </details>
   );
 }
