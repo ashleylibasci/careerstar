@@ -186,7 +186,7 @@ export default async function CareerPage({
                 </div>
                 {pct != null && pct >= 50 && (
                   <div className="mt-1 text-xs text-foreground/55">
-                    top {Math.max(1, 100 - Math.round(pct))}% of all {OCCUPATIONS.length} careers, at default weights
+                    top {Math.max(1, 100 - Math.round(pct))}% of all {OCCUPATIONS.length} careers
                   </div>
                 )}
                 {analystTake && (
@@ -248,7 +248,7 @@ export default async function CareerPage({
                   📜 Reality check — how the last forecast for this career fared
                 </div>
                 <p className="mt-1.5 text-sm leading-relaxed text-foreground/75">
-                  In 2014, BLS projected{" "}
+                  In 2014, the U.S. government projected{" "}
                   <strong>{decade.projectedPct >= 0 ? "+" : ""}{decade.projectedPct}%</strong>{" "}
                   growth for this career by 2024. What actually happened:{" "}
                   <strong className={decade.realizedPct < 0 ? "text-red-600" : "text-emerald-600"}>

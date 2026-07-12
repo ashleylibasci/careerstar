@@ -522,9 +522,9 @@ export default function CareerForm() {
           )}
 
           <p className="pt-4 text-xs leading-relaxed text-foreground/60">
-            A grounded estimate, not a prediction. Scores blend official BLS 2024&ndash;2034
-            projections with AI-exposure research — and <strong>AI exposure is not the same as
-            job loss</strong>. See{" "}
+            A grounded estimate, not a prediction. Scores blend official U.S. government job
+            projections (2024&ndash;2034) with AI-exposure research — and <strong>AI exposure is
+            not the same as job loss</strong>. See{" "}
             <Link href="/methodology" className="underline hover:text-foreground/70">
               how scores are calculated
             </Link>

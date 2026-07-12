@@ -78,20 +78,16 @@ export default function ScoreCard({
         <div className="shrink-0 text-right">
           <div className={`text-3xl font-bold tabular-nums ${tone.text}`}>
             {result.score}
-            {result.confidence != null && (
-              <span className="ml-1 align-top text-xs font-medium text-foreground/55">
-                ±{result.confidence}
-              </span>
-            )}
+            <span className="align-top text-sm font-medium text-foreground/45">/100</span>
           </div>
-          <div className="text-[10px] font-medium uppercase tracking-wide text-foreground/55">
-            / 100
-            {uncertaintyLabel(result.confidence) && (
-              <span title="How speculative this estimate is — wider with high AI exposure or weak fit.">
-                {" "}· {uncertaintyLabel(result.confidence)} uncertainty
-              </span>
-            )}
-          </div>
+          {uncertaintyLabel(result.confidence) && (
+            <div
+              className="text-[10px] font-medium uppercase tracking-wide text-foreground/55"
+              title="How rough the estimate is — higher with high AI exposure or weak fit."
+            >
+              {uncertaintyLabel(result.confidence)} uncertainty
+            </div>
+          )}
         </div>
       </div>
 
@@ -100,6 +96,12 @@ export default function ScoreCard({
         <Bar label="Resilience" value={resilience} colorClass="bg-blue-500" />
         <Bar label="Fit" value={result.components.fit} colorClass="bg-blue-500" />
       </div>
+      {/* Always-visible legend so the bars are clear without hovering (mobile too). */}
+      <p className="mt-2 text-[11px] leading-snug text-foreground/50">
+        <strong className="font-semibold text-foreground/60">Return</strong> = growth + pay ·{" "}
+        <strong className="font-semibold text-foreground/60">Resilience</strong> = how shielded from AI ·{" "}
+        <strong className="font-semibold text-foreground/60">Fit</strong> = matches your interests
+      </p>
 
       <p className="mt-4 text-sm leading-relaxed text-foreground/70">{result.note}</p>
 

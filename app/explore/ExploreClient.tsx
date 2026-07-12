@@ -150,10 +150,9 @@ export default function ExploreClient({ initialMoat = "all" }: { initialMoat?: s
                   <Link href={`/field/${r.group}`} className="hover:text-blue-600 hover:underline">{r.field}</Link>
                 </td>
                 <td className="py-2 px-3 text-foreground/60">{r.educationShort}</td>
-                <td className={`py-2 px-3 text-right font-semibold tabular-nums ${TONE[scoreBand(r.score).tone]}`}>
-                  <span aria-label={`${r.stars} stars`}>★{r.stars.toFixed(1)}</span>
-                  <span className="text-foreground/40"> · </span>
-                  <span className="text-foreground/55">{r.score}</span>
+                <td className={`whitespace-nowrap py-2 px-3 text-right font-semibold tabular-nums ${TONE[scoreBand(r.score).tone]}`}>
+                  <span aria-label={`${r.stars} out of 5 stars`}>{"★".repeat(Math.round(r.stars))}</span>
+                  <span className="ml-1.5 text-foreground/55">{r.score}</span>
                 </td>
                 <td className="py-2 px-3 whitespace-nowrap text-xs text-foreground/70">{r.moat ? MOAT_CELL[r.moat] : "—"}</td>
                 {/* Declining fields get a red tint so e.g. a "Best ROI" sort can't

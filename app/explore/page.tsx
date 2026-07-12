@@ -19,8 +19,9 @@ export default async function ExplorePage({
       <div className="w-full max-w-3xl lg:max-w-5xl xl:max-w-6xl">
         <h1 className="text-3xl font-bold tracking-tight">Explore all careers</h1>
         <p className="mt-2 text-foreground/70">
-          Every occupation the BLS tracks, ranked by a neutral viability score. Filter by
-          field or pay, sort by what you care about, and click any career to score it.
+          Every occupation the U.S. government tracks, ranked by a baseline viability score
+          (before your interests are factored in). Filter, sort, and click any career for its
+          full report.
         </p>
         <div className="mt-8">
           <ExploreClient initialMoat={initialMoat} />

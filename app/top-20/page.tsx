@@ -105,8 +105,8 @@ export default function Top20Page() {
         </ol>
 
         <p className="mt-8 text-xs leading-relaxed text-foreground/55">
-          Computed at default weights with no personal interests — your own ranking may differ (and
-          should:{" "}
+          This is a neutral baseline, before any personal interests — your own ranking may differ
+          (and should:{" "}
           <Link href="/" className="text-blue-600 hover:underline">
             score your paths
           </Link>{" "}

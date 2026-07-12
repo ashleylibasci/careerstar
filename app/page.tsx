@@ -14,11 +14,10 @@ export default function Home() {
             for each path in an AI-shaped economy. Tell it what you&rsquo;re interested in
             and what you&rsquo;re considering.
           </p>
-          <p className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-xs font-medium text-foreground/55">
+          <p className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-xs font-medium text-foreground/60">
             <span>★ 730 careers rated</span>
-            <span>· real BLS + O*NET data</span>
-            <span>· 5 rating models</span>
-            <span>· the math shown</span>
+            <span>· built on real U.S. government data</span>
+            <span>· every score is explained, not guessed</span>
           </p>
         </header>
 
