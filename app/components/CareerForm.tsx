@@ -259,6 +259,8 @@ export default function CareerForm() {
 
   return (
     <div className="w-full">
+      {/* Input form stays readable-width; results below use the full container. */}
+      <div className="mx-auto max-w-2xl">
       <p className="mb-5 text-sm text-foreground/60 print:hidden">
         Add careers or fields, pick your interests, or both — whatever you&rsquo;ve got.
       </p>
@@ -452,6 +454,7 @@ export default function CareerForm() {
       {response?.message && (
         <p className="mt-6 text-sm text-foreground/60">{response.message}</p>
       )}
+      </div>
 
       {response && response.results.length > 0 && (
         <div className="mt-8">
@@ -483,8 +486,9 @@ export default function CareerForm() {
           </div>
 
           {/* The answer first — the analysis lives below it (Morningstar prints the
-              rating, then the research). */}
-          <div className="space-y-4">
+              rating, then the research). Two-up on wide screens so cards keep a
+              readable width instead of stretching across the whole dashboard. */}
+          <div className="grid gap-4 lg:grid-cols-2">
             {response.results.map((result, i) => (
               <ScoreCard key={result.code} result={result} top={i === 0} highlighted={highlight === result.code} />
             ))}
