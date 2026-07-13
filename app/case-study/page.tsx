@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import data from "@/data/data.json";
 import backtest from "@/data/backtest.json";
+import ScoringPipelineDiagram from "@/app/components/ScoringPipelineDiagram";
 
 export const metadata: Metadata = {
   title: "Case study — how CareerStar was built",
@@ -82,6 +83,14 @@ export default function CaseStudyPage() {
             percentile-ranked across all {meta.occupationCount} occupations; risk blends AI-exposure
             research with a constructed volatility proxy; the two combine into a risk-adjusted value,
             then blend with personal fit:
+          </p>
+          {/* Two altitudes of the same claim: the system view for skimmers, then
+              the raw equations verbatim for anyone who wants to verify. */}
+          <figure className="my-5 rounded-2xl border border-foreground/10 bg-foreground/[.02] p-4 sm:p-5">
+            <ScoringPipelineDiagram />
+          </figure>
+          <p className="text-xs font-semibold uppercase tracking-wide text-foreground/50">
+            The actual equations
           </p>
           <pre className="overflow-x-auto rounded-xl border border-foreground/10 bg-foreground/[.03] p-4 text-xs leading-relaxed">
 {`Return = wGrowth·growth + wPay·pay
