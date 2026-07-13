@@ -7,9 +7,38 @@ import { FIELDS } from "@/lib/fields";
 import ScoreCard from "./ScoreCard";
 import RobustnessPanel from "./RobustnessPanel";
 import ModelComparison from "./ModelComparison";
+import { MODELS } from "@/lib/scorer/models";
 import ResultsSection from "./ResultsSection";
 import FrontierChart from "./FrontierChart";
 import CompareRadar from "./CompareRadar";
+
+type ModelResult = { code: string; models?: Record<string, number> };
+
+// A one-line verdict for the collapsed "Compare 5 rating models" header, so the
+// finding (agreement / disagreement / score spread) is visible without opening
+// the table — emphasis without adding scroll.
+function modelVerdict(results: ModelResult[]): string {
+  const rows = results.filter((r) => r.models);
+  if (rows.length === 0) return "Five ways to rate a career — see where the judges land.";
+  if (rows.length === 1) {
+    const v = Object.values(rows[0].models!);
+    const lo = Math.min(...v);
+    const hi = Math.max(...v);
+    const spread = hi - lo;
+    return spread <= 12
+      ? `Five models score this career ${lo}–${hi} — a tight ${spread}-pt spread, so the number holds up.`
+      : `Five models score this career ${lo}–${hi} — a ${spread}-pt spread, softer than one number suggests.`;
+  }
+  const winners = new Set<string>();
+  for (const m of MODELS) {
+    let best: ModelResult | null = null;
+    for (const r of rows) if (!best || (r.models![m.id] ?? 0) > (best.models![m.id] ?? 0)) best = r;
+    if (best) winners.add(best.code);
+  }
+  return winners.size === 1
+    ? "All five models agree on the #1 pick — about as solid as a comparison gets."
+    : `The models crown ${winners.size} different winners — the answer turns on your AI beliefs.`;
+}
 
 interface OccOption {
   code: string;
@@ -656,11 +685,11 @@ export default function CareerForm() {
             </div>
           </ResultsSection>
 
-          {response.results.length >= 2 && (
+          {response.results.some((r) => r.models) && (
             <ResultsSection
               icon="🧮"
               title="Compare 5 rating models"
-              subtitle="Does the answer hold under different philosophies? See where the judges disagree."
+              subtitle={modelVerdict(response.results)}
             >
               <div className="pt-1">
                 <ModelComparison results={response.results} />

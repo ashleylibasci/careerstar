@@ -16,9 +16,11 @@ const PLAIN: Record<string, string> = {
 
 export default function ModelComparison({ results }: { results: ScoreResult[] }) {
   const rows = results.filter((r) => r.models);
-  if (rows.length < 2) return null;
+  if (rows.length < 1) return null;
+  const single = rows.length === 1;
 
-  // Each model's #1 pick (by that model's score).
+  // Each model's #1 pick (by that model's score) — only meaningful when ranking
+  // more than one career.
   const topByModel: Record<string, string> = {};
   for (const m of MODELS) {
     let best: ScoreResult | null = null;
@@ -29,25 +31,59 @@ export default function ModelComparison({ results }: { results: ScoreResult[] })
   const agree = distinctWinners === 1;
   const winnerTitle = agree ? rows.find((r) => r.code === Object.values(topByModel)[0])?.path : null;
 
+  // Single career: there's no "winner," so the story is the SPREAD — how far the
+  // five philosophies disagree about this one career's score.
+  const soleScores = single ? Object.values(rows[0].models!) : [];
+  const soleLo = single ? Math.min(...soleScores) : 0;
+  const soleHi = single ? Math.max(...soleScores) : 0;
+  const soleSpread = soleHi - soleLo;
+  const soleTight = soleSpread <= 12; // models broadly agree on this career
+
   return (
     <div className="mb-6 rounded-2xl border border-blue-500/25 bg-blue-500/[.04] p-4 print:hidden">
       <div className="text-sm font-semibold">🧮 Second opinions — five ways to rate a career</div>
       <p className="mb-3 mt-1 text-sm leading-relaxed text-foreground/70">
-        Which career &ldquo;wins&rdquo; depends on how much you think AI risk should count — and no
-        single formula can settle that. So the same careers are scored by{" "}
-        <strong>five different judges</strong>, from &ldquo;ignore AI entirely&rdquo; to
-        &ldquo;safety is everything.&rdquo; If they all agree, the ranking is solid. If they
-        don&rsquo;t, that tells you something real.
+        {single ? (
+          <>
+            A single score hides a judgment call: how much should AI risk count? So this career is
+            scored by <strong>five different judges</strong>, from &ldquo;ignore AI entirely&rdquo;
+            to &ldquo;safety is everything.&rdquo; How far apart they land tells you how soft — or
+            how solid — the headline number really is.
+          </>
+        ) : (
+          <>
+            Which career &ldquo;wins&rdquo; depends on how much you think AI risk should count — and
+            no single formula can settle that. So the same careers are scored by{" "}
+            <strong>five different judges</strong>, from &ldquo;ignore AI entirely&rdquo; to
+            &ldquo;safety is everything.&rdquo; If they all agree, the ranking is solid. If they
+            don&rsquo;t, that tells you something real.
+          </>
+        )}
       </p>
 
       <div
         className={`mb-4 rounded-xl border p-3 text-sm font-medium ${
-          agree
+          (single ? soleTight : agree)
             ? "border-emerald-500/30 bg-emerald-500/[.07] text-foreground/80"
             : "border-amber-500/30 bg-amber-500/[.07] text-foreground/80"
         }`}
       >
-        {agree ? (
+        {single ? (
+          soleTight ? (
+            <>
+              ✅ <strong className="text-emerald-700 dark:text-emerald-400">The five judges broadly agree — this career scores {soleLo}–{soleHi} across every model.</strong>{" "}
+              A tight {soleSpread}-point spread means the headline number holds up whatever you
+              believe about AI. (The card above uses the balanced Standard judge.)
+            </>
+          ) : (
+            <>
+              ⚖️ <strong className="text-amber-700 dark:text-amber-500">The judges disagree — this career scores anywhere from {soleLo} to {soleHi} depending on the model.</strong>{" "}
+              A {soleSpread}-point spread means its viability genuinely turns on how much you think
+              AI will reshape work — the single number is softer than it looks. (The card above uses
+              the balanced Standard judge.)
+            </>
+          )
+        ) : agree ? (
           <>
             ✅ <strong className="text-emerald-700 dark:text-emerald-400">All five judges pick {winnerTitle} as #1.</strong>{" "}
             The ranking isn&rsquo;t an artifact of one formula — that&rsquo;s about as solid as a
@@ -90,7 +126,7 @@ export default function ModelComparison({ results }: { results: ScoreResult[] })
                 <tr key={r.code} className="border-b border-foreground/5">
                   <td className="max-w-[180px] truncate py-1.5 pr-3 font-medium">{r.path}</td>
                   {MODELS.map((m) => {
-                    const top = topByModel[m.id] === r.code;
+                    const top = !single && topByModel[m.id] === r.code;
                     return (
                       <td
                         key={m.id}
@@ -112,7 +148,11 @@ export default function ModelComparison({ results }: { results: ScoreResult[] })
           </tbody>
         </table>
       </div>
-      <p className="mt-1.5 text-[11px] text-foreground/55">◂ marks each judge&rsquo;s top pick · Consensus = average across all five ± disagreement</p>
+      <p className="mt-1.5 text-[11px] text-foreground/55">
+        {single
+          ? "Consensus = average across all five models ± the spread between the highest and lowest."
+          : "◂ marks each judge’s top pick · Consensus = average across all five ± disagreement"}
+      </p>
 
       <div className="mt-3 grid gap-x-6 gap-y-1.5 border-t border-foreground/10 pt-3 sm:grid-cols-2">
         {MODELS.map((m) => (
