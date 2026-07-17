@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import type { ScoreResult } from "@/lib/scorer/types";
 import { scoreBand, type Tone } from "@/lib/scorer/verdict";
@@ -64,6 +64,24 @@ export default function ScoreCard({
     if (highlighted) setOpen(true);
   }
 
+  // A printed report shows every career in full: expand for print, restore after.
+  const openRef = useRef(open);
+  openRef.current = open;
+  useEffect(() => {
+    const wasOpen = { current: openRef.current };
+    const before = () => {
+      wasOpen.current = openRef.current;
+      setOpen(true);
+    };
+    const after = () => setOpen(wasOpen.current);
+    window.addEventListener("beforeprint", before);
+    window.addEventListener("afterprint", after);
+    return () => {
+      window.removeEventListener("beforeprint", before);
+      window.removeEventListener("afterprint", after);
+    };
+  }, []);
+
   return (
     <details
       open={open}
@@ -120,7 +138,7 @@ export default function ScoreCard({
           </div>
           <span
             aria-hidden
-            className="mt-1.5 shrink-0 text-xs text-foreground/40 transition-transform group-open:rotate-180"
+            className="mt-1.5 shrink-0 text-xs text-foreground/40 transition-transform group-open:rotate-180 print:hidden"
             title="Expand for the full analysis"
           >
             ▼
@@ -186,7 +204,7 @@ export default function ScoreCard({
         )}
 
         {result.breakdown && (
-          <details className="mt-4 text-sm">
+          <details className="mt-4 text-sm print:hidden">
             <summary className="cursor-pointer text-xs font-medium text-blue-600 hover:underline">
               Why this score?
             </summary>
@@ -218,7 +236,7 @@ export default function ScoreCard({
           </details>
         )}
 
-        <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
+        <div className="mt-3 flex flex-wrap items-center justify-between gap-3 print:hidden">
           <Link href={`/career/${result.code}`} className="text-xs text-blue-600 hover:underline">
             View full details →
           </Link>

@@ -56,7 +56,7 @@ export default function RootLayout({
         </a>
         <NavBar />
         <div id="main-content" className="flex flex-1 flex-col">{children}</div>
-        <footer className="border-t border-foreground/10 px-6 py-6">
+        <footer className="border-t border-foreground/10 px-6 py-6 print:hidden">
           <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-x-6 gap-y-2 text-xs text-foreground/60 lg:max-w-5xl xl:max-w-6xl">
             <span className="w-full text-[11px] text-foreground/45">
               Data: BLS Employment Projections 2024–2034 · O*NET 29.0 · Eloundou et&nbsp;al. 2023 ·

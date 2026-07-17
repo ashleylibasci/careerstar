@@ -295,7 +295,7 @@ export default function CareerForm() {
   return (
     <div className="w-full">
       {/* Input form stays readable-width; results below use the full container. */}
-      <div className="mx-auto max-w-2xl">
+      <div className="mx-auto max-w-2xl print:hidden">
       {/* Zone 1 — careers or fields (the one primary action) */}
       <div className="relative print:hidden">
         <label htmlFor="career-search" className="block text-sm font-semibold">
@@ -491,9 +491,37 @@ export default function CareerForm() {
 
       {response && response.results.length > 0 && (
         <div className="mt-8">
-          <div className="mb-2 hidden print:block">
-            <div className="text-lg font-bold text-blue-600">★ CareerStar</div>
-            <div className="text-xs text-foreground/60">Career analysis · careerstar.ashleylibasci.com</div>
+          {/* Print-only report masthead — the printed page is a designed report,
+              not a screenshot of the app. */}
+          <div className="mb-6 hidden print:block">
+            <div className="flex items-end justify-between border-b-2 border-blue-600 pb-3">
+              <div>
+                <div className="flex items-center gap-2">
+                  <svg width="26" height="26" viewBox="0 0 24 25" aria-hidden>
+                    <path d="M8.86 4.12Q9.29 1.73 10.79 3.64L12.01 5.19Q13.99 7.69 17.14 7.26L19.09 6.99Q21.50 6.66 20.15 8.68L19.06 10.32Q17.29 12.97 18.67 15.84L19.53 17.61Q20.58 19.80 18.24 19.14L16.35 18.61Q13.28 17.74 10.98 19.94L9.56 21.31Q7.80 22.98 7.71 20.56L7.63 18.59Q7.51 15.41 4.70 13.90L2.96 12.97Q0.83 11.82 3.10 10.98L4.95 10.30Q7.94 9.19 8.51 6.06Z" fill="#1d4ed8"/>
+                  </svg>
+                  <span className="text-2xl font-bold tracking-tight">
+                    Career<span className="text-blue-600">Star</span>
+                  </span>
+                </div>
+                <div className="mt-1 text-[13px] font-semibold uppercase tracking-widest text-foreground/70">
+                  Career viability report
+                </div>
+              </div>
+              <div className="text-right text-[11px] leading-relaxed text-foreground/60">
+                <div>{new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</div>
+                <div>
+                  {response.results.length} {response.results.length === 1 ? "career" : "careers"} rated
+                  {interests.length > 0 && <> · tailored to: {interests.join(", ")}</>}
+                </div>
+              </div>
+            </div>
+            <p className="mt-3 text-[11px] leading-relaxed text-foreground/60">
+              Each career receives a 0&ndash;100 risk-adjusted viability score &mdash; market return
+              (growth + pay) discounted by AI-disruption risk, blended with personal fit. Ranked
+              best-first. Scores are grounded estimates built on U.S. government data, not
+              predictions.
+            </p>
           </div>
 
           <div className="mb-4 flex items-center justify-between gap-3 print:hidden">
@@ -698,6 +726,20 @@ export default function CareerForm() {
               </div>
             </ResultsSection>
           )}
+
+          {/* Print-only report footer. */}
+          <div className="mt-6 hidden border-t border-foreground/20 pt-3 print:block">
+            <div className="flex items-baseline justify-between text-[10px] leading-relaxed text-foreground/55">
+              <span>
+                Data: U.S. BLS Employment Projections 2024&ndash;2034 · O*NET 29.0 · Eloundou et
+                al. 2023 · College Scorecard. Methodology, back-test, and open data:
+                main.d3ag7o87gtn2c8.amplifyapp.com/methodology
+              </span>
+              <span className="shrink-0 pl-6 font-semibold">
+                Career<span className="text-blue-600">Star</span>
+              </span>
+            </div>
+          </div>
         </div>
       )}
 

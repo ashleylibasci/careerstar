@@ -12,6 +12,13 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* Brand accent: B4 cobalt. Shifts every blue-600/700 utility one step deeper
+   so the whole site wears the brand blue without touching each class. */
+@theme {
+  --color-blue-600: #1d4ed8;
+  --color-blue-700: #1e40af;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -23,4 +30,59 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+/* ---------- Print: a designed report, not a screenshot of the page ---------- */
+
+@page {
+  size: letter;
+  margin: 16mm 15mm 18mm;
+}
+
+@media print {
+  :root {
+    /* Force the light palette — dark mode would print black pages. */
+    --background: #ffffff;
+    --foreground: #171717;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #171717 !important;
+    font-size: 10.5pt;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Report typography: tighter, denser, ink-first. */
+  main {
+    padding: 0 !important;
+  }
+
+  /* Each score card is an unbreakable block with breathing room. */
+  details[id^="card-"] {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    border: 1px solid #d4d4d8 !important;
+    box-shadow: none !important;
+    margin-bottom: 4mm;
+  }
+
+  /* Collapsed-card chrome off: no pointer affordances in ink. */
+  details[id^="card-"] summary {
+    cursor: default;
+  }
+
+  /* Links print as plain ink — a URL you can't click is noise. */
+  a {
+    text-decoration: none !important;
+    color: inherit !important;
+  }
+
+  /* Kill sticky/backdrop artifacts that some print engines mishandle. */
+  .backdrop-blur,
+  [class*="backdrop-"] {
+    backdrop-filter: none !important;
+  }
 }
