@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { ScoreResponse } from "@/lib/scorer/types";
 import { FIELDS } from "@/lib/fields";
 import ScoreCard from "./ScoreCard";
+import DownloadResultsCard from "./DownloadResultsCard";
 import RobustnessPanel from "./RobustnessPanel";
 import ModelComparison from "./ModelComparison";
 import { MODELS } from "@/lib/scorer/models";
@@ -514,6 +515,7 @@ export default function CareerForm() {
               >
                 📄 Download report
               </button>
+              <DownloadResultsCard result={response.results[0]} />
             </div>
           </div>
 
