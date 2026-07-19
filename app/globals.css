@@ -28,12 +28,32 @@
     --color-blue-600: #4f74f0;
     --color-blue-700: #3b5fe8;
   }
+
+  /* Filled controls: the bright dark-mode accent leaves white label text at
+     4.1:1 — one step deeper on the fill itself brings labels to 5.2:1 while
+     the control still clears 3:1 against the page. */
+  button[class~="bg-blue-600"],
+  a[class~="bg-blue-600"] {
+    background-color: #3b5fe8;
+  }
+  button[class~="bg-blue-600"]:hover,
+  a[class~="bg-blue-600"]:hover {
+    background-color: #2f49c4;
+  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Brand display face on page titles only (H1) — one loud voice where headlines
+   are short; section headings stay Geist so long text keeps its texture. */
+h1 {
+  font-family: "utile-display", var(--font-geist-sans), sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.02em;
 }
 
 /* ---------- Print: a designed report, not a screenshot of the page ---------- */
