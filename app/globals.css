@@ -23,6 +23,10 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    /* B4 cobalt is too deep on near-black (2.9:1) — dark mode wears its
+       brighter partner so text, stars, and buttons stay legible. */
+    --color-blue-600: #4f74f0;
+    --color-blue-700: #3b5fe8;
   }
 }
 

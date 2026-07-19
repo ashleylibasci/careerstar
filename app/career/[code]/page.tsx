@@ -12,6 +12,7 @@ import { Stars } from "@/app/components/rating-ui";
 import MoatBadge from "@/app/components/MoatBadge";
 import PrintButton from "@/app/components/PrintButton";
 import FeedbackWidget from "@/app/components/FeedbackWidget";
+import PageExplainer from "@/app/components/PageExplainer";
 import type { Occupation, ScoreResult } from "@/lib/scorer/types";
 
 const typed = data as {
@@ -164,6 +165,20 @@ export default async function CareerPage({
         <p className="mt-2 text-sm text-foreground/60">
           Typically requires {occ.education || "no formal credential"}
         </p>
+
+        <PageExplainer>
+          <p>
+            This is a research report for one career — the kind an analyst would write for a
+            stock. The rating at the top is the neutral baseline (same for everyone); below it come
+            the cases for and against, how the last official forecast for this career actually
+            aged, and what the education path costs and pays.
+          </p>
+          <p>
+            <strong>How to use it:</strong> read the bulls-vs-bears case, then hit{" "}
+            <em>Score this career</em> to weigh it against your other options with your own
+            interests factored in.
+          </p>
+        </PageExplainer>
 
         {rated && band && (
           <div className="mt-8 rounded-2xl border border-foreground/10 bg-foreground/[.02] p-5">

@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import data from "@/data/data.json";
 import backtest from "@/data/backtest.json";
+import PageExplainer from "@/app/components/PageExplainer";
 import { computeScores } from "@/lib/scorer/scorer";
 import { MODELS } from "@/lib/scorer/models";
 import type { Occupation } from "@/lib/scorer/types";
@@ -40,9 +41,9 @@ const MOAT_COUNTS = ["wide", "narrow", "none"].map((m) => ({
   n: typed.occupations.filter((o) => o.moat === m).length,
 }));
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
+function Section({ title, id, children }: { title: string; id?: string; children: React.ReactNode }) {
   return (
-    <section className="mt-10">
+    <section id={id} className="mt-10 scroll-mt-20">
       <h2 className="text-lg font-semibold tracking-tight">{title}</h2>
       <div className="mt-3 space-y-3 text-sm leading-relaxed text-foreground/75">
         {children}
@@ -67,6 +68,19 @@ export default function MethodologyPage() {
           score. The number is computed by an explicit model, <strong>not</strong> by an
           AI language model.
         </p>
+
+        <PageExplainer>
+          <p>
+            This page is the math behind every CareerStar score — the full model, its weights, the
+            data sources, and the tests it was put through, written so you can check the work
+            rather than take our word for it.
+          </p>
+          <p>
+            <strong>How to use it:</strong> skim the section headings and stop where you&rsquo;re
+            skeptical. If you only read one section, read the back-test — it shows how the model
+            fared against a real decade, including what it got wrong.
+          </p>
+        </PageExplainer>
 
         <Section title="The model">
           <p>Each occupation gets a 0–100 score from three ingredients:</p>
@@ -271,7 +285,7 @@ No moat     < 0.55      (~30%)`}
           </Section>
         )}
 
-        <Section title="The back-test: 2014 → 2024, a real decade">
+        <Section id="backtest" title="The back-test: 2014 → 2024, a real decade">
           <p>
             The strongest test we could run: score the <strong>2014 labor market</strong>{" "}with
             today&rsquo;s model (using the archived BLS 2014&ndash;24 projections vintage,

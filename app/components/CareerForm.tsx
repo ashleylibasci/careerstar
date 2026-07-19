@@ -74,6 +74,14 @@ const INTERESTS: { label: string; value: string }[] = [
   { label: "Trades", value: "trades" },
 ];
 
+// Starter chips: one tap fills the empty search box with a real career, so the
+// blank-page moment always has a concrete next step. Codes verified against data.json.
+const STARTERS: { code: string; title: string }[] = [
+  { code: "15-1252.00", title: "Software developers" },
+  { code: "29-1141.00", title: "Registered nurses" },
+  { code: "47-2111.00", title: "Electricians" },
+];
+
 // AI-adoption scenarios: the multiplier scales each career's *effective* exposure,
 // so faster adoption sinks exposed fields and lifts resilient ones — live.
 const SCENARIOS: { label: string; value: number; caption: string }[] = [
@@ -91,6 +99,9 @@ export default function CareerForm() {
   const [interests, setInterests] = useState<string[]>([]);
   const [text, setText] = useState("");
   const [showInterests, setShowInterests] = useState(false);
+  // "I don't know yet" path: opens interests with a guiding hint, so the kid
+  // with no careers in mind still has a real route to suggestions.
+  const [guided, setGuided] = useState(false);
   // Interests are collapsed by default (one clear action up top); open them once
   // the user asks, or once they exist (shared link / example / prior pick).
   const interestsOpen = showInterests || interests.length > 0 || text.trim().length > 0;
@@ -383,6 +394,37 @@ export default function CareerForm() {
             ))}
           </div>
         )}
+
+        {/* Starter chips — only in the true empty state, so the blank search box
+            always has a tappable next step. */}
+        {careers.length === 0 && fields.length === 0 && !response && !loading && (
+          <div className="mt-3 flex flex-wrap items-center gap-2">
+            <span className="text-xs font-medium text-foreground/55">Try:</span>
+            {STARTERS.map((s) => (
+              <button
+                key={s.code}
+                type="button"
+                onClick={() => {
+                  const o = occs.find((x) => x.code === s.code);
+                  setCareers((c) => [...c, { code: s.code, title: o?.title ?? s.title }]);
+                }}
+                className="rounded-full border border-foreground/15 px-3 py-1 text-xs font-medium text-foreground/70 transition hover:border-blue-500/50 hover:bg-blue-500/[.06] hover:text-foreground"
+              >
+                {s.title}
+              </button>
+            ))}
+            <button
+              type="button"
+              onClick={() => {
+                setGuided(true);
+                setShowInterests(true);
+              }}
+              className="rounded-full border border-blue-600/30 bg-blue-600/[.06] px-3 py-1 text-xs font-semibold text-blue-700 transition hover:bg-blue-600/[.12] dark:text-blue-400"
+            >
+              🤷 I don&rsquo;t know yet
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Zone 2 — interests, collapsed by default so the empty state has one clear action */}
@@ -398,9 +440,18 @@ export default function CareerForm() {
       ) : (
       <div className="mt-6 print:hidden">
         <div id="interests-label" className="block text-sm font-semibold">Your interests</div>
-        <p className="mb-2 text-xs text-foreground/55">
-          Optional — tailors the scores to you.
-        </p>
+        {guided && careers.length === 0 && fields.length === 0 && (
+          <p className="mb-2 mt-1 rounded-lg bg-blue-600/[.06] px-3 py-2 text-xs leading-relaxed text-foreground/75">
+            No problem — most people start here. Pick a few interests below, hit{" "}
+            <strong>Rate my paths</strong>, and we&rsquo;ll suggest careers that actually match
+            your profile (matched on real skills data, not vibes).
+          </p>
+        )}
+        {!(guided && careers.length === 0 && fields.length === 0) && (
+          <p className="mb-2 text-xs text-foreground/55">
+            Optional — tailors the scores to you.
+          </p>
+        )}
         <div className="flex flex-wrap gap-2" role="group" aria-labelledby="interests-label">
           {INTERESTS.map((it) => {
             const on = interests.includes(it.value);

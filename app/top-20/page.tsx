@@ -6,6 +6,7 @@ import { modelScores, modelConsensus } from "@/lib/scorer/models";
 import { percentileOf, starsFromPercentile } from "@/lib/scorer/rating";
 import { scoreBand } from "@/lib/scorer/verdict";
 import { Stars } from "@/app/components/rating-ui";
+import PageExplainer from "@/app/components/PageExplainer";
 import type { Occupation } from "@/lib/scorer/types";
 
 export const metadata: Metadata = {
@@ -71,6 +72,22 @@ export default function Top20Page() {
           skills) <em>and</em> <strong>all five rating models agree</strong> (every judge within a
           ±10 band — even the ones that disagree about everything else). Ranked by model consensus.
         </p>
+
+        <PageExplainer>
+          <p>
+            This is CareerStar&rsquo;s highest-conviction list: the 20 careers where the evidence
+            is strongest. Nobody hand-picked it — a career makes the cut only if it&rsquo;s
+            well-shielded from AI <em>and</em> five different rating models independently agree on
+            it.
+          </p>
+          <p>
+            <strong>How to use it:</strong> click any career for its full report, or head to the{" "}
+            <Link href="/" className="font-medium text-blue-600 hover:underline">home page</Link>{" "}
+            to score it against the paths you&rsquo;re actually considering. &ldquo;Consensus
+            74&nbsp;±3&rdquo; means the five models average 74 and land within about 3 points of
+            each other — the smaller the ±, the more they agree.
+          </p>
+        </PageExplainer>
 
         <ol className="mt-8 space-y-3">
           {TOP20.map((r, i) => (
