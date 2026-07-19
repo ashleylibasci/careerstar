@@ -66,7 +66,9 @@ export default function ScoreCard({
 
   // A printed report shows every career in full: expand for print, restore after.
   const openRef = useRef(open);
-  openRef.current = open;
+  useEffect(() => {
+    openRef.current = open;
+  }, [open]);
   useEffect(() => {
     const wasOpen = { current: openRef.current };
     const before = () => {
