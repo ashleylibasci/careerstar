@@ -81,9 +81,9 @@ export default async function FieldPage({ params }: { params: Promise<{ group: s
 
         <PageExplainer>
           <p>
-            This is a sector view — every {fieldName(group).toLowerCase()} career the U.S.
-            government tracks, rated on the same neutral baseline, with field-level stats up top so
-            you can size up the whole field at a glance.
+            This is a sector view — every {fieldName(group).toLowerCase()} career CareerStar
+            rates, on the same neutral baseline, with field-level stats up top so you can size up
+            the whole field at a glance.
           </p>
           <p>
             <strong>How to use it:</strong>{" "}the table is ranked best-first. Click any career for

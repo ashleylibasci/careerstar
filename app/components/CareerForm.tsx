@@ -434,7 +434,7 @@ export default function CareerForm() {
           onClick={() => setShowInterests(true)}
           className="mt-4 flex items-center gap-1.5 text-sm font-medium text-blue-600 hover:underline print:hidden"
         >
-          <span aria-hidden className="text-base leading-none">＋</span> Add your interests
+          <span aria-hidden className="text-base leading-none">＋</span> Add your interests{" "}
           <span className="font-normal text-foreground/50">(optional — tailors the scores to you)</span>
         </button>
       ) : (
@@ -444,7 +444,7 @@ export default function CareerForm() {
           <p className="mb-2 mt-1 rounded-lg bg-blue-600/[.06] px-3 py-2 text-xs leading-relaxed text-foreground/75">
             No problem — most people start here. Pick a few interests below, hit{" "}
             <strong>Rate my paths</strong>, and we&rsquo;ll suggest careers that actually match
-            your profile (matched on real skills data, not vibes).
+            your profile, matched on real skills data.
           </p>
         )}
         {!(guided && careers.length === 0 && fields.length === 0) && (

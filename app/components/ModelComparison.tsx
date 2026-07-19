@@ -114,7 +114,7 @@ export default function ModelComparison({ results }: { results: ScoreResult[] })
                   {m.name}
                 </th>
               ))}
-              <th scope="col" className="py-1.5 pl-2 text-right font-medium" title="Mean across all five models ± the spread between the highest and lowest.">
+              <th scope="col" className="py-1.5 pl-2 text-right font-medium" title="Mean across all five models, ± half the gap between the highest and lowest.">
                 Consensus
               </th>
             </tr>
@@ -150,8 +150,8 @@ export default function ModelComparison({ results }: { results: ScoreResult[] })
       </div>
       <p className="mt-1.5 text-[11px] text-foreground/55">
         {single
-          ? "Consensus = average across all five models ± the spread between the highest and lowest."
-          : "◂ marks each judge’s top pick · Consensus = average across all five ± disagreement"}
+          ? "Consensus = average across all five models, ± half the gap between the highest and lowest."
+          : "◂ marks each judge’s top pick · Consensus = average across all five, ± half the gap between highest and lowest"}
       </p>
 
       <div className="mt-3 grid gap-x-6 gap-y-1.5 border-t border-foreground/10 pt-3 sm:grid-cols-2">

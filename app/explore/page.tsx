@@ -6,7 +6,7 @@ import PageExplainer from "@/app/components/PageExplainer";
 export const metadata: Metadata = {
   title: "Explore careers — CareerStar",
   description:
-    "Browse, filter, and rank all ~730 occupations by viability, AI-resilience, growth, or pay.",
+    "Browse, filter, and rank 730 occupations by viability, AI-resilience, growth, or pay.",
 };
 
 export default async function ExplorePage({
@@ -22,16 +22,17 @@ export default async function ExplorePage({
       <div className="w-full max-w-3xl lg:max-w-5xl xl:max-w-6xl">
         <h1 className="text-3xl font-bold tracking-tight">Explore all careers</h1>
         <p className="mt-2 text-foreground/70">
-          Every occupation the U.S. government tracks, ranked by a baseline viability score
-          (before your interests are factored in). Filter, sort, and click any career for its
-          full report.
+          730 occupations from the U.S. government&rsquo;s employment projections — every one
+          with complete data — ranked by a baseline viability score (before your interests are
+          factored in). Filter, sort, and click any career for its full report.
         </p>
 
         <PageExplainer>
           <p>
-            This is the whole market: all ~730 occupations the U.S. government tracks, each with a
-            neutral baseline rating — the same score everyone sees, before any personal interests
-            are factored in.
+            This is the whole rated market: 730 occupations from the U.S. government&rsquo;s
+            employment projections (every one with complete growth, pay, and AI-exposure data),
+            each with a neutral baseline rating — the same score everyone sees, before any
+            personal interests are factored in.
           </p>
           <p>
             <strong>How to use it:</strong>{" "}sort by score, growth, or pay; filter by

@@ -85,8 +85,8 @@ export default function Top20Page() {
             <strong>How to use it:</strong>{" "}click any career for its full report, or head to the{" "}
             <Link href="/" className="font-medium text-blue-600 hover:underline">home page</Link>{" "}
             to score it against the paths you&rsquo;re actually considering. &ldquo;Consensus
-            74&nbsp;±3&rdquo; means the five models average 74 and land within about 3 points of
-            each other — the smaller the ±, the more they agree.
+            74&nbsp;±3&rdquo; means the five models average 74, each landing within about 3 points
+            of that average — the smaller the ±, the more they agree.
           </p>
         </PageExplainer>
 

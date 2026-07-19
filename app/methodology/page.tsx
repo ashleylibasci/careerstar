@@ -73,7 +73,7 @@ export default function MethodologyPage() {
           <p>
             This page is the math behind every CareerStar score — the full model, its weights, the
             data sources, and the tests it was put through, written so you can check the work
-            rather than take our word for it.
+            rather than take my word for it.
           </p>
           <p>
             <strong>How to use it:</strong>{" "}skim the section headings and stop where you&rsquo;re
@@ -94,7 +94,7 @@ export default function MethodologyPage() {
               proxy (a field projected to shrink is treated as riskier).
             </li>
             <li>
-              <strong>Fit</strong> — how well the occupation&rsquo;s real skill profile matches
+              <strong>Fit</strong>{" "}— how well the occupation&rsquo;s real skill profile matches
               your interests, measured in O*NET capability-space (see below).
             </li>
           </ul>
@@ -116,7 +116,7 @@ Score  = 100 · [ α·RAV + (1 − α)·Fit ]`}
           <p>
             Every occupation carries a real <strong>68-dimensional capability vector</strong> —
             the O*NET importance ratings for 35 <em>skills</em> (Critical Thinking, Programming,
-            Mathematics…) and 33 <em>knowledge</em> areas (Economics &amp; Accounting, Engineering,
+            Mathematics…) and 33 <em>knowledge</em>{" "}areas (Economics &amp; Accounting, Engineering,
             Medicine, Law…). Your stated interests are mapped into the same space through an
             explicit, documented lexicon, and fit is the overlap of the two.
           </p>
@@ -134,7 +134,7 @@ Score  = 100 · [ α·RAV + (1 − α)·Fit ]`}
         <Section title="The AI-moat rating">
           <p>
             Borrowed from Morningstar&rsquo;s economic moat: how <strong>defensible</strong>{" "}is a
-            career against AI pressure? It is a fixed, documented formula — not a vibe:
+            career against AI pressure? It is a fixed, documented formula — not a hand-wave:
           </p>
           <pre className="overflow-x-auto rounded-xl border border-foreground/10 bg-foreground/[.03] p-4 text-xs leading-relaxed">
 {`defensibility = 0.6·(1 − aiExposure) + 0.4·distinctiveness
@@ -145,12 +145,12 @@ Narrow moat ≥ 0.55      (~50%)
 No moat     < 0.55      (~30%)`}
           </pre>
           <p>
-            Low AI exposure is shelter; <em>distinctiveness</em> asks whether the career&rsquo;s
+            Low AI exposure is shelter; <em>distinctiveness</em>{" "}asks whether the career&rsquo;s
             defining capabilities are rare in the labor market or ones every job shares. The
             thresholds are calibrated once on the full 730-occupation distribution to a
             Morningstar-like shape and then fixed. The model makes uncomfortable calls — it gives
             software developers <strong>no moat</strong> (extreme LLM exposure) while their
-            risk-adjusted <em>score</em> stays high — and we ship those calls rather than tune them
+            risk-adjusted <em>score</em>{" "}stays high — and I ship those calls rather than tune them
             away. For 25 newer SOC codes O*NET hasn&rsquo;t yet rated (software developers among
             them), capability vectors are <strong>estimated from their SOC-group siblings</strong>{" "}
             and flagged as estimates in the data.
@@ -249,7 +249,7 @@ No moat     < 0.55      (~30%)`}
         <Section title="Data sources">
           <ul className="list-disc space-y-1 pl-5">
             <li>
-              <strong>Growth &amp; pay</strong> — U.S. Bureau of Labor Statistics,
+              <strong>Growth &amp; pay</strong>{" "}— U.S. Bureau of Labor Statistics,
               Employment Projections 2024&ndash;2034 (public domain) — ~730 occupations
               across every field.
             </li>
@@ -279,15 +279,15 @@ No moat     < 0.55      (~30%)`}
               So exposure carries information growth doesn&rsquo;t, which is exactly why a
               risk-<em>adjusted</em>{" "}score beats ranking on growth alone — and why
               &ldquo;exposure&nbsp;≠&nbsp;displacement&rdquo; is literally true here, not just a
-              slogan. (A true out-of-sample back-test against an archived BLS vintage is planned
-              future work; the code has a hook for a dropped-in historical dataset.)
+              slogan. (And this isn&rsquo;t left as an assertion — the model was run against a real
+              decade of history. See the back-test below.)
             </p>
           </Section>
         )}
 
         <Section id="backtest" title="The back-test: 2014 → 2024, a real decade">
           <p>
-            The strongest test we could run: score the <strong>2014 labor market</strong>{" "}with
+            The strongest test I could run: score the <strong>2014 labor market</strong>{" "}with
             today&rsquo;s model (using the archived BLS 2014&ndash;24 projections vintage,
             recovered from the Internet Archive) and compare against{" "}
             <strong>what actually happened by 2024</strong> — {backtest.meta.joined} occupations
@@ -356,7 +356,7 @@ No moat     < 0.55      (~30%)`}
             </a>{" "}
             — all {typed.occupations.length} occupations with the default-weight score, stars,
             percentile, AI-moat, all five model scores, consensus, growth, pay, exposure, and a
-            flag for the {"≈25"} careers whose capability vectors are estimated. If a number
+            flag for the 25 careers whose capability vectors are estimated. If a number
             looks wrong, the formulas are on this page and the code is{" "}
             <a
               href="https://github.com/ashleylibasci/careerstar"

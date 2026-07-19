@@ -78,7 +78,7 @@ const DECISIONS: { id: string; rule: string; prevents: string }[] = [
   { id: "AD-4", rule: "The LLM explains, never decides", prevents: "the thin-wrapper failure" },
   { id: "AD-5", rule: "Free-text is data, not instructions", prevents: "prompt injection + cost abuse" },
   { id: "AD-6", rule: "Stateless — no accounts, no DB", prevents: "unneeded data-governance surface" },
-  { id: "AD-7", rule: "AWS Amplify + Route 53, auto HTTPS", prevents: "ops sprawl + insecure config" },
+  { id: "AD-7", rule: "AWS Amplify hosting, auto HTTPS", prevents: "ops sprawl + insecure config" },
 ];
 
 export default function ArchitecturePage() {
@@ -144,7 +144,7 @@ export default function ArchitecturePage() {
           <Zone label="Deployment" dotClass="bg-blue-500">
             <Node title="AWS Amplify" desc="SSR · CI/CD" />
             <Arrow />
-            <Node title="Route 53" desc="custom domain" />
+            <Node title="Route 53" desc="custom domain — planned" />
             <Arrow />
             <Node title="Auto HTTPS" desc="managed TLS" />
             <Arrow />
@@ -174,7 +174,7 @@ export default function ArchitecturePage() {
           <span>Next.js 16 · TypeScript</span>
           <span>Claude · claude-haiku-4-5</span>
           <span>Data: BLS · O*NET · Eloundou 2023</span>
-          <span>Deploy: AWS Amplify + Route 53</span>
+          <span>Deploy: AWS Amplify</span>
         </div>
       </div>
     </main>

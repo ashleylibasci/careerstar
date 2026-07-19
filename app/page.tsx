@@ -35,10 +35,10 @@ export default function Home() {
             <span aria-hidden className="text-base leading-snug">📜</span>
             <span className="text-xs leading-relaxed text-foreground/75">
               <strong className="font-semibold text-foreground">Tested against a real decade, not vibes.</strong>{" "}
-              We scored 2014&rsquo;s careers with 2014 data, then checked what actually happened by
+              I scored 2014&rsquo;s careers with 2014 data, then checked what actually happened by
               2024: rank correlation ρ&nbsp;=&nbsp;{METRICS.spearmanScoreVsRealized}, and{" "}
               {METRICS.declinerHitRatePct}% of the careers that really declined were flagged
-              (33% by chance). Where it missed, we say so.{" "}
+              (33% by chance). Where it missed, I say so.{" "}
               <span className="font-medium text-blue-600">See the back-test →</span>
             </span>
           </Link>

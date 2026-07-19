@@ -169,7 +169,7 @@ Score  = 100 · [ α·RAV + (1 − α)·Fit ]`}
           <p>
             <strong>Robustness.</strong> The weights are a modeling choice, so the fair question is
             whether the answer survives disagreement about them. Every comparison is re-scored across{" "}
-            <strong>729 weightings</strong> — every weight moved ±20% on a fixed grid — and the app
+            <strong>729 weightings</strong>{" "}— every weight moved ±20% on a fixed grid — and the app
             reports how often each career keeps its rank, flagging a &ldquo;close call&rdquo; instead
             of selling a shaky #1 as certain.
           </p>
@@ -189,7 +189,7 @@ Score  = 100 · [ α·RAV + (1 − α)·Fit ]`}
           <p>
             The deepest critique of any scoring app is: <em>who says your formula is right?</em> My
             answer is to stop pretending there&rsquo;s one formula. Every comparison is also scored
-            under <strong>four rival models</strong> — a growth maximalist that ignores AI risk
+            under <strong>four rival models</strong>{" "}— a growth maximalist that ignores AI risk
             entirely, a moat-first defensive model, a Sharpe-style efficiency ratio, and a naive
             equal-weight control — and the app shows the spread. When all five agree, the ranking
             isn&rsquo;t an artifact of my assumptions. When they crown different winners, the app
@@ -205,7 +205,7 @@ Score  = 100 · [ α·RAV + (1 − α)·Fit ]`}
         <Section kicker="How it was built" title="Solo, one summer, AI-native, on AWS">
           <div className="flex flex-wrap gap-2">
             {[
-              "30 unit tests",
+              "32 unit tests",
               "CI on every push",
               "deterministic scorer",
               "stateless — no DB, nothing stored",
