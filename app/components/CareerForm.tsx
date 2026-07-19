@@ -500,7 +500,10 @@ export default function CareerForm() {
                   <svg width="26" height="26" viewBox="0 0 24 25" aria-hidden>
                     <path d="M8.86 4.12Q9.29 1.73 10.79 3.64L12.01 5.19Q13.99 7.69 17.14 7.26L19.09 6.99Q21.50 6.66 20.15 8.68L19.06 10.32Q17.29 12.97 18.67 15.84L19.53 17.61Q20.58 19.80 18.24 19.14L16.35 18.61Q13.28 17.74 10.98 19.94L9.56 21.31Q7.80 22.98 7.71 20.56L7.63 18.59Q7.51 15.41 4.70 13.90L2.96 12.97Q0.83 11.82 3.10 10.98L4.95 10.30Q7.94 9.19 8.51 6.06Z" fill="#1d4ed8"/>
                   </svg>
-                  <span className="text-2xl font-bold tracking-tight">
+                  <span
+                    className="text-2xl font-black tracking-tight"
+                    style={{ fontFamily: '"utile-display", var(--font-geist-sans), sans-serif' }}
+                  >
                     Career<span className="text-blue-600">Star</span>
                   </span>
                 </div>
@@ -735,7 +738,10 @@ export default function CareerForm() {
                 al. 2023 · College Scorecard. Methodology, back-test, and open data:
                 main.d3ag7o87gtn2c8.amplifyapp.com/methodology
               </span>
-              <span className="shrink-0 pl-6 font-semibold">
+              <span
+                className="shrink-0 pl-6 font-black"
+                style={{ fontFamily: '"utile-display", var(--font-geist-sans), sans-serif' }}
+              >
                 Career<span className="text-blue-600">Star</span>
               </span>
             </div>

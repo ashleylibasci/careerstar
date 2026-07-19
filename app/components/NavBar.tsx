@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { BrandWordmark } from "./Brand";
 
 // Site nav: a compact pill bar on desktop; a logo + hamburger dropdown on mobile
 // so the sticky header stays ~50px instead of wrapping to a tall block.
@@ -35,10 +36,9 @@ export default function NavBar() {
         <Link
           href="/"
           aria-label="CareerStar home"
-          className="mr-auto flex items-center gap-1.5 text-[17px] font-bold tracking-tight text-foreground"
+          className="mr-auto flex items-center text-foreground"
         >
-          <span aria-hidden="true" className="text-blue-600">★</span>
-          CareerStar
+          <BrandWordmark size={19} />
         </Link>
 
         {/* Desktop links */}

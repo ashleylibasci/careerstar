@@ -66,7 +66,7 @@ export default async function OgImage({ params }: { params: Promise<{ code: stri
       >
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
           <svg width="44" height="44" viewBox="0 0 20 20">
-            <path d={STAR_PATH} fill="#2563eb" />
+            <path d={STAR_PATH} fill="#1d4ed8" />
           </svg>
           <div style={{ fontSize: 40, fontWeight: 700, color: "#ffffff" }}>CareerStar</div>
           <div style={{ fontSize: 26, color: "#64748b", marginLeft: 8 }}>research report</div>

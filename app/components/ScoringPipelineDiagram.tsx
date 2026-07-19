@@ -3,7 +3,7 @@
 // the plain-English "why" and never computes the number. Theme-aware — text and
 // muted strokes use currentColor (= --foreground); blue-600 is the accent.
 export default function ScoringPipelineDiagram({ className = "" }: { className?: string }) {
-  const BLUE = "#2563eb";
+  const BLUE = "#1d4ed8";
   return (
     <svg
       viewBox="0 0 880 470"
