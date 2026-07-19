@@ -56,6 +56,19 @@ h1 {
   letter-spacing: -0.02em;
 }
 
+/* 404 sky: the long exposure keeps exposing — the trails circle Polaris
+   counter-clockwise, one revolution every 4 minutes. Scale keeps the frame
+   covered while rotating; motion-safe gating leaves reduced-motion users a
+   still image. */
+@keyframes sky-spin {
+  from {
+    transform: scale(1.45) rotate(0deg);
+  }
+  to {
+    transform: scale(1.45) rotate(-360deg);
+  }
+}
+
 /* ---------- Print: a designed report, not a screenshot of the page ---------- */
 
 @page {

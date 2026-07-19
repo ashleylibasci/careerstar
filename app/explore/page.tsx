@@ -12,10 +12,11 @@ export const metadata: Metadata = {
 export default async function ExplorePage({
   searchParams,
 }: {
-  searchParams: Promise<{ moat?: string }>;
+  searchParams: Promise<{ moat?: string; q?: string }>;
 }) {
-  const { moat } = await searchParams;
+  const { moat, q } = await searchParams;
   const initialMoat = moat && ["wide", "narrow", "none"].includes(moat) ? moat : "all";
+  const initialSearch = (q ?? "").slice(0, 80);
   return (
     <main className="flex flex-1 flex-col items-center px-6 py-12 sm:py-16">
       <div className="w-full max-w-3xl lg:max-w-5xl xl:max-w-6xl">
@@ -41,7 +42,7 @@ export default async function ExplorePage({
           </p>
         </PageExplainer>
         <div className="mt-8">
-          <ExploreClient initialMoat={initialMoat} />
+          <ExploreClient initialMoat={initialMoat} initialSearch={initialSearch} />
         </div>
       </div>
     </main>

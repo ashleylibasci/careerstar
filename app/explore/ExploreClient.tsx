@@ -39,13 +39,20 @@ const SORTS: { key: keyof Row; label: string }[] = [
   { key: "roi", label: "Best ROI (pay ÷ schooling)" },
 ];
 
-export default function ExploreClient({ initialMoat = "all" }: { initialMoat?: string }) {
+export default function ExploreClient({
+  initialMoat = "all",
+  initialSearch = "",
+}: {
+  initialMoat?: string;
+  initialSearch?: string;
+}) {
   const [rows, setRows] = useState<Row[]>([]);
   const [sortKey, setSortKey] = useState<keyof Row>("score");
   const [field, setField] = useState("all");
   const [edu, setEdu] = useState("all");
   const [minPay, setMinPay] = useState(0);
-  const [search, setSearch] = useState("");
+  // Deep-linkable (the 404 page's recovery search lands on /explore?q=…).
+  const [search, setSearch] = useState(initialSearch);
   // Deep-linkable (the diversification warning links to /explore?moat=wide).
   const [moatF, setMoatF] = useState(initialMoat);
 
