@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import data from "@/data/data.json";
 import backtest from "@/data/backtest.json";
 import ScoringPipelineDiagram from "@/app/components/ScoringPipelineDiagram";
+import PageExplainer from "@/app/components/PageExplainer";
 
 export const metadata: Metadata = {
   title: "Case study — how CareerStar was built",
@@ -53,11 +54,24 @@ export default function CaseStudyPage() {
           </a>
         </p>
         <p className="mt-4 text-base leading-relaxed text-foreground/70">
-          CareerStar scores the <strong>viability</strong> of a career in an AI-shaped economy as a
+          CareerStar scores the <strong>viability</strong>{" "}of a career in an AI-shaped economy as a
           single 0–100 <em>risk-adjusted</em>{" "}number — the way a portfolio weighs an asset&rsquo;s
           return against its risk. It&rsquo;s a solo summer project, built with an AI-native workflow
           and deployed on AWS. This page is the honest story of how it works and why I trust it.
         </p>
+
+        <PageExplainer>
+          <p>
+            This is the story behind the product — how the model was designed, the bug I caught in
+            my own methodology (and chose to disclose rather than hide), and the evidence that the
+            scores hold up. It&rsquo;s written for anyone deciding whether to trust the site,
+            including recruiters kicking the tires.
+          </p>
+          <p>
+            <strong>How to use it:</strong>{" "}read top to bottom like an essay — or jump straight to
+            the pipeline diagram if you just want to see how a number gets made.
+          </p>
+        </PageExplainer>
 
         <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
           <Stat big={meta.occupationCount.toLocaleString()} label="occupations, real BLS data" />
@@ -139,7 +153,7 @@ Score  = 100 · [ α·RAV + (1 − α)·Fit ]`}
         <Section kicker="The receipt" title="Back-tested against a real decade">
           <p>
             The strongest evidence isn&rsquo;t a formula — it&rsquo;s history. I recovered the{" "}
-            <strong>2014&ndash;24 BLS projections vintage</strong> from the Internet Archive,
+            <strong>2014&ndash;24 BLS projections vintage</strong>{" "}from the Internet Archive,
             scored the 2014 labor market with today&rsquo;s model, and compared against what
             actually happened by 2024 — <strong>647 occupations across a real decade</strong>. The
             score tracked reality (rank correlation ρ&nbsp;=&nbsp;0.39; it flagged 48% of the
@@ -207,7 +221,7 @@ Score  = 100 · [ α·RAV + (1 − α)·Fit ]`}
             <li><strong>One person</strong>, one summer — from brief to PRD to architecture to build, using a structured AI-native (BMAD) workflow.</li>
             <li><strong>Real public data</strong>: U.S. BLS Employment Projections, O*NET 29.0 (skills + knowledge), Eloundou et al. AI-exposure, and College Scorecard for the education-ROI layer.</li>
             <li><strong>Deterministic &amp; stateless</strong>: no database, no accounts, no stored input — the whole model is a committed data file + pure functions.</li>
-            <li><strong>Deployed on AWS Amplify</strong> with CI/CD, HTTPS, security headers, rate limiting, and prompt-injection-resistant LLM use.</li>
+            <li><strong>Deployed on AWS Amplify</strong>{" "}with CI/CD, HTTPS, security headers, rate limiting, and prompt-injection-resistant LLM use.</li>
           </ul>
         </Section>
 

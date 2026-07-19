@@ -50,7 +50,7 @@ export default function Home() {
               by how exposed its work is to AI, blended with how well it fits you.
             </p>
             <p>
-              <strong>How to use it:</strong> search for the careers (or whole fields) you&rsquo;re
+              <strong>How to use it:</strong>{" "}search for the careers (or whole fields) you&rsquo;re
               weighing, optionally add your interests, and hit <em>Rate my paths</em>. You&rsquo;ll
               get a ranked comparison with the reasoning shown — not just a number. Not sure where
               to start? Tap one of the examples under the search box.

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import PageExplainer from "@/app/components/PageExplainer";
 
 export const metadata: Metadata = {
   title: "How it's built — CareerStar",
@@ -100,6 +101,19 @@ export default function ArchitecturePage() {
             core. An LLM explains the score; it never computes it. Free-text is treated
             as data, not instructions. Stateless, no database, deployed on AWS.
           </p>
+
+          <PageExplainer>
+            <p>
+              This page is the engineering view: how the software is put together — the offline
+              data pipeline, the deterministic scorer, where the LLM is (and isn&rsquo;t) allowed
+              to act, and the design rules that keep it defensible.
+            </p>
+            <p>
+              <strong>How to use it:</strong>{" "}follow the diagram left to right to trace how data
+              becomes a score, then skim the numbered design decisions below it — each one names
+              the failure it prevents.
+            </p>
+          </PageExplainer>
         </header>
 
         <div className="mt-8 space-y-4">

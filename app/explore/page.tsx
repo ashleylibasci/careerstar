@@ -33,10 +33,10 @@ export default async function ExplorePage({
             are factored in.
           </p>
           <p>
-            <strong>How to use it:</strong> sort by score, growth, or pay; filter by
+            <strong>How to use it:</strong>{" "}sort by score, growth, or pay; filter by
             &ldquo;moat&rdquo; (how shielded a career is from AI); and click any row for the full
             report. If you want scores tailored to <em>you</em>, take your shortlist to the{" "}
-            <Link href="/" className="font-medium text-blue-600 hover:underline">home page</Link> and
+            <Link href="/" className="font-medium text-blue-600 hover:underline">home page</Link>{" "}and
             rate it there.
           </p>
         </PageExplainer>

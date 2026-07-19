@@ -6,6 +6,7 @@ import { FIELDS, fieldName } from "@/lib/fields";
 import { computeScores } from "@/lib/scorer/scorer";
 import { percentileOf, starsFromPercentile } from "@/lib/scorer/rating";
 import { scoreBand } from "@/lib/scorer/verdict";
+import PageExplainer from "@/app/components/PageExplainer";
 import type { Occupation } from "@/lib/scorer/types";
 
 // Sector page — Morningstar's sector view, for career fields. Every occupation
@@ -77,6 +78,19 @@ export default async function FieldPage({ params }: { params: Promise<{ group: s
         </Link>
         <p className="mt-4 text-sm font-medium text-foreground/55">Field</p>
         <h1 className="mt-1 text-3xl font-bold tracking-tight">{fieldName(group)}</h1>
+
+        <PageExplainer>
+          <p>
+            This is a sector view — every {fieldName(group).toLowerCase()} career the U.S.
+            government tracks, rated on the same neutral baseline, with field-level stats up top so
+            you can size up the whole field at a glance.
+          </p>
+          <p>
+            <strong>How to use it:</strong>{" "}the table is ranked best-first. Click any career for
+            its full report, and watch the moat column — 🏰 wide means well-shielded from AI,
+            &mdash; means broadly exposed.
+          </p>
+        </PageExplainer>
 
         <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
           <div className="rounded-2xl border border-foreground/10 p-4">

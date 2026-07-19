@@ -174,8 +174,8 @@ export default async function CareerPage({
             aged, and what the education path costs and pays.
           </p>
           <p>
-            <strong>How to use it:</strong> read the bulls-vs-bears case, then hit{" "}
-            <em>Score this career</em> to weigh it against your other options with your own
+            <strong>How to use it:</strong>{" "}read the bulls-vs-bears case, then hit{" "}
+            <em>Score this career</em>{" "}to weigh it against your other options with your own
             interests factored in.
           </p>
         </PageExplainer>
@@ -229,6 +229,24 @@ export default async function CareerPage({
                     : "None = broadly exposed — many of its tasks are automatable and its skills are widely shared. (Exposure ≠ job loss; see the bears below.)"}
               </p>
             )}
+
+            <p className="mt-2 text-xs leading-relaxed text-foreground/55">
+              <strong>The small grid</strong>{" "}is a style box (borrowed from Morningstar&rsquo;s
+              fund reports): the blue square places this career on reward (top row = high) versus
+              risk (left column = low), against all {OCCUPATIONS.length} careers.
+              {uncertainty && (
+                <>
+                  {" "}
+                  <strong>{uncertainty} uncertainty</strong>{" "}means the score leans{" "}
+                  {uncertainty === "High"
+                    ? "heavily on forward-looking bets (mostly AI exposure) that history can't confirm yet"
+                    : uncertainty === "Medium"
+                      ? "partly on forward-looking bets like AI exposure, so treat the exact number loosely"
+                      : "mostly on measured data (growth, pay) rather than forward-looking bets, so it's comparatively solid"}
+                  .
+                </>
+              )}
+            </p>
 
             {bb && (
               <div className="mt-4 grid gap-3 sm:grid-cols-2">

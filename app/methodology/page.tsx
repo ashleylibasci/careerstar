@@ -65,7 +65,7 @@ export default function MethodologyPage() {
           CareerStar treats each career like a financial asset — weighing expected
           return against risk — and blends the result with how well the path fits you.
           Everything below is deterministic: the same inputs always produce the same
-          score. The number is computed by an explicit model, <strong>not</strong> by an
+          score. The number is computed by an explicit model, <strong>not</strong>{" "}by an
           AI language model.
         </p>
 
@@ -76,7 +76,7 @@ export default function MethodologyPage() {
             rather than take our word for it.
           </p>
           <p>
-            <strong>How to use it:</strong> skim the section headings and stop where you&rsquo;re
+            <strong>How to use it:</strong>{" "}skim the section headings and stop where you&rsquo;re
             skeptical. If you only read one section, read the back-test — it shows how the model
             fared against a real decade, including what it got wrong.
           </p>
@@ -133,7 +133,7 @@ Score  = 100 · [ α·RAV + (1 − α)·Fit ]`}
 
         <Section title="The AI-moat rating">
           <p>
-            Borrowed from Morningstar&rsquo;s economic moat: how <strong>defensible</strong> is a
+            Borrowed from Morningstar&rsquo;s economic moat: how <strong>defensible</strong>{" "}is a
             career against AI pressure? It is a fixed, documented formula — not a vibe:
           </p>
           <pre className="overflow-x-auto rounded-xl border border-foreground/10 bg-foreground/[.03] p-4 text-xs leading-relaxed">

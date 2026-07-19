@@ -7,6 +7,7 @@ import { percentileOf, starsFromPercentile } from "@/lib/scorer/rating";
 import { scoreBand } from "@/lib/scorer/verdict";
 import { Stars } from "@/app/components/rating-ui";
 import PageExplainer from "@/app/components/PageExplainer";
+import { TiltedStar } from "@/app/components/Brand";
 import type { Occupation } from "@/lib/scorer/types";
 
 export const metadata: Metadata = {
@@ -61,12 +62,12 @@ export default function Top20Page() {
   return (
     <main className="flex flex-1 flex-col items-center px-6 py-16 sm:py-24">
       <article className="w-full max-w-2xl lg:max-w-3xl">
-        <div className="text-xs font-semibold uppercase tracking-widest text-blue-600">
-          The flagship list
+        <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-blue-600">
+          <TiltedStar size={13} /> The flagship list
         </div>
         <h1 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">The CareerStar 20</h1>
         <p className="mt-3 text-foreground/70">
-          The careers this system has the <strong>most conviction</strong> in — no editor, pure
+          The careers this system has the <strong>most conviction</strong>{" "}in — no editor, pure
           derivation. A career makes this list only if it has a{" "}
           <strong>🏰 wide AI-moat</strong> (well-shielded from AI: few automatable tasks, rare
           skills) <em>and</em> <strong>all five rating models agree</strong> (every judge within a
@@ -77,11 +78,11 @@ export default function Top20Page() {
           <p>
             This is CareerStar&rsquo;s highest-conviction list: the 20 careers where the evidence
             is strongest. Nobody hand-picked it — a career makes the cut only if it&rsquo;s
-            well-shielded from AI <em>and</em> five different rating models independently agree on
+            well-shielded from AI <em>and</em>{" "}five different rating models independently agree on
             it.
           </p>
           <p>
-            <strong>How to use it:</strong> click any career for its full report, or head to the{" "}
+            <strong>How to use it:</strong>{" "}click any career for its full report, or head to the{" "}
             <Link href="/" className="font-medium text-blue-600 hover:underline">home page</Link>{" "}
             to score it against the paths you&rsquo;re actually considering. &ldquo;Consensus
             74&nbsp;±3&rdquo; means the five models average 74 and land within about 3 points of
