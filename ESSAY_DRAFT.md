@@ -4,6 +4,12 @@
 the bottom. Target length as-is: ~800 words (LinkedIn article / personal post / Show HN link
 text).*
 
+*Voice-pass queries from editorial review (resolve, then delete): (1) "class of 2028" in the
+sign-off — rising sophomore in 2026 usually means 2029; recruiters will check this against
+your resume. (2) Opening "I'm a CS major" vs the "Math + CS" sign-off — the math half is what
+makes the quant model credible. (3) The double em-dash interruption in "Not 'is this job
+safe' — that's the wrong question — but…" forces a re-read; keep if intentional.*
+
 ---
 
 I'm a CS major, and like every CS major right now, I've had the 2 a.m. thought: *is AI going
@@ -18,7 +24,7 @@ good risk-adjusted bet?"**
 The idea is simple finance: a career, like an asset, has expected **return** (projected
 growth and pay, from real Bureau of Labor Statistics data) and **risk** (AI exposure from
 published research, plus volatility). A field can be heavily exposed to AI and *still be
-worth pursuing* if the growth, pay, and fit are strong enough — the same way a risky stock
+worth pursuing* if the growth, pay, and fit (how well it matches you) are strong enough — the same way a risky stock
 can still belong in your portfolio. Every career gets a 0–100 risk-adjusted score, a star
 rating on a forced curve (5★ = top 10% of all 730 occupations), and a Morningstar-style
 "moat" — how *defensible* the career is against AI: few automatable tasks, built on skills
@@ -62,7 +68,7 @@ crash. A back-test with no misses is marketing.
 Everything is open: the methodology with every formula, all 730 ratings as a downloadable
 CSV, and the code on GitHub. If a number looks wrong, check my math — that's the point.
 
-**→ careerstar: https://main.d3ag7o87gtn2c8.amplifyapp.com** (try your own path — it'll show
+**→ CareerStar: https://main.d3ag7o87gtn2c8.amplifyapp.com** (try your own path — it'll show
 you the bulls, the bears, and how five different models see it)
 
 *Built solo in one summer — Math + CS @ UIUC, class of 2028.*
