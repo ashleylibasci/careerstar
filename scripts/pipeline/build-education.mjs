@@ -70,21 +70,25 @@ for (const [soc, cips] of Object.entries(socToCip)) {
   }
 }
 
-// --- 1. institutions: keep selective 4-year schools (SAT_AVG present) ---
+// --- 1. institutions: keep every school with a reported admission rate ---
+// Selectivity is judged later, per occupation, by actual admit rate over the
+// FULL candidate pool. (The old SAT_AVG-present proxy silently excluded
+// test-optional/test-blind elites — MIT, Stanford, Berkeley — and produced
+// visibly wrong "selective schools" lists.)
 const school = new Map(); // unitid -> {name,state,cost,earn10,admRate,satAvg}
 await eachRow(join(SRC, "Most-Recent-Cohorts-Institution.csv"), (c, idx) => {
-  const sat = num(c[idx.SAT_AVG]);
-  if (sat === null) return; // selective 4-year proxy
+  const admRate = num(c[idx.ADM_RATE]);
+  if (admRate === null) return; // open-admission / non-reporting schools can't rank on selectivity
   school.set(c[idx.UNITID], {
     name: c[idx.INSTNM],
     state: c[idx.STABBR],
     cost: num(c[idx.COSTT4_A]),
     earn10: num(c[idx.MD_EARN_WNE_P10]),
-    admRate: num(c[idx.ADM_RATE]),
-    satAvg: sat,
+    admRate,
+    satAvg: num(c[idx.SAT_AVG]),
   });
 });
-console.log(`Selective 4-yr schools: ${school.size}`);
+console.log(`Schools with reported admit rate: ${school.size}`);
 
 // --- 2. field of study: bachelor's programs -> accumulate per SOC ---
 const acc = new Map(); // soc -> {earn:[], debt:[], majors:Set, unitids:Set, programs:n}
@@ -100,14 +104,14 @@ await eachRow(join(SRC, "Most-Recent-Cohorts-Field-of-Study.csv"), (c, idx) => {
   const earn = num(c[idx.EARN_MDN_HI_1YR]);
   const debt = num(c[idx.DEBT_ALL_STGP_ANY_MDN]);
   const unitid = c[idx.UNITID];
-  const selective = school.has(unitid);
+  const known = school.has(unitid);
   for (const soc of socs) {
     const a = bump(soc);
     a.programs++;
     if (earn !== null) a.earn.push(earn);
     if (debt !== null) a.debt.push(debt);
     if (cipTitles[key]) a.majors.add(cleanMajor(cipTitles[key]));
-    if (selective && a.unitids.size < 60) a.unitids.add(unitid);
+    if (known) a.unitids.add(unitid); // full pool — ranked by admit rate at emit time
   }
 });
 
@@ -117,8 +121,8 @@ for (const [soc, a] of acc) {
   if (a.earn.length === 0) continue;
   const schools = [...a.unitids]
     .map((u) => ({ unitid: u, ...school.get(u) }))
-    .filter((s) => s.earn10 !== null)
-    .sort((x, y) => (x.admRate ?? 1) - (y.admRate ?? 1) || (y.satAvg ?? 0) - (x.satAvg ?? 0))
+    .filter((s) => s.earn10 !== null && s.admRate > 0.01) // ≤1% reported = Scorecard data artifact, not selectivity
+    .sort((x, y) => x.admRate - y.admRate || (y.earn10 ?? 0) - (x.earn10 ?? 0))
     .slice(0, 6)
     .map((s) => ({ name: s.name, state: s.state, cost: s.cost, earn10: s.earn10, admRate: s.admRate }));
   education[soc] = {
@@ -134,7 +138,7 @@ const out = {
   meta: {
     generated: GENERATED,
     socCount: Object.keys(education).length,
-    note: "Per-occupation education ROI from College Scorecard (bachelor's programs), joined by the NCES CIP2020->SOC2018 crosswalk. earn1yr/debt are medians across feeder majors; schools are selective institutions offering them.",
+    note: "Per-occupation education ROI from College Scorecard (bachelor's programs), joined by the NCES CIP2020->SOC2018 crosswalk. earn1yr/debt are medians across feeder majors; schools are the most selective institutions offering them, ranked by reported admission rate over the full pool.",
     sources: {
       earnings: { name: "U.S. Dept. of Education, College Scorecard (Field of Study + Institution, most recent)", license: "Public domain" },
       crosswalk: { name: "NCES CIP 2020 → SOC 2018 Crosswalk", url: "https://nces.ed.gov/ipeds/cipcode", license: "Public domain" },

@@ -36,7 +36,12 @@ export async function explainResults(
   interests: string[],
 ): Promise<Map<string, string>> {
   const apiKey = process.env.ANTHROPIC_API_KEY;
-  if (!apiKey || results.length === 0) return new Map();
+  if (results.length === 0) return new Map();
+  if (!apiKey) {
+    // Health signal (CloudWatch): the graceful fallback must never be silent.
+    console.warn("[explain] ANTHROPIC_API_KEY not set — serving deterministic fallback notes");
+    return new Map();
+  }
 
   // Whitelist: only documented interest tags survive to the prompt.
   const safeInterests = interests.filter((i) => ALLOWED_INTERESTS.has(i.toLowerCase().trim()));
@@ -83,7 +88,9 @@ export async function explainResults(
       if (typeof s === "string" && s.trim()) out.set(r.code, s.trim());
     }
     return out;
-  } catch {
-    return new Map(); // graceful fallback — never break on the LLM
+  } catch (err) {
+    // Graceful fallback — never break on the LLM — but leave a trace in the logs.
+    console.error("[explain] LLM call failed, serving fallback notes:", err);
+    return new Map();
   }
 }

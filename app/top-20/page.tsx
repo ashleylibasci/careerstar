@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   title: "The CareerStar 20 — highest-conviction careers",
   description:
     "The 20 careers CareerStar has the most conviction in: wide AI-moat, all five rating models in agreement, ranked by model consensus.",
+  alternates: { canonical: "/top-20" },
 };
 
 // The flagship editorial list — but purely derived, no editor. A career makes

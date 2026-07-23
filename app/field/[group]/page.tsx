@@ -41,7 +41,11 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ group: string }> }): Promise<Metadata> {
   const { group } = await params;
-  return { title: `${fieldName(group)} careers — CareerStar`, description: `AI-viability ratings for every ${fieldName(group)} career.` };
+  return {
+    title: `${fieldName(group)} careers — CareerStar`,
+    description: `AI-viability ratings for every ${fieldName(group)} career.`,
+    alternates: { canonical: `/field/${group}` },
+  };
 }
 
 export default async function FieldPage({ params }: { params: Promise<{ group: string }> }) {

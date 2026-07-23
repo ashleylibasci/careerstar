@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "Case study — how CareerStar was built",
   description:
     "The making of CareerStar: a data-grounded, risk-adjusted career-viability model — the design, the honest bug I caught in my own methodology, and the proof it holds up.",
+  alternates: { canonical: "/case-study" },
 };
 
 const meta = (data as {
@@ -158,7 +159,7 @@ Score  = 100 · [ α·RAV + (1 − α)·Fit ]`}
             actually happened by 2024 — <strong>647 occupations across a real decade</strong>. The
             score tracked reality (rank correlation ρ&nbsp;=&nbsp;0.39; it flagged 48% of the
             careers that actually declined vs a 33% base rate). And the honest part: the AI-risk
-            adjustment added <em>nothing</em> for that decade (exposure ρ&nbsp;≈&nbsp;0.1) —
+            adjustment added <em>nothing</em>{" "}for that decade (exposure ρ&nbsp;≈&nbsp;0.1) —
             exactly as it should, because 2014&ndash;24 was a pre-LLM decade and exposure is a
             forward-looking bet. The misses are published by name, including the oil-crash
             casualties no occupation model catches.
@@ -180,14 +181,14 @@ Score  = 100 · [ α·RAV + (1 − α)·Fit ]`}
             {meta.validation.exposureGrowthSpearman}; exposure-quartile growth is flat —{" "}
             {meta.validation.exposureQuartileGrowthPct.map((g, i) => `Q${i + 1} ${g}%`).join(", ")}).
             So the risk axis carries information growth doesn&rsquo;t — which is exactly why a
-            risk-<em>adjusted</em> score beats ranking on growth alone, and why
+            risk-<em>adjusted</em>{" "}score beats ranking on growth alone, and why
             &ldquo;exposure&nbsp;≠&nbsp;displacement&rdquo; is literally true in the data.
           </p>
         </Section>
 
         <Section kicker="Model risk" title="Five models, not one — because a formula is an opinion">
           <p>
-            The deepest critique of any scoring app is: <em>who says your formula is right?</em> My
+            The deepest critique of any scoring app is: <em>who says your formula is right?</em>{" "}My
             answer is to stop pretending there&rsquo;s one formula. Every comparison is also scored
             under <strong>four rival models</strong>{" "}— a growth maximalist that ignores AI risk
             entirely, a moat-first defensive model, a Sharpe-style efficiency ratio, and a naive
@@ -210,7 +211,7 @@ Score  = 100 · [ α·RAV + (1 − α)·Fit ]`}
               "deterministic scorer",
               "stateless — no DB, nothing stored",
               "rate-limited + security headers",
-              "prompt-injection-proof by design",
+              "injection-resistant by construction",
             ].map((t) => (
               <span key={t} className="rounded-full border border-foreground/10 bg-foreground/[.03] px-3 py-1 text-xs font-medium text-foreground/70">
                 ✓ {t}

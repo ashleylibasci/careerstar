@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   title: "The career sky — CareerStar",
   description:
     "All 730 careers drawn as one night sky: every star positioned by its real O*NET skill profile, so similar careers sit together and fields form constellations.",
+  alternates: { canonical: "/sky" },
 };
 
 // The sky is the model made visible: UMAP over the same z-scored 68-d

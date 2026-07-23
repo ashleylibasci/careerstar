@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Explore careers — CareerStar",
   description:
     "Browse, filter, and rank 730 occupations by viability, AI-resilience, growth, or pay.",
+  alternates: { canonical: "/explore" },
 };
 
 export default async function ExplorePage({

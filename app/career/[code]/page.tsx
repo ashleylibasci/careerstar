@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import type { Metadata } from "next";
 import data from "@/data/data.json";
 import backtestData from "@/data/backtest.json";
@@ -94,9 +94,23 @@ export async function generateMetadata({
   const { code } = await params;
   const occ = findOccupation(code);
   if (!occ) return { title: "Career not found — CareerStar" };
+  const description = `Projected growth, median pay, and AI exposure for ${occ.title}.`;
   return {
     title: `${occ.title} — CareerStar`,
-    description: `Projected growth, median pay, and AI exposure for ${occ.title}.`,
+    description,
+    alternates: { canonical: `/career/${occ.code}` },
+    openGraph: {
+      title: `${occ.title} — CareerStar rating`,
+      description,
+      url: `/career/${occ.code}`,
+      siteName: "CareerStar",
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${occ.title} — CareerStar rating`,
+      description,
+    },
   };
 }
 
@@ -130,6 +144,10 @@ export default async function CareerPage({
   params: Promise<{ code: string }>;
 }) {
   const { code } = await params;
+  // Humans (and briefing docs) guess the bare SOC code; recover them instead of 404ing.
+  if (/^\d{2}-\d{4}$/.test(code) && findOccupation(`${code}.00`)) {
+    permanentRedirect(`/career/${code}.00`);
+  }
   const occ = findOccupation(code);
   if (!occ) notFound();
 
@@ -217,6 +235,18 @@ export default async function CareerPage({
                 <StyleBox result={rated} />
               </div>
             </div>
+
+            {occ.skillVectorEstimated && (
+              <p className="mt-3 text-xs leading-relaxed text-foreground/55">
+                <strong>Data note:</strong>{" "}O*NET 29.0 doesn&rsquo;t cover this SOC code yet, so
+                its skill profile (used for fit, moat, and related careers) is{" "}
+                <strong>estimated from sibling occupations</strong>{" "}in the same SOC group —{" "}
+                <Link href="/methodology" className="font-medium text-blue-600 hover:underline">
+                  see methodology
+                </Link>
+                .
+              </p>
+            )}
 
             {occ.moat && (
               <p className="mt-3 text-xs leading-relaxed text-foreground/55">

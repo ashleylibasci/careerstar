@@ -2,7 +2,7 @@
 
 Every feature in this project exists to answer an interview question. This doc maps each one
 to the question it invites, a 30-second answer, and where the code lives. (For the full
-narrative, see the live [case study](https://main.d3ag7o87gtn2c8.amplifyapp.com/case-study).)
+narrative, see the live [case study](https://ashleylibasci.com/case-study).)
 
 ---
 
@@ -60,7 +60,7 @@ result; it never sees raw user text and no code path lets it produce a number. T
 pipeline (BLS + O\*NET + Eloundou + College Scorecard + two federal crosswalks) is offline,
 reproducible, and committed.
 
-**Code:** `lib/scorer/*` (30 tests) · `scripts/pipeline/*` · `lib/explain/explain.ts`
+**Code:** `lib/scorer/*` (32 tests) · `scripts/pipeline/*` · `lib/explain/explain.ts`
 
 ## "Why a forced curve for the stars?"
 
@@ -107,4 +107,4 @@ vintage in 2034, which is the model betting on itself in public.
 
 Solo, one summer, using a structured AI-native workflow (BMAD): brief → PRD → architecture →
 epics → build loop, with an honest mid-project board reconciliation when the build outran the
-plan. CI runs typecheck + lint + 30 tests + production build on every push.
+plan. CI runs typecheck + lint + 32 tests + production build on every push.

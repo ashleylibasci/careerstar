@@ -4,7 +4,7 @@
 
 **Rate careers like stocks — a data-grounded, risk-adjusted viability score in an AI-shaped economy. Back-tested against a real decade: scored the 2014 labor market with today's model vs. what actually happened by 2024 (ρ = 0.39 across 647 occupations, 1.45× lift on actual decliners — misses published by name).**
 
-Live: **https://main.d3ag7o87gtn2c8.amplifyapp.com**
+Live: **https://ashleylibasci.com**
 
 CareerStar treats each career the way a portfolio treats an asset: expected **return** (growth + pay) versus **risk** (AI exposure + volatility), combined into a single **0–100 risk-adjusted score** and adjusted for how well the path fits you. You type your interests and the paths you're weighing; you get a score card per path with a component breakdown, a plain-English explanation, and — when a path scores low — a redirect to a stronger adjacent path instead of a dead end.
 
@@ -47,6 +47,9 @@ Default weights (explicit and tunable on purpose): `wGrowth = wPay = 0.5`, `wExp
 - **Confidence bands** on each score, widening with AI exposure and weak fit.
 - **Live priority slider + robustness panel** — retune the weights and watch rankings shift, with a 729-weighting rank-stability check shown alongside.
 - **Real O\*NET capability fit** — 68-d skill + knowledge vectors, market-distinctiveness-weighted.
+- **Morningstar-style research reports** per career — relative star rating (forced curve over all 730), AI-moat rating, Bulls say / Bears say, style box, and an Education & ROI section (College Scorecard earnings/debt via a CIP→SOC crosswalk).
+- **Five rival rating models** scored side-by-side (growth-maximalist, defensive, Sharpe-style, equal-weight control) — when they disagree, the app says so instead of pretending there's one true formula.
+- **Open data** — the full 730-row ratings table is downloadable as CSV (CC BY 4.0) with an invitation to audit the math.
 - **Shareable links** that encode a result.
 - **Security hardening** — prompt-injection defense (free-text treated as data, not instructions), input length caps, and rate limiting on the LLM-backed route.
 - **Deployed on AWS Amplify** with CI/CD.
@@ -88,7 +91,9 @@ npm run build:data # rebuild data/data.json from the offline source pipeline
 
 ## What I'd build next
 
-- A true out-of-sample **back-test** against an archived BLS projections vintage (the scorer already has a hook for a dropped-in historical dataset; BLS blocks automated download, so this needs a manual data pull).
-- A **university / major → career ROI** screen (College Scorecard earnings + cost + debt, via a CIP→SOC crosswalk) — data pipeline prototyped, deferred to keep focus on the engine.
-- A Morningstar-style **"Bulls say / Bears say"** scorecard generated deterministically from the return/risk components.
-- Saved comparisons and continued occupation coverage.
+(The original roadmap — an out-of-sample back-test, the education-ROI screen, and Bulls/Bears scorecards — has shipped; the back-test against the archived 2014–24 BLS vintage is now the headline. What's actually next:)
+
+- **Close the user loop.** Every rating has a "was this fair?" vote wired to structured logs; aggregate the votes and publish whether real users think the model is fair — then let that feedback pressure the weights.
+- **The 2034 self-bet.** Today's 2024–34 scores are committed to the repo; when reality catches up, re-run the back-test on this vintage and publish how the model did — including the AI-exposure axis, which the 2014–24 test showed was a forward-looking bet that hadn't paid off yet.
+- **A shared-store rate limiter.** The current limiter is in-memory per serverless instance, which doesn't hold behind CDN fan-out; a shared store (e.g. DynamoDB/ElastiCache) would make the per-client cap real.
+- **Refine the interest→capability lexicon.** The disclosed residual (finance ≈ engineering for quantitative interests) is a lexicon problem, not a vector problem.

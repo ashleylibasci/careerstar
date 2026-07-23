@@ -75,8 +75,8 @@ export default function ScoringPipelineDiagram({ className = "" }: { className?:
       <text x={493} y={356} textAnchor="middle" fontSize={11} fill="currentColor" opacity={0.6}>score + safe tags</text>
 
       <rect x={560} y={332} width={272} height={62} rx={11} fill="currentColor" fillOpacity={0.05} stroke="currentColor" strokeOpacity={0.35} strokeDasharray="5 3" />
-      <text x={696} y={360} textAnchor="middle" fontSize={14} fontWeight={600} fill="currentColor" opacity={0.8}>Claude writes the &ldquo;why&rdquo;</text>
-      <text x={696} y={380} textAnchor="middle" fontSize={12} fill="currentColor" opacity={0.6}>narrates · never computes</text>
+      <text x={696} y={360} textAnchor="middle" fontSize={14} fontWeight={600} fill="currentColor" opacity={0.8}>Claude narrates the &ldquo;why&rdquo;</text>
+      <text x={696} y={380} textAnchor="middle" fontSize={12} fill="currentColor" opacity={0.6}>optional layer · never computes</text>
 
       <text x={24} y={438} fontSize={12.5} fill="currentColor" opacity={0.65}>
         The AI only writes the explanation — every number above it is auditable math.

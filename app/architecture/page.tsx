@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "How it's built — CareerStar",
   description:
     "CareerStar's system architecture: an offline data pipeline, a deterministic scorer, an LLM explanation layer, and the decisions behind them.",
+  alternates: { canonical: "/architecture" },
 };
 
 type Variant = "default" | "core" | "llm" | "sec";
@@ -136,7 +137,7 @@ export default function ArchitecturePage() {
             <Arrow />
             <Node title="Scorer" desc="pure · deterministic · 0–100" variant="core" />
             <Arrow label="score" />
-            <Node title="Claude Haiku" desc="explanation only" variant="llm" />
+            <Node title="Claude Haiku" desc="explanation only · optional" variant="llm" />
             <Arrow />
             <Node title="Score cards" desc="+ why + redirect" />
           </Zone>
@@ -144,7 +145,7 @@ export default function ArchitecturePage() {
           <Zone label="Deployment" dotClass="bg-blue-500">
             <Node title="AWS Amplify" desc="SSR · CI/CD" />
             <Arrow />
-            <Node title="Route 53" desc="custom domain — planned" />
+            <Node title="Route 53" desc="custom domain — ashleylibasci.com" />
             <Arrow />
             <Node title="Auto HTTPS" desc="managed TLS" />
             <Arrow />

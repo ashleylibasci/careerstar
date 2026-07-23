@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "Methodology — CareerStar",
   description:
     "How CareerStar computes its risk-adjusted career viability scores: the model, the weights, the data sources, robustness, and the limitations.",
+  alternates: { canonical: "/methodology" },
 };
 
 const typed = data as {

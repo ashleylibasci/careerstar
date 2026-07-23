@@ -62,6 +62,8 @@ export interface ScoreResult {
   bears?: string[];
   /** Short human note (e.g. a placeholder caveat, later the explanation). */
   note: string;
+  /** Where the note came from — "llm" (Claude) or "fallback" (deterministic verdict). */
+  noteSource?: "llm" | "fallback";
   /** For a low-scoring path: a stronger, adjacent path that reuses the user's strengths. */
   redirect?: {
     code: string;

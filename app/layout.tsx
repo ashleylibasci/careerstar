@@ -15,8 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://main.d3ag7o87gtn2c8.amplifyapp.com"),
+  metadataBase: new URL("https://ashleylibasci.com"),
   title: "CareerStar — AI Career Viability Rating",
+  alternates: { canonical: "/" },
   description:
     "Rate the career paths you're weighing like stocks: a data-grounded, risk-adjusted 0–100 viability score for an AI-shaped economy.",
   authors: [{ name: "Ashley Libasci", url: "https://github.com/ashleylibasci" }],

@@ -137,6 +137,7 @@ export async function POST(request: Request) {
     return {
       ...r,
       note: explanations.get(r.code) ?? plainVerdict(occ, r.components, interests.length > 0),
+      noteSource: (explanations.has(r.code) ? "llm" : "fallback") as "llm" | "fallback",
       redirect,
       percentile: Math.round(pct),
       stars: starsFromPercentile(pct),
