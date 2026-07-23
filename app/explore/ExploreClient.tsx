@@ -124,6 +124,31 @@ export default function ExploreClient({
         </select>
       </div>
 
+      {/* Zero-results is a dead end without an exit — name the cause, offer the reset. */}
+      {rows.length > 0 && filtered.length === 0 && (
+        <div className="my-6 rounded-2xl border border-foreground/10 bg-foreground/[.02] p-6 text-center">
+          <p className="text-sm font-medium">
+            No careers match{search.trim() ? <> &ldquo;{search.trim().slice(0, 40)}&rdquo;</> : " these filters"}.
+          </p>
+          <p className="mt-1 text-xs text-foreground/60">
+            Try a broader word (&ldquo;nurse&rdquo; instead of a job title), or reset and browse.
+          </p>
+          <button
+            type="button"
+            onClick={() => {
+              setSearch("");
+              setField("all");
+              setEdu("all");
+              setMinPay(0);
+              setMoatF("all");
+            }}
+            className="mt-3 rounded-full border border-foreground/15 px-4 py-1.5 text-xs font-semibold text-blue-600 transition hover:border-blue-500/50"
+          >
+            Clear search &amp; filters
+          </button>
+        </div>
+      )}
+
       <p className="mb-2 text-xs text-foreground/60">
         {filtered.length} shown{filtered.length === 150 ? " (top 150)" : ""} · click a career for details ·{" "}
         <span title="Borrowed from investing: how shielded a career is from AI — few automatable tasks + skills few other jobs have.">

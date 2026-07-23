@@ -11,6 +11,7 @@ import { BrandWordmark } from "./Brand";
 const LINKS = [
   { href: "/", label: "Rate careers" },
   { href: "/explore", label: "Explore" },
+  { href: "/sky", label: "Sky" },
   { href: "/top-20", label: "Top 20" },
   { href: "/methodology", label: "Methodology" },
   { href: "/architecture", label: "How it’s built" },
