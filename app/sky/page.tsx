@@ -94,7 +94,7 @@ export default function SkyPage() {
         </div>
         <h1 className="mt-2 text-3xl font-bold tracking-tight">The career sky</h1>
         <p className="mt-2 max-w-3xl text-foreground/70">
-          Every career the U.S. government tracks, drawn as one night sky. A star&rsquo;s position
+          All 730 rated careers, drawn as one night sky. A star&rsquo;s position
           comes from its <strong>real skill profile</strong>{" "}(35 O*NET skills + 33 knowledge
           areas) — careers that use similar capabilities sit near each other, and fields condense
           into constellations <em>on their own</em>, from the math, not from an editor. Brighter =
@@ -105,14 +105,14 @@ export default function SkyPage() {
           <p>
             This is the same capability space the personal-fit score and career suggestions
             already use — projected from 68 dimensions down to 2 so you can see it. Nearby stars
-            mean genuinely similar skill profiles, which is exactly what makes a career switch
+            have similar skill profiles, and that&rsquo;s what makes a career switch between them
             plausible.
           </p>
           <p>
             <strong>How to use it:</strong>{" "}hover any star for its rating, click for the full
             report, and pick your interests above the map to see where <em>you</em>{" "}land — the
-            marker sits at the center of the careers most similar to your profile. One honest
-            caveat: only <em>local</em>{" "}neighborhoods are meaningful. Distances between distant
+            marker sits at the center of the careers most similar to your profile. One caveat:
+            only <em>local</em>{" "}neighborhoods are meaningful. Distances between distant
             constellations are an artifact of flattening 68 dimensions into 2 (details below the
             map).
           </p>

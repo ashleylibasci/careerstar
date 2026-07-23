@@ -277,7 +277,7 @@ No moat     < 0.55      (~30%)`}
                 `Q${i + 1}: ${g}%`).join(", ")} — with no downward trend.
             </p>
             <p>
-              So exposure carries information growth doesn&rsquo;t, which is exactly why a
+              So exposure carries information growth doesn&rsquo;t, which is why a
               risk-<em>adjusted</em>{" "}score beats ranking on growth alone — and why
               &ldquo;exposure&nbsp;≠&nbsp;displacement&rdquo; is literally true here, not just a
               slogan. (And this isn&rsquo;t left as an assertion — the model was run against a real
@@ -313,7 +313,7 @@ No moat     < 0.55      (~30%)`}
             </div>
           </div>
           <p>
-            Read it honestly. The score genuinely tracked a real decade (rank correlation{" "}
+            Read it honestly. The score tracked a real decade (rank correlation{" "}
             {backtest.metrics.spearmanScoreVsRealized}; decliners flagged at{" "}
             {backtest.metrics.declinerHitRatePct}% vs a 33% base rate — a{" "}
             {Math.round((backtest.metrics.declinerHitRatePct / 33) * 100) / 100}× lift). The raw

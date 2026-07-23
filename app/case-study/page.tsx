@@ -58,7 +58,7 @@ export default function CaseStudyPage() {
           CareerStar scores the <strong>viability</strong>{" "}of a career in an AI-shaped economy as a
           single 0–100 <em>risk-adjusted</em>{" "}number — the way a portfolio weighs an asset&rsquo;s
           return against its risk. It&rsquo;s a solo summer project, built with an AI-native workflow
-          and deployed on AWS. This page is the honest story of how it works and why I trust it.
+          and deployed on AWS. This page is the story of how it works and why I trust it.
         </p>
 
         <PageExplainer>
@@ -158,8 +158,8 @@ Score  = 100 · [ α·RAV + (1 − α)·Fit ]`}
             scored the 2014 labor market with today&rsquo;s model, and compared against what
             actually happened by 2024 — <strong>647 occupations across a real decade</strong>. The
             score tracked reality (rank correlation ρ&nbsp;=&nbsp;0.39; it flagged 48% of the
-            careers that actually declined vs a 33% base rate). And the honest part: the AI-risk
-            adjustment added <em>nothing</em>{" "}for that decade (exposure ρ&nbsp;≈&nbsp;0.1) —
+            careers that actually declined vs a 33% base rate). And the part a marketer would
+            cut: the AI-risk adjustment added <em>nothing</em>{" "}for that decade (exposure ρ&nbsp;≈&nbsp;0.1) —
             exactly as it should, because 2014&ndash;24 was a pre-LLM decade and exposure is a
             forward-looking bet. The misses are published by name, including the oil-crash
             casualties no occupation model catches.
@@ -180,7 +180,7 @@ Score  = 100 · [ α·RAV + (1 − α)·Fit ]`}
             exposure and projected growth are almost uncorrelated (Spearman ρ&nbsp;=&nbsp;
             {meta.validation.exposureGrowthSpearman}; exposure-quartile growth is flat —{" "}
             {meta.validation.exposureQuartileGrowthPct.map((g, i) => `Q${i + 1} ${g}%`).join(", ")}).
-            So the risk axis carries information growth doesn&rsquo;t — which is exactly why a
+            So the risk axis carries information growth doesn&rsquo;t — which is why a
             risk-<em>adjusted</em>{" "}score beats ranking on growth alone, and why
             &ldquo;exposure&nbsp;≠&nbsp;displacement&rdquo; is literally true in the data.
           </p>

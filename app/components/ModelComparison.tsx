@@ -92,8 +92,8 @@ export default function ModelComparison({ results }: { results: ScoreResult[] })
         ) : (
           <>
             ⚖️ <strong className="text-amber-700 dark:text-amber-500">The judges disagree — {distinctWinners} different careers win depending on the model.</strong>{" "}
-            Translation: your answer genuinely depends on how much you believe AI will reshape work.
-            That&rsquo;s the honest finding, not a bug. (The cards above use the balanced Standard
+            Translation: your answer depends on how much you believe AI will reshape work.
+            That&rsquo;s the finding, not a bug. (The cards above use the balanced Standard
             judge.)
           </>
         )}
