@@ -85,9 +85,14 @@ export default function Top20Page() {
           <p>
             <strong>How to use it:</strong>{" "}click any career for its full report, or head to the{" "}
             <Link href="/" className="font-medium text-blue-600 hover:underline">home page</Link>{" "}
-            to score it against the paths you&rsquo;re actually considering. &ldquo;Consensus
-            74&nbsp;±3&rdquo; means the five models average 74, each landing within about 3 points
-            of that average — the smaller the ±, the more they agree.
+            to score it against the paths you&rsquo;re actually considering. &ldquo;Consensus{" "}
+            {TOP20[0].mean}&nbsp;±{Math.round(TOP20[0].spread / 2)}&rdquo; (the #1 entry) means the
+            five models average {TOP20[0].mean}, each landing within about{" "}
+            {Math.round(TOP20[0].spread / 2)} points of that average — the smaller the ±, the more
+            they agree. One honest note: nearly every entry sits close to the ±10 admission line.
+            Getting five rival formulas even that close is rare — most of the market doesn&rsquo;t
+            qualify at all — so &ldquo;barely passes a hard gate&rdquo; is what conviction looks
+            like here.
           </p>
         </PageExplainer>
 

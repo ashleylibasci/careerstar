@@ -46,3 +46,19 @@ test("plainVerdict never mentions interests when none were given", () => {
   assert.doesNotMatch(withoutInterests, /interests/);
   assert.ok(withoutInterests.endsWith("."), "verdict should still end cleanly");
 });
+
+test("plainVerdict quotes the scenario-adjusted exposure when given", () => {
+  const occ: Occupation = {
+    code: "15-1252.00",
+    title: "Software Developers",
+    growthPct: 25,
+    medianPay: 120000,
+    aiExposure: 0.87,
+    skills: ["programming"],
+  };
+  const components: ScoreComponents = { return: 80, risk: 90, fit: 50 };
+  // Under an aggressive aiAdoption scenario the effective exposure clamps to 1.0;
+  // the sentence must quote 100, matching the breakdown and the bears.
+  assert.match(plainVerdict(occ, components, false, 1.0), /100\/100/);
+  assert.match(plainVerdict(occ, components, false), /87\/100/);
+});

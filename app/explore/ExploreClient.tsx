@@ -47,6 +47,7 @@ export default function ExploreClient({
   initialSearch?: string;
 }) {
   const [rows, setRows] = useState<Row[]>([]);
+  const [loading, setLoading] = useState(true);
   const [sortKey, setSortKey] = useState<keyof Row>("score");
   const [field, setField] = useState("all");
   const [edu, setEdu] = useState("all");
@@ -60,7 +61,8 @@ export default function ExploreClient({
     fetch("/api/leaderboard")
       .then((r) => r.json())
       .then((d) => setRows(d.careers ?? []))
-      .catch(() => {});
+      .catch(() => {})
+      .finally(() => setLoading(false));
   }, []);
 
   const filtered = useMemo(() => {
@@ -150,7 +152,7 @@ export default function ExploreClient({
       )}
 
       <p className="mb-2 text-xs text-foreground/60">
-        {filtered.length} shown{filtered.length === 150 ? " (top 150)" : ""} · click a career for details ·{" "}
+        {loading ? "Loading all 730 careers…" : `${filtered.length} shown${filtered.length === 150 ? " (top 150)" : ""}`} · click a career for details ·{" "}
         <span title="Borrowed from investing: how shielded a career is from AI — few automatable tasks + skills few other jobs have.">
           <strong>moat</strong> = how shielded from AI (🏰 wide = well-defended, 🛡 narrow = some shelter, — = broadly exposed)
         </span>
@@ -171,6 +173,17 @@ export default function ExploreClient({
             </tr>
           </thead>
           <tbody>
+            {/* First-paint skeleton — "0 shown" over an empty table reads as broken. */}
+            {loading &&
+              Array.from({ length: 8 }, (_, i) => (
+                <tr key={`skeleton-${i}`} className="animate-pulse border-b border-foreground/5">
+                  {Array.from({ length: 8 }, (_, j) => (
+                    <td key={j} className="py-2 px-3">
+                      <div className="h-3.5 rounded bg-foreground/10" />
+                    </td>
+                  ))}
+                </tr>
+              ))}
             {filtered.map((r) => (
               <tr key={r.code} className="border-b border-foreground/5 hover:bg-foreground/[.03]">
                 <td className="py-2 pr-3">
@@ -183,7 +196,9 @@ export default function ExploreClient({
                 </td>
                 <td className="py-2 px-3 text-foreground/60">{r.educationShort}</td>
                 <td className={`whitespace-nowrap py-2 px-3 text-right font-semibold tabular-nums ${TONE[scoreBand(r.score).tone]}`}>
-                  <span aria-label={`${r.stars} out of 5 stars`}>{"★".repeat(Math.round(r.stars))}</span>
+                  {/* ★4.5, not five glyphs — rounding a 4.5 up to ★★★★★ made it
+                      indistinguishable from a true 5.0 in the one view built for comparing. */}
+                  <span aria-label={`${r.stars} out of 5 stars`}>★{r.stars.toFixed(1)}</span>
                   <span className="ml-1.5 text-foreground/55">{r.score}</span>
                 </td>
                 <td className="py-2 px-3 whitespace-nowrap text-xs text-foreground/70">{r.moat ? MOAT_CELL[r.moat] : "—"}</td>

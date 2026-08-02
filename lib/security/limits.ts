@@ -11,7 +11,7 @@ export function validateInput(raw: unknown): Validation {
   if (typeof raw !== "string" || raw.trim().length === 0) {
     return {
       ok: false,
-      error: "Please enter your interests and the paths you're weighing.",
+      error: "Please enter the paths you're weighing, your interests, or both.",
       status: 400,
     };
   }

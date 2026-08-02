@@ -58,14 +58,22 @@ export function rateLimit(key: string): RateResult {
 }
 
 /** Best-effort client identifier from proxy headers.
- *  Uses the LAST X-Forwarded-For hop: AWS Amplify/CloudFront appends the real
- *  connecting IP at the end, and a client can forge everything to its left —
- *  so trusting the first entry (as before) let anyone spawn unlimited buckets. */
+ *  A client can forge everything to the LEFT of the hops the platform appends,
+ *  so the first entry is never trusted. But the very last hop isn't always the
+ *  viewer either: on Amplify the internal router can append CloudFront's own
+ *  (varying) edge IP after the viewer IP CloudFront appended — keying on it
+ *  gives every request a fresh bucket and the per-client cap never fires
+ *  (observed live 2026-07-23: 30 rapid POSTs, zero 429s). Browsers don't send
+ *  X-Forwarded-For themselves, so for honest clients the viewer IP is the only
+ *  hop (direct/local) or the second-to-last (behind CloudFront + router) —
+ *  key on that. A spoofer rotating the forged prefix only rotates buckets
+ *  until GLOBAL_MAX bites, which is the designed backstop. */
 export function clientKey(request: Request): string {
   const fwd = request.headers.get("x-forwarded-for");
   if (fwd) {
     const hops = fwd.split(",").map((s) => s.trim()).filter(Boolean);
-    if (hops.length) return hops[hops.length - 1];
+    if (hops.length >= 2) return hops[hops.length - 2];
+    if (hops.length === 1) return hops[0];
   }
   return request.headers.get("x-real-ip") ?? "unknown";
 }

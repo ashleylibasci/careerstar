@@ -11,7 +11,7 @@ import { BrandWordmark } from "./Brand";
 const LINKS = [
   { href: "/", label: "Rate careers" },
   { href: "/explore", label: "Explore" },
-  { href: "/sky", label: "Sky" },
+  { href: "/sky", label: "Sky map" },
   { href: "/top-20", label: "Top 20" },
   { href: "/methodology", label: "Methodology" },
   { href: "/architecture", label: "How it’s built" },
@@ -33,7 +33,7 @@ export default function NavBar() {
 
   return (
     <header className="sticky top-0 z-20 border-b border-foreground/10 bg-background/85 backdrop-blur print:hidden">
-      <nav className="mx-auto flex max-w-3xl items-center gap-x-2 px-4 py-2.5 sm:px-6 lg:max-w-5xl xl:max-w-6xl">
+      <nav className="mx-auto flex max-w-3xl items-center gap-x-2 px-4 py-1.5 sm:px-6 lg:max-w-5xl xl:max-w-6xl">
         <Link
           href="/"
           aria-label="CareerStar home"
@@ -42,8 +42,9 @@ export default function NavBar() {
           <BrandWordmark size={19} />
         </Link>
 
-        {/* Desktop links */}
-        <div className="hidden items-center gap-1 text-sm sm:flex">
+        {/* Desktop links — 7 non-wrapping pills + wordmark need ~880px; below
+            that the hamburger holds, so labels never break onto two lines. */}
+        <div className="hidden items-center gap-1 text-sm min-[880px]:flex">
           {LINKS.map((l) => (
             <Link
               key={l.href}
@@ -51,12 +52,12 @@ export default function NavBar() {
               aria-current={isActive(l.href) ? "page" : undefined}
               className={
                 l.accent
-                  ? `rounded-full px-3.5 py-1.5 font-semibold transition ${
+                  ? `whitespace-nowrap rounded-full px-3.5 py-1.5 font-semibold transition ${
                       isActive(l.href)
                         ? "bg-blue-600 text-white"
                         : "bg-blue-600/10 text-blue-700 hover:bg-blue-600 hover:text-white dark:text-blue-400 dark:hover:text-white"
                     }`
-                  : `rounded-full px-3 py-1.5 transition ${
+                  : `whitespace-nowrap rounded-full px-3 py-1.5 transition ${
                       isActive(l.href)
                         ? "bg-foreground/[.07] font-semibold text-foreground"
                         : "text-foreground/65 hover:bg-foreground/[.05] hover:text-foreground"
@@ -74,7 +75,7 @@ export default function NavBar() {
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-label={open ? "Close menu" : "Open menu"}
-          className="flex h-9 w-9 items-center justify-center rounded-lg border border-foreground/15 text-foreground/70 sm:hidden"
+          className="flex h-11 w-11 items-center justify-center rounded-lg border border-foreground/15 text-foreground/70 min-[880px]:hidden"
         >
           <span aria-hidden className="text-lg leading-none">{open ? "✕" : "☰"}</span>
         </button>
@@ -82,7 +83,7 @@ export default function NavBar() {
 
       {/* Mobile dropdown */}
       {open && (
-        <div className="border-t border-foreground/10 px-4 pb-3 pt-1 sm:hidden">
+        <div className="border-t border-foreground/10 px-4 pb-3 pt-1 min-[880px]:hidden">
           {LINKS.map((l) => (
             <Link
               key={l.href}

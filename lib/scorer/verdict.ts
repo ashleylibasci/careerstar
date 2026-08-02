@@ -15,8 +15,15 @@ export function scoreBand(score: number): { label: string; tone: Tone } {
 
 /** A plain-English one-liner built from the numbers (no LLM needed). */
 /** `hasInterests` — with no interests given, fit is a neutral 50 and a sentence
- *  about "your interests" would describe interests that don't exist; drop it. */
-export function plainVerdict(occ: Occupation, c: ScoreComponents, hasInterests = true): string {
+ *  about "your interests" would describe interests that don't exist; drop it.
+ *  `effectiveExposure01` — the scenario-adjusted exposure (aiAdoption applied),
+ *  so the sentence quotes the same number the breakdown and bears show. */
+export function plainVerdict(
+  occ: Occupation,
+  c: ScoreComponents,
+  hasInterests = true,
+  effectiveExposure01?: number,
+): string {
   const growth = `${occ.growthPct >= 0 ? "+" : ""}${occ.growthPct}%`;
   const prospects =
     c.return >= 65
@@ -25,7 +32,7 @@ export function plainVerdict(occ: Occupation, c: ScoreComponents, hasInterests =
         ? "Decent prospects"
         : "Softer prospects";
 
-  const exp = Math.round(occ.aiExposure * 100);
+  const exp = Math.round((effectiveExposure01 ?? occ.aiExposure) * 100);
   const expClause =
     exp >= 70
       ? `high AI exposure (${exp}/100)`

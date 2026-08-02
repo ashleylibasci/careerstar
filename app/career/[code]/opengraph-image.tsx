@@ -44,6 +44,10 @@ export default async function OgImage({ params }: { params: Promise<{ code: stri
   const occ = OCCUPATIONS.find((o) => o.code === code);
   const rated = SCORE_BY_CODE.get(code);
 
+  // Unknown code → 404, matching the page itself. A generic 200 card for a
+  // nonexistent career is cache noise that pretends the URL is real.
+  if (!occ) return new Response("Not found", { status: 404 });
+
   const title = occ?.title ?? "Career report";
   const score = rated?.score ?? null;
   const stars = rated ? starsFromPercentile(percentileOf(rated.score, ALL_SCORES)) : 0;

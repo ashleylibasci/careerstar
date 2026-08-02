@@ -73,6 +73,9 @@ export default function RootLayout({
               Built by <span className="font-semibold text-foreground/80">Ashley Libasci</span> — Math + CS @ UIUC
             </span>
             <span className="flex flex-wrap gap-x-4">
+              <a href="/case-study" className="font-medium text-blue-600 hover:underline">
+                Hiring? The 3-minute case study →
+              </a>
               <a
                 href="https://github.com/ashleylibasci/careerstar"
                 target="_blank"

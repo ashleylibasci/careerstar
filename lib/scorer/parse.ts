@@ -75,6 +75,7 @@ const ALIASES: Record<string, string[]> = {
   paralegal: ["23-2011.00"],
   // Healthcare
   "nurse practitioner": ["29-1171.00"],
+  "registered nurse": ["29-1141.00"],
   nurse: ["29-1141.00", "29-1171.00"],
   nursing: ["29-1141.00"],
   pharmacist: ["29-1051.00"],
@@ -147,16 +148,36 @@ const TITLE_STOP = new Set([
 export function parseInput(text: string, dataset: Occupation[]): ParsedInput {
   const lower = text.toLowerCase();
 
+  // Alias matching, longest phrase first. A phrase CLAIMS the span of text it
+  // matched, and shorter phrases wholly inside a claimed span don't fire — so
+  // "registered nurse" answers with registered nurses, without the bare word
+  // "nurse" also dragging in practitioners/anesthetists/midwives above the
+  // career the user actually named.
   const codes: string[] = [];
-  for (const [phrase, mapped] of Object.entries(ALIASES)) {
-    if (lower.includes(phrase)) {
+  const claimed: Array<[number, number]> = [];
+  const insideClaimed = (start: number, end: number) =>
+    claimed.some(([s, e]) => start >= s && end <= e);
+  const phrases = Object.entries(ALIASES).sort((a, b) => b[0].length - a[0].length);
+  for (const [phrase, mapped] of phrases) {
+    const spans: Array<[number, number]> = [];
+    for (let idx = lower.indexOf(phrase); idx !== -1; idx = lower.indexOf(phrase, idx + 1)) {
+      if (!insideClaimed(idx, idx + phrase.length)) spans.push([idx, idx + phrase.length]);
+    }
+    if (spans.length) {
+      claimed.push(...spans);
       for (const code of mapped) if (!codes.includes(code)) codes.push(code);
     }
   }
 
   // Match user words against occupation-title words by 5-char prefix, so
-  // "welder" finds "Welders…" and "nurse" finds "…Nurses" across the full set.
-  const userWords = lower
+  // "welder" finds "Welders…" across the full set — but only over text NOT
+  // already claimed by an alias. The sweep exists to find careers the alias
+  // table doesn't know, not to expand ones the user already named.
+  let residual = lower;
+  for (const [s, e] of claimed) {
+    residual = residual.slice(0, s) + " ".repeat(e - s) + residual.slice(e);
+  }
+  const userWords = residual
     .replace(/[^a-z\s-]/g, " ")
     .split(/\s+/)
     .filter((w) => w.length >= 5 && !TITLE_STOP.has(w));

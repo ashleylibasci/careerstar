@@ -5,7 +5,6 @@ import Link from "next/link";
 import type { ScoreResponse } from "@/lib/scorer/types";
 import { FIELDS } from "@/lib/fields";
 import ScoreCard from "./ScoreCard";
-import DownloadResultsCard from "./DownloadResultsCard";
 import RobustnessPanel from "./RobustnessPanel";
 import ModelComparison from "./ModelComparison";
 import { MODELS } from "@/lib/scorer/models";
@@ -544,7 +543,7 @@ export default function CareerForm() {
         <div className="mt-8">
           {/* Print-only report masthead — the printed page is a designed report,
               not a screenshot of the app. */}
-          <div className="mb-6 hidden print:block">
+          <div className="mb-6 hidden break-inside-avoid break-after-avoid print:block">
             <div className="flex items-end justify-between border-b-2 border-blue-600 pb-3">
               <div>
                 <div className="flex items-center gap-2">
@@ -597,7 +596,6 @@ export default function CareerForm() {
               >
                 📄 Download report
               </button>
-              <DownloadResultsCard result={response.results[0]} />
             </div>
           </div>
 

@@ -2,9 +2,12 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { clientKey } from "./rate-limit.ts";
 
-// The X-Forwarded-For fix: a client can forge everything to the LEFT of the
-// real IP that the trusted proxy (CloudFront/Amplify) appends, so we must key
-// on the LAST hop — never the first (the old, spoofable behavior).
+// The X-Forwarded-For contract: browsers never send XFF themselves, so for an
+// honest client the viewer IP is the only hop (direct) or the second-to-last
+// (CloudFront appends the viewer, then Amplify's router appends CloudFront's
+// own varying edge IP last — keying on the LAST hop gave every request a fresh
+// bucket in prod). Never the first hop: everything left of the platform-added
+// entries is client-forgeable.
 const mkReq = (xff?: string, realIp?: string) =>
   new Request("http://x/api/score", {
     headers: {
@@ -13,13 +16,15 @@ const mkReq = (xff?: string, realIp?: string) =>
     },
   });
 
-test("clientKey uses the last XFF hop, not the spoofable first", () => {
-  // attacker forges "1.1.1.1"; CloudFront appends the true client "203.0.113.7"
-  assert.equal(clientKey(mkReq("1.1.1.1, 203.0.113.7")), "203.0.113.7");
-  // rotating the forged left-hand entry must NOT change the key
+test("clientKey uses the second-to-last XFF hop when platform hops are present", () => {
+  // honest prod shape: CloudFront appends viewer, router appends CF edge IP
+  assert.equal(clientKey(mkReq("203.0.113.7, 64.252.0.9")), "203.0.113.7");
+  // honest direct/local shape: the viewer is the only hop
+  assert.equal(clientKey(mkReq("203.0.113.7")), "203.0.113.7");
+  // attacker forges a prefix in the prod shape — the key must NOT move
   assert.equal(
-    clientKey(mkReq("9.9.9.9, 203.0.113.7")),
-    clientKey(mkReq("2.2.2.2, 203.0.113.7")),
+    clientKey(mkReq("9.9.9.9, 203.0.113.7, 64.252.0.9")),
+    clientKey(mkReq("2.2.2.2, 203.0.113.7, 64.252.0.9")),
   );
 });
 

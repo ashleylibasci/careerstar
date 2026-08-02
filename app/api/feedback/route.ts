@@ -20,6 +20,12 @@ export async function POST(request: Request) {
     return Response.json({ ok: false }, { status: 429, headers: { "Retry-After": String(limit.retryAfter) } });
   }
 
+  // A vote is ~40 bytes; anything big is abuse, not feedback.
+  const len = Number(request.headers.get("content-length") ?? 0);
+  if (len > 1024) {
+    return Response.json({ ok: false }, { status: 413 });
+  }
+
   let body: { code?: unknown; fair?: unknown } | null = null;
   try {
     body = await request.json();

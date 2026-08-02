@@ -24,6 +24,14 @@ const fixture: Occupation[] = [
     aiExposure: 0.3,
     skills: ["fabrication", "metalwork"],
   },
+  {
+    code: "29-1151.00",
+    title: "Nurse anesthetists",
+    growthPct: 10,
+    medianPay: 212000,
+    aiExposure: 0.2,
+    skills: ["medicine"],
+  },
 ];
 
 test("a known alias resolves to its O*NET code", () => {
@@ -56,4 +64,21 @@ test("title-prefix matching finds an occupation by its title word", () => {
     candidateCodes.includes("47-2111.00"),
     `expected 47-2111.00 in ${JSON.stringify(candidateCodes)}`,
   );
+});
+
+test("a named career is pinned — the fuzzy sweep must not expand it into siblings", () => {
+  // "registered nurse" names ONE occupation; the bare word "nurse" must not
+  // also fire the alias table or drag in nurse-titled siblings from the sweep.
+  const { candidateCodes } = parseInput("software developer and registered nurse", fixture);
+  assert.deepEqual(
+    [...candidateCodes].sort(),
+    ["15-1252.00", "29-1141.00"],
+    `expected exactly the two named careers, got ${JSON.stringify(candidateCodes)}`,
+  );
+});
+
+test("the sweep still runs on text no alias claimed", () => {
+  const { candidateCodes } = parseInput("registered nurse or maybe a welder", fixture);
+  assert.ok(candidateCodes.includes("29-1141.00"), "named career kept");
+  assert.ok(candidateCodes.includes("47-2111.00"), "unclaimed word still sweeps titles");
 });

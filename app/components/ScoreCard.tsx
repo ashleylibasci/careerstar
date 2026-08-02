@@ -118,8 +118,9 @@ export default function ScoreCard({
               {result.moat && <MoatBadge moat={result.moat} />}
             </div>
           )}
-          {/* Quick stats so the row is scannable without opening it. */}
-          <div className="mt-1.5 text-xs tabular-nums text-foreground/55">
+          {/* Quick stats so the row is scannable without opening it; the open
+              card shows the same numbers as bars, so hide the stutter. */}
+          <div className="mt-1.5 text-xs tabular-nums text-foreground/55 group-open:hidden">
             Return {result.components.return} · Resilience {resilience} · Fit {result.components.fit}
           </div>
         </div>
@@ -138,13 +139,17 @@ export default function ScoreCard({
               </div>
             )}
           </div>
-          <span
+          {/* A stroked chevron, not a solid triangle — beside a score, a solid
+              triangle reads as a market direction indicator. */}
+          <svg
             aria-hidden
-            className="mt-1.5 shrink-0 text-xs text-foreground/40 transition-transform group-open:rotate-180 print:hidden"
-            title="Expand for the full analysis"
+            className="mt-2 h-3.5 w-3.5 shrink-0 text-foreground/40 transition-transform group-open:rotate-180 print:hidden"
+            viewBox="0 0 12 12"
+            fill="none"
           >
-            ▼
-          </span>
+            <title>Expand for the full analysis</title>
+            <path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
         </div>
       </summary>
 
@@ -194,7 +199,7 @@ export default function ScoreCard({
         )}
 
         {result.redirect && (
-          <div className="mt-4 flex items-start gap-2 rounded-xl border border-blue-500/25 bg-blue-500/5 p-3">
+          <div className="mt-4 flex items-start gap-2 rounded-xl border border-blue-500/25 bg-blue-500/5 p-3 print:break-inside-avoid">
             <span className="mt-0.5 text-blue-600">↗</span>
             <div className="text-sm">
               <span className="font-semibold text-foreground/60">You might prefer: </span>

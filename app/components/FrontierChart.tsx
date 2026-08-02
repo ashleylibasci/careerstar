@@ -21,7 +21,9 @@ const H = 320;
 const plotW = W - PAD.l - PAD.r;
 const plotH = H - PAD.t - PAD.b;
 
-const x = (risk: number) => PAD.l + (risk / 100) * plotW;
+// X is RESILIENCE (100 − risk) so the chart speaks the same language as the
+// score-card bars — every axis reads "higher is better," sweet spot up-right.
+const x = (resilience: number) => PAD.l + (resilience / 100) * plotW;
 const y = (ret: number) => PAD.t + (1 - ret / 100) * plotH;
 
 export default function FrontierChart({
@@ -53,13 +55,13 @@ export default function FrontierChart({
         )}
       </div>
       <p className="mb-3 text-xs text-foreground/60">
-        Return vs. risk — up and to the left is the sweet spot (high return, low risk). Hover a
-        point for detail; click to jump to its card.
+        Return vs. resilience — up and to the right is the sweet spot (high return, hard for AI
+        to disrupt). Hover a point for detail; click to jump to its card.
       </p>
-      <svg viewBox={`0 0 ${W} ${H}`} className="w-full" role="img" aria-label="Scatter plot of return versus risk for your careers">
-        {/* sweet-spot quadrant: low risk (left) + high return (top) */}
-        <rect x={x(0)} y={y(100)} width={x(50) - x(0)} height={y(50) - y(100)} className="fill-emerald-500/[.06]" />
-        <text x={x(0) + 6} y={y(100) + 14} className="fill-emerald-600/70" fontSize="9" fontWeight="600">sweet spot</text>
+      <svg viewBox={`0 0 ${W} ${H}`} className="w-full" role="img" aria-label="Scatter plot of return versus resilience for your careers">
+        {/* sweet-spot quadrant: high resilience (right) + high return (top) */}
+        <rect x={x(50)} y={y(100)} width={x(100) - x(50)} height={y(50) - y(100)} className="fill-emerald-500/[.06]" />
+        <text x={x(100) - 6} y={y(100) + 14} textAnchor="end" className="fill-emerald-600/70" fontSize="9" fontWeight="600">sweet spot</text>
 
         {/* grid */}
         {ticks.map((t) => (
@@ -76,13 +78,13 @@ export default function FrontierChart({
         ))}
 
         {/* axis labels */}
-        <text x={PAD.l + plotW / 2} y={H - 4} textAnchor="middle" className="fill-foreground/60" fontSize="11">Risk →</text>
+        <text x={PAD.l + plotW / 2} y={H - 4} textAnchor="middle" className="fill-foreground/60" fontSize="11">Resilience (100 − AI risk) →</text>
         <text x={12} y={PAD.t + plotH / 2} textAnchor="middle" fontSize="11" className="fill-foreground/60" transform={`rotate(-90 12 ${PAD.t + plotH / 2})`}>Return →</text>
 
         {/* points — numbered to avoid label collisions; size encodes score */}
         {results.map((r, i) => {
           const tone = scoreBand(r.score).tone;
-          const cx = x(r.components.risk);
+          const cx = x(100 - r.components.risk);
           const cy = y(r.components.return);
           const rad = 7 + (r.score / 100) * 6;
           const active = hover === r.code;
@@ -106,7 +108,7 @@ export default function FrontierChart({
 
         {/* tooltip for the hovered point */}
         {hovered && (() => {
-          const cx = x(hovered.components.risk);
+          const cx = x(100 - hovered.components.risk);
           const cy = y(hovered.components.return);
           const bw = 150;
           const bh = 46;
@@ -119,7 +121,7 @@ export default function FrontierChart({
                 {hovered.path.length > 24 ? hovered.path.slice(0, 23) + "…" : hovered.path}
               </text>
               <text x={tx + 8} y={ty + 31} fontSize="10" className="fill-foreground/70">
-                Return {hovered.components.return} · Risk {hovered.components.risk}
+                Return {hovered.components.return} · Resilience {100 - hovered.components.risk}
               </text>
               <text x={tx + 8} y={ty + 42} fontSize="10" className="fill-foreground/70">
                 Score {hovered.score}/100

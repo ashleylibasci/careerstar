@@ -92,34 +92,8 @@ export default function CaseStudyPage() {
           </p>
         </Section>
 
-        <Section kicker="The model" title="Every number is math, not an LLM">
-          <p>
-            A pure, deterministic scorer is the single source of truth. Growth and pay are
-            percentile-ranked across all {meta.occupationCount} occupations; risk blends AI-exposure
-            research with a constructed volatility proxy; the two combine into a risk-adjusted value,
-            then blend with personal fit:
-          </p>
-          {/* Two altitudes of the same claim: the system view for skimmers, then
-              the raw equations verbatim for anyone who wants to verify. */}
-          <figure className="my-5 rounded-2xl border border-foreground/10 bg-foreground/[.02] p-4 sm:p-5">
-            <ScoringPipelineDiagram />
-          </figure>
-          <p className="text-xs font-semibold uppercase tracking-wide text-foreground/50">
-            The actual equations
-          </p>
-          <pre className="overflow-x-auto rounded-xl border border-foreground/10 bg-foreground/[.03] p-4 text-xs leading-relaxed">
-{`Return = wGrowth·growth + wPay·pay
-Risk   = wExposure·exposure + wVolatility·volatility
-RAV    = Return · (1 − γ·Risk)
-Score  = 100 · [ α·RAV + (1 − α)·Fit ]`}
-          </pre>
-          <p>
-            The language model never computes a number. It only writes the plain-English
-            &ldquo;why,&rdquo; from the already-computed score — and it never even sees your raw
-            text, only controlled tags. The math is auditable; the AI is a narrator.
-          </p>
-        </Section>
-
+        {/* The differentiator leads — a skimming recruiter should hit the
+            caught-my-own-bug story before the (more generic) model tour. */}
         <Section kicker="The honest part" title="I caught my own model overclaiming — and fixed it">
           <div className="rounded-2xl border-l-4 border-blue-500 bg-blue-500/[.06] p-4 text-foreground/80">
             My methodology page said &ldquo;Fit = O*NET skill-vector similarity.&rdquo; When I
@@ -148,6 +122,34 @@ Score  = 100 · [ α·RAV + (1 − α)·Fit ]`}
               full reconciliation document
             </a>{" "}
             is committed in the repo, verdict by verdict.
+          </p>
+        </Section>
+
+        <Section kicker="The model" title="Every number is math, not an LLM">
+          <p>
+            A pure, deterministic scorer is the single source of truth. Growth and pay are
+            percentile-ranked across all {meta.occupationCount} occupations; risk blends AI-exposure
+            research with a constructed volatility proxy; the two combine into a risk-adjusted value,
+            then blend with personal fit:
+          </p>
+          {/* Two altitudes of the same claim: the system view for skimmers, then
+              the raw equations verbatim for anyone who wants to verify. */}
+          <figure className="my-5 rounded-2xl border border-foreground/10 bg-foreground/[.02] p-4 sm:p-5">
+            <ScoringPipelineDiagram />
+          </figure>
+          <p className="text-xs font-semibold uppercase tracking-wide text-foreground/50">
+            The actual equations
+          </p>
+          <pre className="overflow-x-auto rounded-xl border border-foreground/10 bg-foreground/[.03] p-4 text-xs leading-relaxed">
+{`Return = wGrowth·growth + wPay·pay
+Risk   = wExposure·exposure + wVolatility·volatility
+RAV    = Return · (1 − γ·Risk)
+Score  = 100 · [ α·RAV + (1 − α)·Fit ]`}
+          </pre>
+          <p>
+            The language model never computes a number. It only writes the plain-English
+            &ldquo;why,&rdquo; from the already-computed score — and it never even sees your raw
+            text, only controlled tags. The math is auditable; the AI is a narrator.
           </p>
         </Section>
 

@@ -136,7 +136,14 @@ export async function POST(request: Request) {
     const pct = percentileOf(r.score, allScores);
     return {
       ...r,
-      note: explanations.get(r.code) ?? plainVerdict(occ, r.components, interests.length > 0),
+      note:
+        explanations.get(r.code) ??
+        plainVerdict(
+          occ,
+          r.components,
+          interests.length > 0,
+          r.breakdown ? r.breakdown.aiExposurePct / 100 : undefined,
+        ),
       noteSource: (explanations.has(r.code) ? "llm" : "fallback") as "llm" | "fallback",
       redirect,
       percentile: Math.round(pct),
@@ -160,7 +167,9 @@ export async function POST(request: Request) {
     sensitivity,
     message:
       results.length === 0
-        ? "Couldn't match your text to a career yet. Try naming one — e.g. “data science”, “software engineering”, or “quant”."
+        ? careerCodes.length > 0
+          ? "None of those career codes are in the rated set. Try searching by name instead."
+          : "Couldn't match your text to a career yet. Try naming one — e.g. “data science”, “software engineering”, or “quant”."
         : undefined,
   };
 
