@@ -93,6 +93,10 @@ const SCENARIOS: { label: string; value: number; caption: string }[] = [
 export default function CareerForm() {
   const [occs, setOccs] = useState<OccOption[]>([]);
   const [search, setSearch] = useState("");
+  // Combobox state: which option the arrow keys have reached, and whether
+  // Escape dismissed the list (typing re-opens it).
+  const [activeIdx, setActiveIdx] = useState(-1);
+  const [dismissed, setDismissed] = useState(false);
   const [careers, setCareers] = useState<CareerChip[]>([]);
   const [fields, setFields] = useState<FieldChip[]>([]);
   const [interests, setInterests] = useState<string[]>([]);
@@ -281,6 +285,18 @@ export default function CareerForm() {
   }
 
   const q = search.trim().toLowerCase();
+  // Rank matches so "nurse" surfaces nurses, not "nursery" farmworkers: an
+  // exact title word beats a title prefix beats an alias beats a substring.
+  const sing = (w: string) => w.replace(/s$/, "");
+  function matchRank(o: OccOption): number {
+    const title = o.title.toLowerCase();
+    const words = title.split(/[^a-z]+/);
+    if (words.some((w) => sing(w) === sing(q))) return 0;
+    if (title.startsWith(q)) return 1;
+    if (words.some((w) => w.startsWith(q))) return 2;
+    if (o.aliases.some((a) => a.toLowerCase().split(/[^a-z]+/).some((w) => sing(w) === sing(q)))) return 3;
+    return 4;
+  }
   const careerMatches =
     q.length >= 2
       ? occs
@@ -290,7 +306,10 @@ export default function CareerForm() {
               (o.title.toLowerCase().includes(q) ||
                 o.aliases.some((a) => a.toLowerCase().includes(q))),
           )
+          .map((o) => ({ o, rank: matchRank(o) }))
+          .sort((a, b) => a.rank - b.rank)
           .slice(0, 6)
+          .map(({ o }) => o)
       : [];
   const fieldMatches =
     q.length >= 2
@@ -298,6 +317,64 @@ export default function CareerForm() {
           (f) => f.name.toLowerCase().includes(q) && !fields.some((x) => x.group === f.group),
         ).slice(0, 3)
       : [];
+
+  // One flat option list so keyboard navigation and ids don't care whether a
+  // row is a career or a field.
+  type SearchOption =
+    | { kind: "career"; key: string; occ: OccOption }
+    | { kind: "field"; key: string; field: FieldChip };
+  const options: SearchOption[] = [
+    ...careerMatches.map((o) => ({ kind: "career" as const, key: o.code, occ: o })),
+    ...fieldMatches.map((f) => ({ kind: "field" as const, key: f.group, field: f })),
+  ];
+  // Only claim "no matches" once the occupation list has actually loaded.
+  const noMatches = q.length >= 2 && occs.length > 0 && options.length === 0;
+  const listOpen = !dismissed && (options.length > 0 || noMatches);
+  const optId = (key: string) => `career-search-opt-${key}`;
+
+  function selectOption(opt: SearchOption) {
+    if (opt.kind === "career") {
+      setCareers((c) => [...c, { code: opt.occ.code, title: opt.occ.title }]);
+    } else {
+      setFields((x) => [...x, opt.field]);
+    }
+    setSearch("");
+    setActiveIdx(-1);
+  }
+
+  function moveActive(dir: 1 | -1) {
+    if (!options.length) return;
+    const next =
+      activeIdx < 0
+        ? dir === 1
+          ? 0
+          : options.length - 1
+        : (activeIdx + dir + options.length) % options.length;
+    setActiveIdx(next);
+    requestAnimationFrame(() =>
+      document.getElementById(optId(options[next].key))?.scrollIntoView({ block: "nearest" }),
+    );
+  }
+
+  function onSearchKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key === "ArrowDown" && listOpen) {
+      e.preventDefault();
+      moveActive(1);
+    } else if (e.key === "ArrowUp" && listOpen) {
+      e.preventDefault();
+      moveActive(-1);
+    } else if (e.key === "Escape" && listOpen) {
+      e.preventDefault();
+      setDismissed(true);
+      setActiveIdx(-1);
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      // Enter adds the highlighted (else first) match; on a settled box with
+      // picks already made, Enter rates — so "type, Enter, Enter" just works.
+      if (listOpen && options.length) selectOption(options[Math.max(0, activeIdx)]);
+      else if (q.length === 0 && hasInput && !loading) runScore();
+    }
+  }
 
   const chip =
     "inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-sm";
@@ -317,49 +394,90 @@ export default function CareerForm() {
         <input
           id="career-search"
           type="text"
+          role="combobox"
+          aria-expanded={listOpen}
+          aria-controls="career-search-listbox"
+          aria-autocomplete="list"
+          aria-activedescendant={
+            listOpen && activeIdx >= 0 && options[activeIdx]
+              ? optId(options[activeIdx].key)
+              : undefined
+          }
+          autoComplete="off"
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => {
+            setSearch(e.target.value);
+            setDismissed(false);
+            setActiveIdx(-1);
+          }}
+          onKeyDown={onSearchKeyDown}
           placeholder="🔍 Search e.g. nurse, software, lawyer, welder…"
           className="w-full rounded-xl border border-foreground/15 bg-background px-4 py-2.5 text-sm shadow-sm outline-none transition placeholder:text-foreground/55 focus-visible:border-transparent focus-visible:ring-2 focus-visible:ring-blue-500"
         />
-        {(careerMatches.length > 0 || fieldMatches.length > 0) && (
-          <div className="absolute z-10 mt-1 max-h-72 w-full overflow-y-auto rounded-xl border border-foreground/15 bg-background shadow-lg">
+        {listOpen && (
+          <div
+            id="career-search-listbox"
+            role="listbox"
+            aria-label="Career and field matches"
+            className="absolute z-10 mt-1 max-h-72 w-full overflow-y-auto rounded-xl border border-foreground/15 bg-background shadow-lg"
+          >
             {careerMatches.length > 0 && (
-              <div className="px-3 py-1 text-[10px] font-semibold uppercase tracking-wide text-foreground/55">
+              <div role="presentation" className="px-3 py-1 text-[10px] font-semibold uppercase tracking-wide text-foreground/55">
                 Careers
               </div>
             )}
-            {careerMatches.map((o) => (
+            {careerMatches.map((o, i) => (
               <button
                 key={o.code}
+                id={optId(o.code)}
                 type="button"
-                onClick={() => {
-                  setCareers((c) => [...c, { code: o.code, title: o.title }]);
-                  setSearch("");
-                }}
-                className="block w-full px-3 py-2 text-left text-sm hover:bg-blue-500/10"
+                role="option"
+                aria-selected={activeIdx === i}
+                onMouseEnter={() => setActiveIdx(i)}
+                onClick={() => selectOption({ kind: "career", key: o.code, occ: o })}
+                className={`block w-full px-3 py-2 text-left text-sm ${
+                  activeIdx === i ? "bg-blue-500/10" : "hover:bg-blue-500/10"
+                }`}
               >
                 {o.title}
               </button>
             ))}
             {fieldMatches.length > 0 && (
-              <div className="px-3 py-1 text-[10px] font-semibold uppercase tracking-wide text-foreground/55">
+              <div role="presentation" className="px-3 py-1 text-[10px] font-semibold uppercase tracking-wide text-foreground/55">
                 Fields
               </div>
             )}
-            {fieldMatches.map((f) => (
-              <button
-                key={f.group}
-                type="button"
-                onClick={() => {
-                  setFields((x) => [...x, f]);
-                  setSearch("");
-                }}
-                className="block w-full px-3 py-2 text-left text-sm text-purple-700 hover:bg-purple-500/10"
-              >
-                {f.name} <span className="text-foreground/55">— whole field</span>
-              </button>
-            ))}
+            {fieldMatches.map((f, i) => {
+              const idx = careerMatches.length + i;
+              return (
+                <button
+                  key={f.group}
+                  id={optId(f.group)}
+                  type="button"
+                  role="option"
+                  aria-selected={activeIdx === idx}
+                  onMouseEnter={() => setActiveIdx(idx)}
+                  onClick={() => selectOption({ kind: "field", key: f.group, field: f })}
+                  className={`block w-full px-3 py-2 text-left text-sm text-purple-700 ${
+                    activeIdx === idx ? "bg-purple-500/10" : "hover:bg-purple-500/10"
+                  }`}
+                >
+                  {f.name}{" "}<span className="text-foreground/55">— whole field</span>
+                </button>
+              );
+            })}
+            {/* The silent-failure fix: an explicit dead end with a way out. */}
+            {noMatches && (
+              <div className="px-3 py-2.5 text-sm text-foreground/60">
+                No matches for &ldquo;{search.trim()}&rdquo;. Try a shorter word, or{" "}
+                <Link
+                  href={`/explore?q=${encodeURIComponent(search.trim())}`}
+                  className="font-medium text-blue-600 hover:underline"
+                >
+                  search all 730 careers in Explore →
+                </Link>
+              </div>
+            )}
           </div>
         )}
 
