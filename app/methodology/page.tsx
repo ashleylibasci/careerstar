@@ -106,10 +106,49 @@ RAV    = Return · (1 − γ·Risk)          (risk-adjusted return)
 Score  = 100 · [ α·RAV + (1 − α)·Fit ]`}
           </pre>
           <p>
-            The weights (<code>wGrowth, wPay, wExposure, wVolatility, γ, α</code>) are
-            explicit and documented in the code, so the model can be tuned and its
-            sensitivity analyzed — raise the pay weight and finance climbs; raise γ and
-            AI-exposed fields sink.
+            Four short lines, but each one is a decision, and each had an obvious
+            alternative I turned down:
+          </p>
+          <ul className="list-disc space-y-2 pl-5">
+            <li>
+              <strong>Percentile ranks, not raw units.</strong>{" "}Growth is a percent and pay is
+              dollars, so you can&rsquo;t average them directly. Instead, each career is ranked
+              against all {typed.occupations.length}{" "}others — &ldquo;92nd percentile for
+              pay&rdquo; — which also means a score never says a career is good in the abstract.
+              It says how the career stacks up against everything else you could pick, which is
+              the decision you&rsquo;re actually making. The alternative, min&ndash;max scaling,
+              would let one outlier (surgeons&rsquo; pay) compress every other career&rsquo;s
+              signal.
+            </li>
+            <li>
+              <strong>Risk discounts return; it isn&rsquo;t subtracted.</strong>{" "}RAV multiplies:
+              Return&nbsp;·&nbsp;(1&nbsp;−&nbsp;γ·Risk). Subtracting risk would let a safe
+              dead-end career outrank a risky booming one purely on safety. Multiplying makes
+              risk matter in proportion to what&rsquo;s at stake — the same logic as a
+              risk-adjusted return in investing. And γ&nbsp;=&nbsp;0.6 caps the damage: even
+              maximum risk erases at most 60% of a career&rsquo;s return, never all of it.
+            </li>
+            <li>
+              <strong>Exposure dominates risk (0.7 vs 0.3)</strong>{" "}because AI disruption is the
+              question this site exists to ask — and because the volatility term is the weaker
+              measurement, a constructed proxy (see limitations). The weaker measurement gets the
+              minority weight.
+            </li>
+            <li>
+              <strong>Market outweighs fit (α&nbsp;=&nbsp;0.7)</strong>{" "}because this is a
+              viability rating that gets personalized, not a personality quiz with salary data
+              sprinkled on. Reality carries the score; your interests tilt it.
+            </li>
+          </ul>
+          <p>
+            Now the honest part: these weights aren&rsquo;t fitted to anything. There is no
+            dataset of correct career choices to train on, so 0.7 and 0.6 are documented
+            judgment calls — priors, sitting in the code for anyone to read. That&rsquo;s why so
+            much of this page is stress-testing: the robustness grid re-scores every comparison
+            under 729 ways of disagreeing with me, five rival models score it under different
+            philosophies entirely, and the back-test checks the machinery against a real decade.
+            I can&rsquo;t prove my weights are right, so I show you what happens when
+            they&rsquo;re wrong.
           </p>
         </Section>
 
