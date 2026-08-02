@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type { ScoreResult } from "@/lib/scorer/types";
-import { scoreBand, type Tone } from "@/lib/scorer/verdict";
+import { rankBand, type Tone } from "@/lib/scorer/verdict";
 
 const DOT: Record<Tone, string> = {
   strong: "fill-emerald-500",
@@ -83,7 +83,7 @@ export default function FrontierChart({
 
         {/* points — numbered to avoid label collisions; size encodes score */}
         {results.map((r, i) => {
-          const tone = scoreBand(r.score).tone;
+          const tone = rankBand(r.percentile ?? 50).tone;
           const cx = x(100 - r.components.risk);
           const cy = y(r.components.return);
           const rad = 7 + (r.score / 100) * 6;
@@ -134,7 +134,7 @@ export default function FrontierChart({
       {/* legend maps the numbers to careers */}
       <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1">
         {results.map((r, i) => {
-          const tone = scoreBand(r.score).tone;
+          const tone = rankBand(r.percentile ?? 50).tone;
           return (
             <button
               key={r.code}

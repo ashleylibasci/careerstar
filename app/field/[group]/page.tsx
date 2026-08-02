@@ -5,7 +5,7 @@ import data from "@/data/data.json";
 import { FIELDS, fieldName } from "@/lib/fields";
 import { computeScores } from "@/lib/scorer/scorer";
 import { percentileOf, starsFromPercentile } from "@/lib/scorer/rating";
-import { scoreBand } from "@/lib/scorer/verdict";
+import { rankBand } from "@/lib/scorer/verdict";
 import PageExplainer from "@/app/components/PageExplainer";
 import type { Occupation } from "@/lib/scorer/types";
 
@@ -55,11 +55,13 @@ export default async function FieldPage({ params }: { params: Promise<{ group: s
   const rows = OCCUPATIONS.filter((o) => o.code.slice(0, 2) === group)
     .map((o) => {
       const r = SCORE_BY_CODE.get(o.code)!;
+      const pct = percentileOf(r.score, ALL_SCORES);
       return {
         code: o.code,
         title: o.title,
         score: r.score,
-        stars: starsFromPercentile(percentileOf(r.score, ALL_SCORES)),
+        percentile: pct,
+        stars: starsFromPercentile(pct),
         moat: o.moat ?? null,
         growthPct: o.growthPct,
         medianPay: o.medianPay,
@@ -72,7 +74,7 @@ export default async function FieldPage({ params }: { params: Promise<{ group: s
   const medPay = median(rows.map((r) => r.medianPay));
   const avgGrowth = Math.round((rows.reduce((a, r) => a + r.growthPct, 0) / rows.length) * 10) / 10;
   const wide = rows.filter((r) => r.moat === "wide").length;
-  const band = scoreBand(medScore);
+  const band = rankBand(percentileOf(medScore, ALL_SCORES));
 
   return (
     <main className="flex flex-1 flex-col items-center px-6 py-16 sm:py-24">
@@ -143,7 +145,7 @@ export default async function FieldPage({ params }: { params: Promise<{ group: s
                       {r.title}
                     </Link>
                   </td>
-                  <td className={`py-2 px-3 text-right font-semibold tabular-nums ${TONE_TEXT[scoreBand(r.score).tone]}`}>
+                  <td className={`py-2 px-3 text-right font-semibold tabular-nums ${TONE_TEXT[rankBand(r.percentile).tone]}`}>
                     ★{r.stars.toFixed(1)}
                     <span className="text-foreground/40"> · </span>
                     <span className="text-foreground/55">{r.score}</span>

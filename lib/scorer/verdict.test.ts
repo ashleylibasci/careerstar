@@ -1,16 +1,18 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { scoreBand, plainVerdict } from "./verdict.ts";
+import { rankBand, plainVerdict } from "./verdict.ts";
 import type { Occupation, ScoreComponents } from "./types.ts";
 
-test("scoreBand labels the Strong/Mixed boundary at 64/65", () => {
-  assert.deepEqual(scoreBand(64), { label: "Mixed", tone: "mixed" });
-  assert.deepEqual(scoreBand(65), { label: "Strong", tone: "strong" });
+// Band boundaries are the star curve's own (4★ starts at 67.5, 3★ at 32.5),
+// so the verdict word can never disagree with the stars beside it.
+test("rankBand flips Top tier/Mid-pack exactly where 4★ begins", () => {
+  assert.deepEqual(rankBand(67.4), { label: "Mid-pack", tone: "mixed" });
+  assert.deepEqual(rankBand(67.5), { label: "Top tier", tone: "strong" });
 });
 
-test("scoreBand labels the Mixed/Risky boundary at 44/45", () => {
-  assert.deepEqual(scoreBand(44), { label: "Risky", tone: "risky" });
-  assert.deepEqual(scoreBand(45), { label: "Mixed", tone: "mixed" });
+test("rankBand flips Mid-pack/Trailing exactly where 3★ begins", () => {
+  assert.deepEqual(rankBand(32.4), { label: "Trailing the field", tone: "risky" });
+  assert.deepEqual(rankBand(32.5), { label: "Mid-pack", tone: "mixed" });
 });
 
 test("plainVerdict returns a non-empty string mentioning growth", () => {

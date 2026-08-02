@@ -7,7 +7,7 @@ import educationData from "@/data/education.json";
 import { fieldName } from "@/lib/fields";
 import { computeScores } from "@/lib/scorer/scorer";
 import { percentileOf, starsFromPercentile, bullsAndBears, uncertaintyLabel } from "@/lib/scorer/rating";
-import { plainVerdict, scoreBand } from "@/lib/scorer/verdict";
+import { plainVerdict, rankBand } from "@/lib/scorer/verdict";
 import { Stars } from "@/app/components/rating-ui";
 import MoatBadge from "@/app/components/MoatBadge";
 import PrintButton from "@/app/components/PrintButton";
@@ -162,7 +162,7 @@ export default async function CareerPage({
   const rated = SCORE_BY_CODE.get(code);
   const pct = rated ? percentileOf(rated.score, ALL_SCORES) : null;
   const stars = pct != null ? starsFromPercentile(pct) : null;
-  const band = rated ? scoreBand(rated.score) : null;
+  const band = pct != null ? rankBand(pct) : null;
   const bb = rated ? bullsAndBears(rated) : null;
   const analystTake = rated ? plainVerdict(occ, rated.components, false) : null;
   const uncertainty = rated ? uncertaintyLabel(rated.confidence) : null;

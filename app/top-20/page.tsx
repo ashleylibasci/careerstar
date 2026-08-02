@@ -4,7 +4,7 @@ import data from "@/data/data.json";
 import { computeScores } from "@/lib/scorer/scorer";
 import { modelScores, modelConsensus } from "@/lib/scorer/models";
 import { percentileOf, starsFromPercentile } from "@/lib/scorer/rating";
-import { scoreBand } from "@/lib/scorer/verdict";
+import { rankBand } from "@/lib/scorer/verdict";
 import { Stars } from "@/app/components/rating-ui";
 import PageExplainer from "@/app/components/PageExplainer";
 import { TiltedStar } from "@/app/components/Brand";
@@ -39,12 +39,13 @@ const BY_CODE = new Map(OCCUPATIONS.map((o) => [o.code, o]));
 const TOP20 = ALL_SCORED.map((r) => {
   const o = BY_CODE.get(r.code)!;
   const consensus = modelConsensus(modelScores(r, o.moatScore));
+  const pct = percentileOf(r.score, ALL_SCORES);
   return {
     code: r.code,
     title: r.path,
     score: r.score,
-    stars: starsFromPercentile(percentileOf(r.score, ALL_SCORES)),
-    tone: scoreBand(r.score).tone,
+    stars: starsFromPercentile(pct),
+    tone: rankBand(pct).tone,
     mean: consensus.mean,
     spread: consensus.spread,
     moat: o.moat,

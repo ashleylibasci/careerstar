@@ -21,11 +21,13 @@ const list = scored
   .map((r) => {
     const o = byCode.get(r.code)!;
     const group = o.code.slice(0, 2);
+    const pct = percentileOf(r.score, allScores);
     return {
       code: r.code,
       title: r.path,
       score: r.score,
-      stars: starsFromPercentile(percentileOf(r.score, allScores)),
+      percentile: Math.round(pct),
+      stars: starsFromPercentile(pct),
       moat: o.moat ?? null,
       growthPct: o.growthPct,
       medianPay: o.medianPay,

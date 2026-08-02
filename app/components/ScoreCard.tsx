@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import type { ScoreResult } from "@/lib/scorer/types";
-import { scoreBand, type Tone } from "@/lib/scorer/verdict";
+import { rankBand, type Tone } from "@/lib/scorer/verdict";
 import { uncertaintyLabel } from "@/lib/scorer/rating";
 import { Stars } from "./rating-ui";
 import MoatBadge from "./MoatBadge";
@@ -51,7 +51,7 @@ export default function ScoreCard({
   defaultOpen?: boolean;
   rank?: number;
 }) {
-  const band = scoreBand(result.score);
+  const band = rankBand(result.percentile ?? 50);
   const tone = TONE[band.tone];
   // Resilience = the inverse of risk, so every bar means "higher is better."
   const resilience = 100 - result.components.risk;

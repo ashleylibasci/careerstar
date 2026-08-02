@@ -165,6 +165,7 @@ export async function POST(request: Request) {
     results,
     placeholder: false,
     sensitivity,
+    fieldMax: allScores.length ? Math.max(...allScores) : undefined,
     message:
       results.length === 0
         ? careerCodes.length > 0

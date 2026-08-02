@@ -3,7 +3,7 @@ import data from "@/data/data.json";
 import { computeScores } from "@/lib/scorer/scorer";
 import { percentileOf, starsFromPercentile } from "@/lib/scorer/rating";
 import { MOAT_LABEL } from "@/lib/scorer/moat";
-import { scoreBand } from "@/lib/scorer/verdict";
+import { rankBand } from "@/lib/scorer/verdict";
 import type { Occupation } from "@/lib/scorer/types";
 
 // Per-career social card: share a career report and the link unfurls as
@@ -50,8 +50,9 @@ export default async function OgImage({ params }: { params: Promise<{ code: stri
 
   const title = occ?.title ?? "Career report";
   const score = rated?.score ?? null;
-  const stars = rated ? starsFromPercentile(percentileOf(rated.score, ALL_SCORES)) : 0;
-  const tone = rated ? TONE_HEX[scoreBand(rated.score).tone] : "#64748b";
+  const pct = rated ? percentileOf(rated.score, ALL_SCORES) : null;
+  const stars = pct != null ? starsFromPercentile(pct) : 0;
+  const tone = pct != null ? TONE_HEX[rankBand(pct).tone] : "#64748b";
   const moat = occ?.moat ? MOAT_LABEL[occ.moat] : null;
 
   return new ImageResponse(

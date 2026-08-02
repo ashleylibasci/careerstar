@@ -7,10 +7,14 @@ import type { Occupation, ScoreComponents } from "./types";
 
 export type Tone = "strong" | "mixed" | "risky";
 
-export function scoreBand(score: number): { label: string; tone: Tone } {
-  if (score >= 65) return { label: "Strong", tone: "strong" };
-  if (score >= 45) return { label: "Mixed", tone: "mixed" };
-  return { label: "Risky", tone: "risky" };
+/** Verdict words and colors follow the same relative curve as the stars
+ *  (≥4★ / 3★ / below), so word, color, and stars can never disagree. The raw
+ *  0–100 score stays absolute — its ceiling is the honest part — and the words
+ *  admit they're comparisons. Thresholds are the star curve's own boundaries. */
+export function rankBand(percentile: number): { label: string; tone: Tone } {
+  if (percentile >= 67.5) return { label: "Top tier", tone: "strong" };
+  if (percentile >= 32.5) return { label: "Mid-pack", tone: "mixed" };
+  return { label: "Trailing the field", tone: "risky" };
 }
 
 /** A plain-English one-liner built from the numbers (no LLM needed). */

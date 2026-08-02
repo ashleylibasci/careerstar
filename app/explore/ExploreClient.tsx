@@ -4,12 +4,13 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { FIELDS } from "@/lib/fields";
 import { EDUCATION_LEVELS } from "@/lib/education";
-import { scoreBand, type Tone } from "@/lib/scorer/verdict";
+import { rankBand, type Tone } from "@/lib/scorer/verdict";
 
 interface Row {
   code: string;
   title: string;
   score: number;
+  percentile: number;
   stars: number;
   moat: "wide" | "narrow" | "none" | null;
   growthPct: number;
@@ -195,7 +196,7 @@ export default function ExploreClient({
                   <Link href={`/field/${r.group}`} className="hover:text-blue-600 hover:underline">{r.field}</Link>
                 </td>
                 <td className="py-2 px-3 text-foreground/60">{r.educationShort}</td>
-                <td className={`whitespace-nowrap py-2 px-3 text-right font-semibold tabular-nums ${TONE[scoreBand(r.score).tone]}`}>
+                <td className={`whitespace-nowrap py-2 px-3 text-right font-semibold tabular-nums ${TONE[rankBand(r.percentile ?? 50).tone]}`}>
                   {/* ★4.5, not five glyphs — rounding a 4.5 up to ★★★★★ made it
                       indistinguishable from a true 5.0 in the one view built for comparing. */}
                   <span aria-label={`${r.stars} out of 5 stars`}>★{r.stars.toFixed(1)}</span>

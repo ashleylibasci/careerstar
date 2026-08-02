@@ -739,6 +739,17 @@ export default function CareerForm() {
             ))}
           </div>
 
+          {/* The two scales, given one job each: words/stars grade on the curve,
+              the raw score stays absolute — and its ceiling is the thesis. */}
+          {response.fieldMax != null && (
+            <p className="mt-3 text-[11px] leading-snug text-foreground/55">
+              ⓘ &ldquo;Top tier&rdquo; and the stars grade on the curve — rank against all 730
+              careers. The score itself is absolute, and under these weights no career beats{" "}
+              {response.fieldMax}: risk discounts everything, because no career is a risk-free
+              bet.
+            </p>
+          )}
+
           {/* Portfolio check: warn when every compared path shares the same weakness. */}
           {response.results.length >= 2 &&
             response.results.every((r) => (r.breakdown?.aiExposurePct ?? 0) >= 60) && (

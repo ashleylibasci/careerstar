@@ -93,4 +93,7 @@ export interface ScoreResponse {
   message?: string;
   /** Rank-stability of the compared set under ±20% weight jitter (robustness). */
   sensitivity?: import("./sensitivity.ts").SensitivityReport;
+  /** Highest score any career reaches under the request's weights — the scale's
+   *  honest ceiling (risk discounts everything, so nothing nears 100). */
+  fieldMax?: number;
 }
