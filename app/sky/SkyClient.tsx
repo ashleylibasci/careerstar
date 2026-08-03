@@ -75,6 +75,7 @@ export default function SkyClient({
   const [placing, setPlacing] = useState(false);
   const [placeError, setPlaceError] = useState<string | null>(null);
   const pulseRef = useRef(0);
+  const timeRef = useRef(0);
   const rafRef = useRef<number | null>(null);
 
   // Track container width; the sky keeps a wide aspect (taller on phones) and
@@ -133,15 +134,21 @@ export default function SkyClient({
       ctx.fillText(c.name.toUpperCase(), p.x, p.y);
     }
 
-    for (const s of stars) {
+    for (let i = 0; i < stars.length; i++) {
+      const s = stars[i];
       const p = toPx(s);
       const t = Math.max(0, Math.min(1, (s.score - 20) / 60)); // 20..80 → 0..1
       const r = 1.3 + t * 2.1;
       const isHover = hover?.code === s.code;
+      // Ambient twinkle: each star breathes on its own phase (index-hashed so
+      // it's stable across redraws). Hovered stars hold steady — a target
+      // shouldn't flicker under the cursor. timeRef stays 0 for reduced-motion
+      // users, freezing each star at a fixed point of its cycle.
+      const tw = isHover ? 1 : 0.82 + 0.18 * Math.sin(timeRef.current / 640 + (i % 97) * 0.35);
       if (s.moat === "wide") {
         // Wide-moat stars burn cobalt with a soft halo.
         const halo = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, r * 3.4);
-        halo.addColorStop(0, "rgba(96,140,255,0.55)");
+        halo.addColorStop(0, `rgba(96,140,255,${0.55 * tw})`);
         halo.addColorStop(1, "rgba(96,140,255,0)");
         ctx.fillStyle = halo;
         ctx.beginPath();
@@ -149,7 +156,7 @@ export default function SkyClient({
         ctx.fill();
         ctx.fillStyle = isHover ? "#ffffff" : "#9db9ff";
       } else {
-        ctx.fillStyle = isHover ? "#ffffff" : `rgba(226,234,255,${0.35 + t * 0.55})`;
+        ctx.fillStyle = isHover ? "#ffffff" : `rgba(226,234,255,${(0.35 + t * 0.55) * tw})`;
       }
       ctx.beginPath();
       ctx.arc(p.x, p.y, isHover ? r + 1.6 : r, 0, Math.PI * 2);
@@ -183,23 +190,28 @@ export default function SkyClient({
     }
   }, [stars, constellations, hover, placement, size, toPx]);
 
-  // Static redraws; a light animation loop only while the marker is up
-  // (and only for users who allow motion).
+  // A sky breathes: an always-on ambient loop, throttled to ~25fps — enough
+  // for a slow twinkle and the marker pulse, cheap enough to leave running.
+  // Reduced-motion users get a single static draw.
   useEffect(() => {
-    if (!placement || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       draw();
       return;
     }
-    const tick = () => {
+    let last = 0;
+    const tick = (t: number) => {
+      rafRef.current = requestAnimationFrame(tick);
+      if (t - last < 40) return;
+      last = t;
+      timeRef.current = t;
       pulseRef.current += 1;
       draw();
-      rafRef.current = requestAnimationFrame(tick);
     };
     rafRef.current = requestAnimationFrame(tick);
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, [draw, placement]);
+  }, [draw]);
 
   const nearest = useCallback(
     (mx: number, my: number): SkyStar | null => {

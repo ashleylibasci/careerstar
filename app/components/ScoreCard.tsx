@@ -6,6 +6,7 @@ import type { ScoreResult } from "@/lib/scorer/types";
 import { rankBand, type Tone } from "@/lib/scorer/verdict";
 import { uncertaintyLabel } from "@/lib/scorer/rating";
 import { Stars } from "./rating-ui";
+import ScoreDial from "./ScoreDial";
 import MoatBadge from "./MoatBadge";
 import FeedbackWidget from "./FeedbackWidget";
 
@@ -15,54 +16,11 @@ const BAR_HELP: Record<string, string> = {
   Fit: "How well this career's real O*NET skill profile matches your interests.",
 };
 
-const TONE: Record<Tone, { text: string; pill: string; bar: string; star: string; stroke: string }> = {
-  strong: { text: "text-emerald-600", pill: "bg-emerald-500/12 text-emerald-700", bar: "bg-emerald-500", star: "fill-emerald-500", stroke: "stroke-emerald-500" },
-  mixed: { text: "text-amber-600", pill: "bg-amber-500/12 text-amber-700", bar: "bg-amber-500", star: "fill-amber-500", stroke: "stroke-amber-500" },
-  risky: { text: "text-red-600", pill: "bg-red-500/12 text-red-600", bar: "bg-red-500", star: "fill-red-500", stroke: "stroke-red-500" },
+const TONE: Record<Tone, { text: string; pill: string; bar: string; star: string }> = {
+  strong: { text: "text-emerald-600", pill: "bg-emerald-500/12 text-emerald-700", bar: "bg-emerald-500", star: "fill-emerald-500" },
+  mixed: { text: "text-amber-600", pill: "bg-amber-500/12 text-amber-700", bar: "bg-amber-500", star: "fill-amber-500" },
+  risky: { text: "text-red-600", pill: "bg-red-500/12 text-red-600", bar: "bg-red-500", star: "fill-red-500" },
 };
-
-/** The score as an instrument: a ring gauge filled to score/100, number inside
- *  in the mono face. The arc sweeps up from zero on mount — an instrument
- *  warms up, it doesn't just appear (motion-safe; static under reduced-motion,
- *  and in print, where the transition never runs before rasterization). */
-function ScoreDial({ score, tone }: { score: number; tone: { text: string; stroke: string } }) {
-  const r = 26;
-  const c = 2 * Math.PI * r;
-  const filled = (Math.max(0, Math.min(100, score)) / 100) * c;
-  const [swept, setSwept] = useState(false);
-  useEffect(() => {
-    // One frame at zero, then sweep. Reduced-motion users skip the animation
-    // via motion-safe on the transition class — the arc simply appears full.
-    const raf = requestAnimationFrame(() => setSwept(true));
-    return () => cancelAnimationFrame(raf);
-  }, []);
-  const sweep = swept
-    ? filled
-    : typeof window === "undefined"
-      ? filled // SSR/print fallback: full arc, no zero-state flash without JS
-      : 0;
-  return (
-    <div className="relative h-16 w-16 shrink-0" role="img" aria-label={`Score ${score} out of 100`}>
-      <svg viewBox="0 0 60 60" className="h-16 w-16 -rotate-90">
-        <circle cx="30" cy="30" r={r} fill="none" strokeWidth="3.5" className="stroke-foreground/10" />
-        <circle
-          cx="30"
-          cy="30"
-          r={r}
-          fill="none"
-          strokeWidth="3.5"
-          strokeLinecap="round"
-          strokeDasharray={`${sweep} ${c}`}
-          className={`${tone.stroke} motion-safe:transition-[stroke-dasharray] motion-safe:duration-700 motion-safe:ease-out`}
-        />
-      </svg>
-      <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <span className={`num text-lg font-bold leading-none ${tone.text}`}>{score}</span>
-        <span className="mt-0.5 text-[8px] font-medium text-foreground/45">/100</span>
-      </div>
-    </div>
-  );
-}
 
 function Bar({ label, value, colorClass }: { label: string; value: number; colorClass: string }) {
   return (
@@ -169,7 +127,7 @@ export default function ScoreCard({
         </div>
         <div className="flex shrink-0 items-start gap-2 text-right">
           <div className="flex flex-col items-center">
-            <ScoreDial score={result.score} tone={tone} />
+            <ScoreDial score={result.score} tone={band.tone} />
             {uncertaintyLabel(result.confidence) && (
               <div
                 className="mt-1 w-16 text-center text-[9px] font-medium uppercase tracking-wide text-foreground/55"

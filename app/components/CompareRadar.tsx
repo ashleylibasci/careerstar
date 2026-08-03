@@ -80,9 +80,21 @@ export default function CompareRadar({
           <polygon
             key={ring}
             points={AXES.map((_, i) => point(i, ring).join(",")).join(" ")}
-            className="fill-none stroke-foreground/10"
+            className={ring === 100 ? "fill-none stroke-foreground/20" : "fill-none stroke-foreground/10"}
             strokeWidth="1"
           />
+        ))}
+        {/* Scale labels on the vertical axis, so the rings mean something. */}
+        {[50, 100].map((ring) => (
+          <text
+            key={`lbl-${ring}`}
+            x={point(0, ring)[0] + 6}
+            y={point(0, ring)[1] + 3}
+            fontSize="7.5"
+            className="fill-foreground/35"
+          >
+            {ring}
+          </text>
         ))}
         {AXES.map((ax, i) => {
           const [lx, ly] = point(i, 122);
@@ -97,20 +109,49 @@ export default function CompareRadar({
           if (!visible.has(r.code)) return null;
           const active = hover === r.code;
           const dim = hover !== null && !active;
+          const pts = AXES.map((ax, i) => point(i, ax.get(r)));
+          const ptsAttr = pts.map((p) => p.join(",")).join(" ");
           return (
-            <polygon
+            <g
               key={r.code}
-              points={AXES.map((ax, i) => point(i, ax.get(r)).join(",")).join(" ")}
-              fill={colorOf(si)}
-              fillOpacity={active ? 0.28 : dim ? 0.04 : 0.12}
-              stroke={colorOf(si)}
-              strokeWidth={active ? 2.5 : 1.5}
-              strokeOpacity={dim ? 0.35 : 1}
-              className="cursor-pointer transition-all"
+              className="cursor-pointer"
               onMouseEnter={() => setHover(r.code)}
               onMouseLeave={() => setHover(null)}
               onClick={() => onSelect?.(r.code)}
-            />
+            >
+              {/* halo stroke behind the shape — same star-glow language as the
+                  frontier chart's points */}
+              <polygon
+                points={ptsAttr}
+                fill="none"
+                stroke={colorOf(si)}
+                strokeWidth={6}
+                strokeOpacity={active ? 0.22 : dim ? 0.03 : 0.09}
+                strokeLinejoin="round"
+                pointerEvents="none"
+              />
+              <polygon
+                points={ptsAttr}
+                fill={colorOf(si)}
+                fillOpacity={active ? 0.28 : dim ? 0.04 : 0.12}
+                stroke={colorOf(si)}
+                strokeWidth={active ? 2.5 : 1.5}
+                strokeOpacity={dim ? 0.35 : 1}
+                className="transition-all"
+              />
+              {/* vertex dots: the polygon's readings become points, not just bends */}
+              {pts.map(([px, py], i) => (
+                <circle
+                  key={i}
+                  cx={px}
+                  cy={py}
+                  r={active ? 3 : 2.2}
+                  fill={colorOf(si)}
+                  opacity={dim ? 0.3 : 1}
+                  pointerEvents="none"
+                />
+              ))}
+            </g>
           );
         })}
       </svg>

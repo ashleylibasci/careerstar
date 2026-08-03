@@ -13,6 +13,7 @@ import MoatBadge from "@/app/components/MoatBadge";
 import PrintButton from "@/app/components/PrintButton";
 import FeedbackWidget from "@/app/components/FeedbackWidget";
 import PageExplainer from "@/app/components/PageExplainer";
+import ScoreDial from "@/app/components/ScoreDial";
 import type { Occupation, ScoreResult } from "@/lib/scorer/types";
 
 const typed = data as {
@@ -228,10 +229,7 @@ export default async function CareerPage({
                 )}
               </div>
               <div className="flex items-start gap-6">
-                <div className="text-right">
-                  <div className={`text-4xl font-bold tabular-nums ${TONE_TEXT[band.tone]}`}>{rated.score}</div>
-                  <div className="text-[10px] font-medium uppercase tracking-wide text-foreground/55">/ 100</div>
-                </div>
+                <ScoreDial score={rated.score} tone={band.tone} size={84} />
                 <StyleBox result={rated} />
               </div>
             </div>
