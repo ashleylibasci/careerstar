@@ -83,7 +83,31 @@ export default function MethodologyPage() {
           </p>
         </PageExplainer>
 
-        <Section title="The model">
+        {/* Eleven sections is a corridor; this is the row of doors. */}
+        <nav aria-label="On this page" className="mt-6 rounded-2xl border border-foreground/10 bg-foreground/[.02] p-4">
+          <div className="text-xs font-semibold uppercase tracking-wide text-foreground/55">On this page</div>
+          <ol className="mt-2 grid gap-x-6 gap-y-1 text-sm sm:grid-cols-2">
+            {[
+              ["#model", "The model — and why each line"],
+              ["#fit", "Fit, in O*NET capability-space"],
+              ["#moat", "The AI-moat rating"],
+              ["#universe", "What the rated universe looks like"],
+              ["#robustness", "Robustness"],
+              ["#models", "Five rival models"],
+              ["#sources", "Data sources"],
+              ["#exposure", "Is exposure just decline? (no)"],
+              ["#backtest", "The back-test: 2014 → 2024"],
+              ["#data", "Check my math — the data"],
+              ["#limitations", "Limitations"],
+            ].map(([href, label]) => (
+              <li key={href}>
+                <a href={href} className="text-blue-600 hover:underline">{label}</a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+
+        <Section id="model" title="The model">
           <p>Each occupation gets a 0–100 score from three ingredients:</p>
           <ul className="list-disc space-y-1 pl-5">
             <li>
@@ -152,7 +176,7 @@ Score  = 100 · [ α·RAV + (1 − α)·Fit ]`}
           </p>
         </Section>
 
-        <Section title="Fit, in O*NET capability-space">
+        <Section id="fit" title="Fit, in O*NET capability-space">
           <p>
             Every occupation carries a real <strong>68-dimensional capability vector</strong> —
             the O*NET importance ratings for 35 <em>skills</em> (Critical Thinking, Programming,
@@ -171,7 +195,7 @@ Score  = 100 · [ α·RAV + (1 − α)·Fit ]`}
           </p>
         </Section>
 
-        <Section title="The AI-moat rating">
+        <Section id="moat" title="The AI-moat rating">
           <p>
             Borrowed from Morningstar&rsquo;s economic moat: how <strong>defensible</strong>{" "}is a
             career against AI pressure? It is a fixed, documented formula — not a hand-wave:
@@ -201,7 +225,7 @@ No moat     < 0.55      (~30%)`}
           </p>
         </Section>
 
-        <Section title="What the rated universe looks like">
+        <Section id="universe" title="What the rated universe looks like">
           <p>
             The real distributions across all {typed.occupations.length} occupations at default
             weights — the forced star-curve is applied on top of the score distribution, and the
@@ -242,7 +266,7 @@ No moat     < 0.55      (~30%)`}
           </div>
         </Section>
 
-        <Section title="Robustness (does the answer survive?)">
+        <Section id="robustness" title="Robustness (does the answer survive?)">
           <p>
             The weights are a deliberate choice, so the fair test is whether the ranking holds when
             you disagree with them. For every comparison, CareerStar re-scores the careers across
@@ -253,7 +277,7 @@ No moat     < 0.55      (~30%)`}
           </p>
         </Section>
 
-        <Section title="Five rival models (model risk, made visible)">
+        <Section id="models" title="Five rival models (model risk, made visible)">
           <p>
             Any single formula is one opinion about how much AI risk should count. So every
             comparison is also scored under <strong>four rival models</strong> — different
@@ -286,7 +310,7 @@ No moat     < 0.55      (~30%)`}
           </p>
         </Section>
 
-        <Section title="Data sources">
+        <Section id="sources" title="Data sources">
           <ul className="list-disc space-y-1 pl-5">
             <li>
               <strong>Growth &amp; pay</strong>{" "}— U.S. Bureau of Labor Statistics,
@@ -306,7 +330,7 @@ No moat     < 0.55      (~30%)`}
         </Section>
 
         {validation && (
-          <Section title="Does “AI exposure” just mean “decline”?">
+          <Section id="exposure" title="Does “AI exposure” just mean “decline”?">
             <p>
               A fair objection: maybe the risk score is redundant — maybe exposed jobs are simply the
               shrinking ones. The data says no. Across all {(data as { meta: { occupationCount: number } }).meta.occupationCount} occupations,
@@ -384,7 +408,7 @@ No moat     < 0.55      (~30%)`}
           </p>
         </Section>
 
-        <Section title="Check my math — download the data">
+        <Section id="data" title="Check my math — download the data">
           <p>
             Every rating on this site is in one open CSV:{" "}
             <a
@@ -412,7 +436,7 @@ No moat     < 0.55      (~30%)`}
           </p>
         </Section>
 
-        <Section title="Limitations (read these)">
+        <Section id="limitations" title="Limitations (read these)">
           <ul className="list-disc space-y-1 pl-5">
             <li>
               <strong>Exposure is not job loss.</strong> AI exposure measures the share of

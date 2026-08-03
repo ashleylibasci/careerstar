@@ -229,7 +229,7 @@ Score  = 100 · [ α·RAV + (1 − α)·Fit ]`}
         </Section>
 
         <div className="mt-14 flex flex-wrap gap-3">
-          <Link href="/" className="rounded-2xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white hover:bg-blue-700">
+          <Link href="/rate" className="rounded-2xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white hover:bg-blue-700">
             Try the rating engine →
           </Link>
           <Link href="/methodology" className="rounded-2xl border border-foreground/15 px-5 py-3 text-sm font-semibold hover:border-blue-500/50">

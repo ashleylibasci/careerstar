@@ -6,6 +6,7 @@ import { computeScores } from "@/lib/scorer/scorer";
 import { percentileOf, starsFromPercentile } from "@/lib/scorer/rating";
 import { FIELDS, fieldName } from "@/lib/fields";
 import PageExplainer from "@/app/components/PageExplainer";
+import ViewSwitcher from "@/app/components/ViewSwitcher";
 import SkyClient, { type Constellation, type SkyStar } from "./SkyClient";
 import type { Occupation } from "@/lib/scorer/types";
 
@@ -100,6 +101,8 @@ export default function SkyPage() {
           into constellations <em>on their own</em>, from the math, not from an editor. Brighter =
           higher rated; <span className="font-semibold text-blue-600">cobalt</span>{" "}= wide AI-moat.
         </p>
+
+        <ViewSwitcher active="/sky" />
 
         <PageExplainer>
           <p>

@@ -76,6 +76,9 @@ export default function RootLayout({
               <a href="/case-study" className="font-medium text-blue-600 hover:underline">
                 Hiring? The 3-minute case study →
               </a>
+              <a href="/architecture" className="hover:text-foreground/80 hover:underline">
+                How it&rsquo;s built
+              </a>
               <a
                 href="https://github.com/ashleylibasci/careerstar"
                 target="_blank"

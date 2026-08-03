@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import type { ScoreResponse } from "@/lib/scorer/types";
+import { rankBand } from "@/lib/scorer/verdict";
 import { FIELDS } from "@/lib/fields";
 import ScoreCard from "./ScoreCard";
 import RobustnessPanel from "./RobustnessPanel";
@@ -707,6 +708,32 @@ export default function CareerForm() {
             </p>
           </div>
 
+          {/* The answer, stated in words — the one sentence this product exists
+              to produce. Everything below it is supporting evidence. */}
+          {(() => {
+            const topPick = response.results[0];
+            const runnerUp = response.results[1];
+            const band = rankBand(topPick.percentile ?? 50);
+            const headline =
+              response.results.length === 1
+                ? `${topPick.path} rates ${topPick.score}/100 — ${band.label.toLowerCase()}.`
+                : `${topPick.path} is your strongest bet — ${topPick.score}/100, ${band.label.toLowerCase()}.`;
+            const sub = runnerUp
+              ? topPick.score - runnerUp.score <= 5
+                ? `A close call over ${runnerUp.path} (${runnerUp.score}) — read both cards before deciding.`
+                : `${runnerUp.path} is next at ${runnerUp.score}.`
+              : null;
+            return (
+              <div className="mb-5 rounded-2xl border-l-4 border-blue-600 bg-blue-600/[.05] p-4 sm:p-5 print:break-inside-avoid">
+                <div className="text-[10px] font-bold uppercase tracking-widest text-blue-600">
+                  The verdict
+                </div>
+                <p className="mt-1 text-xl font-bold leading-snug sm:text-2xl">{headline}</p>
+                {sub && <p className="mt-1.5 text-sm text-foreground/70">{sub}</p>}
+              </div>
+            );
+          })()}
+
           <div className="mb-4 flex items-center justify-between gap-3 print:hidden">
             <h2 className="text-sm font-semibold text-foreground/70">
               {response.results.length} {response.results.length === 1 ? "path" : "paths"} scored
@@ -738,7 +765,7 @@ export default function CareerForm() {
               (1–3) open every card so nothing's hidden; larger ones open just the
               best bet and keep the rest as compact rows, so six careers don't
               become an endless scroll. */}
-          {response.results.length >= 4 && (
+          {response.results.length >= 2 && (
             <p className="mb-3 text-xs text-foreground/55 print:hidden">
               Ranked best-first — the top pick is expanded. Click any row to open its full analysis.
             </p>
@@ -750,7 +777,7 @@ export default function CareerForm() {
                 result={result}
                 top={i === 0}
                 rank={i + 1}
-                defaultOpen={i === 0 || response.results.length <= 3}
+                defaultOpen={i === 0}
                 highlighted={highlight === result.code}
               />
             ))}
@@ -788,7 +815,9 @@ export default function CareerForm() {
               shown for a single career (its position + profile) as well as a comparison. */}
           {response.results.length >= 1 && (
             <div className="mt-8 print:hidden">
-              <div className="text-sm font-semibold">The picture</div>
+              <div className="text-sm font-semibold">
+                {response.results.length === 1 ? "Where this career lands" : "Where your paths land"}
+              </div>
               <p className="mb-3 mt-0.5 text-xs text-foreground/60">
                 {response.results.length === 1
                   ? "Where this career sits on return vs. risk, and its profile across every axis. Tap ⤢ to enlarge."
@@ -801,25 +830,33 @@ export default function CareerForm() {
             </div>
           )}
 
-          {response.results.some((r) => r.moat) && (
-            <p className="pt-4 text-xs leading-relaxed text-foreground/60">
-              <strong>What&rsquo;s a &ldquo;moat&rdquo;?</strong> Borrowed from investing: the water
-              around a castle that makes it hard to attack. Here it means how{" "}
-              <strong>shielded a career is from AI</strong> — few of its tasks are automatable, and
-              it relies on skills few other jobs have. 🏰 Wide = well-defended, 🛡 Narrow = some
-              shelter, None = broadly exposed.
-            </p>
-          )}
-
-          <p className="pt-4 text-xs leading-relaxed text-foreground/60">
-            A grounded estimate, not a prediction. Scores blend official U.S. government job
-            projections (2024&ndash;2034) with AI-exposure research — and <strong>AI exposure is
-            not the same as job loss</strong>. See{" "}
-            <Link href="/methodology" className="underline hover:text-foreground/70">
-              how scores are calculated
-            </Link>
-            .
-          </p>
+          {/* Fine print, folded — footnotes shouldn't stand between the answer
+              and the tools. One door, clearly labeled. */}
+          <details className="mt-6 print:hidden">
+            <summary className="cursor-pointer text-xs font-medium text-blue-600 hover:underline">
+              How to read these results — moats, estimates, and what a score can&rsquo;t tell you
+            </summary>
+            <div className="mt-2 space-y-3 text-xs leading-relaxed text-foreground/60">
+              {response.results.some((r) => r.moat) && (
+                <p>
+                  <strong>What&rsquo;s a &ldquo;moat&rdquo;?</strong> Borrowed from investing: the
+                  water around a castle that makes it hard to attack. Here it means how{" "}
+                  <strong>shielded a career is from AI</strong> — few of its tasks are automatable,
+                  and it relies on skills few other jobs have. 🏰 Wide = well-defended, 🛡 Narrow =
+                  some shelter, None = broadly exposed.
+                </p>
+              )}
+              <p>
+                A grounded estimate, not a prediction. Scores blend official U.S. government job
+                projections (2024&ndash;2034) with AI-exposure research — and <strong>AI exposure
+                is not the same as job loss</strong>. See{" "}
+                <Link href="/methodology" className="underline hover:text-foreground/70">
+                  how scores are calculated
+                </Link>
+                .
+              </p>
+            </div>
+          </details>
 
           <div className="mb-1 mt-10 text-xs font-semibold uppercase tracking-wide text-foreground/45 print:hidden">
             Dig deeper — optional

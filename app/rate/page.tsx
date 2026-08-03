@@ -14,16 +14,15 @@ export default function RatePage() {
   return (
     <main className="flex flex-1 flex-col items-center px-6 py-12 sm:py-16">
       <div className="w-full max-w-2xl">
-        <header className="mx-auto mb-8 max-w-2xl print:hidden">
+        {/* Lean on purpose: the landing did the explaining — here, the search
+            box belongs in the first viewport. */}
+        <header className="mx-auto mb-6 max-w-2xl print:hidden">
           <h1 className="text-2xl font-bold leading-tight tracking-tight sm:text-3xl">
             Rate the paths you&rsquo;re weighing.
           </h1>
-          <p className="mt-3 leading-relaxed text-foreground/70">
-            One{" "}
-            <span className="font-semibold text-foreground">0&ndash;100 score</span>{" "}for how
-            strong a bet each career is — growth and pay weighed against AI risk, the way
-            you&rsquo;d size up a stock. Search below, or just pick your interests and let the
-            data suggest paths.
+          <p className="mt-2 text-sm leading-relaxed text-foreground/70">
+            One 0&ndash;100 score per path — growth and pay weighed against AI risk. No idea yet?
+            Start from your interests instead.
           </p>
 
           <PageExplainer>

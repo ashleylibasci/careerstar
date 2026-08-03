@@ -8,21 +8,27 @@ import { BrandWordmark } from "./Brand";
 // Site nav: a compact pill bar on desktop; a logo + hamburger dropdown on mobile
 // so the sticky header stays ~50px instead of wrapping to a tall block.
 
+// Four destinations, one accent. Sky map and Top 20 are views inside Explore;
+// "How it's built" lives in the footer — fewer equal-weight doors to get lost in.
 const LINKS = [
-  { href: "/rate", label: "Rate careers" },
+  { href: "/rate", label: "Rate careers", accent: true },
   { href: "/explore", label: "Explore" },
-  { href: "/sky", label: "Sky map" },
-  { href: "/top-20", label: "Top 20" },
-  { href: "/methodology", label: "Methodology" },
-  { href: "/architecture", label: "How it’s built" },
-  { href: "/case-study", label: "Case study", accent: true },
+  { href: "/methodology", label: "How scores work" },
+  { href: "/case-study", label: "Case study" },
 ];
+
+/** Explore owns its sibling views — the nav pill stays lit on all three. */
+const EXPLORE_VIEWS = ["/explore", "/sky", "/top-20", "/field", "/career"];
 
 export default function NavBar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const isActive = (href: string) =>
-    href === "/" ? pathname === "/" : pathname.startsWith(href);
+    href === "/"
+      ? pathname === "/"
+      : href === "/explore"
+        ? EXPLORE_VIEWS.some((v) => pathname.startsWith(v))
+        : pathname.startsWith(href);
 
   // Close the mobile menu on route change (render-time reset, no effect needed).
   const [prevPath, setPrevPath] = useState(pathname);
@@ -42,9 +48,9 @@ export default function NavBar() {
           <BrandWordmark size={19} />
         </Link>
 
-        {/* Desktop links — 7 non-wrapping pills + wordmark need ~880px; below
+        {/* Desktop links — 4 non-wrapping pills fit from md up; below
             that the hamburger holds, so labels never break onto two lines. */}
-        <div className="hidden items-center gap-1 text-sm min-[880px]:flex">
+        <div className="hidden items-center gap-1 text-sm md:flex">
           {LINKS.map((l) => (
             <Link
               key={l.href}
@@ -75,7 +81,7 @@ export default function NavBar() {
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-label={open ? "Close menu" : "Open menu"}
-          className="flex h-11 w-11 items-center justify-center rounded-lg border border-foreground/15 text-foreground/70 min-[880px]:hidden"
+          className="flex h-11 w-11 items-center justify-center rounded-lg border border-foreground/15 text-foreground/70 md:hidden"
         >
           <span aria-hidden className="text-lg leading-none">{open ? "✕" : "☰"}</span>
         </button>
@@ -83,7 +89,7 @@ export default function NavBar() {
 
       {/* Mobile dropdown */}
       {open && (
-        <div className="border-t border-foreground/10 px-4 pb-3 pt-1 min-[880px]:hidden">
+        <div className="border-t border-foreground/10 px-4 pb-3 pt-1 md:hidden">
           {LINKS.map((l) => (
             <Link
               key={l.href}

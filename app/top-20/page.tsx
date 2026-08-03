@@ -7,6 +7,7 @@ import { percentileOf, starsFromPercentile } from "@/lib/scorer/rating";
 import { rankBand } from "@/lib/scorer/verdict";
 import { Stars } from "@/app/components/rating-ui";
 import PageExplainer from "@/app/components/PageExplainer";
+import ViewSwitcher from "@/app/components/ViewSwitcher";
 import { TiltedStar } from "@/app/components/Brand";
 import type { Occupation } from "@/lib/scorer/types";
 
@@ -76,6 +77,8 @@ export default function Top20Page() {
           ±10 band — even the ones that disagree about everything else). Ranked by model consensus.
         </p>
 
+        <ViewSwitcher active="/top-20" />
+
         <PageExplainer>
           <p>
             This is CareerStar&rsquo;s highest-conviction list: the 20 careers where the evidence
@@ -85,7 +88,7 @@ export default function Top20Page() {
           </p>
           <p>
             <strong>How to use it:</strong>{" "}click any career for its full report, or head to the{" "}
-            <Link href="/" className="font-medium text-blue-600 hover:underline">home page</Link>{" "}
+            <Link href="/rate" className="font-medium text-blue-600 hover:underline">rating page</Link>{" "}
             to score it against the paths you&rsquo;re actually considering. &ldquo;Consensus{" "}
             {TOP20[0].mean}&nbsp;±{Math.round(TOP20[0].spread / 2)}&rdquo; (the #1 entry) means the
             five models average {TOP20[0].mean}, each landing within about{" "}
@@ -132,7 +135,7 @@ export default function Top20Page() {
         <p className="mt-8 text-xs leading-relaxed text-foreground/55">
           This is a neutral baseline, before any personal interests — your own ranking may differ
           (and should:{" "}
-          <Link href="/" className="text-blue-600 hover:underline">
+          <Link href="/rate" className="text-blue-600 hover:underline">
             score your paths
           </Link>{" "}
           with your priorities). Conviction ≠ certainty: these are grounded estimates from{" "}

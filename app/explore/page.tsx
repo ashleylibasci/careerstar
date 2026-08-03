@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ExploreClient from "./ExploreClient";
 import PageExplainer from "@/app/components/PageExplainer";
+import ViewSwitcher from "@/app/components/ViewSwitcher";
 
 export const metadata: Metadata = {
   title: "Explore careers — CareerStar",
@@ -28,6 +29,8 @@ export default async function ExplorePage({
           factored in). Filter, sort, and click any career for its full report.
         </p>
 
+        <ViewSwitcher active="/explore" />
+
         <PageExplainer>
           <p>
             This is the whole rated market: 730 occupations from the U.S. government&rsquo;s
@@ -39,7 +42,7 @@ export default async function ExplorePage({
             <strong>How to use it:</strong>{" "}sort by score, growth, or pay; filter by
             &ldquo;moat&rdquo; (how shielded a career is from AI); and click any row for the full
             report. If you want scores tailored to <em>you</em>, take your shortlist to the{" "}
-            <Link href="/" className="font-medium text-blue-600 hover:underline">home page</Link>{" "}and
+            <Link href="/rate" className="font-medium text-blue-600 hover:underline">rating page</Link>{" "}and
             rate it there.
           </p>
         </PageExplainer>
