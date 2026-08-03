@@ -2,7 +2,41 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import backtest from "@/data/backtest.json";
 import { MODELS } from "@/lib/scorer/models";
-import { TiltedStar } from "./components/Brand";
+import { TiltedStar, TILTED_STAR_PATH } from "./components/Brand";
+
+// Decorative hero constellation: rated careers as stars, hairlines between
+// them — the same idea as /sky, planted on the front door. Purely aesthetic.
+function HeroConstellation() {
+  const stars: Array<[number, number, number, boolean]> = [
+    [36, 44, 0.55, false],
+    [118, 18, 0.8, true],
+    [196, 64, 0.45, false],
+    [258, 116, 0.95, false],
+    [154, 152, 0.5, true],
+    [78, 196, 0.65, false],
+    [282, 206, 0.4, true],
+  ];
+  return (
+    <svg
+      aria-hidden
+      viewBox="0 0 320 240"
+      className="pointer-events-none absolute -right-6 -top-10 hidden w-80 text-blue-600 opacity-40 lg:block dark:opacity-30"
+    >
+      <g stroke="currentColor" strokeWidth="0.75" opacity="0.35">
+        <path d="M36 44 118 18 196 64 258 116 154 152 78 196M154 152 282 206" fill="none" />
+      </g>
+      {stars.map(([x, y, s, late], i) => (
+        <path
+          key={i}
+          d={TILTED_STAR_PATH}
+          fill="currentColor"
+          className={late ? "twinkle-late" : "twinkle"}
+          transform={`translate(${x - 12 * s}, ${y - 12 * s}) scale(${s})`}
+        />
+      ))}
+    </svg>
+  );
+}
 
 const METRICS = (backtest as { metrics: { spearmanScoreVsRealized: number; declinerHitRatePct: number } }).metrics;
 
@@ -50,9 +84,17 @@ export default async function Home({
     <main className="flex flex-1 flex-col items-center px-6 py-16 sm:py-24">
       <div className="w-full max-w-2xl lg:max-w-3xl">
         {/* The promise, and the one action. */}
-        <header className="mx-auto max-w-2xl lg:max-w-3xl">
-          <h1 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
-            Rate the career paths you&rsquo;re weighing — like stocks.
+        <header className="relative mx-auto max-w-2xl lg:max-w-3xl">
+          <HeroConstellation />
+          <p className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.2em] text-blue-600">
+            <TiltedStar size={13} />
+            AI-era career ratings
+          </p>
+          <h1 className="mt-3 text-3xl font-bold leading-tight tracking-tight sm:text-5xl">
+            Rate the career paths you&rsquo;re weighing —{" "}
+            <span className="bg-gradient-to-r from-blue-600 to-sky-500 bg-clip-text text-transparent dark:from-blue-400 dark:to-sky-300">
+              like stocks.
+            </span>
           </h1>
           <p className="mt-4 text-lg leading-relaxed text-foreground/70">
             Picking a career is the biggest bet most of us ever make, and most of the advice is
@@ -66,7 +108,7 @@ export default async function Home({
           <div className="mt-6 flex flex-wrap items-center gap-4">
             <Link
               href="/rate"
-              className="inline-flex items-center justify-center rounded-full bg-blue-600 px-7 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              className="inline-flex items-center justify-center rounded-full bg-blue-600 px-7 py-3 text-base font-semibold text-white shadow-lg shadow-blue-600/25 transition hover:bg-blue-500 hover:shadow-blue-600/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               Rate my paths →
             </Link>
@@ -104,7 +146,8 @@ export default async function Home({
 
         {/* The idea, in three steps. */}
         <section className="mt-14">
-          <h2 className="text-xl font-bold tracking-tight">How it works</h2>
+          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-blue-600">01 · The process</p>
+          <h2 className="mt-1.5 text-xl font-bold tracking-tight">How it works</h2>
           <div className="mt-4 grid gap-3 sm:grid-cols-3">
             <Step n={1} title="Name your paths">
               Careers, whole fields, or just your interests — start anywhere, even from
@@ -125,7 +168,8 @@ export default async function Home({
 
         {/* The judges — and the fact you can switch them. */}
         <section className="mt-14">
-          <h2 className="text-xl font-bold tracking-tight">Five judges, not one oracle</h2>
+          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-blue-600">02 · Model risk, made visible</p>
+          <h2 className="mt-1.5 text-xl font-bold tracking-tight">Five judges, not one oracle</h2>
           <p className="mt-3 leading-relaxed text-foreground/70">
             Any single formula is one opinion about how much AI risk should count. So every
             comparison is scored by{" "}
@@ -155,10 +199,11 @@ export default async function Home({
 
         {/* Why trust it — every claim links to its receipt. */}
         <section className="mt-14">
-          <h2 className="text-xl font-bold tracking-tight">Why you can check it</h2>
+          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-blue-600">03 · The receipts</p>
+          <h2 className="mt-1.5 text-xl font-bold tracking-tight">Why you can check it</h2>
           <ul className="mt-4 space-y-3 text-sm leading-relaxed text-foreground/70">
             <li className="flex gap-2.5">
-              <span aria-hidden>🧮</span>
+              <TiltedStar size={12} className="mt-1 shrink-0" />
               <span>
                 <strong className="text-foreground">Deterministic math.</strong>{" "}The same
                 inputs always produce the same score, from formulas published in full on the{" "}
@@ -169,7 +214,7 @@ export default async function Home({
               </span>
             </li>
             <li className="flex gap-2.5">
-              <span aria-hidden>📜</span>
+              <TiltedStar size={12} className="mt-1 shrink-0" />
               <span>
                 <strong className="text-foreground">Back-tested, misses named.</strong>{" "}The
                 model was pointed at 2014 and graded against what 2024 actually did — including
@@ -177,7 +222,7 @@ export default async function Home({
               </span>
             </li>
             <li className="flex gap-2.5">
-              <span aria-hidden>⚖️</span>
+              <TiltedStar size={12} className="mt-1 shrink-0" />
               <span>
                 <strong className="text-foreground">Stress-tested.</strong>{" "}Every comparison
                 is re-scored under 729 weight variations and five rival models; results that
@@ -185,7 +230,7 @@ export default async function Home({
               </span>
             </li>
             <li className="flex gap-2.5">
-              <span aria-hidden>📂</span>
+              <TiltedStar size={12} className="mt-1 shrink-0" />
               <span>
                 <strong className="text-foreground">Open data.</strong>{" "}Every rating is in
                 one{" "}

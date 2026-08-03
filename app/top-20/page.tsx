@@ -105,7 +105,7 @@ export default function Top20Page() {
             <li key={r.code}>
               <Link
                 href={`/career/${r.code}`}
-                className="flex items-center gap-4 rounded-2xl border border-foreground/10 bg-foreground/[.02] p-4 transition hover:border-blue-500/40 hover:bg-foreground/[.04]"
+                className="card-lift flex items-center gap-4 rounded-2xl border border-foreground/10 bg-foreground/[.02] p-4 hover:border-blue-500/40 hover:bg-foreground/[.04]"
               >
                 <span className="w-8 shrink-0 text-right text-xl font-bold tabular-nums text-foreground/40">
                   {i + 1}
@@ -122,7 +122,7 @@ export default function Top20Page() {
                   </span>
                 </span>
                 <span className="shrink-0 text-right">
-                  <span className="block text-xl font-bold tabular-nums text-blue-600">{r.mean}</span>
+                  <span className="num block text-xl font-bold text-blue-600">{r.mean}</span>
                   <span className="block text-[9px] font-medium uppercase tracking-wide text-foreground/45">
                     consensus
                   </span>

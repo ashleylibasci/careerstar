@@ -15,11 +15,40 @@ const BAR_HELP: Record<string, string> = {
   Fit: "How well this career's real O*NET skill profile matches your interests.",
 };
 
-const TONE: Record<Tone, { text: string; pill: string; bar: string; star: string }> = {
-  strong: { text: "text-emerald-600", pill: "bg-emerald-500/12 text-emerald-700", bar: "bg-emerald-500", star: "fill-emerald-500" },
-  mixed: { text: "text-amber-600", pill: "bg-amber-500/12 text-amber-700", bar: "bg-amber-500", star: "fill-amber-500" },
-  risky: { text: "text-red-600", pill: "bg-red-500/12 text-red-600", bar: "bg-red-500", star: "fill-red-500" },
+const TONE: Record<Tone, { text: string; pill: string; bar: string; star: string; stroke: string }> = {
+  strong: { text: "text-emerald-600", pill: "bg-emerald-500/12 text-emerald-700", bar: "bg-emerald-500", star: "fill-emerald-500", stroke: "stroke-emerald-500" },
+  mixed: { text: "text-amber-600", pill: "bg-amber-500/12 text-amber-700", bar: "bg-amber-500", star: "fill-amber-500", stroke: "stroke-amber-500" },
+  risky: { text: "text-red-600", pill: "bg-red-500/12 text-red-600", bar: "bg-red-500", star: "fill-red-500", stroke: "stroke-red-500" },
 };
+
+/** The score as an instrument: a ring gauge filled to score/100, number inside
+ *  in the mono face. Reads "dial on a desk", not "paragraph number". */
+function ScoreDial({ score, tone }: { score: number; tone: { text: string; stroke: string } }) {
+  const r = 26;
+  const c = 2 * Math.PI * r;
+  const filled = (Math.max(0, Math.min(100, score)) / 100) * c;
+  return (
+    <div className="relative h-16 w-16 shrink-0" role="img" aria-label={`Score ${score} out of 100`}>
+      <svg viewBox="0 0 60 60" className="h-16 w-16 -rotate-90">
+        <circle cx="30" cy="30" r={r} fill="none" strokeWidth="3.5" className="stroke-foreground/10" />
+        <circle
+          cx="30"
+          cy="30"
+          r={r}
+          fill="none"
+          strokeWidth="3.5"
+          strokeLinecap="round"
+          strokeDasharray={`${filled} ${c}`}
+          className={tone.stroke}
+        />
+      </svg>
+      <div className="absolute inset-0 flex flex-col items-center justify-center">
+        <span className={`num text-lg font-bold leading-none ${tone.text}`}>{score}</span>
+        <span className="mt-0.5 text-[8px] font-medium text-foreground/45">/100</span>
+      </div>
+    </div>
+  );
+}
 
 function Bar({ label, value, colorClass }: { label: string; value: number; colorClass: string }) {
   return (
@@ -125,17 +154,14 @@ export default function ScoreCard({
           </div>
         </div>
         <div className="flex shrink-0 items-start gap-2 text-right">
-          <div>
-            <div className={`text-3xl font-bold tabular-nums ${tone.text}`}>
-              {result.score}
-              <span className="align-top text-sm font-medium text-foreground/45">/100</span>
-            </div>
+          <div className="flex flex-col items-center">
+            <ScoreDial score={result.score} tone={tone} />
             {uncertaintyLabel(result.confidence) && (
               <div
-                className="text-[10px] font-medium uppercase tracking-wide text-foreground/55"
+                className="mt-1 w-16 text-center text-[9px] font-medium uppercase tracking-wide text-foreground/55"
                 title="How rough the estimate is — higher with high AI exposure or weak fit."
               >
-                {uncertaintyLabel(result.confidence)} uncertainty
+                {uncertaintyLabel(result.confidence)} uncert.
               </div>
             )}
           </div>

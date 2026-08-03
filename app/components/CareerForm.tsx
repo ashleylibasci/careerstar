@@ -10,6 +10,7 @@ import RobustnessPanel from "./RobustnessPanel";
 import ModelComparison from "./ModelComparison";
 import { MODELS } from "@/lib/scorer/models";
 import ResultsSection from "./ResultsSection";
+import { TiltedStar } from "./Brand";
 import FrontierChart from "./FrontierChart";
 import CompareRadar from "./CompareRadar";
 
@@ -725,7 +726,8 @@ export default function CareerForm() {
               : null;
             return (
               <div className="mb-5 rounded-2xl border-l-4 border-blue-600 bg-blue-600/[.05] p-4 sm:p-5 print:break-inside-avoid">
-                <div className="text-[10px] font-bold uppercase tracking-widest text-blue-600">
+                <div className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-widest text-blue-600">
+                  <TiltedStar size={10} />
                   The verdict
                 </div>
                 <p className="mt-1 text-xl font-bold leading-snug sm:text-2xl">{headline}</p>

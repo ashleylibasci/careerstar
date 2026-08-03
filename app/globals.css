@@ -48,6 +48,69 @@ body {
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
 
+/* ---------- Atmosphere: a quant desk under a night sky ----------
+   Two layers, both barely-there: graph-paper grid (the analyst's desk) and a
+   single cobalt glow at the top of the page (the sky). Screen only — print
+   stays ink-first. */
+:root {
+  --grid-line: rgba(23, 23, 23, 0.04);
+  --sky-glow: rgba(29, 78, 216, 0.07);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --grid-line: rgba(237, 237, 237, 0.05);
+    --sky-glow: rgba(79, 116, 240, 0.09);
+  }
+}
+@media screen {
+  body {
+    background-image:
+      radial-gradient(ellipse 90% 420px at 50% -60px, var(--sky-glow), transparent 70%),
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size:
+      100% 640px,
+      36px 36px,
+      36px 36px;
+    background-repeat: no-repeat, repeat, repeat;
+  }
+}
+
+::selection {
+  background: rgba(29, 78, 216, 0.22);
+}
+
+/* Numbers that matter wear the mono face — instrument, not essay. */
+.num {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Interactive cards lift a hair on hover; reduced-motion users get color only. */
+.card-lift {
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .card-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px -8px rgba(29, 78, 216, 0.25);
+  }
+}
+
+/* Constellation stars breathe, slowly; still for reduced motion. */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.9; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .twinkle {
+    animation: twinkle 3.6s ease-in-out infinite;
+  }
+  .twinkle-late {
+    animation: twinkle 4.4s ease-in-out 1.2s infinite;
+  }
+}
+
 /* Brand display face on page titles only (H1) — one loud voice where headlines
    are short; section headings stay Geist so long text keeps its texture. */
 h1 {
