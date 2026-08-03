@@ -1,12 +1,12 @@
 import data from "@/data/data.json";
-import type { Occupation, ScoreResponse } from "@/lib/scorer/types";
+import type { Occupation, ScoreResponse, ScoreResult } from "@/lib/scorer/types";
 import { computeScores } from "@/lib/scorer/scorer";
 import { analyzeSensitivity } from "@/lib/scorer/sensitivity";
 import { parseInput } from "@/lib/scorer/parse";
 import { findRedirect, VIABILITY_THRESHOLD } from "@/lib/scorer/redirect";
 import { plainVerdict } from "@/lib/scorer/verdict";
 import { starsFromPercentile, percentileOf, bullsAndBears } from "@/lib/scorer/rating";
-import { modelScores } from "@/lib/scorer/models";
+import { modelScores, MODELS } from "@/lib/scorer/models";
 import { explainResults } from "@/lib/explain/explain";
 import { validateInput } from "@/lib/security/limits";
 import { rateLimit, clientKey } from "@/lib/security/rate-limit";
@@ -46,6 +46,7 @@ export async function POST(request: Request) {
     interests?: unknown;
     riskPriority?: unknown;
     weights?: unknown;
+    model?: unknown;
   } | null;
 
   const asStrings = (v: unknown): string[] =>
@@ -123,17 +124,36 @@ export async function POST(request: Request) {
   const allScored = computeScores(dataset, interests, dataset.map((o) => o.code), weights, skillStats);
   const allScores = allScored.map((r) => r.score);
 
-  // LLM plain-English explanation (falls back to a factual note if no key / error).
-  const explanations = await explainResults(scored, occByCode, interests);
+  // Judge switch: re-score the headline — and the whole curve — under one of
+  // the five rating models. The signals are identical; only the combination
+  // rule changes, so score, percentile, stars, and band all move together and
+  // can never tell two different stories on one card.
+  const rawModel = bodyObj?.model;
+  const modelId =
+    typeof rawModel === "string" && MODELS.some((m) => m.id === rawModel) ? rawModel : "standard";
+  const applyModel = (r: ScoreResult): number =>
+    modelId === "standard"
+      ? r.score
+      : (modelScores(r, occByCode.get(r.code)?.moatScore)[modelId] ?? r.score);
+  const shown =
+    modelId === "standard"
+      ? scored
+      : scored.map((r) => ({ ...r, score: applyModel(r) })).sort((a, b) => b.score - a.score);
+  const curve = modelId === "standard" ? allScores : allScored.map(applyModel);
 
-  const results = scored.map((r) => {
+  // LLM plain-English explanation (falls back to a factual note if no key / error).
+  const explanations = await explainResults(shown, occByCode, interests);
+
+  const results = shown.map((r) => {
     const occ = occByCode.get(r.code)!;
+    // Redirects reason about the Standard score's threshold; other judges
+    // rank without them rather than borrow a threshold that isn't theirs.
     const redirect =
-      r.score < VIABILITY_THRESHOLD
+      modelId === "standard" && r.score < VIABILITY_THRESHOLD
         ? findRedirect(r, allScored, occByCode, skillStats)
         : undefined;
     // LLM sentence when available, else a plain-English verdict (never a stat dump).
-    const pct = percentileOf(r.score, allScores);
+    const pct = percentileOf(r.score, curve);
     return {
       ...r,
       note:
@@ -154,9 +174,10 @@ export async function POST(request: Request) {
     };
   });
 
-  // Robustness: does the ranking of the shown careers survive ±20% weight jitter?
+  // Robustness: does the ranking survive ±20% weight jitter? Only meaningful
+  // for the Standard judge — the rivals don't use these weights at all.
   const sensitivity =
-    scored.length >= 1
+    scored.length >= 1 && modelId === "standard"
       ? analyzeSensitivity(dataset, interests, scored.map((r) => r.code), skillStats, weights)
       : undefined;
 
@@ -165,7 +186,8 @@ export async function POST(request: Request) {
     results,
     placeholder: false,
     sensitivity,
-    fieldMax: allScores.length ? Math.max(...allScores) : undefined,
+    model: modelId,
+    fieldMax: curve.length ? Math.max(...curve) : undefined,
     message:
       results.length === 0
         ? careerCodes.length > 0

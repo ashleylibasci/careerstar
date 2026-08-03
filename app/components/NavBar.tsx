@@ -9,7 +9,7 @@ import { BrandWordmark } from "./Brand";
 // so the sticky header stays ~50px instead of wrapping to a tall block.
 
 const LINKS = [
-  { href: "/", label: "Rate careers" },
+  { href: "/rate", label: "Rate careers" },
   { href: "/explore", label: "Explore" },
   { href: "/sky", label: "Sky map" },
   { href: "/top-20", label: "Top 20" },

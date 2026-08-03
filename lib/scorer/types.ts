@@ -96,4 +96,6 @@ export interface ScoreResponse {
   /** Highest score any career reaches under the request's weights — the scale's
    *  honest ceiling (risk discounts everything, so nothing nears 100). */
   fieldMax?: number;
+  /** Which rating model produced the headline scores (see lib/scorer/models.ts). */
+  model?: string;
 }

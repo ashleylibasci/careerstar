@@ -26,6 +26,10 @@ export interface RatingModel {
   name: string;
   tagline: string;
   formula: string;
+  /** What this judge sees that the others miss. */
+  strengths: string;
+  /** The blind spot you accept by choosing it. */
+  caution: string;
   compute: (x: ModelInput) => number;
 }
 
@@ -37,6 +41,10 @@ export const MODELS: RatingModel[] = [
     name: "Standard",
     tagline: "Risk-adjusted return — AI risk discounts the market reward, then fit blends in. The headline model.",
     formula: "100·[α·(Return·(1−γ·Risk)) + (1−α)·Fit]",
+    strengths:
+      "The balanced read — and the only model here that's been back-tested against a real decade (2014→2024).",
+    caution:
+      "Its blend weights are judgment calls, not fitted constants — which is exactly why the four rivals exist.",
     compute: (x) => clamp(x.standardScore),
   },
   {
@@ -44,6 +52,10 @@ export const MODELS: RatingModel[] = [
     name: "Growth maximalist",
     tagline: "Pure market momentum: growth + pay only. Deliberately ignores AI risk — 'the projections already price it in.'",
     formula: "0.5·growth + 0.5·pay",
+    strengths:
+      "The purest read of the official projections — and on the pre-LLM decade, raw projections were the single best predictor.",
+    caution:
+      "Blind to AI by design. A highly exposed career with good growth numbers scores well right up until it doesn't.",
     compute: (x) => clamp(0.5 * x.growthRank + 0.5 * x.payRank),
   },
   {
@@ -51,6 +63,10 @@ export const MODELS: RatingModel[] = [
     name: "Defensive",
     tagline: "Moat first: in an AI shock, survival beats upside. Defensibility and resilience dominate; reward is secondary.",
     formula: "0.5·moat + 0.3·resilience + 0.2·pay",
+    strengths:
+      "Built for the bad scenario — the only judge that prices a career's moat, so it catches shelter the others ignore.",
+    caution:
+      "Punishes exposed-but-booming fields hard: it will underrate software developers in every timeline where AI disappoints.",
     compute: (x) =>
       clamp(0.5 * (x.moatScore != null ? x.moatScore * 100 : x.resilience) + 0.3 * x.resilience + 0.2 * x.payRank),
   },
@@ -59,6 +75,10 @@ export const MODELS: RatingModel[] = [
     name: "Sharpe-style",
     tagline: "Efficiency: reward per unit of risk, as a ratio — a high-return career must also be low-risk to score high.",
     formula: "100·Return / (Return + Risk)",
+    strengths:
+      "The efficiency lens: flags high-reward careers whose risk is quietly outsized, which additive models let slide.",
+    caution:
+      "Ratios flatter the timid — a low-reward, low-risk career can score 'efficient' while going nowhere.",
     compute: (x) => {
       const ret = 0.5 * x.growthRank + 0.5 * x.payRank;
       const risk = 100 - x.resilience;
@@ -70,6 +90,10 @@ export const MODELS: RatingModel[] = [
     name: "Naive 1/N",
     tagline: "The control: an equal-weight average of everything. If a clever model can't beat this, that's worth knowing.",
     formula: "(growth + pay + resilience + fit) / 4",
+    strengths:
+      "No opinions to be wrong about — the honest baseline every clever model has to beat to earn its complexity.",
+    caution:
+      "Weights every signal equally, which nobody actually believes — including it.",
     compute: (x) => clamp((x.growthRank + x.payRank + x.resilience + x.fit) / 4),
   },
 ];

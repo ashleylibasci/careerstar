@@ -14,10 +14,21 @@ const PLAIN: Record<string, string> = {
   equal: "the simple average of everything — a sanity-check the fancy models must beat",
 };
 
-export default function ModelComparison({ results }: { results: ScoreResult[] }) {
+export default function ModelComparison({
+  results,
+  activeModel = "standard",
+  onSelect,
+}: {
+  results: ScoreResult[];
+  /** Which judge currently scores the headline cards. */
+  activeModel?: string;
+  /** When provided, the legend becomes a picker and re-scores on selection. */
+  onSelect?: (id: string) => void;
+}) {
   const rows = results.filter((r) => r.models);
   if (rows.length < 1) return null;
   const single = rows.length === 1;
+  const activeName = MODELS.find((m) => m.id === activeModel)?.name ?? "Standard";
 
   // Each model's #1 pick (by that model's score) — only meaningful when ranking
   // more than one career.
@@ -73,14 +84,14 @@ export default function ModelComparison({ results }: { results: ScoreResult[] })
             <>
               ✅ <strong className="text-emerald-700 dark:text-emerald-400">The five judges broadly agree — this career scores {soleLo}–{soleHi} across every model.</strong>{" "}
               A tight {soleSpread}-point spread means the headline number holds up whatever you
-              believe about AI. (The card above uses the balanced Standard judge.)
+              believe about AI. (The card above uses the {activeName} judge.)
             </>
           ) : (
             <>
               ⚖️ <strong className="text-amber-700 dark:text-amber-500">The judges disagree — this career scores anywhere from {soleLo} to {soleHi} depending on the model.</strong>{" "}
               A {soleSpread}-point spread means its viability genuinely turns on how much you think
               AI will reshape work — the single number is softer than it looks. (The card above uses
-              the balanced Standard judge.)
+              the {activeName} judge.)
             </>
           )
         ) : agree ? (
@@ -93,8 +104,7 @@ export default function ModelComparison({ results }: { results: ScoreResult[] })
           <>
             ⚖️ <strong className="text-amber-700 dark:text-amber-500">The judges disagree — {distinctWinners} different careers win depending on the model.</strong>{" "}
             Translation: your answer depends on how much you believe AI will reshape work.
-            That&rsquo;s the finding, not a bug. (The cards above use the balanced Standard
-            judge.)
+            That&rsquo;s the finding, not a bug. (The cards above use the {activeName} judge.)
           </>
         )}
       </div>
@@ -109,7 +119,9 @@ export default function ModelComparison({ results }: { results: ScoreResult[] })
                   key={m.id}
                   scope="col"
                   title={`${m.tagline}\n\nFormula: ${m.formula}`}
-                  className="cursor-help whitespace-nowrap py-1.5 px-2 text-right font-medium underline decoration-dotted decoration-foreground/25 underline-offset-2"
+                  className={`cursor-help whitespace-nowrap py-1.5 px-2 text-right font-medium underline decoration-dotted decoration-foreground/25 underline-offset-2 ${
+                    m.id === activeModel ? "text-blue-700 dark:text-blue-400" : ""
+                  }`}
                 >
                   {m.name}
                 </th>
@@ -154,12 +166,51 @@ export default function ModelComparison({ results }: { results: ScoreResult[] })
           : "◂ marks each judge’s top pick · Consensus = average across all five, ± half the gap between highest and lowest"}
       </p>
 
-      <div className="mt-3 grid gap-x-6 gap-y-1.5 border-t border-foreground/10 pt-3 sm:grid-cols-2">
-        {MODELS.map((m) => (
-          <div key={m.id} className="text-xs leading-snug text-foreground/65">
-            <span className="font-semibold text-foreground/80">{m.name}</span> — {PLAIN[m.id]}
-          </div>
-        ))}
+      {/* The judges, argued honestly — each one's edge AND its blind spot.
+          With onSelect, every card is a live switch: pick a judge, the whole
+          page re-scores under it (score, stars, and curve move together). */}
+      <div className="mt-3 border-t border-foreground/10 pt-3">
+        {onSelect && (
+          <p className="mb-2 text-xs font-medium text-foreground/70">
+            Don&rsquo;t agree with the {activeName} judge? Pick another — the ranking re-scores
+            live.
+          </p>
+        )}
+        <div className="grid gap-2 sm:grid-cols-2">
+          {MODELS.map((m) => {
+            const active = m.id === activeModel;
+            return (
+              <button
+                key={m.id}
+                type="button"
+                disabled={!onSelect}
+                aria-pressed={active}
+                onClick={() => onSelect?.(m.id)}
+                className={`rounded-xl border p-3 text-left text-xs leading-snug transition ${
+                  active
+                    ? "border-blue-600 bg-blue-600/[.06]"
+                    : onSelect
+                      ? "border-foreground/10 hover:border-blue-500/40 hover:bg-blue-500/[.03]"
+                      : "border-foreground/10"
+                }`}
+              >
+                <div className="flex items-center justify-between gap-2">
+                  <span className="font-semibold text-foreground/85">{m.name}</span>
+                  {active ? (
+                    <span className="rounded-full bg-blue-600 px-2 py-0.5 text-[10px] font-bold text-white">
+                      Scoring now
+                    </span>
+                  ) : onSelect ? (
+                    <span className="text-[11px] font-medium text-blue-600">Use this judge →</span>
+                  ) : null}
+                </div>
+                <div className="mt-1 text-foreground/65">{PLAIN[m.id]}</div>
+                <div className="mt-1.5 text-emerald-700 dark:text-emerald-400">{"+ "}{m.strengths}</div>
+                <div className="mt-0.5 text-amber-700 dark:text-amber-500">{"− "}{m.caution}</div>
+              </button>
+            );
+          })}
+        </div>
       </div>
       <p className="mt-2 text-xs text-foreground/55">
         Exact formulas are on the{" "}

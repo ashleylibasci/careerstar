@@ -7,10 +7,10 @@ const BASE = "https://ashleylibasci.com";
 const OCCUPATIONS = (data as { occupations: Occupation[] }).occupations;
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const statics = ["", "/explore", "/top-20", "/methodology", "/architecture", "/case-study", "/sky"].map((p) => ({
+  const statics = ["", "/rate", "/explore", "/top-20", "/methodology", "/architecture", "/case-study", "/sky"].map((p) => ({
     url: `${BASE}${p}`,
     changeFrequency: "monthly" as const,
-    priority: p === "" ? 1 : 0.8,
+    priority: p === "" ? 1 : p === "/rate" ? 0.9 : 0.8,
   }));
   const fields = FIELDS.map((f) => ({
     url: `${BASE}/field/${f.group}`,

@@ -118,6 +118,10 @@ export default function CareerForm() {
   const [fitT, setFitT] = useState(0.5); // 0 = market viability … 1 = personal fit
   const weightsRef = useRef({ growthPay: 0.5, gammaT: 0.5, fitT: 0.5, aiAdoption: 1 });
   const [aiAdoption, setAiAdoption] = useState(1); // AI-adoption scenario multiplier
+  // Which rating model ("judge") scores the headline. Ref mirrors state so
+  // debounced re-scores never read a stale pick.
+  const [model, setModel] = useState("standard");
+  const modelRef = useRef("standard");
   const [copied, setCopied] = useState(false);
   const [maximized, setMaximized] = useState<"frontier" | "radar" | null>(null);
   const [highlight, setHighlight] = useState<string | null>(null);
@@ -154,6 +158,14 @@ export default function CareerForm() {
     if (response) runScore(tunedWeights());
   }
 
+  // Judge switch: re-score everything (headline, curve, stars) under the picked model.
+  function onSelectModel(id: string) {
+    if (id === modelRef.current) return;
+    modelRef.current = id;
+    setModel(id);
+    if (response) runScore(tunedWeights());
+  }
+
   useEffect(() => {
     fetch("/api/occupations")
       .then((r) => r.json())
@@ -177,7 +189,7 @@ export default function CareerForm() {
       const res = await fetch("/api/score", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({ ...payload, model: modelRef.current }),
       });
       if (!res.ok) {
         const d = (await res.json().catch(() => null)) as { error?: string } | null;
@@ -264,8 +276,8 @@ export default function CareerForm() {
     if (fields.length) p.set("fields", fields.map((f) => f.group).join(","));
     if (interests.length) p.set("interests", interests.join(","));
     const qs = p.toString();
-    window.history.replaceState(null, "", `/?${qs}`);
-    navigator.clipboard?.writeText(`${window.location.origin}/?${qs}`).then(
+    window.history.replaceState(null, "", `/rate?${qs}`);
+    navigator.clipboard?.writeText(`${window.location.origin}/rate?${qs}`).then(
       () => {
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
@@ -698,6 +710,11 @@ export default function CareerForm() {
           <div className="mb-4 flex items-center justify-between gap-3 print:hidden">
             <h2 className="text-sm font-semibold text-foreground/70">
               {response.results.length} {response.results.length === 1 ? "path" : "paths"} scored
+              {model !== "standard" && (
+                <span className="ml-1.5 font-normal text-blue-600">
+                  · by the {MODELS.find((m) => m.id === model)?.name} judge
+                </span>
+              )}
             </h2>
             <div className="flex gap-2">
               <button
@@ -899,11 +916,15 @@ export default function CareerForm() {
           {response.results.some((r) => r.models) && (
             <ResultsSection
               icon="🧮"
-              title="Compare 5 rating models"
+              title="Compare 5 rating models — or switch judges"
               subtitle={modelVerdict(response.results)}
             >
               <div className="pt-1">
-                <ModelComparison results={response.results} />
+                <ModelComparison
+                  results={response.results}
+                  activeModel={model}
+                  onSelect={onSelectModel}
+                />
               </div>
             </ResultsSection>
           )}
