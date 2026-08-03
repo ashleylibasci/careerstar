@@ -1,6 +1,14 @@
 # CareerStar — 15-Minute Presentation
 ### Capital One group · Wednesday, August 6, 2026 · Ashley Libasci
 
+> **v2 (the deck is now the source of truth — speaker notes live on every slide):**
+> rebalanced for a tech audience. Product compressed to one slide; BMAD expanded to two
+> (pipeline + the review cast); AWS expanded to two (architecture + the war story);
+> "vibe coding vs. this project" renamed to its real name — **spec-driven development**
+> (BMAD is an open-source SDD framework); every title rewritten as a plain spoken
+> assertion ("I tested it on a decade that already happened"), all copy de-AI-ified.
+> The outline below is the v1 draft, kept for the fuller background notes per topic.
+
 **The one-sentence pitch:** I built a model that rates careers the way you rate assets — then caught it lying, back-tested it against a real decade, and published where it was wrong.
 
 **Audience calibration:** This is a finance-and-tech crowd. Risk-adjusted return, Sharpe, moats, model risk, 1/N — that's their day job. Don't explain the metaphor slowly; *use* it fluently and let them enjoy recognizing it. The engineering half of the room gets the BMAD/agentic-dev section; the finance half gets the math; everyone gets the war stories.
