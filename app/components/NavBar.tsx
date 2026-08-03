@@ -75,6 +75,16 @@ export default function NavBar() {
           ))}
         </div>
 
+        {/* ⌘K — quick-jump to any career or page (CommandPalette listens). */}
+        <button
+          type="button"
+          onClick={() => window.dispatchEvent(new Event("careerstar:cmdk"))}
+          aria-label="Search careers and pages (Command K)"
+          className="hidden items-center gap-1.5 rounded-lg border border-foreground/15 px-2.5 py-1.5 text-xs font-medium text-foreground/55 transition hover:border-blue-500/40 hover:text-foreground md:flex"
+        >
+          <span aria-hidden>⌘K</span>
+        </button>
+
         {/* Mobile hamburger */}
         <button
           type="button"

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import NavBar from "./components/NavBar";
+import CommandPalette from "./components/CommandPalette";
 import { BrandWordmark } from "./components/Brand";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -59,6 +60,7 @@ export default function RootLayout({
           Skip to content
         </a>
         <NavBar />
+        <CommandPalette />
         <div id="main-content" className="flex flex-1 flex-col">{children}</div>
         <footer className="border-t border-foreground/10 px-6 py-6 print:hidden">
           <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-x-6 gap-y-2 text-xs text-foreground/60 lg:max-w-5xl xl:max-w-6xl">

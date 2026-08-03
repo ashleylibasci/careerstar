@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import backtest from "@/data/backtest.json";
 import { MODELS } from "@/lib/scorer/models";
 import { TiltedStar, TILTED_STAR_PATH } from "./components/Brand";
+import Reveal from "./components/Reveal";
 
 // Decorative hero constellation: rated careers as stars, hairlines between
 // them — the same idea as /sky, planted on the front door. Purely aesthetic.
@@ -145,6 +146,7 @@ export default async function Home({
         </header>
 
         {/* The idea, in three steps. */}
+        <Reveal>
         <section className="mt-14">
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-blue-600">01 · The process</p>
           <h2 className="mt-1.5 text-xl font-bold tracking-tight">How it works</h2>
@@ -165,8 +167,10 @@ export default async function Home({
             </Step>
           </div>
         </section>
+        </Reveal>
 
         {/* The judges — and the fact you can switch them. */}
+        <Reveal>
         <section className="mt-14">
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-blue-600">02 · Model risk, made visible</p>
           <h2 className="mt-1.5 text-xl font-bold tracking-tight">Five judges, not one oracle</h2>
@@ -196,8 +200,10 @@ export default async function Home({
             </div>
           </div>
         </section>
+        </Reveal>
 
         {/* Why trust it — every claim links to its receipt. */}
+        <Reveal>
         <section className="mt-14">
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-blue-600">03 · The receipts</p>
           <h2 className="mt-1.5 text-xl font-bold tracking-tight">Why you can check it</h2>
@@ -251,8 +257,10 @@ export default async function Home({
             </li>
           </ul>
         </section>
+        </Reveal>
 
         {/* One more door out. */}
+        <Reveal>
         <section className="mt-14 rounded-2xl border border-blue-600/20 bg-blue-600/[.04] p-6 text-center">
           <h2 className="text-lg font-bold tracking-tight">
             Ninety seconds from &ldquo;no idea&rdquo; to a ranked answer.
@@ -268,6 +276,7 @@ export default async function Home({
             Rate my paths →
           </Link>
         </section>
+        </Reveal>
       </div>
     </main>
   );

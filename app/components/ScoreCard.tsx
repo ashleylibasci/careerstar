@@ -22,11 +22,25 @@ const TONE: Record<Tone, { text: string; pill: string; bar: string; star: string
 };
 
 /** The score as an instrument: a ring gauge filled to score/100, number inside
- *  in the mono face. Reads "dial on a desk", not "paragraph number". */
+ *  in the mono face. The arc sweeps up from zero on mount — an instrument
+ *  warms up, it doesn't just appear (motion-safe; static under reduced-motion,
+ *  and in print, where the transition never runs before rasterization). */
 function ScoreDial({ score, tone }: { score: number; tone: { text: string; stroke: string } }) {
   const r = 26;
   const c = 2 * Math.PI * r;
   const filled = (Math.max(0, Math.min(100, score)) / 100) * c;
+  const [swept, setSwept] = useState(false);
+  useEffect(() => {
+    // One frame at zero, then sweep. Reduced-motion users skip the animation
+    // via motion-safe on the transition class — the arc simply appears full.
+    const raf = requestAnimationFrame(() => setSwept(true));
+    return () => cancelAnimationFrame(raf);
+  }, []);
+  const sweep = swept
+    ? filled
+    : typeof window === "undefined"
+      ? filled // SSR/print fallback: full arc, no zero-state flash without JS
+      : 0;
   return (
     <div className="relative h-16 w-16 shrink-0" role="img" aria-label={`Score ${score} out of 100`}>
       <svg viewBox="0 0 60 60" className="h-16 w-16 -rotate-90">
@@ -38,8 +52,8 @@ function ScoreDial({ score, tone }: { score: number; tone: { text: string; strok
           fill="none"
           strokeWidth="3.5"
           strokeLinecap="round"
-          strokeDasharray={`${filled} ${c}`}
-          className={tone.stroke}
+          strokeDasharray={`${sweep} ${c}`}
+          className={`${tone.stroke} motion-safe:transition-[stroke-dasharray] motion-safe:duration-700 motion-safe:ease-out`}
         />
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center">

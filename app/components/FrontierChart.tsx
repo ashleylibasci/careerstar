@@ -88,6 +88,7 @@ export default function FrontierChart({
           const cy = y(r.components.return);
           const rad = 7 + (r.score / 100) * 6;
           const active = hover === r.code;
+          const halo = rad * (active ? 2.1 : 1.7);
           const dim = hover !== null && !active;
           return (
             <g
@@ -98,6 +99,8 @@ export default function FrontierChart({
               onMouseLeave={() => setHover(null)}
               onClick={() => onSelect?.(r.code)}
             >
+              {/* halo: each point reads as a star on the chart, not a data blot */}
+              <circle cx={cx} cy={cy} r={halo} className={`${DOT[tone]} transition-[r] duration-200`} opacity={0.18} />
               <circle cx={cx} cy={cy} r={active ? rad + 2 : rad} className={DOT[tone]} stroke="white" strokeWidth={active ? 2 : 1} />
               <text x={cx} y={cy} textAnchor="middle" dominantBaseline="central" fontSize="10" fontWeight="700" fill="white">
                 {i + 1}
