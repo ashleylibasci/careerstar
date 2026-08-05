@@ -724,11 +724,42 @@ export default function CareerForm() {
                 ? `A close call over ${runnerUp.path} (${runnerUp.score}) — read both cards before deciding.`
                 : `${runnerUp.path} is next at ${runnerUp.score}.`
               : null;
+            // The robustness verdict used to live only inside the collapsed
+            // stress-test panel — an explanation nobody finds doesn't exist, so
+            // its chip surfaces here and jumps to the full panel on click.
+            const sens = response.sensitivity;
+            const robust = sens?.headline.startsWith("Robust") ?? false;
+            const topHeldPct = sens?.candidates.length
+              ? Math.round(sens.candidates[0].heldRankPct * 100)
+              : null;
+            const openStressTest = () => {
+              const d = document.getElementById("stress-test-section") as HTMLDetailsElement | null;
+              if (!d) return;
+              d.open = true;
+              d.scrollIntoView({ behavior: "smooth", block: "start" });
+            };
             return (
               <div className="mb-5 rounded-2xl border-l-4 border-blue-600 bg-blue-600/[.05] p-4 sm:p-5 print:break-inside-avoid">
                 <div className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-widest text-blue-600">
                   <TiltedStar size={10} />
                   The verdict
+                  {sens && sens.candidates.length >= 2 && (
+                    <button
+                      type="button"
+                      onClick={openStressTest}
+                      title={sens.headline}
+                      className={`ml-auto rounded-full px-2 py-0.5 text-[11px] font-semibold normal-case tracking-normal transition hover:opacity-80 print:hidden ${
+                        robust
+                          ? "bg-green-500/15 text-green-700 dark:text-green-400"
+                          : "bg-amber-500/15 text-amber-700 dark:text-amber-400"
+                      }`}
+                    >
+                      {robust
+                        ? `✓ Robust — #1 held in ${topHeldPct}% of 729 checks`
+                        : "△ Close call — flips under nearby weightings"}
+                      {" ↓"}
+                    </button>
+                  )}
                 </div>
                 <p className="mt-1 text-xl font-bold leading-snug sm:text-2xl">{headline}</p>
                 {sub && <p className="mt-1.5 text-sm text-foreground/70">{sub}</p>}
@@ -868,6 +899,7 @@ export default function CareerForm() {
             icon="🔮"
             title="Stress-test the scores"
             subtitle="Change the AI outlook or your priorities and watch the ranking react"
+            id="stress-test-section"
           >
             <div className="pt-1">
               <div className="text-sm font-semibold">If AI comes faster — or slower</div>

@@ -10,15 +10,18 @@ export default function ResultsSection({
   subtitle,
   children,
   defaultOpen = false,
+  id,
 }: {
   icon: string;
   title: string;
   subtitle: string;
   children: ReactNode;
   defaultOpen?: boolean;
+  /** Optional DOM id so other UI (e.g. the verdict-banner chip) can open and scroll to this section. */
+  id?: string;
 }) {
   return (
-    <details open={defaultOpen} className="group border-t border-foreground/10 print:hidden">
+    <details id={id} open={defaultOpen} className="group border-t border-foreground/10 print:hidden">
       <summary className="-mx-2 flex cursor-pointer list-none items-center gap-3 rounded-lg px-2 py-3.5 transition hover:bg-foreground/[.03] [&::-webkit-details-marker]:hidden">
         <span aria-hidden className="text-lg leading-none">{icon}</span>
         <span className="min-w-0 flex-1">
