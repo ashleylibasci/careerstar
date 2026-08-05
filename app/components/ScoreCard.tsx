@@ -11,9 +11,9 @@ import MoatBadge from "./MoatBadge";
 import FeedbackWidget from "./FeedbackWidget";
 
 const BAR_HELP: Record<string, string> = {
-  Return: "Growth + pay, percentile-ranked against all 730 careers. Higher is better.",
-  Resilience: "The inverse of AI-exposure + volatility risk. Higher = harder to disrupt.",
-  Fit: "How well this career's real O*NET skill profile matches your interests.",
+  Return: "How well this career pays off — its growth and pay, ranked against all 730 careers. Higher is better.",
+  Resilience: "How hard this career is for AI to disrupt. 100 = untouched by AI; higher is better.",
+  Fit: "How well this career's real skill profile (U.S. government data) matches your interests.",
 };
 
 const TONE: Record<Tone, { text: string; pill: string; bar: string; star: string }> = {
@@ -235,7 +235,9 @@ export default function ScoreCard({
               <div className="rounded-lg bg-foreground/[.04] p-2 font-mono text-[11px] text-foreground/60">
                 score = 100 · [ α·(return × (1 − γ·risk)) + (1 − α)·fit ]
                 <br />
-                α = {result.breakdown.alpha}, γ = {result.breakdown.gamma.toFixed(2)}
+                α = {result.breakdown.alpha} (how much market beats fit), γ ={" "}
+                {result.breakdown.gamma.toFixed(2)} (how hard risk bites) —{" "}
+                <a href="/methodology" className="underline hover:text-blue-600">every symbol explained</a>
               </div>
             </div>
           </details>

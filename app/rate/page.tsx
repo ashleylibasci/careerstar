@@ -27,9 +27,9 @@ export default function RatePage() {
 
           <PageExplainer>
             <p>
-              Every score is computed by an explicit, deterministic model — projected growth and
-              pay, discounted by how exposed the work is to AI, blended with how well it fits
-              you. Never guessed by an AI.
+              Every score comes from one fixed formula — projected growth and pay, marked down
+              by how exposed the work is to AI, blended with how well it fits you. The same
+              inputs always give the same answer, and no AI ever guesses a number.
             </p>
             <p>
               <strong>How to use it:</strong>{" "}search for the careers (or whole fields)

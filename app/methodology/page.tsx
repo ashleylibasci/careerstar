@@ -63,11 +63,10 @@ export default function MethodologyPage() {
 
         <h1 className="mt-4 text-3xl font-bold tracking-tight">How scores are calculated</h1>
         <p className="mt-3 text-foreground/70">
-          CareerStar treats each career like a financial asset — weighing expected
-          return against risk — and blends the result with how well the path fits you.
-          Everything below is deterministic: the same inputs always produce the same
-          score. The number is computed by an explicit model, <strong>not</strong>{" "}by an
-          AI language model.
+          CareerStar sizes up a career the way an investor sizes up a stock — what&rsquo;s the
+          payoff, what&rsquo;s the risk — and blends the result with how well the path fits you.
+          Everything below is plain arithmetic: the same inputs always produce the same score,
+          and no AI ever computes a number. This page walks through all of it.
         </p>
 
         <PageExplainer>
@@ -89,7 +88,7 @@ export default function MethodologyPage() {
           <ol className="mt-2 grid gap-x-6 gap-y-1 text-sm sm:grid-cols-2">
             {[
               ["#model", "The model — and why each line"],
-              ["#fit", "Fit, in O*NET capability-space"],
+              ["#fit", "How Fit is measured"],
               ["#moat", "The AI-moat rating"],
               ["#universe", "What the rated universe looks like"],
               ["#robustness", "Robustness"],
@@ -108,26 +107,92 @@ export default function MethodologyPage() {
         </nav>
 
         <Section id="model" title="The model">
-          <p>Each occupation gets a 0–100 score from three ingredients:</p>
-          <ul className="list-disc space-y-1 pl-5">
+          <p>
+            Each occupation gets a 0–100 score built from <strong>five measured
+            ingredients</strong>. Every ingredient is converted to a number between 0 and 1
+            before any arithmetic happens — 0 meaning the bottom of the range, 1 the top —
+            so that things measured in different units (percent growth, dollars of pay) can
+            be combined at all. The five, and where each number comes from:
+          </p>
+          <ul className="list-disc space-y-2 pl-5">
             <li>
-              <strong>Return</strong> — projected employment growth and median pay, each
-              ranked against every other occupation in the set.
+              <strong>growth</strong>{" "}— the U.S. Bureau of Labor Statistics&rsquo; projected
+              employment growth for this occupation over 2024&ndash;2034, expressed as a{" "}
+              <em>percentile rank</em>{" "}against all {typed.occupations.length}{" "}occupations in
+              the set. A growth of 0.92 means &ldquo;projected to grow faster than 92% of all
+              careers&rdquo; — not 92% growth.
             </li>
             <li>
-              <strong>Risk</strong> — AI/automation exposure (dominant) plus a volatility
-              proxy (a field projected to shrink is treated as riskier).
+              <strong>pay</strong>{" "}— the occupation&rsquo;s median annual pay (also BLS), as
+              the same kind of percentile rank. 0.50 means the pay is exactly in the middle of
+              all careers.
+            </li>
+            <li>
+              <strong>exposure</strong>{" "}— the estimated share of the job&rsquo;s tasks that AI
+              could meaningfully perform or speed up, taken from a published research dataset
+              (Eloundou et al. 2023 — see data sources). It already arrives as a 0&ndash;1
+              number: 0.8 means roughly 80% of the job&rsquo;s tasks are AI-touchable.
+              (Touchable, not doomed — a task AI can help with is not a job that disappears.)
+            </li>
+            <li>
+              <strong>volatility</strong>{" "}— a stand-in for how unstable the field is. No public
+              dataset measures this directly, so it&rsquo;s built from the growth number:
+              volatility&nbsp;=&nbsp;1&nbsp;−&nbsp;growth. A field at the 10th percentile for
+              growth (i.e. shrinking relative to others) gets volatility 0.90 — a shrinking
+              field is treated as a riskier place to stand.
             </li>
             <li>
               <strong>Fit</strong>{" "}— how well the occupation&rsquo;s real skill profile matches
-              your interests, measured in O*NET capability-space (see below).
+              the interests you typed in, from 0 (no overlap) to 1 (strong match), measured in
+              O*NET capability-space (explained in the next section).
             </li>
           </ul>
+          <p>Those five ingredients feed four lines of arithmetic:</p>
           <pre className="overflow-x-auto rounded-xl border border-foreground/10 bg-foreground/[.03] p-4 text-xs leading-relaxed">
 {`Return = wGrowth·growth + wPay·pay
 Risk   = wExposure·exposure + wVolatility·volatility
 RAV    = Return · (1 − γ·Risk)          (risk-adjusted return)
 Score  = 100 · [ α·RAV + (1 − α)·Fit ]`}
+          </pre>
+          <p>
+            Everything else in those lines — the w&rsquo;s, the Greek letters — is a{" "}
+            <strong>weight</strong>: a fixed number that says how much an ingredient counts.
+            They look mysterious, but each is just a name for one number, and here they all are,
+            straight from the code:
+          </p>
+          <ul className="list-disc space-y-2 pl-5">
+            <li>
+              <strong>wGrowth&nbsp;=&nbsp;0.5, wPay&nbsp;=&nbsp;0.5</strong>{" "}— Return is a plain
+              50/50 average of the growth rank and the pay rank. Neither is favored.
+            </li>
+            <li>
+              <strong>wExposure&nbsp;=&nbsp;0.7, wVolatility&nbsp;=&nbsp;0.3</strong>{" "}— Risk is
+              70% AI exposure, 30% volatility. Why exposure dominates is argued below.
+            </li>
+            <li>
+              <strong>γ (&ldquo;gamma&rdquo;)&nbsp;=&nbsp;0.6</strong>{" "}— how hard risk is
+              allowed to punish return. In line three, a career&rsquo;s Return gets multiplied
+              by (1&nbsp;−&nbsp;0.6·Risk): at zero risk nothing is lost, and even at the maximum
+              possible risk (Risk&nbsp;=&nbsp;1) the career keeps 40% of its Return. RAV —{" "}
+              <em>risk-adjusted return</em>{" "}— is just the name for Return after this
+              discount.
+            </li>
+            <li>
+              <strong>α (&ldquo;alpha&rdquo;)&nbsp;=&nbsp;0.7</strong>{" "}— the final blend: the
+              score is 70% market reality (RAV) and 30% personal fit. Since RAV and Fit are both
+              0&ndash;1 numbers, multiplying the blend by 100 is what makes the familiar 0&ndash;100
+              score.
+            </li>
+          </ul>
+          <p>A worked example, start to finish. Take a career that ranks at the 90th
+            percentile for growth and the 70th for pay, has AI exposure 0.50, and matches your
+            interests at Fit&nbsp;=&nbsp;0.60:</p>
+          <pre className="overflow-x-auto rounded-xl border border-foreground/10 bg-foreground/[.03] p-4 text-xs leading-relaxed">
+{`Return     = 0.5·0.90 + 0.5·0.70        = 0.80
+volatility = 1 − 0.90                   = 0.10
+Risk       = 0.7·0.50 + 0.3·0.10        = 0.38
+RAV        = 0.80 · (1 − 0.6·0.38)      = 0.62
+Score      = 100 · (0.7·0.62 + 0.3·0.60) ≈ 61`}
           </pre>
           <p>
             Four short lines, but each one is a decision, and each had an obvious
@@ -140,9 +205,10 @@ Score  = 100 · [ α·RAV + (1 − α)·Fit ]`}
               against all {typed.occupations.length}{" "}others — &ldquo;92nd percentile for
               pay&rdquo; — which also means a score never says a career is good in the abstract.
               It says how the career stacks up against everything else you could pick, which is
-              the decision you&rsquo;re actually making. The alternative, min&ndash;max scaling,
-              would let one outlier (surgeons&rsquo; pay) compress every other career&rsquo;s
-              signal.
+              the decision you&rsquo;re actually making. The obvious alternative — stretching
+              raw values onto a ruler running from the smallest to the largest — would let one
+              extreme career (surgeons&rsquo; pay) squash every other career into the bottom of
+              the scale.
             </li>
             <li>
               <strong>Risk discounts return; it isn&rsquo;t subtracted.</strong>{" "}RAV multiplies:
@@ -165,59 +231,78 @@ Score  = 100 · [ α·RAV + (1 − α)·Fit ]`}
             </li>
           </ul>
           <p>
-            Now the honest part: these weights aren&rsquo;t fitted to anything. There is no
-            dataset of correct career choices to train on, so 0.7 and 0.6 are documented
-            judgment calls — priors, sitting in the code for anyone to read. That&rsquo;s why so
-            much of this page is stress-testing: the robustness grid re-scores every comparison
-            under 729 ways of disagreeing with me, five rival models score it under different
-            philosophies entirely, and the back-test checks the machinery against a real decade.
-            I can&rsquo;t prove my weights are right, so I show you what happens when
-            they&rsquo;re wrong.
+            Now the honest part: nothing proves these particular weights are correct. There is
+            no answer key of &ldquo;right career choices&rdquo; to tune them against, so 0.7 and
+            0.6 are judgment calls — written down in the code for anyone to read, not hidden.
+            That&rsquo;s why so much of this page is stress-testing: every comparison is re-run
+            729 times with the weights nudged in every direction, five rival formulas score it
+            under different philosophies entirely, and the model was graded against a real
+            decade of history. I can&rsquo;t prove my weights are right, so I show you what
+            happens when they&rsquo;re wrong.
           </p>
         </Section>
 
-        <Section id="fit" title="Fit, in O*NET capability-space">
+        <Section id="fit" title="How Fit is measured">
           <p>
-            Every occupation carries a real <strong>68-dimensional capability vector</strong> —
-            the O*NET importance ratings for 35 <em>skills</em> (Critical Thinking, Programming,
-            Mathematics…) and 33 <em>knowledge</em>{" "}areas (Economics &amp; Accounting, Engineering,
-            Medicine, Law…). Your stated interests are mapped into the same space through an
-            explicit, documented lexicon, and fit is the overlap of the two.
+            The U.S. Department of Labor&rsquo;s O*NET database rates every occupation on the
+            same checklist of <strong>68 abilities</strong>: 35 <em>skills</em>{" "}(Critical
+            Thinking, Programming, Mathematics…) and 33 <em>knowledge areas</em>{" "}(Economics
+            &amp; Accounting, Engineering, Medicine, Law…), each scored by how important it is to
+            that job. So every career comes with a 68-number profile of what the work actually
+            demands.
           </p>
           <p>
-            One subtlety matters: nearly every professional job rates high on the common skills, so
-            a naïve overlap barely distinguishes them. CareerStar instead
-            <strong> weights each capability by how distinctive it is across the whole labor
-            market</strong> (a z-score per dimension), so a match on a rare, defining skill counts
-            far more than a match on one everybody shares. That is what lets fit tell finance from
-            engineering, not just desk-work from the trades. It remains a modeling choice, stated as
-            one — two quantitatively similar fields can still both score high.
+            When you type in your interests, CareerStar translates them onto that same
+            68-item checklist using a fixed, published word list (&ldquo;coding&rdquo; maps to
+            Programming, &ldquo;helping people&rdquo; maps to Social Perceptiveness, and so on).
+            Fit is then simply how much your profile and the career&rsquo;s profile overlap.
+          </p>
+          <p>
+            One subtlety matters. Nearly every professional job rates high on the common
+            abilities — reading, speaking, critical thinking — so raw overlap would make every
+            office job look like a match for everyone. To fix that, CareerStar counts a match on a{" "}
+            <strong>rare</strong>{" "}ability (one few other jobs demand, like Medicine or
+            Programming) far more heavily than a match on one every job shares. That&rsquo;s what
+            lets fit tell finance from engineering, not just desk-work from the trades. It&rsquo;s
+            still a modeling choice, and I say so — two similar fields can both score high.
           </p>
         </Section>
 
         <Section id="moat" title="The AI-moat rating">
           <p>
-            Borrowed from Morningstar&rsquo;s economic moat: how <strong>defensible</strong>{" "}is a
-            career against AI pressure? It is a fixed, documented formula — not a hand-wave:
+            A <strong>moat</strong>{" "}is the water around a castle — investors (Morningstar,
+            most famously) use the word for how well a company can defend its position. CareerStar
+            borrows it for careers: how defensible is this work against AI? The rating comes from
+            a fixed formula, not a judgment call, built from two questions:
           </p>
+          <ul className="list-disc space-y-1 pl-5">
+            <li>
+              <strong>How much of the work can AI touch?</strong>{" "}(the same 0&ndash;1 exposure
+              number from the score — low exposure is shelter)
+            </li>
+            <li>
+              <strong>Are the career&rsquo;s defining abilities rare?</strong>{" "}A job built on
+              abilities few other jobs demand (surgery, say) is harder to substitute than one
+              built on abilities every job shares.
+            </li>
+          </ul>
           <pre className="overflow-x-auto rounded-xl border border-foreground/10 bg-foreground/[.03] p-4 text-xs leading-relaxed">
-{`defensibility = 0.6·(1 − aiExposure) + 0.4·distinctiveness
-distinctiveness = clamp( (mean of top-5 z-scored capabilities − 1) / 2 )
+{`defensibility = 0.6·(shelter from AI) + 0.4·(rarity of its top abilities)
 
-Wide moat   ≥ 0.70      (~20% of careers)
-Narrow moat ≥ 0.55      (~50%)
-No moat     < 0.55      (~30%)`}
+Wide moat   = top ~20% of careers on defensibility
+Narrow moat = middle ~50%
+No moat     = bottom ~30%`}
           </pre>
           <p>
-            Low AI exposure is shelter; <em>distinctiveness</em>{" "}asks whether the career&rsquo;s
-            defining capabilities are rare in the labor market or ones every job shares. The
-            thresholds are calibrated once on the full 730-occupation distribution to a
-            Morningstar-like shape and then fixed. The model makes uncomfortable calls — it gives
-            software developers <strong>no moat</strong> (extreme LLM exposure) while their
-            risk-adjusted <em>score</em>{" "}stays high — and I ship those calls rather than tune them
-            away. For 25 newer SOC codes O*NET hasn&rsquo;t yet rated (software developers among
-            them), capability vectors are <strong>estimated from their SOC-group siblings</strong>{" "}
-            and flagged as estimates in the data.
+            The cutoff lines between wide, narrow, and none were set once, on the full
+            730-career distribution, and then frozen — they don&rsquo;t move to make any career
+            look better. The model makes uncomfortable calls: it gives software developers{" "}
+            <strong>no moat</strong>{" "}(AI can already touch most of their tasks) even though
+            their overall <em>score</em>{" "}stays high — and I ship those calls rather than tune
+            them away. For 25 newer occupation codes O*NET hasn&rsquo;t rated yet (software
+            developers among them), the ability profile is{" "}
+            <strong>estimated from closely related occupations</strong>{" "}and flagged as an
+            estimate in the data.
           </p>
           <p>
             Score uncertainty is also stated in words on every card — Low (±5 or less), Medium
@@ -227,9 +312,11 @@ No moat     < 0.55      (~30%)`}
 
         <Section id="universe" title="What the rated universe looks like">
           <p>
-            The real distributions across all {typed.occupations.length} occupations at default
-            weights — the forced star-curve is applied on top of the score distribution, and the
-            moat split is calibrated once to a Morningstar-like shape:
+            Here is how all {typed.occupations.length} occupations actually spread out under the
+            default settings — how many land in each score range, and how many get each moat
+            rating. (Star ratings are graded on a curve on top of these scores, the way a
+            professor curves grades: the top slice of careers gets five stars regardless of the
+            raw number.)
           </p>
           <div className="rounded-2xl border border-foreground/10 bg-foreground/[.02] p-4">
             <div className="text-xs font-medium text-foreground/60">Score distribution (0–100, bins of 10)</div>
@@ -268,12 +355,14 @@ No moat     < 0.55      (~30%)`}
 
         <Section id="robustness" title="Robustness (does the answer survive?)">
           <p>
-            The weights are a deliberate choice, so the fair test is whether the ranking holds when
-            you disagree with them. For every comparison, CareerStar re-scores the careers across
-            <strong> 729 weightings</strong> — every weight moved ±20% on a fixed grid — and reports
-            how often each career keeps its rank. A result that holds across all 729 is robust; one
-            that shuffles is flagged as a <em>close call</em> rather than sold as a verdict. You can
-            watch this live by moving the sliders on the results screen.
+            The weights above are a deliberate choice, so the fair test is whether the answer
+            survives when you disagree with them. For every comparison, CareerStar re-runs the
+            whole calculation <strong>729 times</strong>: each of the six weights is tried at
+            three settings — as chosen, 20% higher, and 20% lower — and 3 × 3 × 3 × 3 × 3 × 3
+            makes 729 combinations. Then it reports how often each career keeps its place in the
+            ranking. A result that holds across all 729 runs is solid; one that shuffles is
+            flagged as a <em>close call</em>{" "}rather than sold as a verdict. You can watch this
+            live by moving the sliders on the results screen.
           </p>
         </Section>
 
@@ -305,8 +394,9 @@ No moat     < 0.55      (~30%)`}
             </table>
           </div>
           <p>
-            The naive equal-weight model is deliberately included as a control — a model that
-            can&rsquo;t distinguish itself from 1/N isn&rsquo;t earning its complexity.
+            One of the five is deliberately dumb: it just averages everything, equally.
+            It&rsquo;s there as a baseline — if a fancier model can&rsquo;t beat a plain
+            average, all its extra machinery is doing nothing.
           </p>
         </Section>
 
@@ -332,70 +422,81 @@ No moat     < 0.55      (~30%)`}
         {validation && (
           <Section id="exposure" title="Does “AI exposure” just mean “decline”?">
             <p>
-              A fair objection: maybe the risk score is redundant — maybe exposed jobs are simply the
-              shrinking ones. The data says no. Across all {(data as { meta: { occupationCount: number } }).meta.occupationCount} occupations,
-              AI exposure and projected growth are <strong>almost uncorrelated</strong>{" "}
-              (Spearman ρ&nbsp;=&nbsp;{validation.exposureGrowthSpearman}). Sorting jobs into exposure quartiles,
-              average projected growth stays flat — {validation.exposureQuartileGrowthPct.map((g, i) =>
-                `Q${i + 1}: ${g}%`).join(", ")} — with no downward trend.
+              A fair objection: maybe the AI-exposure number is redundant — maybe the exposed
+              jobs are simply the shrinking ones, and growth already tells the whole story. The
+              data says no. Across all {(data as { meta: { occupationCount: number } }).meta.occupationCount}{" "}
+              occupations, knowing a job&rsquo;s AI exposure tells you almost nothing about
+              whether it&rsquo;s projected to grow or shrink — the two are nearly unrelated.
+              (Statistically: the correlation is {validation.exposureGrowthSpearman} on a scale
+              where 0 means &ldquo;no relationship at all&rdquo; and 1 means &ldquo;perfectly
+              linked.&rdquo;) Split all jobs into four buckets from least- to most-exposed, and
+              average projected growth is about the same in every bucket —{" "}
+              {validation.exposureQuartileGrowthPct.map((g, i) =>
+                `${g}%`).join(", ")} from least to most exposed — no downward slide.
             </p>
             <p>
-              So exposure carries information growth doesn&rsquo;t, which is why a
-              risk-<em>adjusted</em>{" "}score beats ranking on growth alone — and why
-              &ldquo;exposure&nbsp;≠&nbsp;displacement&rdquo; is literally true here, not just a
-              slogan. (And this isn&rsquo;t left as an assertion — the model was run against a real
-              decade of history. See the back-test below.)
+              So AI exposure captures something the growth forecast doesn&rsquo;t. That&rsquo;s
+              why the score adjusts for it instead of just ranking careers by growth — and why
+              &ldquo;exposed to AI&rdquo; really doesn&rsquo;t mean &ldquo;doomed to shrink&rdquo;
+              in this data. (This isn&rsquo;t left as an assertion, either — the model was run
+              against a real decade of history. See the next section.)
             </p>
           </Section>
         )}
 
         <Section id="backtest" title="The back-test: 2014 → 2024, a real decade">
           <p>
-            The strongest test I could run: score the <strong>2014 labor market</strong>{" "}with
-            today&rsquo;s model (using the archived BLS 2014&ndash;24 projections vintage,
-            recovered from the Internet Archive) and compare against{" "}
-            <strong>what actually happened by 2024</strong> — {backtest.meta.joined} occupations
-            joined across the decade.
+            A <strong>back-test</strong>{" "}is how you check a model without waiting ten years:
+            rewind the clock, let the model make its calls using only what was knowable then,
+            and grade it against what actually happened. So I dug the government&rsquo;s
+            official 2014 career forecasts out of an internet archive, had the model score the{" "}
+            <strong>2014 labor market</strong>{" "}using only that 2014 information, and then
+            compared its scores against <strong>what actually happened by 2024</strong> —{" "}
+            {backtest.meta.joined} occupations tracked across the decade.
           </p>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
             <div className="rounded-2xl border border-foreground/10 bg-foreground/[.02] p-3 text-center">
-              <div className="text-xl font-bold tabular-nums text-blue-600">ρ {backtest.metrics.spearmanScoreVsRealized}</div>
-              <div className="mt-1 text-xs text-foreground/60">2014 score vs realized change</div>
+              <div className="text-xl font-bold tabular-nums text-blue-600">{backtest.metrics.spearmanScoreVsRealized}</div>
+              <div className="mt-1 text-xs text-foreground/60">link between 2014 score and what happened (0 = none, 1 = perfect)</div>
             </div>
             <div className="rounded-2xl border border-foreground/10 bg-foreground/[.02] p-3 text-center">
               <div className="text-xl font-bold tabular-nums text-blue-600">{backtest.metrics.declinerHitRatePct}%</div>
-              <div className="mt-1 text-xs text-foreground/60">of actual decliners flagged (33% base rate)</div>
+              <div className="mt-1 text-xs text-foreground/60">of the careers that shrank were flagged (guessing gets 33%)</div>
             </div>
             <div className="rounded-2xl border border-foreground/10 bg-foreground/[.02] p-3 text-center">
               <div className="text-xl font-bold tabular-nums text-blue-600">{backtest.metrics.medianScoreDecliners} vs {backtest.metrics.medianScoreGrowers}</div>
-              <div className="mt-1 text-xs text-foreground/60">median 2014 score: decliners vs growers</div>
+              <div className="mt-1 text-xs text-foreground/60">typical 2014 score of careers that shrank vs ones that grew</div>
             </div>
             <div className="rounded-2xl border border-foreground/10 bg-foreground/[.02] p-3 text-center">
-              <div className="text-xl font-bold tabular-nums text-blue-600">ρ {backtest.metrics.spearmanExposureVsRealized}</div>
-              <div className="mt-1 text-xs text-foreground/60">AI exposure vs that decade (expected ≈ 0)</div>
+              <div className="text-xl font-bold tabular-nums text-blue-600">{backtest.metrics.spearmanExposureVsRealized}</div>
+              <div className="mt-1 text-xs text-foreground/60">AI exposure&rsquo;s link to that decade (expected ≈ 0 — it was pre-ChatGPT)</div>
             </div>
           </div>
           <p>
-            Read it honestly. The score tracked a real decade (rank correlation{" "}
-            {backtest.metrics.spearmanScoreVsRealized}; decliners flagged at{" "}
-            {backtest.metrics.declinerHitRatePct}% vs a 33% base rate — a{" "}
-            {Math.round((backtest.metrics.declinerHitRatePct / 33) * 100) / 100}× lift). The raw
-            BLS projection alone scored ρ {backtest.metrics.spearmanBlsProjectionVsRealized} —
-            slightly better — because the <strong>AI-risk adjustment added nothing for
-            2014&ndash;24</strong> (exposure ρ ≈ {backtest.metrics.spearmanExposureVsRealized}).
-            That is exactly what the model claims: 2014&ndash;24 was a pre-LLM decade, and
-            exposure is a <em>forward-looking</em>{" "}bet the past cannot score. The back-test
-            validates the part of the model that history can test, and says so about the part it
-            can&rsquo;t.
+            Read it honestly. Careers the model scored higher in 2014 really did fare better
+            over the decade — the link between score and outcome was{" "}
+            {backtest.metrics.spearmanScoreVsRealized} on that 0-to-1 scale, solidly above zero
+            but far from prophecy. And it flagged {backtest.metrics.declinerHitRatePct}% of the
+            careers that went on to shrink, roughly one and a half times better than guessing.
+            One wrinkle I&rsquo;m not going to bury: the government&rsquo;s raw growth forecast alone did{" "}
+            <em>slightly better</em>{" "}({backtest.metrics.spearmanBlsProjectionVsRealized}) than
+            the full model. Why? Because the model&rsquo;s AI-risk adjustment did nothing for
+            that particular decade — 2014&ndash;24 ended before ChatGPT changed anything, so
+            penalizing AI-exposed careers couldn&rsquo;t help yet. That&rsquo;s the model working
+            as designed: AI exposure is a bet about the <em>future</em>, and a test run on the
+            past can&rsquo;t score it. The back-test proves out the part of the model history can
+            test, and is upfront about the part it can&rsquo;t.
           </p>
           <p>
             The misses, named: the model liked oil-and-gas roles in 2014 (
             {backtest.biggestMisses[2].title.toLowerCase()}, score{" "}
             {backtest.biggestMisses[2].score2014}) that fell{" "}
-            {Math.abs(backtest.biggestMisses[2].realizedPct)}% when oil prices crashed — a
-            systemic shock no occupation-level model catches. And it under-rated couriers
-            (+166% on the e-commerce boom). Some extreme outliers also reflect SOC
-            reclassification rather than real change. Full numbers, misses, and false alarms:{" "}
+            {Math.abs(backtest.biggestMisses[2].realizedPct)}% when oil prices crashed — the
+            kind of economy-wide shock no career-by-career model can see coming. And it
+            under-rated couriers (+166% on the e-commerce boom). A few of the wildest swings are
+            bookkeeping rather than reality — the government occasionally renames or regroups
+            occupations between decades, which can make a career look like it exploded or
+            vanished. Full numbers, misses, and false alarms:{" "}
             <a
               href="https://github.com/ashleylibasci/careerstar/blob/main/data/backtest.json"
               target="_blank"
@@ -447,14 +548,15 @@ No moat     < 0.55      (~30%)`}
               future of the labor market; this is a grounded, transparent snapshot.
             </li>
             <li>
-              <strong>Fit is a model, not a verdict.</strong> It uses real O*NET skill and
-              knowledge vectors, but the interest→capability lexicon is hand-authored, so fit is a
-              defensible estimate — and two quantitatively similar fields (say finance and
-              engineering) can score alike.
+              <strong>Fit is a model, not a verdict.</strong> It uses the government&rsquo;s real
+              skill data, but the word list that translates your interests onto that skill
+              checklist was written by hand, so fit is a defensible estimate — and two similar
+              fields (say finance and engineering) can score alike.
             </li>
             <li>
-              <strong>The volatility term is a proxy.</strong> No public dataset measures
-              career volatility directly, so it is constructed from projected growth.
+              <strong>The volatility number is a stand-in.</strong> Nobody publishes a direct
+              measure of how unstable each career is, so this model uses the best available
+              substitute: treating shrinking fields as less stable ones.
             </li>
           </ul>
         </Section>
