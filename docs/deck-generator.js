@@ -1,13 +1,15 @@
-// CareerStar — Capital One deck, v10.
-// v10, after Ashley's note: v9 assumed the audience already knew the jargon.
-// Every slide now explains its own terms in plain language (what hosting is,
-// what an agent is, what the formula's inputs mean) and reads like a person
-// talking, not ad copy. "Backup" slides are renamed "spares" and a divider
-// slide after the close explains what they are.
+// CareerStar — Capital One deck, v11.
+// v11: white cover (no more dark title), an agenda slide up front, and a
+// three-act story spine — PART 1 THE PROJECT / PART 2 THE BUILD / PART 3 THE
+// LAUNCH — carried by the kickers, the agenda, and hand-off lines in the
+// notes. Full humanizing pass over the copy.
+// (v10 history: plain-language pass — every slide explains its own terms;
+// spares labeled and explained by a divider slide.)
 // Evidence numbers trace to the repo: 1 written plan (PRD), 7 rules
 // (invariants), 7 phases (epics), 28 tasks (stories, sprint-status.yaml),
 // 35 automated checks (lib/**/*.test.ts).
-// OPEN ITEM: the About Me hobbies row is a bracketed placeholder — fill it in.
+// About Me facts confirmed by Ashley 2026-08-04: Data Science minor, hobbies
+// (running, scuba, friends), LinkedIn footer link.
 // Still PULSE-strict: four working colors, 14pt floor, real title placeholders,
 // text inside shapes, one grid. Light canvas; night-sky bookends only.
 const pptxgen = require("pptxgenjs");
@@ -46,6 +48,29 @@ async function png(svg) {
 function starSvg(color, size, opacity = 1) {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${Math.round((size * 25) / 24)}" viewBox="0 0 24 25"><path d="${STAR_PATH}" fill="${color}" fill-opacity="${opacity}"/></svg>`;
 }
+function constellationSvgLight(w, h) {
+  // The cover's whisper of brand: the same night-sky constellation, redrawn
+  // for a white canvas — pale cobalt lines, soft cobalt stars.
+  const stars = [
+    [120, 140, 1.4, 0.30], [340, 70, 0.9, 0.20], [560, 190, 1.1, 0.26],
+    [830, 90, 0.7, 0.16], [1080, 200, 1.6, 0.32], [1330, 120, 0.9, 0.20],
+    [1580, 260, 1.2, 0.26], [1780, 100, 0.8, 0.18],
+    [220, 760, 1.0, 0.20], [520, 900, 1.3, 0.26], [900, 830, 0.8, 0.16],
+    [1250, 920, 1.2, 0.24], [1620, 800, 1.5, 0.30], [1840, 950, 0.9, 0.18],
+  ];
+  const lines = [
+    [120, 140, 340, 70], [340, 70, 560, 190], [560, 190, 830, 90],
+    [1080, 200, 1330, 120], [1330, 120, 1580, 260],
+    [520, 900, 900, 830], [1250, 920, 1620, 800],
+  ];
+  let g = "";
+  for (const [x1, y1, x2, y2] of lines)
+    g += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#1D4ED8" stroke-opacity="0.12" stroke-width="1.5"/>`;
+  for (const [x, y, s, o] of stars)
+    g += `<g transform="translate(${x - 12 * s},${y - 12.5 * s}) scale(${s})"><path d="${STAR_PATH}" fill="#1D4ED8" fill-opacity="${o}"/></g>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
+  <rect width="${w}" height="${h}" fill="#FFFFFF"/>${g}</svg>`;
+}
 function constellationSvg(w, h) {
   const stars = [
     [120, 140, 1.4, 0.9], [340, 70, 0.9, 0.6], [560, 190, 1.1, 0.8],
@@ -76,6 +101,7 @@ function constellationSvg(w, h) {
 
 (async () => {
   const heroBg = await png(constellationSvg(1920, 1080));
+  const coverBg = await png(constellationSvgLight(1920, 1080));
   const starCobalt = await png(starSvg("#1D4ED8", 96));
   const starNight = await png(starSvg("#9DB9FF", 96));
   // Real product, not a redrawing: /rate verdict + Best Bet card, captured from
@@ -101,11 +127,10 @@ function constellationSvg(w, h) {
     ],
   });
   pptx.defineSlideMaster({
-    title: "DARK",
-    background: { data: heroBg },
+    title: "COVER",
+    background: { data: coverBg },
     objects: [
-      { placeholder: { options: { name: "title", type: "title", x: 1.67, y: 2.15, w: 10, h: 1.1 }, text: "" } },
-      { placeholder: { options: { name: "sub", type: "body", x: 1.67, y: 3.35, w: 10, h: 0.9 }, text: "" } },
+      { placeholder: { options: { name: "title", type: "title", x: 1.17, y: 2.2, w: 11, h: 2.0 }, text: "" } },
     ],
   });
   pptx.defineSlideMaster({
@@ -161,38 +186,63 @@ function constellationSvg(w, h) {
     });
   }
 
-  // == 1 · TITLE (dark) =====================================================
+  // == 1 · TITLE (white) ====================================================
   {
-    const s = pptx.addSlide({ masterName: "DARK" });
-    s.addImage({ data: starNight, x: 6.31, y: 1.42, w: 0.68, h: 0.71 });
-    s.addText("Rating careers like stocks", {
-      placeholder: "title", align: "center", fontFace: SANS, fontSize: 44, bold: true, color: "FFFFFF", margin: 0,
-    });
+    const s = pptx.addSlide({ masterName: "COVER" });
+    s.addImage({ data: starCobalt, x: 6.31, y: 1.32, w: 0.68, h: 0.71 });
+    // One title, per Ashley: the entire talk title as a single sentence in
+    // the slide's real title object — one run, one size, one color.
     s.addText(
-      "Exploring development with the BMAD AI agentic framework — and how to host a simple website on AWS.",
-      { placeholder: "sub", align: "center", fontFace: SANS, fontSize: 18, color: C.nightMuted, margin: 0 },
+      "Rating careers like stocks: exploring development with the BMAD AI agentic framework, and how to host a simple website on AWS",
+      { placeholder: "title", align: "center", valign: "top", margin: 0, fontFace: SANS, fontSize: 30, bold: true, color: C.ink, lineSpacing: 40 },
     );
-    s.addShape("rect", { x: 5.92, y: 5.28, w: 1.5, h: 0.016, fill: { color: C.nightAccent } });
+    s.addShape("rect", { x: 5.92, y: 5.28, w: 1.5, h: 0.016, fill: { color: C.cobalt } });
     txt(s, [
-      { text: "Ashley Libasci", options: { fontSize: 16, bold: true, color: C.nightText, breakLine: true } },
-      { text: "CareerStar — live at ashleylibasci.com", options: { fontSize: 14, color: C.nightAccent, breakLine: true } },
-      { text: "Capital One · August 6, 2026", options: { fontSize: 14, color: C.nightMuted } },
+      { text: "Ashley Libasci", options: { fontSize: 16, bold: true, color: C.ink, breakLine: true } },
+      { text: "CareerStar — live at ashleylibasci.com", options: { fontSize: 14, color: C.cobalt, breakLine: true } },
+      { text: "Capital One · August 6, 2026", options: { fontSize: 14, color: C.slate } },
     ], { x: 3.17, y: 5.55, w: 7, h: 1.2, align: "center", lineSpacing: 24 });
     s.addNotes(
-      "Hi, I'm Ashley. This summer I built a website that rates careers the way analysts rate stocks. Today I'll show you the site, then the two things I actually want to share: how I built it with a team of AI helpers, and how I put it on the internet with Amazon's cloud. No background needed — I'll explain everything as we go. (0:30)",
+      "Hi, I'm Ashley. This summer I built a website that rates careers the way analysts rate stocks — and honestly, the site is only half the story. Today is really about the two things behind it: how a team of AI agents built most of it, and how it got onto the real internet. No background needed — I'll explain everything as we go. (0:30)",
+    );
+  }
+
+  // == 2 · THE MAP (light) ==================================================
+  {
+    const s = pptx.addSlide({ masterName: "LIGHT" });
+    kicker(s, "The plan");
+    title(s, "One summer project, told in three parts");
+    const parts = [
+      ["1", "The project", "A site that rates careers like stocks — what it does, why I made it, and the four-line formula inside it."],
+      ["2", "The build", "The part that surprises people: AI agents wrote most of it. How that works, and the framework — BMAD — that kept it honest."],
+      ["3", "The launch", "Getting it onto the real internet with AWS — and the four-step recipe if you want to do the same."],
+    ];
+    let y = 2.45;
+    for (const [n, head, body] of parts) {
+      txt(s, [{ text: n, options: { fontSize: 30, bold: true, color: C.cobalt } }], { x: M, y: y - 0.05, w: 0.6, h: 0.55 });
+      txt(s, [{ text: head, options: { fontSize: 19, bold: true, color: C.ink } }], { x: 1.5, y, w: 2.9, h: 0.45 });
+      txt(s, [{ text: body, options: { fontSize: 15, color: C.slate } }], { x: 4.55, y: y + 0.02, w: 8.08, h: 0.8 });
+      rule(s, M, y + 0.92, CW);
+      y += 1.18;
+    }
+    txt(s, [{ text: "And at the end: the three things from this summer I’d tell you to steal.", options: { fontSize: 16, bold: true, color: C.ink } }],
+      { x: M, y: 6.25, w: CW, h: 0.4 });
+    pageno(s, 2);
+    s.addNotes(
+      "Here's the shape of the next fifteen minutes, in three parts. Part one, the project: what the site does, why I made it, and the math inside it — which fits on one slide, I promise. Part two, the build — this is the part that surprises people: AI agents wrote most of the code, and I'll show you the framework that kept that from going off the rails. Part three, the launch: how it got onto the actual internet using Amazon's cloud, including the recipe if you ever want to put up your own site. And I'll close with the three things I'd steal from this summer if I were you. Quick intro first. (0:45)",
     );
   }
 
   // == 2 · ABOUT ME (light) =================================================
   {
     const s = pptx.addSlide({ masterName: "LIGHT" });
-    kicker(s, "01 · About me");
-    title(s, "Hi, I’m Ashley");
+    kicker(s, "Before we start");
+    title(s, "Hi, I’m Ashley Libasci");
     const rows = [
-      ["School", "University of Illinois Urbana-Champaign — I study math and computer science, class of ’27."],
+      ["School", "University of Illinois Urbana-Champaign, studying Math + CS with a minor in Data Science."],
       ["Right now", "Cybersecurity intern at BCU, and studying for my first AWS certification."],
       ["This summer", "I built CareerStar, a site that scores careers — it’s live at ashleylibasci.com. How it got built is what this talk is about."],
-      ["Off the clock", "[ hobbies go here — two or three, in your own words ]"],
+      ["Off the clock", "Running, scuba diving, spending time with friends."],
     ];
     let y = 2.5;
     for (const [label, value] of rows) {
@@ -201,52 +251,81 @@ function constellationSvg(w, h) {
       rule(s, M, y + 0.82, CW);
       y += 1.06;
     }
-    pageno(s, 2);
+    s.addText([
+      { text: "LinkedIn: ", options: { fontSize: 13, bold: true, color: C.ink } },
+      { text: "linkedin.com/in/ashleylibasci", options: { fontSize: 13, color: C.cobalt, underline: true, hyperlink: { url: "https://www.linkedin.com/in/ashleylibasci/" } } },
+    ], { x: M, y: 6.85, w: 6, h: 0.3, margin: 0, fontFace: SANS });
+    pageno(s, 3);
     s.addNotes(
-      "Thirty seconds on me: I'm at UIUC studying math and computer science, class of '27. Right now I'm a cybersecurity intern at BCU and studying for my first AWS certification — both of those show up later in this talk. And this summer I built CareerStar. [Add a line about hobbies here.] (0:45)",
+      "Thirty seconds on me: I'm at UIUC studying math and computer science with a minor in data science. Right now I'm a cybersecurity intern at BCU and studying for my first AWS certification — keep both of those in mind, because the security job shows up in part three and the cert studying runs through this whole story. Off the clock I run, I scuba dive, and I spend as much time with my friends as I can. Okay — part one. The project. (0:45)",
     );
   }
 
   // == 3 · WHAT IT DOES (light) ============================================
   {
     const s = pptx.addSlide({ masterName: "LIGHT" });
-    kicker(s, "02 · What it does");
-    title(s, "Type in careers, get a score out of 100 for each");
+    kicker(s, "Part 1 · The project");
+    title(s, "CareerStar: what it is, and why I built it");
+    txt(s, [
+      { text: "People my age are picking careers while AI reshuffles them — and the internet’s answers are either pep talks or doom scores. ", options: { fontSize: 15, color: C.slate } },
+      { text: "So I built the tool I wanted: type in the careers you’re weighing, get a score out of 100 for each, with the reasoning shown.", options: { fontSize: 15, bold: true, color: C.ink } },
+    ], { x: M, y: 1.98, w: CW, h: 0.66 });
     // the real product — live /rate results, captured, not redrawn
-    const shotH = 4.55, shotW = shotH / SHOT_AR; // ≈ 4.26
-    s.addImage({ data: shot, x: M, y: 2.0, w: shotW, h: shotH });
+    const shotH = 3.95, shotW = shotH / SHOT_AR; // ≈ 3.69
+    s.addImage({ data: shot, x: M, y: 2.75, w: shotW, h: shotH });
     s.addShape("rect", {
-      x: M - 0.02, y: 1.98, w: shotW + 0.04, h: shotH + 0.04,
+      x: M - 0.02, y: 2.73, w: shotW + 0.04, h: shotH + 0.04,
       fill: { color: C.white, transparency: 100 }, line: { color: C.line, width: 1 },
     });
-    txt(s, [{ text: "ashleylibasci.com/rate — the real site, as it looks today", options: { fontSize: 13, color: C.slate } }],
-      { x: M, y: 6.62, w: shotW + 1.0, h: 0.3 });
+    txt(s, [{ text: "ashleylibasci.com/rate — the live site", options: { fontSize: 13, color: C.slate } }],
+      { x: M, y: 6.8, w: shotW + 0.2, h: 0.3 });
     const facts = [
-      ["730", "occupations scored — every job the U.S. Labor Department publishes numbers on: how many people do it, expected growth, typical pay"],
-      ["5", "scoring formulas, each a different philosophy — switch live and see if the answer survives"],
-      ["10%", "of careers get five stars — it’s graded on a curve, like fund ratings, so stars compare instead of flatter"],
+      ["730", "occupations scored — every job the U.S. Labor Department publishes numbers on: headcount, expected growth, typical pay"],
+      ["5", "different scoring formulas — flip between them and see whether the answer holds up"],
+      ["10%", "of careers get five stars, and that’s a hard cap — if most careers could get five stars, stars would mean nothing"],
     ];
-    let y = 2.35;
+    let y = 2.95;
     for (const [big, small] of facts) {
-      txt(s, [{ text: big, options: { fontSize: 36, bold: true, color: C.cobalt } }], { x: 5.25, y: y - 0.08, w: 1.5, h: 0.62 });
-      txt(s, [{ text: small, options: { fontSize: 16, color: C.ink } }], { x: 6.85, y: y + 0.02, w: 5.78, h: 0.75 });
-      if (big !== "10%") rule(s, 5.25, y + 0.88, 7.38);
-      y += 1.12;
+      txt(s, [{ text: big, options: { fontSize: 34, bold: true, color: C.cobalt } }], { x: 4.85, y: y - 0.08, w: 1.45, h: 0.6 });
+      txt(s, [{ text: small, options: { fontSize: 15, color: C.ink } }], { x: 6.35, y: y + 0.02, w: 6.28, h: 0.75 });
+      if (big !== "10%") rule(s, 4.85, y + 0.86, 7.78);
+      y += 1.1;
     }
-    rule(s, 5.25, 5.95, 7.38);
+    rule(s, 4.85, 6.35, 7.78);
     txt(s, [
-      { text: "The score is built from public data: how fast the career is growing, what it pays, and how much of the work AI can already do.", options: { fontSize: 15, color: C.ink } },
-    ], { x: 5.25, y: 6.15, w: 7.38, h: 0.7 });
-    pageno(s, 3);
+      { text: "Everything in the score is public data: growth, pay, and how much of the work AI can already do.", options: { fontSize: 15, bold: true, color: C.ink } },
+    ], { x: 4.85, y: 6.55, w: 7.5, h: 0.7 });
+    pageno(s, 4);
     s.addNotes(
-      "Let me show the product first so everything later has something to hang on. You type in the careers you're deciding between — say nursing versus software versus actuary — and each one gets a score out of 100. Higher means a stronger bet.\n\nWhere do the numbers come from? The U.S. government, mostly. The Bureau of Labor Statistics — the agency that tracks the job market — publishes data on about 730 occupations: how many people work in each one, how fast it's expected to grow over the next decade, and what it typically pays. A second government database, O*NET, describes the skills each job actually uses day to day. And a published research study estimated, job by job, how much of the work today's AI could already do. My site combines those public sources — I didn't collect anything myself, which is the point: you can check my inputs.\n\nWhy five formulas? Because my formula is one opinion about how to weigh all that, and reasonable people would weigh it differently. So the site ships five: the Standard one — my headline formula, reward marked down by AI risk. The Growth optimist — just growth and pay, deliberately ignoring AI, betting the official forecasts already account for it. The Defensive one — safety first: if AI hits hard, how sheltered is this career? The Efficiency one — reward per unit of risk; a career has to earn its risk. And the Plain average — it just averages everything, and it exists as the baseline: if my clever formula can't beat a plain average, I want to know. You can switch between them live, and when they disagree, that disagreement is real information about uncertainty.\n\nAnd the stars: they're graded on a curve, the way Morningstar rates mutual funds. Five stars doesn't mean 'nice job' — it means 'top 10 percent of all 730.' If most careers could get five stars, stars would mean nothing. Scarcity is what makes them information. (2:00)",
+      "First, what this project is and why I made it. Everyone I know is in the middle of picking a major or a career path, right while AI is reshuffling what those careers will look like. And when you search something like 'is nursing a safe career?', the internet gives you one of two things: a pep talk, or a doom score from a quiz — vibes, either way. What I wanted was the kind of answer an analyst gives about a stock: real numbers, named sources, and an honest 'it's close' when it's close. Nobody had built that, so I did.\n\nSo here's what it is. You type in the careers you're deciding between — say nursing versus software versus actuary — and each one gets a score out of 100. Higher means a stronger bet, and the reasoning is shown, not hidden.\n\nWhere do the numbers come from? The U.S. government, mostly — nothing I could fake. The Bureau of Labor Statistics — the agency that tracks the job market — publishes data on about 730 occupations: how many people work in each one, how fast it's expected to grow over the next decade, and what it typically pays. A second government database, O*NET, describes the skills each job actually uses day to day. And a published research study estimated, job by job, how much of the work today's AI could already do. My site combines those public sources — I didn't collect anything myself, which is the point: you can check my inputs.\n\nWhy five formulas? Because my formula is one opinion about how to weigh all that, and reasonable people would weigh it differently. So the site ships five: the Standard one — my headline formula, reward marked down by AI risk. The Growth optimist — just growth and pay, deliberately ignoring AI, betting the official forecasts already account for it. The Defensive one — safety first: if AI hits hard, how sheltered is this career? The Efficiency one — reward per unit of risk; a career has to earn its risk. And the Plain average — it just averages everything, and it exists as the baseline: if my clever formula can't beat a plain average, I want to know. You can switch between them live, and when they disagree, that disagreement is real information about uncertainty.\n\nAnd the stars: they're graded on a curve, the way Morningstar rates mutual funds. Five stars doesn't mean 'nice job' — it means 'top 10 percent of all 730.' If most careers could get five stars, stars would mean nothing. Scarcity is what makes them information.\n\nSo that's what it does. But a score is only as good as the math behind it — so let me show you the actual formula. It's shorter than you think. (2:00)",
+    );
+  }
+
+  // == DEMO (light) ========================================================
+  // One job: a big clickable link to the live site for the mid-talk demo.
+  {
+    const s = pptx.addSlide({ masterName: "LIGHT" });
+    kicker(s, "Part 1 · The project");
+    s.addImage({ data: starCobalt, x: 6.31, y: 2.3, w: 0.68, h: 0.71 });
+    s.addText("Demo", {
+      x: 1.17, y: 3.2, w: 11, h: 0.9, align: "center", margin: 0,
+      fontFace: SANS, fontSize: 48, bold: true, color: C.ink,
+    });
+    s.addText([
+      { text: "ashleylibasci.com", options: { fontSize: 30, bold: true, color: C.cobalt, underline: true, hyperlink: { url: "https://ashleylibasci.com" } } },
+    ], { x: 1.17, y: 4.2, w: 11, h: 0.6, align: "center", margin: 0, fontFace: SANS });
+    txt(s, [{ text: "click to open the live site", options: { fontSize: 14, color: C.slate } }],
+      { x: 1.17, y: 4.9, w: 11, h: 0.3, align: "center" });
+    pageno(s, 5);
+    s.addNotes(
+      "Click the link and rate something live — nursing versus software versus actuary is a good trio. Show the verdict banner, the robustness chip, and flip one judge so they see the ranking react. Two minutes, tops, then back to the deck. If the wifi is bad, skip this — the screenshot on the last slide already showed the product. (2:00)",
     );
   }
 
   // == 4 · THE MATH (light) ================================================
   {
     const s = pptx.addSlide({ masterName: "LIGHT" });
-    kicker(s, "03 · The math");
+    kicker(s, "Part 1 · The project");
     title(s, "The whole formula is four lines");
     txt(s, [
       { text: "The ingredients:  ", options: { fontSize: 14, bold: true, color: C.ink } },
@@ -269,16 +348,16 @@ function constellationSvg(w, h) {
       { text: "Honesty about the 0.7 and the 0.6: I picked them.  ", options: { fontSize: 15, bold: true, color: C.ink } },
       { text: "There’s no answer key for career choices, so there’s nothing to tune them against. Instead, the site re-computes every ranking 729 times with those numbers wiggled up and down, plus with five rival formulas — and when the answer flips, it says “close call” instead of pretending to be sure.", options: { fontSize: 15, color: C.slate } },
     ], { x: M, y: 6.12, w: CW, h: 1.05 });
-    pageno(s, 4);
+    pageno(s, 6);
     s.addNotes(
-      "The whole model is four lines, and I want to explain WHY each line looks the way it does — not just show it.\n\nLine one, Return. What do you actually get from a career? Two things the government measures: growth — will there be job openings when you graduate — and pay. Why half and half? Honest answer: I have no evidence that one matters more than the other, so I don't pretend to. Equal weights — and the site has sliders, so if you care more about pay than growth, you can shift it and watch the scores react. One catch before averaging: growth is a percent and pay is in dollars, and averaging a percent with dollars is meaningless. So first, every career gets a rank out of 730 on each ingredient — 'nursing is 74th percentile for growth' — and I combine ranks. That also matches the real question, which is never 'is nursing good in the abstract,' it's 'is nursing better than my alternatives.'\n\nLine two, Risk — what could shrink that return? Two things. AI: the share of the job's day-to-day tasks that today's AI could already do, from a published research study. And volatility: how shaky the field's outlook is. Small confession there — nobody publishes 'career volatility' data, so I built a stand-in: fields projected to shrink get treated as shakier. It's disclosed on the site. Why does AI get 0.7 of the weight? Because 'what does AI do to this career' is the entire question this site exists to answer — volatility is just the sanity check.\n\nLine three — why multiply instead of subtract? Picture a career with a huge reward and a huge risk. If you subtract, the big reward soaks up the risk and it still scores fine — the risk hides behind the paycheck. Multiplying discounts the reward IN PROPORTION to the risk, the way an investor risk-adjusts a return: double the risk, double the haircut. And the 0.6 caps the damage — even the riskiest career keeps at least 40% of its reward — because careers aren't stocks: they can't go to zero. People adapt, retrain, shift specialties.\n\nLine four: blend in fit, 70/30. Why does the market get 70? Because a job you'd love that's disappearing is still disappearing — reality has to dominate. But fit matters at the margins: between two close careers, you'll actually stay in the one that suits you.\n\nAnd the box at the bottom: the 0.7, the 0.6, the 70/30 — I picked them. There is no answer key of correct career choices to tune against, so instead of pretending precision, the site re-runs every ranking 729 times with those numbers wiggled up and down, plus under five rival formulas. When a ranking flips, the site says 'close call' instead of acting sure. (2:30)",
+      "The whole model is four lines, and I want to explain WHY each line looks the way it does — not just show it.\n\nLine one, Return. What do you actually get from a career? Two things the government measures: growth — will there be job openings when you graduate — and pay. Why half and half? Honest answer: I have no evidence that one matters more than the other, so I don't pretend to. Equal weights — and the site has sliders, so if you care more about pay than growth, you can shift it and watch the scores react. One catch before averaging: growth is a percent and pay is in dollars, and averaging a percent with dollars is meaningless. So first, every career gets a rank out of 730 on each ingredient — 'nursing is 74th percentile for growth' — and I combine ranks. That also matches the real question, which is never 'is nursing good in the abstract,' it's 'is nursing better than my alternatives.'\n\nLine two, Risk — what could shrink that return? Two things. AI: the share of the job's day-to-day tasks that today's AI could already do, from a published research study. And volatility: how shaky the field's outlook is. Small confession there — nobody publishes 'career volatility' data, so I built a stand-in: fields projected to shrink get treated as shakier. It's disclosed on the site. Why does AI get 0.7 of the weight? Because 'what does AI do to this career' is the entire question this site exists to answer — volatility is just the sanity check.\n\nLine three — why multiply instead of subtract? Picture a career with a huge reward and a huge risk. If you subtract, the big reward soaks up the risk and it still scores fine — the risk hides behind the paycheck. Multiplying discounts the reward IN PROPORTION to the risk, the way an investor risk-adjusts a return: double the risk, double the haircut. And the 0.6 caps the damage — even the riskiest career keeps at least 40% of its reward — because careers aren't stocks: they can't go to zero. People adapt, retrain, shift specialties.\n\nLine four: blend in fit, 70/30. Why does the market get 70? Because a job you'd love that's disappearing is still disappearing — reality has to dominate. But fit matters at the margins: between two close careers, you'll actually stay in the one that suits you.\n\nAnd the box at the bottom: the 0.7, the 0.6, the 70/30 — I picked them. There is no answer key of correct career choices to tune against, so instead of pretending precision, the site re-runs every ranking 729 times with those numbers wiggled up and down, plus under five rival formulas. When a ranking flips, the site says 'close call' instead of acting sure.\n\nAnd that's part one — the project. A real formula, honestly stress-tested. Now here's the part people don't expect: I barely typed any of this. Part two is about who did. (2:30)",
     );
   }
 
   // == 5 · TWO WAYS TO BUILD WITH AI (light) ===============================
   {
     const s = pptx.addSlide({ masterName: "LIGHT" });
-    kicker(s, "04 · Two ways to build with AI");
+    kicker(s, "Part 2 · The build");
     title(s, "Same AI. Very different results.");
     txt(s, [{ text: "VIBE CODING", options: { fontSize: 15, bold: true, color: C.slate, charSpacing: 2.5 } }], { x: M, y: 2.25, w: COL, h: 0.32 });
     txt(s, [{ text: "chatting with an AI until something runs", options: { fontSize: 13, italic: true, color: C.slate } }], { x: M, y: 2.6, w: COL, h: 0.3 });
@@ -302,7 +381,7 @@ function constellationSvg(w, h) {
     rule(s, M, 6.35, CW);
     txt(s, [{ text: "The AI typed most of this project either way. The discipline around it is the difference.", options: { fontSize: 16, bold: true, color: C.ink } }],
       { x: M, y: 6.55, w: CW, h: 0.4 });
-    pageno(s, 5);
+    pageno(s, 7);
     s.addNotes(
       "When people hear 'AI wrote most of my code,' they usually picture the left column — vibe coding. You chat with an AI, paste what it gives you, and hope. Honestly, that's fine for a weekend experiment. I did something different: an agentic framework. Instead of one chat, a team of AI helpers, each with a specific job and a checklist. A plan gets written before any code. Every change re-runs 35 automated checks — think of them as 35 little tests that each poke one part of the code and complain if it breaks. And separate AI reviewers exist purely to find problems with what got built.\n\nThe fourth row needs a careful explanation, because it sounds like a contradiction: 'the AI doesn't do the math' — didn't AI build this thing? The key is that there are two different moments. When I DESIGNED the site, AI absolutely helped: agents brainstormed with me, challenged me, and typed most of the code. But the formula itself is a human decision — I chose it, it's written down, it's fixed, and it's public. Then there's the second moment: when YOU visit the site and get a score. At that moment, no AI is involved at all. The site does plain arithmetic using that fixed formula. Why insist on that? Because an AI model is unpredictable — ask it the same question twice, you can get two different answers, and there's no way to audit why it 'felt like' a 73. Arithmetic gives the same answer every single time, and anyone can redo it by hand and catch me if it's wrong. So: AI helped write the recipe. It never gets to cook the numbers. (1:30)",
     );
@@ -311,7 +390,7 @@ function constellationSvg(w, h) {
   // == 6 · BMAD (light) ====================================================
   {
     const s = pptx.addSlide({ masterName: "LIGHT" });
-    kicker(s, "05 · BMAD");
+    kicker(s, "Part 2 · The build");
     title(s, "BMAD: my AI team, and what each agent does");
     txt(s, [{ text: "BMAD is a free, open-source framework that turns AI into a small team — like a tiny software company where I’m the boss.", options: { fontSize: 15, color: C.slate } }],
       { x: M, y: 2.0, w: CW, h: 0.35 });
@@ -340,16 +419,16 @@ function constellationSvg(w, h) {
       { x: M, y: 6.12, w: CW, h: 0.45 });
     txt(s, [{ text: "AI helped design the formula — but the live site never asks an AI for a number. Arithmetic can be checked; an AI’s guess can’t.", options: { fontSize: 14, color: C.slate } }],
       { x: M, y: 6.6, w: 11.0, h: 0.5 });
-    pageno(s, 6);
+    pageno(s, 8);
     s.addNotes(
-      "The framework I used is called BMAD. Think of it as a tiny software company where every employee is an AI and I'm the boss.\n\nFirst, planning. A 'product manager' agent interviewed me — it just kept asking why — until we had a real written plan. Then an 'architect' agent locked seven rules the code must never break. Since the slide just says 'seven rules,' here they are, quickly: One — the whole site is one app in one programming language, so there's no second system to maintain. Two — all the math lives in one module, and the screen only displays what it's given, so there's exactly one place any number can come from. Three — the government datasets get combined ahead of time into a single file, so the live site never assembles data on the fly; that keeps it fast and makes every result reproducible. Four — the AI explains, it never decides: it may phrase a paragraph about a score that's already computed, but no code path lets it produce or change a number. Five — anything a visitor types is treated as data, never as instructions; that's the security rule — it blocks the classic trick where someone types 'ignore your rules and do X,' and it caps input length and request rates. Six — no accounts, no database; nothing you type gets stored. Seven — hosting happens exactly one way, the AWS setup on the next slide, so there's no hand-built server to misconfigure.\n\nThen building: a 'developer' agent wrote the code one small task at a time — twenty-eight tasks, each with its own done-checklist — and the automated checks grew alongside, thirty-five in the end.\n\nAnd my favorite part, attack: a cast of AI reviewers argues about every change — a quality checker, a design critic, a fact-checker, and one whose entire personality is finding problems — and I referee.\n\nOn the big rule at the bottom — 'the AI never computes a number' — let me head off the obvious question: couldn't the AI have created the formula? Helped, yes — the agents debated it with me. But the formula is a human decision, written down and frozen. The rule is about the RUNNING site: it never asks an AI for a number, because a number an AI makes up can't be audited, and a fixed formula can. If a score is ever wrong, you can trace exactly why. (2:30)",
+      "The framework I used is called BMAD. Think of it as a tiny software company where every employee is an AI and I'm the boss.\n\nFirst, planning. A 'product manager' agent interviewed me — it just kept asking why — until we had a real written plan. Then an 'architect' agent locked seven rules the code must never break. Since the slide just says 'seven rules,' here they are, quickly: One — the whole site is one app in one programming language, so there's no second system to maintain. Two — all the math lives in one module, and the screen only displays what it's given, so there's exactly one place any number can come from. Three — the government datasets get combined ahead of time into a single file, so the live site never assembles data on the fly; that keeps it fast and makes every result reproducible. Four — the AI explains, it never decides: it may phrase a paragraph about a score that's already computed, but no code path lets it produce or change a number. Five — anything a visitor types is treated as data, never as instructions; that's the security rule — it blocks the classic trick where someone types 'ignore your rules and do X,' and it caps input length and request rates. Six — no accounts, no database; nothing you type gets stored. Seven — hosting happens exactly one way, the AWS setup on the next slide, so there's no hand-built server to misconfigure.\n\nThen building: a 'developer' agent wrote the code one small task at a time — twenty-eight tasks, each with its own done-checklist — and the automated checks grew alongside, thirty-five in the end.\n\nAnd my favorite part, attack: a cast of AI reviewers argues about every change — a quality checker, a design critic, a fact-checker, and one whose entire personality is finding problems — and I referee.\n\nOn the big rule at the bottom — 'the AI never computes a number' — let me head off the obvious question: couldn't the AI have created the formula? Helped, yes — the agents debated it with me. But the formula is a human decision, written down and frozen. The rule is about the RUNNING site: it never asks an AI for a number, because a number an AI makes up can't be audited, and a fixed formula can. If a score is ever wrong, you can trace exactly why.\n\nThat's part two — the build. So now I had a working site sitting on my laptop, which is a bit like having a great essay locked in a drawer. Part three: getting it in front of the world. (2:30)",
     );
   }
 
   // == 7 · AWS, PART 1: THE PIECES (light) =================================
   {
     const s = pptx.addSlide({ masterName: "LIGHT" });
-    kicker(s, "06 · AWS, part 1");
+    kicker(s, "Part 3 · The launch");
     title(s, "Putting it on the internet: the three pieces");
     txt(s, [{ text: "“Hosting” just means: which computers serve your website to the world. I rent Amazon’s instead of running my own.", options: { fontSize: 15, color: C.slate } }],
       { x: M, y: 2.0, w: CW, h: 0.35 });
@@ -374,16 +453,16 @@ function constellationSvg(w, h) {
       { x: M, y: 5.65, w: CW, h: 0.4 });
     txt(s, [{ text: "This setup is most of what the AWS Cloud Practitioner exam covers — I’m studying for it now, and this project made the flashcards real.", options: { fontSize: 14, italic: true, color: C.slate } }],
       { x: M, y: 6.15, w: CW, h: 0.4 });
-    pageno(s, 7);
+    pageno(s, 9);
     s.addNotes(
-      "Now the hosting half. 'Hosting' just means: which computers actually serve your website when someone visits. I rent Amazon's instead of running my own.\n\nPiece one, the code. It lives on GitHub — think of it as a shared drive for programmers, with full history. Important detail: what's on GitHub is just text files. Instructions for a website — not a running website. Something has to turn instructions into the real thing.\n\nThat's piece two, Amplify, and here's what 'turns it into a website' actually means. Amplify watches my GitHub. The moment I save a change, it does three things automatically: it BUILDS — follows my instructions and assembles the finished web pages and the little program that computes scores; it HOSTS — places all of that onto Amazon's computers; and it SWAPS — replaces the old version with the new one, with no downtime. I have never set up or even logged into a server. Saving my code IS the release.\n\nPiece three, the address. Here's the thing about the internet: computers don't find websites by name — they find them by numeric addresses, like street addresses. Route 53 is the phone book. It holds the entry that says 'ashleylibasci.com lives at these Amazon computers.' When you type my domain, your browser quietly looks it up there first, then goes to the right place. And CloudFront handles speed: it keeps copies of the site in cities all over the world, so someone in Tokyo gets served from near Tokyo instead of waiting for data to cross the ocean.\n\nThe part I appreciate most: there's nothing for me to babysit — no server to patch at 2 a.m. Amazon handles the machines; I handle my code. I'm studying for the AWS Cloud Practitioner cert right now, and honestly, this little site is what made the flashcard concepts real. (2:00)",
+      "Now the hosting half. 'Hosting' just means: which computers actually serve your website when someone visits. I rent Amazon's instead of running my own.\n\nPiece one, the code. It lives on GitHub — think of it as a shared drive for programmers, with full history. Important detail: what's on GitHub is just text files. Instructions for a website — not a running website. Something has to turn instructions into the real thing.\n\nThat's piece two, Amplify, and here's what 'turns it into a website' actually means. Amplify watches my GitHub. The moment I save a change, it does three things automatically: it BUILDS — follows my instructions and assembles the finished web pages and the little program that computes scores; it HOSTS — places all of that onto Amazon's computers; and it SWAPS — replaces the old version with the new one, with no downtime. I have never set up or even logged into a server. Saving my code IS the release.\n\nPiece three, the address. Here's the thing about the internet: computers don't find websites by name — they find them by numeric addresses, like street addresses. Route 53 is the phone book. It holds the entry that says 'ashleylibasci.com lives at these Amazon computers.' When you type my domain, your browser quietly looks it up there first, then goes to the right place. And CloudFront handles speed: it keeps copies of the site in cities all over the world, so someone in Tokyo gets served from near Tokyo instead of waiting for data to cross the ocean.\n\nThe part I appreciate most: there's nothing for me to babysit — no server to patch at 2 a.m. Amazon handles the machines; I handle my code. I'm studying for the AWS Cloud Practitioner cert right now, and honestly, this little site is what made the flashcard concepts real.\n\nThat's the machinery. But if you only remember one slide from part three, make it the next one — the actual recipe, plus the lesson it taught me the hard way. (2:00)",
     );
   }
 
   // == 8 · AWS, PART 2: THE RECIPE (light) =================================
   {
     const s = pptx.addSlide({ masterName: "LIGHT" });
-    kicker(s, "07 · AWS, part 2");
+    kicker(s, "Part 3 · The launch");
     title(s, "Want your own site? Here’s the whole recipe");
     const beats = [
       ["1", "Put your code on GitHub", "It’s free. Your project lives there, and it becomes the one true copy that Amazon watches."],
@@ -401,9 +480,9 @@ function constellationSvg(w, h) {
     }
     txt(s, [{ text: "Setting this up taught me more about AWS than the practice exams did.", options: { fontSize: 17, bold: true, color: C.ink } }],
       { x: M, y: 6.55, w: CW, h: 0.45, align: "center" });
-    pageno(s, 8);
+    pageno(s, 10);
     s.addNotes(
-      "If you want to do this yourselves, this is genuinely the entire recipe — four steps.\n\nStep one: put your code on GitHub. It's free, and it becomes the one true copy of your project — the thing Amazon will watch. Even if you've never coded, this is the same motion as putting a document in a shared drive.\n\nStep two: connect AWS Amplify to it. You do this once, in a web console — you click 'new app,' point it at your GitHub project, and that's the setup. From that moment on, every time you save a change, the live site updates itself a few minutes later. There is no step where you configure a server, because there is no server you can see.\n\nStep three: add your own domain. You buy a name you like — mine cost about as much as a pizza per year — tell Route 53 'this name belongs to this app,' and Amplify automatically sets up the padlock icon, the security certificate that makes browsers trust the site. That part used to be genuinely painful to do by hand; now it's a checkbox.\n\nStep four is the one nobody puts in tutorials: test it like a stranger. Open your site from your phone on cellular, from a friend's laptop, and try to misuse it. The real internet behaves differently than your laptop — there's Amazon machinery between you and your visitors that you can't see from home. My spam protection — the thing that stops someone from hammering the site with thousands of requests — passed every test on my laptop and then never fired once in the real world. Not once. There's a spare slide with that whole story if anyone wants it in Q&A — it's my favorite bug of the summer. (1:30)",
+      "If you want to do this yourselves, this is genuinely the entire recipe — four steps.\n\nStep one: put your code on GitHub. It's free, and it becomes the one true copy of your project — the thing Amazon will watch. Even if you've never coded, this is the same motion as putting a document in a shared drive.\n\nStep two: connect AWS Amplify to it. You do this once, in a web console — you click 'new app,' point it at your GitHub project, and that's the setup. From that moment on, every time you save a change, the live site updates itself a few minutes later. There is no step where you configure a server, because there is no server you can see.\n\nStep three: add your own domain. You buy a name you like — mine cost about as much as a pizza per year — tell Route 53 'this name belongs to this app,' and Amplify automatically sets up the padlock icon, the security certificate that makes browsers trust the site. That part used to be genuinely painful to do by hand; now it's a checkbox.\n\nStep four is the one nobody puts in tutorials: test it like a stranger. Open your site from your phone on cellular, from a friend's laptop, and try to misuse it. The real internet behaves differently than your laptop — there's Amazon machinery between you and your visitors that you can't see from home. My spam protection — the thing that stops someone from hammering the site with thousands of requests — passed every test on my laptop and then never fired once in the real world. Not once. There's a spare slide with that whole story if anyone wants it in Q&A — it's my favorite bug of the summer.\n\nSo: a project, a build, a launch. Let me leave you with what I'd actually take from all of it. (1:30)",
     );
   }
 
@@ -448,7 +527,7 @@ function constellationSvg(w, h) {
       { x: M, y: 3.0, w: CW, h: 0.6, align: "center" });
     txt(s, [{ text: "The slides after this one are spares — answers I prepared in case someone asks. They’re not part of the presentation.", options: { fontSize: 16, color: C.slate } }],
       { x: 2.7, y: 3.75, w: 7.93, h: 0.6, align: "center" });
-    pageno(s, 10);
+    pageno(s, 12);
     s.addNotes("Stop here. Everything past this slide is only for Q&A — jump to whichever spare matches the question.");
   }
 
@@ -473,7 +552,7 @@ function constellationSvg(w, h) {
     }
     txt(s, [{ text: "Practice exams don’t teach you this. Production does.", options: { fontSize: 17, bold: true, color: C.cobalt } }],
       { x: M, y: 6.85, w: CW, h: 0.4, align: "center" });
-    pageno(s, 11);
+    pageno(s, 13);
     s.addNotes(
       "The full bug story, if asked. I built rate limiting — a cap on how fast one visitor can hit the site. Textbook approach: identify visitors by network address, read from the standard spot in the request. In production: thirty rapid requests, zero blocked. Turns out Amazon's own infrastructure sits in the middle and stamps its own address in exactly the spot I was reading — so every request looked brand new. I was rate-limiting Amazon. The fix: read the right spot, add a global cap as a backstop, and pin it all down with an automated check. (1:30 if asked)",
     );
@@ -497,23 +576,23 @@ function constellationSvg(w, h) {
     ["“Why 0.7 and not 0.6?”", "Honest answer: I had to pick something, and there’s no data on “correct” career choices to tune against. So the site calls it a judgment call out loud, and stress-tests it — 729 re-scores with the numbers wiggled, five rival formulas, and “close call” labels whenever the answer flips."],
     ["“How do the stars work?”", "A forced curve, borrowed from how Morningstar rates funds: the top 10% of careers get five stars, the next 22.5% get four, and so on — recomputed live under whatever settings you choose."],
     ["“Isn’t ‘AI risk’ just another word for ‘declining job’?”", "Surprisingly, no. Across all 730 careers, AI exposure and projected growth are nearly unrelated — a job can be growing fast and still be very automatable. The AI number knows something growth doesn’t."],
-  ], 12);
+  ], 14);
   backup("Did the formula actually work? I tested it on the past", [
     ["“What was the test?”", "I dug the government’s 2014 job projections out of an internet archive, scored 2014’s job market with today’s formula, and graded it against what really happened by 2024 — 647 occupations."],
     ["“How did it do?”", "Decent, honestly reported: it flagged 48% of the careers that truly declined (random guessing gets 33%). The government’s own plain projections narrowly beat my full formula — which makes sense, because my AI ingredient had nothing to price in 2014. Modern AI didn’t exist yet."],
     ["“Any fine print?”", "Yes, and it’s all published on the site: 2014 salary data wasn’t archived, so I used today’s salary order as a stand-in (it barely changes), and occupations that got reorganized between government coding systems drop out of the test."],
-  ], 13);
+  ], 15);
   backup("The nuts and bolts", [
     ["“What’s it built with?”", "Next.js and TypeScript (a popular toolkit for building websites), hosted on AWS Amplify. 35 automated checks on the scoring code, scripts that rebuild every dataset from the original sources, and all of it — code and data — public on GitHub."],
     ["“What did the AI get wrong along the way?”", "Plenty — that’s why the reviewer agents exist. The best catch: my own methodology page claimed the fit score worked in a fancier way than the code actually did. The reviewers caught it, we rebuilt it properly, and the story of the catch is now published on the site."],
     ["“Does the big AI research back your AI ingredient?”", "My AI-risk data comes from a published 2023 study. Anthropic’s 2026 research layered real-world AI usage on the same foundation and found it held up — consistent with what my scores assume."],
-  ], 14);
+  ], 16);
   backup("BMAD, up close", [
     ["“What does the framework actually leave behind?”", "A paper trail in the project: the written plan, the architecture doc with its 7 rules, all 28 tasks with their done-checklists, a status file tracking every task to finished, and the reviewers’ arguments — saved as files."],
     ["“Who are the reviewers?”", "AI personas the framework convenes on every change — a hiring manager, a fact-checker, a copy chief, a quality lead, a design critic, and one professional grump. And yes: this very deck went through that room."],
     ["“Would you use it again?”", "Yes. The habit is the transferable part — plan before prompt, hostile review before shipping — and that works with any AI tool. The framework just made the rigor feel like a game instead of a chore."],
-  ], 15);
+  ], 17);
 
-  await pptx.writeFile({ fileName: "/Users/ashleylibasci/ashleyaiproject/docs/CareerStar-CapitalOne-v10.pptx" });
-  console.log("deck v10 (plain-language pass: every term explained, spares labeled) written");
+  await pptx.writeFile({ fileName: "/Users/ashleylibasci/ashleyaiproject/docs/CareerStar-CapitalOne-v11.pptx" });
+  console.log("deck v11 (white cover, agenda, three-part story spine, humanized) written");
 })().catch((e) => { console.error(e); process.exit(1); });

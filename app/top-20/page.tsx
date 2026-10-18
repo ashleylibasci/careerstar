@@ -70,11 +70,12 @@ export default function Top20Page() {
         </div>
         <h1 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">The CareerStar 20</h1>
         <p className="mt-3 text-foreground/70">
-          The careers this system has the <strong>most conviction</strong>{" "}in — no editor, pure
-          derivation. A career makes this list only if it has a{" "}
-          <strong>🏰 wide AI-moat</strong> (well-shielded from AI: few automatable tasks, rare
-          skills) <em>and</em> <strong>all five rating models agree</strong> (every judge within a
-          ±10 band — even the ones that disagree about everything else). Ranked by model consensus.
+          The careers this system is <strong>most confident</strong>{" "}about — no editor picked
+          them; the list falls straight out of the math. A career makes it only if it&rsquo;s{" "}
+          <strong>🏰 well-shielded from AI</strong>{" "}(few tasks AI can do, built on rare skills){" "}
+          <em>and</em>{" "}<strong>all five rating formulas agree on it</strong>{" "}— even the ones
+          that disagree about everything else land within 10 points of each other. Ranked by the
+          five formulas&rsquo; average score.
         </p>
 
         <ViewSwitcher active="/top-20" />
@@ -93,7 +94,7 @@ export default function Top20Page() {
             {TOP20[0].mean}&nbsp;±{Math.round(TOP20[0].spread / 2)}&rdquo; (the #1 entry) means the
             five models average {TOP20[0].mean}, each landing within about{" "}
             {Math.round(TOP20[0].spread / 2)} points of that average — the smaller the ±, the more
-            they agree. One honest note: nearly every entry sits close to the ±10 admission line.
+            they agree. You&rsquo;ll notice nearly every entry sits close to the ±10 admission line.
             Getting five rival formulas even that close is rare — most of the market doesn&rsquo;t
             qualify at all — so &ldquo;barely passes a hard gate&rdquo; is what conviction looks
             like here.

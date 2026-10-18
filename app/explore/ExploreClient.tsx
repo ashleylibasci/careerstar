@@ -167,10 +167,10 @@ export default function ExploreClient({
               <th scope="col" className="py-2 px-3 font-medium">Field</th>
               <th scope="col" className="py-2 px-3 font-medium">Education</th>
               <th scope="col" className="py-2 px-3 text-right font-medium">Rating</th>
-              <th scope="col" className="py-2 px-3 font-medium" title="AI moat — defensibility against AI pressure">Moat</th>
+              <th scope="col" className="py-2 px-3 font-medium" title="How shielded the career is from AI — few automatable tasks, rare skills">Moat</th>
               <th scope="col" className="py-2 px-3 text-right font-medium">Growth</th>
               <th scope="col" className="py-2 px-3 text-right font-medium">Pay</th>
-              <th scope="col" className="py-2 pl-3 text-right font-medium">Resilience</th>
+              <th scope="col" className="py-2 pl-3 text-right font-medium" title="How hard the career is for AI to disrupt, 0–100. Higher is better.">Resilience</th>
             </tr>
           </thead>
           <tbody>

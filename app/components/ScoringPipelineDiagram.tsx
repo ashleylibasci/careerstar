@@ -15,8 +15,8 @@ export default function ScoringPipelineDiagram({ className = "" }: { className?:
     >
       <title>How every CareerStar score is made</title>
       <desc>
-        Four public data sources feed a deterministic scorer of pure functions, which outputs a 0 to
-        100 score. A language model only writes the plain-English explanation — it never computes the
+        Four public data sources feed one fixed set of formulas, which outputs a 0 to 100 score.
+        A language model only writes the plain-English explanation — it never computes the
         number and never sees your raw input.
       </desc>
       <defs>

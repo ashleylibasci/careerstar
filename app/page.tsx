@@ -136,11 +136,12 @@ export default async function Home({
             <span aria-hidden className="text-base leading-snug">📜</span>
             <span className="text-xs leading-relaxed text-foreground/75">
               <strong className="font-semibold text-foreground">Tested against a real decade, not vibes.</strong>{" "}
-              I scored 2014&rsquo;s careers with 2014 data, then checked what actually happened by
-              2024: rank correlation ρ&nbsp;=&nbsp;{METRICS.spearmanScoreVsRealized}, and{" "}
-              {METRICS.declinerHitRatePct}% of the careers that really declined were flagged
-              (33% by chance). Where it missed, I say so.{" "}
-              <span className="font-medium text-blue-600">See the back-test →</span>
+              I scored 2014&rsquo;s careers using only what was knowable in 2014, then checked
+              what actually happened by 2024. Careers the model scored higher really did fare
+              better on average — and it caught {METRICS.declinerHitRatePct}% of the careers that
+              went on to shrink, where random guessing would catch 33%. Where it missed, I say
+              so.{" "}
+              <span className="font-medium text-blue-600">See the test →</span>
             </span>
           </Link>
         </header>
@@ -156,14 +157,15 @@ export default async function Home({
               &ldquo;I don&rsquo;t know yet.&rdquo;
             </Step>
             <Step n={2} title="The math rates each one">
-              <strong>Return</strong>{" "}(growth + pay) discounted by{" "}
-              <strong>AI risk</strong>, blended with your{" "}
-              <strong>fit</strong>{" "}— the same shape as a risk-adjusted return in investing.
-              An AI writes the plain-English why, never the number.
+              How much a career pays off (<strong>growth + pay</strong>), marked down by how
+              much of the work <strong>AI could take over</strong>, blended with how well it{" "}
+              <strong>fits you</strong>{" "}— the same way an investor judges a stock: reward,
+              discounted by risk. An AI writes the plain-English why, never the number.
             </Step>
             <Step n={3} title="Read the verdict — and the receipts">
-              A ranked comparison with stars on a curve, bulls &amp; bears for every career,
-              and the exact math behind each score, one click away.
+              A ranked comparison with star ratings, the strongest case{" "}
+              <em>for</em>{" "}and{" "}<em>against</em>{" "}every career, and the exact math behind
+              each score, one click away.
             </Step>
           </div>
         </section>
@@ -172,7 +174,7 @@ export default async function Home({
         {/* The judges — and the fact you can switch them. */}
         <Reveal>
         <section className="mt-14">
-          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-blue-600">02 · Model risk, made visible</p>
+          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-blue-600">02 · Second opinions, built in</p>
           <h2 className="mt-1.5 text-xl font-bold tracking-tight">Five judges, not one oracle</h2>
           <p className="mt-3 leading-relaxed text-foreground/70">
             Any single formula is one opinion about how much AI risk should count. So every
@@ -211,28 +213,30 @@ export default async function Home({
             <li className="flex gap-2.5">
               <TiltedStar size={12} className="mt-1 shrink-0" />
               <span>
-                <strong className="text-foreground">Deterministic math.</strong>{" "}The same
-                inputs always produce the same score, from formulas published in full on the{" "}
+                <strong className="text-foreground">No black box.</strong>{" "}The same inputs
+                always produce the same score — no AI guessing, no randomness — and every formula
+                is published in full on the{" "}
                 <Link href="/methodology" className="font-medium text-blue-600 hover:underline">
-                  methodology page
+                  how-scores-work page
                 </Link>
-                {" "}— including why each line beat its alternatives.
+                , including why each piece was chosen over its alternatives.
               </span>
             </li>
             <li className="flex gap-2.5">
               <TiltedStar size={12} className="mt-1 shrink-0" />
               <span>
-                <strong className="text-foreground">Back-tested, misses named.</strong>{" "}The
-                model was pointed at 2014 and graded against what 2024 actually did — including
-                the careers it got wrong, listed by name.
+                <strong className="text-foreground">Tested against history, misses named.</strong>{" "}
+                The model rated the careers of 2014 and was graded on what actually happened by
+                2024 — including the careers it got wrong, listed by name.
               </span>
             </li>
             <li className="flex gap-2.5">
               <TiltedStar size={12} className="mt-1 shrink-0" />
               <span>
-                <strong className="text-foreground">Stress-tested.</strong>{" "}Every comparison
-                is re-scored under 729 weight variations and five rival models; results that
-                don&rsquo;t survive are flagged as close calls, not sold as verdicts.
+                <strong className="text-foreground">Stress-tested.</strong>{" "}Every comparison is
+                re-scored 729 extra times with the model&rsquo;s settings nudged up and down, and
+                again by five rival formulas. A ranking that flips when the settings wiggle is
+                flagged as a close call, not sold as a verdict.
               </span>
             </li>
             <li className="flex gap-2.5">

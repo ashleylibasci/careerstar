@@ -135,8 +135,8 @@ export default function SkyPage() {
             <div>
               <div className="text-xl font-bold tabular-nums text-blue-600">{M.umap.neighborPreservationPct}%</div>
               <div className="mt-0.5 text-xs text-foreground/60">
-                of each career&rsquo;s {M.neighborK} truest neighbors (in full 68-d space) are
-                still its neighbors on this map
+                of each career&rsquo;s {M.neighborK} most-similar careers (measured on the full
+                68-ability data) are still its neighbors on this flattened map
               </div>
             </div>
             <div>
@@ -144,20 +144,23 @@ export default function SkyPage() {
                 {M.umap.sameGroupNearestPct}% <span className="text-sm font-semibold text-foreground/45">/ {M.sameGroupNearestPct68d}%</span>
               </div>
               <div className="mt-0.5 text-xs text-foreground/60">
-                nearest star is from the same field, here / in the full 68-d space (the ceiling)
+                how often a star&rsquo;s closest neighbor is from its own field — on this map /
+                in the full data (the best any map could do)
               </div>
             </div>
             <div>
               <div className="text-xl font-bold tabular-nums text-blue-600">{M.pcaRejected.neighborPreservationPct}%</div>
               <div className="mt-0.5 text-xs text-foreground/60">
-                what PCA — the simpler method tried first — preserved. It was rejected for losing
-                the neighborhoods ({M.pcaRejected.varianceExplainedPct[0]}%+{M.pcaRejected.varianceExplainedPct[1]}% variance explained)
+                what a simpler mapping method (PCA) managed on the first measure — it scrambled
+                too many neighborhoods, so it was rejected
               </div>
             </div>
           </div>
           <p className="mt-3 text-xs leading-relaxed text-foreground/60">
-            Method: seeded UMAP (nNeighbors {M.umapParams.nNeighbors}, minDist {M.umapParams.minDist}, seed{" "}
-            {M.umapParams.seed}) over z-scored capability vectors — fully reproducible from{" "}
+            Squashing a 68-ability profile onto a flat page necessarily loses something; the
+            numbers above measure how much. For the technically curious: the map uses seeded
+            UMAP (nNeighbors {M.umapParams.nNeighbors}, minDist {M.umapParams.minDist}, seed{" "}
+            {M.umapParams.seed}), fully reproducible from{" "}
             <a
               href="https://github.com/ashleylibasci/careerstar/blob/main/scripts/pipeline/build-sky.mjs"
               target="_blank"
@@ -166,10 +169,9 @@ export default function SkyPage() {
             >
               build-sky.mjs
             </a>
-            . Flattening 68 dimensions to 2 necessarily lies a little; the numbers above measure
-            the lie. The &ldquo;you are here&rdquo; marker doesn&rsquo;t pretend to invert the
-            projection — it sits at the similarity-weighted center of your nearest careers, which
-            are named under the picker. Same capability data as the{" "}
+            . The &ldquo;you are here&rdquo; marker sits at the center of the careers most
+            similar to your interests, which are named under the picker. Same skill data as
+            the{" "}
             <Link href="/methodology" className="font-medium text-blue-600 hover:underline">
               fit score
             </Link>
