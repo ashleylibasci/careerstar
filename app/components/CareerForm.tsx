@@ -1006,7 +1006,7 @@ export default function CareerForm() {
               <span>
                 Data: U.S. BLS Employment Projections 2024&ndash;2034 · O*NET 29.0 · Eloundou et
                 al. 2023 · College Scorecard. Methodology, back-test, and open data:
-                ashleylibasci.com/methodology
+                careerstar.ashleylibasci.com/methodology
               </span>
               <span
                 className="shrink-0 pl-6 font-black"

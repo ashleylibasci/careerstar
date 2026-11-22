@@ -145,7 +145,7 @@ export default function ArchitecturePage() {
           <Zone label="Deployment" dotClass="bg-blue-500">
             <Node title="AWS Amplify" desc="SSR · CI/CD" />
             <Arrow />
-            <Node title="Route 53" desc="custom domain — ashleylibasci.com" />
+            <Node title="Route 53" desc="custom domain — careerstar.ashleylibasci.com" />
             <Arrow />
             <Node title="Auto HTTPS" desc="managed TLS" />
             <Arrow />

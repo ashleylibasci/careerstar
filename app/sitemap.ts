@@ -3,7 +3,7 @@ import data from "@/data/data.json";
 import { FIELDS } from "@/lib/fields";
 import type { Occupation } from "@/lib/scorer/types";
 
-const BASE = "https://ashleylibasci.com";
+const BASE = "https://careerstar.ashleylibasci.com";
 const OCCUPATIONS = (data as { occupations: Occupation[] }).occupations;
 
 export default function sitemap(): MetadataRoute.Sitemap {

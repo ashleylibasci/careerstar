@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ashleylibasci.com"),
+  metadataBase: new URL("https://careerstar.ashleylibasci.com"),
   title: "CareerStar — AI Career Viability Rating",
   alternates: { canonical: "/" },
   description:

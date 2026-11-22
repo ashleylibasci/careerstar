@@ -4,7 +4,7 @@
 
 **Rate careers like stocks — a data-grounded, risk-adjusted viability score in an AI-shaped economy. Back-tested against a real decade: scored the 2014 labor market with today's model vs. what actually happened by 2024 (ρ = 0.39 across 647 occupations, 1.45× lift on actual decliners — misses published by name).**
 
-Live: **https://ashleylibasci.com**
+Live: **https://careerstar.ashleylibasci.com**
 
 CareerStar treats each career the way a portfolio treats an asset: expected **return** (growth + pay) versus **risk** (AI exposure + volatility), combined into a single **0–100 risk-adjusted score** and adjusted for how well the path fits you. You type your interests and the paths you're weighing; you get a score card per path with a component breakdown, a plain-English explanation, and — when a path scores low — a redirect to a stronger adjacent path instead of a dead end.
 
